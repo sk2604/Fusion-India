@@ -1,0 +1,163 @@
+/* ======================================
+   BRANDS SECTION
+====================================== */
+.brands-section {
+  padding: 10vh 0 12vh;
+  background: var(--black);
+  border-top: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.brands-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 6vh;
+}
+
+.brands-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray);
+  font-weight: 500;
+}
+
+.brands-header .text-title {
+  line-height: 1;
+}
+
+/* ======================================
+   SCROLLING TICKER
+====================================== */
+.brands-ticker-wrap {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  margin-bottom: 7vh;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 0;
+}
+
+.brands-ticker {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: max-content;
+  animation: ticker-scroll 30s linear infinite;
+}
+
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
+.brand-pill {
+  display: flex;
+  align-items: center;
+  padding: 0 3vw;
+  position: relative;
+  white-space: nowrap;
+}
+
+.brand-pill::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+}
+
+.brand-pill span {
+  font-size: clamp(0.85rem, 1.3vw, 1.2rem);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.22);
+}
+
+/* ======================================
+   LOGO GRID
+====================================== */
+.brands-logo-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.brand-logo-cell {
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5vh 2.5vw;
+  transition: background 0.35s ease;
+  min-height: 100px;
+}
+
+.brand-logo-cell:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+.brand-logo-img {
+  max-width: 110px;
+  max-height: 40px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  /* Invert + desaturate so all logos look white/grey on dark bg */
+  filter: invert(1) grayscale(1) brightness(0.5);
+  transition: filter 0.35s ease;
+}
+
+.brand-logo-cell:hover .brand-logo-img {
+  filter: invert(1) grayscale(1) brightness(0.9);
+}
+
+/* Fallback text if logo fails to load */
+.brand-logo-fallback {
+  display: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.brand-logo-cell:hover .brand-logo-fallback {
+  color: rgba(255,255,255,0.7);
+}
+
+/* ======================================
+   RESPONSIVE
+====================================== */
+@media (max-width: 900px) {
+  .brands-logo-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .brand-logo-cell {
+    padding: 4vh 3vw;
+  }
+}
+
+@media (max-width: 540px) {
+  .brands-logo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .brand-logo-img {
+    max-width: 80px;
+    max-height: 32px;
+  }
+  .brands-header .text-title {
+    font-size: clamp(2rem, 9vw, 3.5rem);
+  }
+}

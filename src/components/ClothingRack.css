@@ -1,0 +1,626 @@
+/* =============================================
+   THE ATELIER — GLASSMORPHISM
+   Perfectly matched to Fusion India website vibe.
+   Background: #050505 · Glass: rgba(255,255,255,0.03–0.1)
+   Font: same as rest of site · Blur: 10–20px
+   ============================================= */
+
+/* ─── BASE — matches site exactly ─── */
+.rack-section {
+  background-color: #050505;
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6vh 0 3vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle radial glow — same depth as About/Services sections */
+.rack-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── HEADER — matches Services/About header style ─── */
+.rack-header {
+  text-align: center;
+  margin-bottom: clamp(16px, 2.5vh, 36px);
+  z-index: 2;
+  position: relative;
+  padding: 0 24px;
+  flex-shrink: 0;
+}
+
+.rack-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.rack-eyebrow-line {
+  width: 40px;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+  display: inline-block;
+}
+
+.rack-eyebrow-text {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  color: #666;
+}
+
+/* Title matches .text-title from Services — big, clean, -0.02em tracking */
+.rack-title {
+  font-size: clamp(1.8rem, 4vw, 4rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0 0 10px;
+  color: #fff;
+}
+
+.rack-title-italic {
+  display: inline;
+  font-style: italic;
+  font-weight: 300;
+  color: #aaa;
+}
+
+.rack-subtitle {
+  font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+  color: #555;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+/* ─── STAGE — flex column fills remaining height ─── */
+.rack-stage {
+  flex: 1;
+  width: 100%;
+  max-width: 1300px;
+  padding: 0 5vw;
+  z-index: 2;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* ─── RAIL — clean thin line matching site's 1px borders ─── */
+.rack-rail-wrap {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 0;
+}
+
+.rack-rail {
+  position: absolute;
+  left: 40px;
+  right: 40px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255,255,255,0.08) 10%,
+    rgba(255,255,255,0.3) 30%,
+    rgba(255,255,255,0.45) 50%,
+    rgba(255,255,255,0.3) 70%,
+    rgba(255,255,255,0.08) 90%,
+    transparent
+  );
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ─── GARMENTS ROW — takes all available space ─── */
+.rack-row {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  z-index: 5;
+  min-height: 0;
+}
+
+/* Individual item */
+.rack-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 110px;
+  cursor: pointer;
+  transition:
+    width 0.85s cubic-bezier(0.19, 1, 0.22, 1),
+    opacity 0.5s ease,
+    filter 0.5s ease;
+}
+
+.rack-item.is-active {
+  width: 300px;
+  z-index: 20;
+}
+
+.rack-item.is-dimmed {
+  opacity: 0.2;
+  filter: blur(0.5px);
+}
+
+/* Hook wire — thin, minimal, matches site's border style */
+.rack-hook {
+  width: 1px;
+  height: 20px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(255,255,255,0.1));
+  position: relative;
+  z-index: 5;
+  flex-shrink: 0;
+}
+
+/* Images — height responds to available viewport space */
+.rack-img-wrap {
+  width: 240px;
+  height: calc(100vh - 360px);
+  max-height: 380px;
+  min-height: 220px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: transform 0.85s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.rack-item.is-active .rack-img-wrap {
+  transform: translateX(-50%) translateY(-12px);
+}
+
+.rack-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top center;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.55s cubic-bezier(0.19, 1, 0.22, 1);
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8));
+}
+
+.rack-img.side    { opacity: 1; }
+.rack-img.front   { opacity: 0; }
+.rack-img.side.hidden   { opacity: 0; }
+.rack-img.front.visible { opacity: 1; }
+
+/* Number tag */
+.rack-item-num {
+  position: absolute;
+  bottom: -24px;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.15);
+  font-weight: 500;
+  font-family: monospace;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+.rack-item-num.gone { opacity: 0; }
+
+/* ════════════════════════════════════════
+   GLASS INFO PANEL
+   Matches About section's glass card style:
+   rgba(255,255,255,0.03) + blur(10px) +
+   border: 1px solid rgba(255,255,255,0.08)
+   ════════════════════════════════════════ */
+.rack-glass-panel {
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s ease;
+  margin-top: 8px;
+}
+
+.rack-glass-panel.is-open {
+  border-color: rgba(255,255,255,0.12);
+}
+
+/* Top shimmer line */
+.rack-glass-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+}
+
+/* Each info panel — stacked, only active visible */
+.glass-panel-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition:
+    opacity 0.45s cubic-bezier(0.19, 1, 0.22, 1),
+    transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.glass-panel-inner.is-shown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Glass divider — 1px like site */
+.glass-divider {
+  width: 1px;
+  height: 50px;
+  background: rgba(255,255,255,0.08);
+  flex-shrink: 0;
+  margin: 0 4px;
+}
+
+/* Left column */
+.glass-left {
+  flex: 1.2;
+  padding: 28px 32px;
+  min-width: 0;
+}
+
+.glass-label {
+  display: block;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+/* Name matches card-text h3 style from Services */
+.glass-name {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin: 0 0 8px;
+  line-height: 1.1;
+}
+
+.glass-desc {
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
+  color: #aaa;
+  font-weight: 300;
+  line-height: 1.6;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Middle column */
+.glass-mid {
+  flex: 1.4;
+  padding: 28px 32px;
+}
+
+.glass-comp-label {
+  display: block;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.glass-comp {
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.75;
+  font-weight: 300;
+  margin: 0;
+  font-family: monospace;
+  letter-spacing: 0.02em;
+}
+
+/* Right column */
+.glass-right {
+  flex-shrink: 0;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.glass-num {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  color: #333;
+  font-family: monospace;
+}
+
+/* Button — matches tab-btn.active style from About */
+.glass-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 5px;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.3s ease, border-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.glass-btn:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.35);
+}
+
+/* Idle state */
+.glass-idle {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  color: #333;
+  transition: opacity 0.3s ease;
+}
+
+.glass-idle.gone {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.idle-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  animation: idlePulse 2s ease-in-out infinite;
+}
+
+@keyframes idlePulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.5); }
+}
+
+/* ════════════════════════════════════════
+   MOBILE
+   ════════════════════════════════════════ */
+.rack-mobile { display: none; }
+
+/* ─── BREAKPOINTS ─── */
+@media (max-width: 1080px) {
+  .rack-stage { padding: 0 4vw; }
+  .rack-item { width: 88px; }
+  .rack-item.is-active { width: 240px; }
+  .rack-img-wrap { width: 200px; height: calc(100vh - 340px); max-height: 330px; }
+  .glass-mid { display: none; }
+}
+
+@media (max-width: 768px) {
+  .rack-section { height: auto; min-height: 100vh; padding: 70px 0 40px; }
+  .rack-stage   { display: none; }
+  .rack-title   { font-size: clamp(2rem, 8vw, 3rem); }
+
+  .rack-mobile {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 40px);
+    max-width: 480px;
+    z-index: 2;
+    position: relative;
+  }
+
+  /* Glass card — identical to About's glass overlay */
+  .mob-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background 0.3s ease;
+  }
+
+  .mob-card.is-open {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.15);
+  }
+
+  /* Image area */
+  .mob-img-area {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .mob-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 16px;
+    filter: drop-shadow(0 10px 25px rgba(0,0,0,0.7));
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+
+  .mob-side  { opacity: 1; }
+  .mob-front { opacity: 0; }
+  .mob-side.gone { opacity: 0; }
+  .mob-front.show { opacity: 1; }
+
+  .mob-label-tag {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    color: #666;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px;
+    padding: 4px 8px;
+  }
+
+  /* Info */
+  .mob-info {
+    padding: 16px 20px 18px;
+  }
+
+  .mob-row-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .mob-num {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: #444;
+    font-weight: 500;
+    font-family: monospace;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* Name matches site's .card-text h3 */
+  .mob-name {
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .mob-chevron {
+    color: #444;
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1), color 0.3s ease;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .mob-chevron.rotated {
+    transform: rotate(180deg);
+    color: #888;
+  }
+
+  /* Expandable — same pattern as .card-desc in Services */
+  .mob-expand {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      max-height 0.5s cubic-bezier(0.19, 1, 0.22, 1),
+      opacity 0.4s ease,
+      transform 0.4s ease;
+  }
+
+  .mob-expand.open {
+    max-height: 200px;
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.05s;
+  }
+
+  .mob-desc {
+    font-size: 0.9rem;
+    color: #aaa;
+    font-weight: 300;
+    line-height: 1.6;
+    margin: 12px 0 6px;
+    font-style: italic;
+  }
+
+  .mob-material {
+    font-size: 0.7rem;
+    color: #555;
+    line-height: 1.7;
+    margin: 0 0 14px;
+    font-family: monospace;
+    letter-spacing: 0.02em;
+  }
+
+  /* Mobile button — matches tab-btn.active */
+  .mob-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 16px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 5px;
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.3s ease;
+  }
+
+  .mob-btn:hover {
+    background: rgba(255,255,255,0.15);
+  }
+}
+
+@media (max-width: 380px) {
+  .rack-title { font-size: 2.2rem; }
+  .mob-img-area { height: 150px; }
+}

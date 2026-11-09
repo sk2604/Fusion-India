@@ -1,0 +1,76 @@
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 4vw;
+  overflow: hidden;
+}
+
+.hero-video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05); /* Slight scale to allow parallax or zoom out if needed */
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.5) 60%, rgba(5,5,5,0.3) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.line-mask {
+  overflow: hidden;
+}
+
+.hero-row-3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.text-indent {
+  margin-left: 15vw;
+}
+
+.hero-badge {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  margin-bottom: 2vw;
+}
+
+@media (max-width: 768px) {
+  .text-indent {
+    margin-left: 0;
+  }
+  .hero-row-3 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+}

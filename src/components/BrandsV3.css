@@ -1,0 +1,223 @@
+/* ========================================================
+   BRANDS V3 — HAUTE COUTURE BRAND PARTNERSHIPS
+   Strict 100vh Viewport Layout with Zero Overflow
+   ======================================================== */
+
+.brands-v3 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 75px 0 85px;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  scroll-snap-align: start;
+}
+
+.brands-light {
+  background-color: #faf9f6;
+  color: #0a0a0a;
+}
+
+.brands-dark {
+  background-color: #080808;
+  color: #f7f7f5;
+}
+
+.brands-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.brands-v3-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 1.5vh;
+  flex-shrink: 0;
+}
+
+.brands-v3-eyebrow {
+  font-family: var(--font-primary);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #888888;
+  font-weight: 600;
+}
+
+.brands-dark .brands-v3-eyebrow {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.brands-v3-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3.2vw, 3.4rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.brands-v3-desc {
+  font-family: var(--font-primary);
+  font-size: clamp(0.78rem, 0.9vw, 0.95rem);
+  line-height: 1.5;
+  color: #666666;
+  font-weight: 300;
+  max-width: 540px;
+  margin-top: 0.3vh;
+}
+
+.brands-dark .brands-v3-desc {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ──────────────────────────────────────────────────────────
+   BORDERLESS TICKER
+   ────────────────────────────────────────────────────────── */
+.brands-v3-ticker-wrap {
+  overflow: hidden;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 14px 0;
+  margin: 1.5vh 0;
+  background: transparent;
+  flex-shrink: 0;
+}
+
+.brands-dark .brands-v3-ticker-wrap {
+  border-top-color: rgba(255, 255, 255, 0.08);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.brands-v3-ticker {
+  display: flex;
+  width: max-content;
+  animation: brandTickerV3 32s linear infinite;
+}
+
+@keyframes brandTickerV3 {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
+.ticker-brand-pill {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+  padding: 0 2vw;
+  white-space: nowrap;
+}
+
+.ticker-brand-pill span {
+  font-family: var(--font-primary);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #777777;
+}
+
+.brands-dark .ticker-brand-pill span {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.ticker-dot-v3 {
+  color: #cccccc;
+  font-size: 1rem;
+}
+
+.brands-dark .ticker-dot-v3 {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* ──────────────────────────────────────────────────────────
+   BORDERLESS LOGO ROW
+   ────────────────────────────────────────────────────────── */
+.brands-v3-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5vw;
+  background: transparent;
+  border: none;
+  align-items: center;
+  padding: 1.5vh 0;
+  flex: 1;
+  min-height: 0;
+}
+
+.brand-v3-card {
+  background: transparent;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5vh 1vw;
+  transition: all 0.3s ease;
+}
+
+.brand-v3-img {
+  max-width: 110px;
+  max-height: 36px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(1) opacity(0.65);
+  transition: all 0.3s ease;
+}
+
+.brands-dark .brand-v3-img {
+  filter: grayscale(1) invert(1) opacity(0.7);
+}
+
+.brand-v3-card:hover .brand-v3-img {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.brands-dark .brand-v3-card:hover .brand-v3-img {
+  filter: grayscale(1) invert(1) opacity(1);
+}
+
+.brand-v3-fallback {
+  display: none;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ──────────────────────────────────────────────────────────
+   RESPONSIVE DESIGN (MOBILE OPTIMIZED)
+   ────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .brands-v3 {
+    height: auto;
+    min-height: 100svh;
+    padding: 85px 0 30px;
+    max-height: none;
+  }
+
+  .brands-v3-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5vw;
+  }
+}
+
+@media (max-width: 540px) {
+  .brands-v3-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .brand-v3-img {
+    max-width: 80px;
+    max-height: 28px;
+  }
+}

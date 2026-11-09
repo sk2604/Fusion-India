@@ -1,0 +1,254 @@
+/* ========================================================
+   HERO V3 — HAUTE COUTURE FASHION EDITORIAL
+   Fluid, Borderless, Breathtaking White Canvas
+   ======================================================== */
+
+.hero-v3 {
+  background-color: #ffffff;
+  color: #0a0a0a;
+  padding-top: 15vh;
+  padding-bottom: 10vh;
+}
+
+.hero-v3-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 4vh;
+}
+
+/* ──────────────────────────────────────────────────────────
+   1. EDITORIAL KICKER
+   ────────────────────────────────────────────────────────── */
+.hero-v3-kicker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 2vh;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.kicker-badge {
+  font-family: var(--font-primary);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #777777;
+  font-weight: 600;
+}
+
+.kicker-cities {
+  font-family: var(--font-primary);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #999999;
+  font-weight: 500;
+}
+
+/* ──────────────────────────────────────────────────────────
+   2. HIGH-FASHION SERIF HEADLINE
+   ────────────────────────────────────────────────────────── */
+.hero-v3-headline-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8vh;
+  max-width: 1100px;
+  padding: 2vh 0 1vh;
+}
+
+.hero-v3-serif-title {
+  font-family: var(--font-serif);
+  font-size: clamp(3.2rem, 7.5vw, 7.8rem);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: #0a0a0a;
+  margin: 0;
+}
+
+.hero-italic {
+  font-style: italic;
+  font-weight: 300;
+  color: #1a1a1a;
+  padding-right: 0.2em;
+}
+
+.hero-v3-curated-lead {
+  font-family: var(--font-primary);
+  font-size: clamp(1rem, 1.3vw, 1.4rem);
+  line-height: 1.65;
+  color: #555555;
+  font-weight: 300;
+  max-width: 640px;
+  margin: 0;
+}
+
+/* ──────────────────────────────────────────────────────────
+   3. BORDERLESS FASHION CANVAS (LAYERED VISUALS)
+   ────────────────────────────────────────────────────────── */
+.hero-v3-canvas {
+  display: grid;
+  grid-template-columns: 2fr 1.3fr 1fr;
+  gap: 2.2vw;
+  align-items: end;
+  margin: 3vh 0 4vh;
+}
+
+.canvas-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.canvas-img-box {
+  position: relative;
+  overflow: hidden;
+  background-color: #f7f7f7;
+}
+
+.canvas-main .canvas-img-box {
+  height: 68vh;
+}
+
+.canvas-secondary .canvas-img-box {
+  height: 52vh;
+}
+
+.canvas-portrait .canvas-img-box {
+  height: 42vh;
+}
+
+.canvas-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+  filter: grayscale(0.15) brightness(0.97);
+}
+
+.canvas-item:hover .canvas-photo {
+  transform: scale(1.04);
+  filter: grayscale(0) brightness(1);
+}
+
+.canvas-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 4px;
+}
+
+.cap-index {
+  font-family: monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  color: #999999;
+}
+
+.cap-label {
+  font-family: var(--font-primary);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  font-weight: 700;
+}
+
+.cap-sub {
+  font-family: var(--font-primary);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #777777;
+  font-weight: 400;
+}
+
+/* ──────────────────────────────────────────────────────────
+   4. BORDERLESS EDITORIAL CREDO
+   ────────────────────────────────────────────────────────── */
+.hero-v3-credo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4vw;
+  padding-top: 5vh;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.credo-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.credo-num {
+  font-family: monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #888888;
+  font-weight: 600;
+}
+
+.credo-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 2vw, 2.2rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #0a0a0a;
+  margin: 0;
+  line-height: 1.15;
+}
+
+.credo-text {
+  font-family: var(--font-primary);
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: #666666;
+  font-weight: 300;
+  margin: 0;
+}
+
+/* ──────────────────────────────────────────────────────────
+   RESPONSIVE DESIGN
+   ────────────────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .hero-v3-canvas {
+    grid-template-columns: 1.6fr 1fr;
+  }
+
+  .canvas-portrait {
+    display: none;
+  }
+
+  .hero-v3-credo {
+    grid-template-columns: 1fr;
+    gap: 3vh;
+  }
+}
+
+@media (max-width: 680px) {
+  .hero-v3 {
+    padding-top: 12vh;
+  }
+
+  .kicker-cities {
+    display: none;
+  }
+
+  .hero-v3-serif-title {
+    font-size: clamp(2.8rem, 11vw, 4.5rem);
+  }
+
+  .hero-v3-canvas {
+    grid-template-columns: 1fr;
+    gap: 4vh;
+  }
+
+  .canvas-main .canvas-img-box {
+    height: 50vh;
+  }
+
+  .canvas-secondary {
+    display: none;
+  }
+}

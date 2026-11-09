@@ -1,0 +1,215 @@
+/* ========================================================
+   OFFICE GALLERY V3 — WHITE LUXURY ARCHITECTURAL GALLERY
+   ======================================================== */
+
+.office-v3 {
+  background-color: #ffffff;
+  color: #0a0a0a;
+  padding: 12vh 0 10vh;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.office-v3-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 4vw;
+  margin-bottom: 6vh;
+  padding-bottom: 3vh;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.office-v3-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8vh;
+}
+
+.office-v3-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #888888;
+  font-weight: 600;
+}
+
+.office-v3-title {
+  font-size: clamp(2.6rem, 5vw, 5.5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  margin: 0;
+}
+
+.office-v3-desc {
+  font-size: clamp(0.95rem, 1.15vw, 1.2rem);
+  line-height: 1.65;
+  color: #666666;
+  font-weight: 300;
+  max-width: 500px;
+  margin: 0;
+}
+
+/* ──────────────────────────────────────────────────────────
+   SHOWCASE GRID
+   ────────────────────────────────────────────────────────── */
+.office-v3-showcase {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 2.5vw;
+  align-items: stretch;
+}
+
+.showcase-main {
+  position: relative;
+  overflow: hidden;
+  height: 64vh;
+  background: #f0f0f0;
+}
+
+.showcase-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.showcase-main:hover img {
+  transform: scale(1.03);
+}
+
+.showcase-badge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+  padding: 40px 30px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #ffffff;
+}
+
+.showcase-tag {
+  font-family: monospace;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.1em;
+}
+
+.showcase-title {
+  font-size: 1.25rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.showcase-sub {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 300;
+}
+
+/* Thumbs List */
+.showcase-thumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vh;
+}
+
+.thumb-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  background: #fafafa;
+  border: 1px solid #eeeeee;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  flex: 1;
+}
+
+.thumb-card:hover {
+  background: #f3f3f0;
+  border-color: #0a0a0a;
+}
+
+.thumb-card.active {
+  background: #0a0a0a;
+  color: #ffffff;
+  border-color: #0a0a0a;
+}
+
+.thumb-img-wrap {
+  width: 72px;
+  height: 56px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #ddd;
+}
+
+.thumb-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumb-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.thumb-num {
+  font-family: monospace;
+  font-size: 0.65rem;
+  color: #888888;
+}
+
+.thumb-card.active .thumb-num {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.thumb-name {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.thumb-desc {
+  font-size: 0.72rem;
+  color: #777777;
+  font-weight: 300;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.thumb-card.active .thumb-desc {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ──────────────────────────────────────────────────────────
+   RESPONSIVE DESIGN
+   ────────────────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .office-v3-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2vh;
+  }
+
+  .office-v3-showcase {
+    grid-template-columns: 1fr;
+    gap: 3vh;
+  }
+
+  .showcase-main {
+    height: 44vh;
+  }
+}

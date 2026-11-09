@@ -1,0 +1,106 @@
+import React, { useState } from 'react';
+import './ClothingRack.css';
+
+const clothingItems = [
+  {
+    id: 1,
+    name: 'Leather Jacket',
+    desc: 'Crafted in Italy. Signature fit.',
+    front: '/assets/3d_leather_jacket_1791198176453.png?v=4',
+    side: '/assets/side_leather_jacket_1791199171215.png?v=4',
+  },
+  {
+    id: 2,
+    name: 'Oversized Hoodie',
+    desc: 'Heavyweight cotton. Dropped shoulder.',
+    front: '/assets/3d_green_hoodie_1791198203504.png?v=4',
+    side: '/assets/side_green_hoodie_1791199182738.png?v=4',
+  },
+  {
+    id: 3,
+    name: 'Classic T-Shirt',
+    desc: 'Organic blend. Everyday essential.',
+    front: '/assets/3d_white_tshirt_1791198151326.png?v=4',
+    side: '/assets/side_white_tshirt_1791199195290.png?v=4',
+  },
+  {
+    id: 4,
+    name: 'Silk Gown',
+    desc: 'Hand-draped elegance.',
+    front: '/assets/3d_womens_dress_1791198190233.png?v=4',
+    side: '/assets/side_silk_dress_1791199207848.png?v=4',
+  },
+  {
+    id: 5,
+    name: 'Raw Denim',
+    desc: 'Japanese selvedge. Straight cut.',
+    front: '/assets/3d_denim_jeans_1791198161705.png?v=4',
+    side: '/assets/side_denim_jeans_1791199219256.png?v=4',
+  }
+];
+
+export default function ClothingRack() {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  return (
+    <section className="rack-section">
+      
+      {/* Massive Luxury Watermark behind everything */}
+      <div className="rack-watermark">ATELIER</div>
+
+      {/* Ultra-Minimalist Section Header */}
+      <div className="rack-header">
+        <div className="rack-header-left">
+          <span className="rack-tag">FW 2026</span>
+          <span className="rack-divider"></span>
+          <span className="rack-tag muted">THE COLLECTION</span>
+        </div>
+      </div>
+
+      {/* The Suspended Rail Viewport */}
+      <div className="rack-viewport">
+        {/* Suspended Titanium Wire */}
+        <div className="rack-rail-bar"></div>
+
+        <div className="rack-garments-row">
+          {clothingItems.map((item, index) => {
+            const isHovered = hoveredIndex === index;
+
+            return (
+              <div
+                key={item.id}
+                className={`rack-slot ${isHovered ? 'is-active' : ''}`}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                {/* 3D Perspective Container */}
+                <div className="rack-3d-scene">
+                  <div className={`rack-3d-card ${isHovered ? 'flipped' : ''}`}>
+                    {/* SIDE VIEW (Default) */}
+                    <div className="rack-card-face rack-card-side">
+                      <img src={item.side} alt={item.name + ' side'} />
+                    </div>
+                    {/* FRONT VIEW (Revealed on Hover) */}
+                    <div className="rack-card-face rack-card-front">
+                      <img src={item.front} alt={item.name + ' front'} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Refined Product Info */}
+                <div className={`rack-info ${isHovered ? 'visible' : ''}`}>
+                  <p className="rack-info-subtitle">ITEM {item.id}</p>
+                  <h3 className="rack-info-name">{item.name}</h3>
+                  <p className="rack-info-desc">{item.desc}</p>
+                  <div className="rack-info-btn-wrapper">
+                    <button className="rack-info-btn">VIEW DETAILS</button>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}

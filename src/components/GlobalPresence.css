@@ -1,0 +1,338 @@
+/* ========================================================
+   GLOBAL PRESENCE / OUR REACH (MAP & LOGISTICS ARCHITECTURE)
+   Quiet Luxury & Soothing Corporate Editorial
+   ======================================================== */
+
+.presence-section {
+  position: relative;
+  background-color: var(--black);
+  color: var(--white);
+  padding: 10vh 0 12vh;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+/* ──────────────────────────────────────────────────────────
+   1. SECTION HEADER
+   ────────────────────────────────────────────────────────── */
+.presence-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 4vw;
+  margin-bottom: 5vh;
+  padding-bottom: 3vh;
+  border-bottom: 1px solid var(--border);
+}
+
+.presence-header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.presence-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(243, 243, 240, 0.45);
+  font-weight: 600;
+  margin-bottom: 1vh;
+}
+
+.eyebrow-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: rgba(243, 243, 240, 0.6);
+}
+
+.presence-main-title {
+  font-size: clamp(2.6rem, 5.2vw, 5.5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin: 0;
+}
+
+.title-dot {
+  color: rgba(243, 243, 240, 0.4);
+}
+
+.presence-header-right {
+  max-width: 440px;
+}
+
+.presence-subtext {
+  font-size: clamp(0.85rem, 1vw, 1.05rem);
+  line-height: 1.68;
+  color: var(--gray);
+  font-weight: 300;
+  margin: 0;
+}
+
+/* ──────────────────────────────────────────────────────────
+   2. MAP CONTAINER & SVG ELEMENTS
+   ────────────────────────────────────────────────────────── */
+.presence-map-wrapper {
+  position: relative;
+  width: 100%;
+  background: radial-gradient(circle at center, rgba(22, 22, 27, 0.6) 0%, rgba(9, 9, 11, 0.98) 75%);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 1.5vh 1vw;
+  margin-bottom: 5vh;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.6);
+}
+
+.presence-svg-map {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Subtle Pulse Ring */
+.pulse-wave {
+  fill: none;
+  stroke: rgba(243, 243, 240, 0.4);
+  stroke-width: 0.7;
+  animation: pulseLoop 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+  transform-origin: center;
+}
+
+@keyframes pulseLoop {
+  0% {
+    r: 4;
+    opacity: 0.8;
+  }
+  100% {
+    r: 20;
+    opacity: 0;
+  }
+}
+
+/* Map Callout Card (Directly on Map) */
+.map-marker-group {
+  cursor: pointer;
+}
+
+.map-callout-card {
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.map-callout-title {
+  font-family: var(--font-primary);
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  dominant-baseline: middle;
+}
+
+.map-callout-subtitle {
+  font-family: var(--font-primary);
+  font-size: 6.5px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  dominant-baseline: middle;
+}
+
+.map-marker-group:hover .map-callout-card rect:first-child {
+  stroke: rgba(255, 255, 255, 0.3);
+  fill: rgba(24, 24, 30, 0.98);
+}
+
+/* ──────────────────────────────────────────────────────────
+   3. BOTTOM BAR (STATS + HUBS CARDS)
+   ────────────────────────────────────────────────────────── */
+.presence-bottom-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 4vh;
+}
+
+/* Stats Row */
+.presence-stats-column {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: var(--black-surface);
+  border: 1px solid var(--border);
+  padding: 3vh 2vw;
+}
+
+.presence-stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+}
+
+.stat-giant {
+  font-size: clamp(2.2rem, 3.8vw, 3.8rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  color: var(--white);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-desc {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gray);
+  font-weight: 500;
+}
+
+.stat-divider-vert {
+  width: 1px;
+  height: 36px;
+  background: var(--border);
+}
+
+/* 4-Hub Grid Underneath */
+.presence-hubs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2vw;
+}
+
+.hub-card {
+  background: var(--black-surface);
+  border: 1px solid var(--border);
+  padding: 2.2vh 1.4vw;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hub-card:hover {
+  background: rgba(24, 24, 30, 0.9);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.hub-card.active {
+  background: rgba(26, 26, 32, 0.95);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.hub-card.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--white);
+}
+
+.hub-card-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hub-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(243, 243, 240, 0.6);
+}
+
+.hub-card-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.hub-badge-hq {
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
+  padding: 2px 6px;
+  border-radius: 2px;
+  margin-left: auto;
+}
+
+.hub-card-role {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(243, 243, 240, 0.7);
+  font-weight: 600;
+}
+
+.hub-card-detail {
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: var(--gray);
+  font-weight: 300;
+  margin: 0;
+}
+
+/* ──────────────────────────────────────────────────────────
+   RESPONSIVE DESIGN (MOBILE & TABLET)
+   ────────────────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .presence-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2vh;
+  }
+
+  .presence-hubs-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2vw;
+  }
+}
+
+@media (max-width: 680px) {
+  .presence-section {
+    padding: 8vh 0;
+  }
+
+  .presence-main-title {
+    font-size: clamp(2.2rem, 9vw, 3.4rem);
+  }
+
+  .presence-stats-column {
+    flex-direction: column;
+    gap: 3vh;
+    padding: 3vh 4vw;
+  }
+
+  .stat-divider-vert {
+    width: 60px;
+    height: 1px;
+  }
+
+  .presence-hubs-grid {
+    grid-template-columns: 1fr;
+    gap: 2vh;
+  }
+
+  .map-callout-title {
+    font-size: 9.5px;
+  }
+
+  .map-callout-subtitle {
+    font-size: 7.5px;
+  }
+}

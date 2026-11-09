@@ -1,0 +1,270 @@
+/* =============================================
+   THE ATELIER — ₹2,000,000 Luxury Aesthetics
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;500&display=swap');
+
+.rack-section {
+  min-height: 100vh;
+  /* Deep cinematic lighting */
+  background: radial-gradient(circle at 50% 30%, #1a1a1a 0%, #080808 50%, #000000 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8vw 4vw;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ---- Luxury Watermark ---- */
+.rack-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18vw;
+  font-family: 'Playfair Display', serif;
+  color: rgba(255, 255, 255, 0.02);
+  white-space: nowrap;
+  z-index: 0;
+  pointer-events: none;
+  letter-spacing: 0.05em;
+}
+
+/* ---- Minimal Header ---- */
+.rack-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 6vw;
+  z-index: 2;
+}
+
+.rack-header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.rack-tag {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.3em; /* Ultra wide tracking */
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.rack-tag.muted {
+  color: #555;
+}
+
+.rack-divider {
+  width: 1px;
+  height: 12px;
+  background: #333;
+}
+
+/* ---- Viewport ---- */
+.rack-viewport {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+/* ---- Suspended Titanium Wire ---- */
+.rack-rail-bar {
+  position: absolute;
+  top: 70px; /* Moved down to physically intersect the hooks of the images */
+  left: 10vw;
+  right: 10vw;
+  height: 1px;
+  background: #444; /* Dark structural line */
+  box-shadow: 0 1px 0 rgba(255,255,255,0.2), /* Subtle top highlight */
+              0 10px 30px rgba(0,0,0,0.8);
+  z-index: 1;
+}
+
+/* Vertical suspension cables from ceiling */
+.rack-rail-bar::before,
+.rack-rail-bar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 1px;
+  height: 100vh;
+  background: linear-gradient(to top, rgba(255,255,255,0.2) 0%, transparent 100%);
+}
+.rack-rail-bar::before { left: 2%; }
+.rack-rail-bar::after { right: 2%; }
+
+/* ---- Garments Row ---- */
+.rack-garments-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0;
+  min-height: 500px;
+  position: relative;
+  z-index: 5;
+}
+
+/* ---- Spacer Slots ---- */
+.rack-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 110px; /* Tightly packed clothes */
+  cursor: pointer;
+  transition: width 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+  margin: 0 5px;
+  position: relative;
+}
+
+.rack-slot.is-active {
+  width: 380px; /* Massive breathing room on hover */
+}
+
+/* ---- 3D Fixed Scene ---- */
+.rack-3d-scene {
+  width: 320px;
+  height: 480px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  perspective: 1200px;
+  z-index: 10;
+}
+
+.rack-slot.is-active .rack-3d-scene {
+  z-index: 20;
+}
+
+.rack-3d-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1); 
+  transform: rotateY(0deg); 
+  transform-origin: center center;
+}
+
+.rack-3d-card.flipped {
+  transform: rotateY(-180deg);
+}
+
+.rack-card-face {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.rack-card-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top center;
+  pointer-events: none;
+  transform: scale(1.3); 
+  transform-origin: top center;
+  filter: drop-shadow(0 40px 60px rgba(0,0,0,0.8));
+}
+
+.rack-card-side {
+  transform: rotateY(0deg) translateZ(1px); 
+}
+.rack-card-front {
+  transform: rotateY(180deg) translateZ(1px); 
+}
+
+/* ---- Ultra-Premium Product Info ---- */
+.rack-info {
+  position: absolute;
+  top: 380px; /* Floating elegantly under the jacket */
+  left: 50%;
+  width: 300px;
+  margin-left: -150px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0.1s,
+              transform 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0.1s;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.rack-slot.is-active .rack-info {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+  transition-delay: 0.2s;
+}
+
+.rack-info-subtitle {
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: #777;
+  margin-bottom: 12px;
+}
+
+.rack-info-name {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+  text-shadow: 0 4px 15px rgba(0,0,0,1);
+}
+
+.rack-info-desc {
+  font-size: 0.75rem;
+  color: #999;
+  margin-bottom: 24px;
+  letter-spacing: 0.05em;
+  font-weight: 300;
+}
+
+.rack-info-btn-wrapper {
+  overflow: hidden;
+  display: inline-block;
+  border-radius: 40px;
+}
+
+.rack-info-btn {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
+  padding: 12px 32px;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.rack-info-btn:hover {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+  transform: scale(1.05);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .rack-garments-row {
+    justify-content: flex-start;
+    padding-bottom: 4rem;
+  }
+  .rack-watermark { font-size: 25vw; }
+}

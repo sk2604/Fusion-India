@@ -1,0 +1,247 @@
+/* ======================================
+   EXPERTISE SECTION — BASE
+====================================== */
+.expertise-section {
+  background-color: #050505;
+  color: #fff;
+  padding: 10vh 0 12vh;
+  border-top: 1px solid var(--border);
+}
+
+.expertise-eyebrow {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray);
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+}
+
+.expertise-header {
+  margin-bottom: 5vh;
+}
+
+.expertise-header .text-title {
+  color: #fff;
+  font-size: clamp(2.8rem, 5.5vw, 6rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 1.2rem;
+}
+
+.expertise-subtitle {
+  color: #666;
+  font-size: clamp(0.9rem, 1.2vw, 1.3rem);
+  font-weight: 300;
+  max-width: 480px;
+  line-height: 1.6;
+}
+
+/* ======================================
+   DESKTOP — EXPANDING CARDS
+====================================== */
+.expertise-cards-container {
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
+  height: 60vh;
+  width: 100%;
+}
+
+.expertise-accordion {
+  display: none; /* hidden on desktop */
+}
+
+.expertise-card {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  transition: flex 0.75s cubic-bezier(0.76, 0, 0.24, 1);
+  cursor: pointer;
+  display: flex;
+  align-items: flex-end;
+}
+
+.expertise-card.active {
+  flex: 4.5;
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  transition: background 0.5s ease;
+}
+
+.expertise-card.active .card-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.1) 60%);
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+  padding: 2vw 2.2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+.card-number {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  font-family: monospace;
+  letter-spacing: 0.05em;
+  transition: opacity 0.4s ease;
+}
+
+.expertise-card.active .card-number {
+  color: rgba(255,255,255,0.9);
+}
+
+.card-text {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card-text h3 {
+  font-size: clamp(1rem, 1.6vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.expertise-card.active .card-text h3 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.expertise-card:not(.active) .card-text h3 {
+  /* Show at least partial title on inactive cards */
+  opacity: 0;
+}
+
+.card-desc {
+  font-size: clamp(0.82rem, 0.95vw, 1rem);
+  color: #bbb;
+  line-height: 1.65;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease 0.15s, max-height 0.5s ease, transform 0.5s ease 0.15s;
+  max-width: 400px;
+}
+
+.expertise-card.active .card-desc {
+  opacity: 1;
+  max-height: 200px;
+  transform: translateY(0);
+}
+
+/* Inactive card — just show number */
+.expertise-card:not(.active) .card-text {
+  pointer-events: none;
+}
+
+/* ======================================
+   MOBILE — ACCORDION
+====================================== */
+@media (max-width: 900px) {
+  .expertise-cards-container {
+    display: none;
+  }
+
+  .expertise-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .accordion-item {
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .accordion-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 0;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .accordion-num {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--gray);
+    font-family: monospace;
+    letter-spacing: 0.1em;
+    min-width: 28px;
+  }
+
+  .accordion-title {
+    flex: 1;
+    font-size: clamp(1rem, 4vw, 1.4rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: #fff;
+    text-transform: uppercase;
+  }
+
+  .accordion-arrow {
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--gray);
+    transition: color 0.3s ease;
+    line-height: 1;
+  }
+
+  .accordion-item.open .accordion-arrow {
+    color: #fff;
+  }
+
+  .accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+
+  .accordion-item.open .accordion-body {
+    max-height: 500px;
+  }
+
+  .accordion-img {
+    width: 100%;
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 16px;
+    filter: brightness(0.75);
+  }
+
+  .accordion-desc {
+    font-size: 0.9rem;
+    color: #999;
+    line-height: 1.65;
+    padding-bottom: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .expertise-header .text-title {
+    font-size: clamp(2.2rem, 10vw, 3.5rem);
+  }
+}

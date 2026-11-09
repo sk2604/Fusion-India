@@ -1,0 +1,269 @@
+/* ========================================================
+   MANIFESTO V3 — HAUTE COUTURE FASHION MANIFESTO
+   Borderless, Editorial, Lookbook Aesthetics
+   ======================================================== */
+
+.manifesto-v3 {
+  background-color: #faf9f6;
+  color: #0a0a0a;
+  padding: 14vh 0 12vh;
+  position: relative;
+}
+
+/* ──────────────────────────────────────────────────────────
+   1. EDITORIAL MANIFESTO HEADER
+   ────────────────────────────────────────────────────────── */
+.manifesto-v3-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vh;
+  max-width: 1000px;
+  margin-bottom: 8vh;
+  padding-bottom: 4vh;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.manifesto-v3-meta {
+  font-family: var(--font-primary);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #888888;
+  font-weight: 600;
+}
+
+.manifesto-v3-serif-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 5.5vw, 5.8rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #0a0a0a;
+  margin: 0;
+}
+
+.manifesto-v3-serif-heading em {
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* ──────────────────────────────────────────────────────────
+   2. LOOKBOOK ASYMMETRIC SHOWCASE
+   ────────────────────────────────────────────────────────── */
+.manifesto-v3-showcase {
+  display: grid;
+  grid-template-columns: 1.1fr 1.35fr;
+  gap: 6vw;
+  align-items: center;
+}
+
+/* Left: Lookbook Photo Frame */
+.manifesto-v3-visual-side {
+  position: relative;
+}
+
+.lookbook-frame {
+  position: relative;
+  width: 100%;
+  height: 72vh;
+  overflow: hidden;
+  background-color: #f0f0ed;
+}
+
+.lookbook-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  filter: brightness(0.98);
+}
+
+.lookbook-frame:hover .lookbook-photo {
+  transform: scale(1.03);
+}
+
+.lookbook-overlay-tag {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tag-code {
+  font-family: var(--font-primary);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #0a0a0a;
+}
+
+.tag-edition {
+  font-family: monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  color: #888888;
+}
+
+/* Right: Text Narrative & Lookbook Index */
+.manifesto-v3-text-side {
+  display: flex;
+  flex-direction: column;
+  gap: 4vh;
+}
+
+/* Minimalist Underlined Index (No heavy boxes!) */
+.lookbook-nav {
+  display: flex;
+  gap: 2vw;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding-bottom: 16px;
+}
+
+.lookbook-tab {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  color: #888888;
+  font-family: var(--font-primary);
+  transition: color 0.25s ease;
+}
+
+.lookbook-tab:hover {
+  color: #0a0a0a;
+}
+
+.lookbook-tab.active {
+  color: #0a0a0a;
+}
+
+.tab-idx {
+  font-family: monospace;
+  font-size: 0.68rem;
+  color: #999999;
+}
+
+.lookbook-tab.active .tab-idx {
+  color: #0a0a0a;
+}
+
+.tab-name {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Lookbook Body */
+.lookbook-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  animation: bodyFade 0.4s ease forwards;
+}
+
+@keyframes bodyFade {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.lookbook-quote {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 2.2vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.25;
+  color: #0a0a0a;
+  margin: 0;
+  font-style: italic;
+}
+
+.lookbook-para {
+  font-family: var(--font-primary);
+  font-size: clamp(0.92rem, 1.1vw, 1.15rem);
+  line-height: 1.7;
+  color: #666666;
+  font-weight: 300;
+  margin: 0;
+  max-width: 580px;
+}
+
+/* ──────────────────────────────────────────────────────────
+   3. BORDERLESS SERIF METRICS
+   ────────────────────────────────────────────────────────── */
+.manifesto-v3-stat-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2vw;
+  padding-top: 4vh;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.stat-unit {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-num-serif {
+  font-family: var(--font-serif);
+  font-size: clamp(2.6rem, 4vw, 4.4rem);
+  font-weight: 400;
+  line-height: 1;
+  color: #0a0a0a;
+}
+
+.stat-num-serif sup {
+  font-size: 0.45em;
+  top: -0.6em;
+  color: #888888;
+  font-family: var(--font-primary);
+}
+
+.stat-label-clean {
+  font-family: var(--font-primary);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #777777;
+  font-weight: 600;
+}
+
+/* ──────────────────────────────────────────────────────────
+   RESPONSIVE DESIGN
+   ────────────────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .manifesto-v3-showcase {
+    grid-template-columns: 1fr;
+    gap: 5vh;
+  }
+
+  .lookbook-frame {
+    height: 50vh;
+  }
+
+  .manifesto-v3-stat-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .lookbook-nav {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .manifesto-v3-serif-heading {
+    font-size: clamp(2.4rem, 10vw, 3.8rem);
+  }
+}

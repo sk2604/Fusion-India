@@ -1,0 +1,178 @@
+/* ========================================================
+   VALUE CHAIN — 10X SOURCING PIPELINE
+   ======================================================== */
+
+.chain-section {
+  background-color: #faf9f6;
+  color: #0a0a0a;
+  padding: 14vh 0 12vh;
+}
+
+.chain-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 4vw;
+  margin-bottom: 8vh;
+  padding-bottom: 3vh;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.chain-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+.chain-kicker {
+  font-family: var(--font-primary);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #888888;
+  font-weight: 600;
+}
+
+.chain-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 5.5vw, 6rem);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: #0a0a0a;
+  margin: 0;
+}
+
+.chain-lead {
+  font-family: var(--font-primary);
+  font-size: clamp(0.95rem, 1.15vw, 1.2rem);
+  line-height: 1.68;
+  color: #666666;
+  font-weight: 300;
+  max-width: 480px;
+  margin: 0;
+}
+
+/* ──────────────────────────────────────────────────────────
+   4-STEP HORIZONTAL PIPELINE (BORDERLESS)
+   ────────────────────────────────────────────────────────── */
+.chain-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5vw;
+}
+
+.chain-step {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vh;
+  padding-top: 2.5vh;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.step-top-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.12);
+  transition: background-color 0.3s ease;
+}
+
+.chain-step:hover .step-top-line,
+.chain-step.active .step-top-line {
+  background-color: #0a0a0a;
+}
+
+.step-num-bar {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.step-idx {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #0a0a0a;
+  line-height: 1;
+}
+
+.step-phase {
+  font-family: var(--font-primary);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #888888;
+  font-weight: 700;
+}
+
+.step-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 1.6vw, 1.7rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  color: #0a0a0a;
+  margin: 0;
+}
+
+.step-desc {
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: #666666;
+  font-weight: 300;
+  margin: 0;
+}
+
+.step-points {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0;
+  list-style: none;
+  margin-top: 1vh;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding-top: 1.5vh;
+}
+
+.step-pt {
+  font-family: var(--font-primary);
+  font-size: 0.72rem;
+  color: #444444;
+  display: flex;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.pt-dash {
+  color: #999999;
+}
+
+/* ──────────────────────────────────────────────────────────
+   RESPONSIVE DESIGN
+   ────────────────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .chain-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2vh;
+  }
+
+  .chain-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .chain-grid {
+    grid-template-columns: 1fr;
+    gap: 4vh;
+  }
+}
+

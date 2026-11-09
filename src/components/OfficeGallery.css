@@ -1,0 +1,299 @@
+/* ======================================
+   OFFICE SECTION
+====================================== */
+.office-section {
+  padding: 10vh 0 12vh;
+  background: var(--black);
+  border-top: 1px solid var(--border);
+}
+
+.office-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 4vh;
+}
+
+.office-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray);
+  font-weight: 500;
+}
+
+.office-header .text-title {
+  line-height: 1;
+}
+
+/* ======================================
+   BUILDING — EXTERIOR
+====================================== */
+.building-wrap {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  overflow: hidden;
+  border-radius: 2px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  margin-bottom: 3vh;
+  transition: height 0.7s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.building-wrap.building-entered {
+  height: 30vh;
+  cursor: default;
+}
+
+.building-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1), filter 0.6s ease;
+  filter: brightness(0.6);
+}
+
+.building-wrap:not(.building-entered):hover .building-img {
+  transform: scale(1.04);
+  filter: brightness(0.75);
+}
+
+.building-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.building-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  color: #fff;
+  pointer-events: none;
+}
+
+.building-cta svg circle {
+  transition: stroke 0.3s ease;
+}
+
+.building-wrap:hover .building-cta svg circle {
+  stroke: rgba(255,255,255,0.8);
+}
+
+.building-cta span {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.building-entered-hint {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.building-entered-hint span {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+}
+
+/* ======================================
+   GALLERY GRID
+====================================== */
+.office-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  opacity: 0;
+  transform: translateY(30px);
+  pointer-events: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s, max-height 0.7s ease;
+}
+
+.office-gallery-grid.gallery-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+  max-height: 1000px;
+  margin-bottom: 3vh;
+}
+
+.gallery-cell {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  cursor: pointer;
+  background: #111;
+}
+
+.gallery-cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1), filter 0.4s ease;
+  filter: brightness(0.75);
+}
+
+.gallery-cell:hover img {
+  transform: scale(1.06);
+  filter: brightness(0.95);
+}
+
+.gallery-cell-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-cell:hover .gallery-cell-overlay {
+  opacity: 1;
+}
+
+.gallery-cell-overlay span {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.9);
+  font-weight: 500;
+}
+
+/* ======================================
+   BACK BUTTON
+====================================== */
+.office-back-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--gray);
+  font-family: var(--font-primary);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  display: block;
+  margin-top: 2vh;
+}
+
+.office-back-btn:hover {
+  color: var(--white);
+  border-color: rgba(255,255,255,0.4);
+}
+
+/* ======================================
+   LIGHTBOX
+====================================== */
+.office-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lightbox-img-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 85vw;
+  max-height: 85vh;
+}
+
+.lightbox-img-wrap img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border: 1px solid var(--border);
+}
+
+.lightbox-caption {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  line-height: 1;
+}
+
+.lightbox-close:hover { color: #fff; }
+
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.4);
+  font-size: 3rem;
+  cursor: pointer;
+  padding: 0 24px;
+  transition: color 0.2s;
+  line-height: 1;
+}
+
+.lightbox-prev { left: 0; }
+.lightbox-next { right: 0; }
+.lightbox-prev:hover, .lightbox-next:hover { color: #fff; }
+
+/* ======================================
+   RESPONSIVE
+====================================== */
+@media (max-width: 768px) {
+  .building-wrap {
+    height: 40vh;
+  }
+
+  .building-wrap.building-entered {
+    height: 22vh;
+  }
+
+  .office-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lightbox-img-wrap {
+    max-width: 95vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .office-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}

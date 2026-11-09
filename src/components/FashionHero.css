@@ -1,0 +1,196 @@
+/* ========================================================
+   FASHION HERO — FULL-BLEED 100VH CINEMATIC IMPACT
+   ======================================================== */
+
+.fashion-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background-color: #080808;
+}
+
+.fashion-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.fashion-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  animation: heroKenBurns 18s ease-in-out infinite alternate;
+}
+
+@keyframes heroKenBurns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.06); }
+}
+
+/* Luxury Scrim */
+.fashion-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0.1) 40%,
+    rgba(0, 0, 0, 0.2) 70%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+}
+
+/* ──────────────────────────────────────────────────────────
+   CONTENT OVERLAY (WITH HEADER CLEARANCE)
+   ────────────────────────────────────────────────────────── */
+.fashion-hero-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: max(88px, 11vh) 4vw 5vh;
+  box-sizing: border-box;
+}
+
+.fashion-hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding-bottom: 16px;
+}
+
+.hero-season-tag {
+  font-family: var(--font-primary);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.hero-geo-tag {
+  font-family: var(--font-primary);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 500;
+}
+
+/* Bottom Lockup */
+.fashion-hero-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 4vw;
+}
+
+.fashion-hero-brand-lockup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fashion-hero-sub {
+  font-family: var(--font-primary);
+  font-size: clamp(0.75rem, 1.1vw, 1.1rem);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+}
+
+.fashion-hero-monumental {
+  font-family: var(--font-serif);
+  font-size: clamp(3.8rem, 10vw, 11rem);
+  font-weight: 400;
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+.hero-dot {
+  color: #e50914;
+}
+
+.fashion-hero-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+  padding-bottom: 1vh;
+}
+
+.hero-credo-micro {
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  max-width: 280px;
+  text-align: right;
+  margin: 0;
+}
+
+.hero-explore-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #0a0a0a;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-family: var(--font-primary);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.hero-explore-pill:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+}
+
+.pill-arrow {
+  font-size: 0.9rem;
+}
+
+/* ──────────────────────────────────────────────────────────
+   RESPONSIVE
+   ────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .fashion-hero-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3vh;
+  }
+
+  .fashion-hero-action {
+    align-items: flex-start;
+  }
+
+  .hero-credo-micro {
+    text-align: left;
+  }
+
+  .hero-geo-tag {
+    display: none;
+  }
+}
+

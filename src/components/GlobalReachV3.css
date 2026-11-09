@@ -1,0 +1,342 @@
+/* ========================================================
+   GLOBAL REACH V3 — BESPOKE ARCHITECTURAL LUXURY MAP
+   Warm Stone Palette (Light) & Sleek Obsidian (Dark)
+   ======================================================== */
+
+.reach-v3-root {
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  max-height: 100vh;
+  padding: 75px 0 85px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ──────────────────────────────────────────────────────────
+   WHITE THEME (WARM BONE CANVAS & QUIET LUXURY STONE MAP)
+   ────────────────────────────────────────────────────────── */
+.reach-v3-light {
+  background-color: #faf9f6 !important;
+  color: #0a0a0a !important;
+}
+
+.reach-v3-light .reach-v3-heading {
+  color: #0a0a0a !important;
+}
+
+.reach-v3-light .reach-v3-body {
+  color: #555555 !important;
+}
+
+.reach-v3-light .reach-v3-stat-num {
+  color: #0a0a0a !important;
+}
+
+.reach-v3-light .reach-v3-stat-label {
+  color: #777777 !important;
+}
+
+.reach-v3-light .reach-v3-stat-sep {
+  background: rgba(0, 0, 0, 0.08) !important;
+}
+
+.reach-v3-light .reach-v3-eyebrow {
+  color: #888888 !important;
+}
+
+.reach-v3-light .reach-v3-map-wrapper svg {
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.04));
+}
+
+/* ──────────────────────────────────────────────────────────
+   DARK THEME (DEEP NOIR CANVAS & CHARCOAL MAP)
+   ────────────────────────────────────────────────────────── */
+.reach-v3-dark {
+  background-color: #080808 !important;
+  color: #ffffff !important;
+}
+
+.reach-v3-dark .reach-v3-heading {
+  color: #ffffff !important;
+}
+
+.reach-v3-dark .reach-v3-body {
+  color: #a0a0a0 !important;
+}
+
+.reach-v3-dark .reach-v3-stat-num {
+  color: #ffffff !important;
+}
+
+.reach-v3-dark .reach-v3-stat-label {
+  color: #777777 !important;
+}
+
+.reach-v3-dark .reach-v3-stat-sep {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.reach-v3-dark .reach-v3-eyebrow {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.reach-v3-dark .reach-v3-map-wrapper svg {
+  filter: drop-shadow(0 0 25px rgba(0, 0, 0, 0.8));
+}
+
+/* ──────────────────────────────────────────────────────────
+   DESKTOP 2-COLUMN SPLIT GRID
+   ────────────────────────────────────────────────────────── */
+.reach-v3-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.reach-v3-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.45fr;
+  align-items: center;
+  gap: 4vw;
+  height: 100%;
+}
+
+.reach-v3-left-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.reach-v3-eyebrow {
+  font-family: var(--font-primary);
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.reach-v3-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2.6rem, 5vw, 5.2rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.5vw 0;
+}
+
+.reach-v3-red-dot {
+  color: #e50914;
+}
+
+.reach-v3-body {
+  font-family: var(--font-primary);
+  font-size: clamp(0.92rem, 1.1vw, 1.25rem);
+  line-height: 1.6;
+  max-width: 90%;
+  margin: 0 0 3vw 0;
+  font-weight: 300;
+}
+
+/* Haute-Couture Stat Row */
+.reach-v3-stats-row {
+  display: flex;
+  align-items: center;
+  gap: 3vw;
+}
+
+.reach-v3-stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.reach-v3-stat-num {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 3.8vw, 4rem);
+  font-weight: 400;
+  line-height: 1;
+  margin: 0;
+}
+
+.reach-v3-stat-num sup {
+  font-size: 0.45em;
+  top: -0.6em;
+  color: #e50914;
+  font-family: var(--font-primary);
+}
+
+.reach-v3-stat-label {
+  font-family: var(--font-primary);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.reach-v3-stat-sep {
+  width: 1px;
+  height: 40px;
+}
+
+/* ──────────────────────────────────────────────────────────
+   RIGHT COLUMN (BORDERLESS LUXURY MAP)
+   ────────────────────────────────────────────────────────── */
+.reach-v3-right-col {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reach-v3-map-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reach-v3-map-wrapper svg {
+  max-height: 65vh;
+  width: 100%;
+}
+
+/* ──────────────────────────────────────────────────────────
+   PULSE BEACONS
+   ────────────────────────────────────────────────────────── */
+/* Light Mode Pulse Ring */
+.reach-pulse-light {
+  animation: pulseWaveLight 2.6s cubic-bezier(0.2, 0.7, 0.2, 1) infinite;
+  transform-origin: center;
+}
+
+@keyframes pulseWaveLight {
+  0% {
+    r: 4;
+    opacity: 0.9;
+    stroke: rgba(10, 10, 10, 0.5);
+    stroke-width: 1.2px;
+  }
+  100% {
+    r: 24;
+    opacity: 0;
+    stroke: rgba(10, 10, 10, 0);
+    stroke-width: 0.1px;
+  }
+}
+
+/* Dark Mode Pulse Ring */
+.reach-pulse-dark {
+  animation: pulseWaveDark 2.6s cubic-bezier(0.2, 0.7, 0.2, 1) infinite;
+  transform-origin: center;
+}
+
+@keyframes pulseWaveDark {
+  0% {
+    r: 4;
+    opacity: 1;
+    stroke: rgba(255, 255, 255, 0.9);
+    stroke-width: 1.2px;
+  }
+  100% {
+    r: 24;
+    opacity: 0;
+    stroke: rgba(255, 255, 255, 0);
+    stroke-width: 0.1px;
+  }
+}
+
+/* India HQ Crimson Beacon */
+.reach-pulse-hq {
+  animation: pulseWaveHQ 2.2s cubic-bezier(0.2, 0.7, 0.2, 1) infinite;
+  transform-origin: center;
+}
+
+@keyframes pulseWaveHQ {
+  0% {
+    r: 5;
+    opacity: 1;
+    stroke: rgba(229, 9, 20, 1);
+    stroke-width: 2px;
+  }
+  100% {
+    r: 30;
+    opacity: 0;
+    stroke: rgba(229, 9, 20, 0);
+    stroke-width: 0.1px;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   FLOATING CAPSULE BADGES ON MAP
+   ────────────────────────────────────────────────────────── */
+.card-box-shadow {
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
+}
+
+.hq-box-shadow {
+  filter: drop-shadow(0 4px 14px rgba(229, 9, 20, 0.45));
+}
+
+.reach-badge-text {
+  font-family: var(--font-primary);
+  font-size: 7.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  dominant-baseline: middle;
+  pointer-events: none;
+}
+
+.reach-badge-text-hq {
+  font-family: var(--font-primary);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  dominant-baseline: middle;
+  pointer-events: none;
+}
+
+/* ──────────────────────────────────────────────────────────
+   RESPONSIVE DESIGN (MOBILE STACKED LAYOUT)
+   ────────────────────────────────────────────────────────── */
+@media (max-width: 992px) {
+  .reach-v3-root {
+    height: auto;
+    min-height: 100svh;
+    padding: 85px 0 50px;
+    max-height: none;
+  }
+
+  .reach-v3-split-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 3vh;
+  }
+
+  .reach-v3-body {
+    max-width: 100%;
+    margin: 0 auto 5vw auto;
+  }
+
+  .reach-v3-stats-row {
+    justify-content: center;
+    margin-bottom: 3vw;
+  }
+
+  .reach-v3-right-col {
+    order: -1;
+  }
+
+  .reach-v3-map-wrapper svg {
+    max-height: 40vh;
+  }
+}

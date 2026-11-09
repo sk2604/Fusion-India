@@ -1,0 +1,212 @@
+/* ========================================================
+   FASHION ATELIER — INFRASTRUCTURE & DISCIPLINE
+   Grand Visual Sizing with Safe Bottom Clearance
+   ======================================================== */
+
+.atelier-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 75px 0 80px;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.atelier-light {
+  background-color: #faf9f6;
+  color: #0a0a0a;
+}
+
+.atelier-dark {
+  background-color: #090909;
+  color: #f7f7f5;
+}
+
+.atelier-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.atelier-lead-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: 900px;
+  margin-bottom: 1vh;
+  flex-shrink: 0;
+}
+
+.atelier-kicker {
+  font-family: var(--font-primary);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #888888;
+  font-weight: 600;
+}
+
+.atelier-dark .atelier-kicker {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.atelier-serif-quote {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 2.2vw, 2.2rem);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  font-style: italic;
+  text-transform: none; /* Elegant mixed case editorial typography */
+  margin: 0;
+}
+
+/* ──────────────────────────────────────────────────────────
+   DIPTYCH VISUAL PAIR (GRAND 46VH SIZING)
+   ────────────────────────────────────────────────────────── */
+.atelier-diptych {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 1.8vw;
+  flex: 1;
+  min-height: 0;
+  align-items: stretch;
+  margin-bottom: 1.5vh;
+}
+
+.diptych-card {
+  position: relative;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  min-height: 240px;
+  max-height: clamp(280px, 46vh, 440px);
+  border-radius: 2px;
+}
+
+.diptych-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.diptych-card:hover .diptych-photo {
+  transform: scale(1.04);
+}
+
+.diptych-badge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, transparent 100%);
+  padding: 22px 18px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: #ffffff;
+}
+
+.badge-tag {
+  font-family: monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.badge-name {
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* ──────────────────────────────────────────────────────────
+   4 FIGURES (BORDERLESS BOTTOM BAR)
+   ────────────────────────────────────────────────────────── */
+.atelier-figures {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5vw;
+  padding-top: 1.5vh;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
+.atelier-dark .atelier-figures {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+.figure-unit {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.figure-num {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 2.6vw, 3rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.figure-num sup {
+  font-size: 0.45em;
+  top: -0.6em;
+  color: #888888;
+  font-family: var(--font-primary);
+}
+
+.figure-label {
+  font-family: var(--font-primary);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #777777;
+  font-weight: 600;
+}
+
+.atelier-dark .figure-label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ──────────────────────────────────────────────────────────
+   RESPONSIVE DESIGN (MOBILE OPTIMIZED)
+   ────────────────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .atelier-section {
+    height: auto;
+    min-height: 100svh;
+    padding: 85px 0 40px;
+    max-height: none;
+  }
+
+  .atelier-diptych {
+    grid-template-columns: 1fr;
+    gap: 1.5vh;
+  }
+
+  .diptych-card {
+    height: 260px;
+  }
+
+  .atelier-figures {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2vh;
+  }
+}
+
+@media (max-width: 580px) {
+  .atelier-figures {
+    grid-template-columns: 1fr;
+  }
+}
