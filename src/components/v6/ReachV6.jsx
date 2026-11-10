@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './ReachV6.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const geoUrl = "https://unpkg.com/world-atlas@2.0.2/countries-110m.json";
 
@@ -16,7 +20,7 @@ const hubs = [
     coordinates: [78.9629, 20.5937],
     labelDx: 18,
     labelDy: -20,
-    boxWidth: 176,
+    boxWidth: 180,
     isHQ: true
   },
   {
@@ -28,9 +32,9 @@ const hubs = [
     role: 'European Logistics & Sourcing',
     detail: 'Central European logistics node ensuring rapid warehousing, customs clearance, and duty-paid dock delivery.',
     coordinates: [10.4515, 51.1657],
-    labelDx: -188,
+    labelDx: -192,
     labelDy: -28,
-    boxWidth: 174,
+    boxWidth: 178,
     isHQ: false
   },
   {
@@ -43,8 +47,8 @@ const hubs = [
     detail: 'Nordic design partnerships, seasonal forecasting, and technical buyer relations for contemporary labels.',
     coordinates: [12.5683, 55.6761],
     labelDx: 18,
-    labelDy: -42,
-    boxWidth: 184,
+    labelDy: -44,
+    boxWidth: 188,
     isHQ: false
   },
   {
@@ -56,20 +60,51 @@ const hubs = [
     role: 'Retail & Distribution Partners',
     detail: 'Strategic retail accounts, replenishment logistics, and fulfillment channels across USA and Canada.',
     coordinates: [-74.0060, 40.7128],
-    labelDx: -198,
+    labelDx: -204,
     labelDy: -24,
-    boxWidth: 186,
+    boxWidth: 190,
     isHQ: false
   }
 ];
 
 export default function ReachV6({ id = 'reach' }) {
   const [activeHub, setActiveHub] = useState('in');
+  const sectionRef = useRef(null);
+  const contentRef = useRef(null);
   const currentHub = hubs.find(h => h.id === activeHub) || hubs[0];
 
+  useEffect(() => {
+    const section = sectionRef.current;
+    const content = contentRef.current;
+    if (!section || !content) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: '+=750',
+          pin: true,
+          anticipatePin: 1,
+          scrub: 0.5,
+        }
+      });
+
+      tl.fromTo(content,
+        { opacity: 0.2, y: 30, filter: 'blur(8px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.6, ease: 'power2.out' },
+        0
+      );
+
+      tl.to({}, { duration: 0.4 });
+    }, section);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="v6-page-surface-dark v6-reach-section" id={id} data-nav-theme="dark">
-      <div className="v6-reach-container">
+    <section className="v6-page-surface-dark v6-reach-section" id={id} ref={sectionRef} data-nav-theme="dark">
+      <div className="v6-reach-viewport-stage" ref={contentRef}>
         
         <div className="v6-reach-layout">
           
@@ -136,28 +171,28 @@ export default function ReachV6({ id = 'reach' }) {
 
           </div>
 
-          {/* ─── RIGHT COLUMN: EXPANDED 2D MAP WITH PERMANENT VISIBLE COUNTRY LABELS ─── */}
+          {/* ─── RIGHT COLUMN: BORDERLESS MASSIVE MAP STAGE ─── */}
           <div className="v6-reach-col-map">
-            <div className="v6-map-inner">
+            <div className="v6-map-canvas-wrap">
               <ComposableMap
-                projectionConfig={{ scale: 205, center: [14, 25] }}
-                width={940}
-                height={540}
+                projectionConfig={{ scale: 235, center: [16, 25] }}
+                width={1000}
+                height={580}
                 className="v6-reach-svg"
               >
-                {/* World Landmasses */}
+                {/* World Landmasses with High Definition Dark Contrast */}
                 <Geographies geography={geoUrl}>
                   {({ geographies }) =>
                     geographies.map((geo) => (
                       <Geography
                         key={geo.rsmKey}
                         geography={geo}
-                        fill="#1a1a22"
-                        stroke="#2c2c38"
+                        fill="#1c1c26"
+                        stroke="#2f2f3d"
                         strokeWidth={0.7}
                         style={{
                           default: { outline: 'none', transition: 'fill 0.2s ease' },
-                          hover: { fill: '#242430', outline: 'none' },
+                          hover: { fill: '#282836', outline: 'none' },
                           pressed: { outline: 'none' },
                         }}
                       />
@@ -177,16 +212,16 @@ export default function ReachV6({ id = 'reach' }) {
                     >
                       {/* Pulse Wave Animation */}
                       <circle
-                        r={hub.isHQ ? 14 : 10}
+                        r={hub.isHQ ? 16 : 11}
                         className={hub.isHQ ? "v6-pulse-hq" : "v6-pulse-sub"}
                       />
 
                       {/* Main Center Dot */}
                       <circle
-                        r={hub.isHQ ? 6 : 4.5}
+                        r={hub.isHQ ? 6.5 : 4.8}
                         fill={hub.isHQ ? '#e50914' : isActive ? '#ffffff' : '#dddddd'}
                       />
-                      <circle r={1.8} fill="#000000" />
+                      <circle r={2} fill="#000000" />
 
                       {/* Connecting Hairline */}
                       <line
@@ -194,7 +229,7 @@ export default function ReachV6({ id = 'reach' }) {
                         y1={0}
                         x2={hub.labelDx > 0 ? 12 : -12}
                         y2={hub.labelDy > 0 ? 10 : -10}
-                        stroke={hub.isHQ ? '#e50914' : 'rgba(255, 255, 255, 0.5)'}
+                        stroke={hub.isHQ ? '#e50914' : 'rgba(255, 255, 255, 0.55)'}
                         strokeWidth={1}
                         strokeDasharray="2,2"
                       />
@@ -211,10 +246,10 @@ export default function ReachV6({ id = 'reach' }) {
                           width={hub.boxWidth}
                           height="36"
                           rx="5"
-                          fill={isActive ? "rgba(22, 22, 30, 0.98)" : "rgba(12, 12, 16, 0.94)"}
-                          stroke={hub.isHQ ? "#e50914" : isActive ? "#ffffff" : "rgba(255, 255, 255, 0.28)"}
+                          fill={isActive ? "rgba(24, 24, 32, 0.98)" : "rgba(12, 12, 16, 0.94)"}
+                          stroke={hub.isHQ ? "#e50914" : isActive ? "#ffffff" : "rgba(255, 255, 255, 0.32)"}
                           strokeWidth={hub.isHQ || isActive ? "1.6" : "1"}
-                          filter="drop-shadow(0 6px 14px rgba(0,0,0,0.75))"
+                          filter="drop-shadow(0 6px 14px rgba(0,0,0,0.85))"
                         />
 
                         {/* Accent Left Bar */}

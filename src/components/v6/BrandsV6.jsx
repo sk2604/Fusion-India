@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './BrandsV6.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const brandsRow1 = [
   { name: 'ZARA', origin: 'Inditex Group' },
@@ -20,9 +24,41 @@ const brandsRow2 = [
 ];
 
 export default function BrandsV6({ id = 'brands' }) {
+  const sectionRef = useRef(null);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const container = containerRef.current;
+    if (!section || !container) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: '+=700',
+          pin: true,
+          anticipatePin: 1,
+          scrub: 0.5,
+        }
+      });
+
+      tl.fromTo(container,
+        { opacity: 0.3, y: 30, filter: 'blur(6px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.5, ease: 'power2.out' },
+        0
+      );
+
+      tl.to({}, { duration: 0.4 });
+    }, section);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="v6-page-surface-dark v6-brands-section" id={id} data-nav-theme="dark">
-      <div className="v6-container v6-px v6-brands-container">
+    <section className="v6-page-surface-dark v6-brands-section" id={id} ref={sectionRef} data-nav-theme="dark">
+      <div className="v6-container v6-px v6-brands-container" ref={containerRef}>
         
         {/* Section Header */}
         <div className="v6-brands-header">
@@ -89,4 +125,3 @@ export default function BrandsV6({ id = 'brands' }) {
     </section>
   );
 }
-

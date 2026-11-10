@@ -25,10 +25,10 @@ export default function TwoPathsV6({ id = 'paths', onSelectFOB, onSelectDDP, onR
         scrollTrigger: {
           trigger: section,
           start: 'top top',
-          end: '+=1300',
+          end: '+=750',
           pin: true,
           anticipatePin: 1,
-          scrub: 0.65,
+          scrub: 0.5,
         }
       });
 

@@ -8,6 +8,7 @@ import MotionV6 from '../components/v6/MotionV6';
 import TwoPathsV6 from '../components/v6/TwoPathsV6';
 import ReachV6 from '../components/v6/ReachV6';
 import MetricsV6 from '../components/v6/MetricsV6';
+import HeadquartersV6 from '../components/v6/HeadquartersV6';
 import BrandsV6 from '../components/v6/BrandsV6';
 import TestimonialsV6 from '../components/v6/TestimonialsV6';
 import FAQV6 from '../components/v6/FAQV6';
@@ -85,7 +86,10 @@ export default function HomeV6() {
         onBookDemo={() => setDrawerOpen(true)} 
       />
 
-      {/* 11. Section 08: Brands We Work With (Infinite Dual-Track Marquee) */}
+      {/* 11. Section 08: Gurugram Head Office & Sampling Campus */}
+      <HeadquartersV6 id="headquarters" />
+
+      {/* 12. Section 09: Brands We Work With (Infinite Dual-Track Marquee) */}
       <BrandsV6 id="brands" />
 
       {/* 12. Section 09: Client Trust & Quotes */}

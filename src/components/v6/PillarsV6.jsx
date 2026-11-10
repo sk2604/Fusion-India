@@ -36,10 +36,10 @@ export default function PillarsV6({ id = 'pillars', onExploreSpecs }) {
         scrollTrigger: {
           trigger: section,
           start: 'top top',
-          end: '+=1600',
+          end: '+=750',
           pin: true,
           anticipatePin: 1,
-          scrub: 0.65,
+          scrub: 0.5,
         }
       });
 

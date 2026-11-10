@@ -22,10 +22,10 @@ export default function MotionV6({ id = 'motion' }) {
         scrollTrigger: {
           trigger: section,
           start: 'top top',
-          end: '+=1400',
+          end: '+=750',
           pin: true,
           anticipatePin: 1,
-          scrub: 0.65,
+          scrub: 0.5,
         }
       });
 

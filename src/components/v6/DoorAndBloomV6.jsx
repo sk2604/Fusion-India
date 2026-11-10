@@ -118,37 +118,37 @@ export default function DoorAndBloomV6({ id = 'blooming', onSelectShot }) {
       ScrollTrigger.create({
         trigger: el,
         start: 'top top',
-        end: '+=3000',
+        end: '+=1300',
         pin: true,
         anticipatePin: 1,
-        scrub: 0.6,
+        scrub: 0.5,
         onUpdate: (self) => {
           const p = self.progress;
 
-          // ─── Phase 1: Solid First Frame HOLD (0.00 -> 0.22) ───
-          if (p <= 0.22) {
+          // ─── Phase 1: Solid First Frame HOLD (0.00 -> 0.15) ───
+          if (p <= 0.15) {
             setDoorScale(1);
             setDoorOpacity(1);
           } 
-          // ─── Phase 2: Exponential Zoom In (0.22 -> 0.50) ───
-          else if (p <= 0.50) {
-            const t = (p - 0.22) / 0.28;
-            const easedScale = 1 + Math.pow(t, 2.4) * 24;
+          // ─── Phase 2: Exponential Zoom In (0.15 -> 0.42) ───
+          else if (p <= 0.42) {
+            const t = (p - 0.15) / 0.27;
+            const easedScale = 1 + Math.pow(t, 2.3) * 24;
             setDoorScale(easedScale);
-            setDoorOpacity(Math.max(0, 1 - Math.pow(t, 1.5) * 1.3));
+            setDoorOpacity(Math.max(0, 1 - Math.pow(t, 1.4) * 1.3));
           } 
           else {
             setDoorScale(25);
             setDoorOpacity(0);
           }
 
-          // ─── Phase 3: Radial Blooming (0.42 -> 0.88) ───
-          if (p < 0.42) {
+          // ─── Phase 3: Radial Blooming (0.35 -> 0.82) ───
+          if (p < 0.35) {
             setBloomProgress(0);
             bloomProgressRef.current = 0;
             setExitOpacity(1);
-          } else if (p <= 0.88) {
-            const bT = (p - 0.42) / 0.46;
+          } else if (p <= 0.82) {
+            const bT = (p - 0.35) / 0.47;
             const easedBloom = 1 - Math.pow(1 - bT, 2.2);
             setBloomProgress(easedBloom);
             bloomProgressRef.current = easedBloom;
@@ -158,8 +158,8 @@ export default function DoorAndBloomV6({ id = 'blooming', onSelectShot }) {
             setBloomProgress(1);
             bloomProgressRef.current = 1;
             // Clean exit fadeout so cards don't bleed into next section
-            const exitT = (p - 0.88) / 0.12;
-            setExitOpacity(Math.max(0, 1 - exitT * 1.5));
+            const exitT = (p - 0.82) / 0.18;
+            setExitOpacity(Math.max(0, 1 - exitT * 1.6));
           }
 
           // Dynamically toggle navbar theme
