@@ -87,11 +87,11 @@
 
 .v6-footer-logo-sub {
   align-self: flex-end;
-  margin-top: -6px;
+  margin-top: -4px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(14px, 1.3vw, 19px);
-  font-weight: 500;
-  letter-spacing: -0.02em;
+  font-size: clamp(16px, 1.5vw, 22px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
   color: #ffffff;
   text-transform: none;
 }

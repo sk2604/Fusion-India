@@ -59,7 +59,7 @@ export default function FooterV6({ onOpenDrawer }) {
               </mask>
               <rect width="540" height="155" fill="#ffffff" mask="url(#v6FooterLogoCutout)" />
             </svg>
-            <span className="v6-footer-logo-sub">atelier studio.</span>
+            <span className="v6-footer-logo-sub">India</span>
           </div>
 
           <button
