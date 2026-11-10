@@ -1,10 +1,10 @@
 /* ========================================================
    V6 SCROLL DECK (PINNED FILMSTRIP 3-COLUMN STAGE + QUOTE)
-   Matches screen recording reference:
-   - Monumental center image (~50vw / ~550px square)
-   - Sharp clean luxury presentation
-   - Large, confident typography (clamp 34px - 62px)
-   - Zero horizontal overflow
+   Matches Grace Fashion AI Reference (Images 4 & 6):
+   - Single monumental vertical portrait photo (aspect-ratio 4/5)
+   - Flanked by confident, clean modern grotesque typography
+   - Zero horizontal overflow, zero text cut-off
+   - Smooth continuous vertical filmstrip transition
    ======================================================== */
 
 .v6-deck-section {
@@ -51,15 +51,15 @@
   font-family: var(--v6-font-sans);
   font-size: clamp(11px, 0.8vw, 13px);
   font-weight: 600;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: #737373;
   margin-bottom: 1.5rem;
 }
 
 .v6-deck-quote-text {
-  font-family: var(--v6-font-display);
-  font-size: clamp(32px, 20px + 3vw, 64px);
+  font-family: var(--v6-font-sans);
+  font-size: clamp(30px, 20px + 2.8vw, 60px);
   font-weight: 500;
   line-height: 1.15;
   letter-spacing: -0.035em;
@@ -70,7 +70,7 @@
 }
 
 /* ──────────────────────────────────────────────────────────
-   2. PINNED 3-COLUMN STAGE (MATCHING REFERENCE EXACTLY)
+   2. PINNED 3-COLUMN STAGE (MATCHING GRACE REFERENCE EXACTLY)
    ────────────────────────────────────────────────────────── */
 .v6-deck-stage {
   position: absolute;
@@ -80,7 +80,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 3vw;
+  padding: 0 clamp(1.5rem, 4vw, 4rem);
   box-sizing: border-box;
   z-index: 20;
 }
@@ -88,13 +88,13 @@
 /* ─── 3-COLUMN FLANKING GRID ─── */
 .v6-deck-columns-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) min(48vw, 550px) minmax(0, 1fr);
+  grid-template-columns: 1fr min(34vw, 450px) 1fr;
   align-items: center;
   justify-items: center;
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  gap: 3.5vw;
+  gap: clamp(1.5rem, 3.5vw, 4.5rem);
   box-sizing: border-box;
 }
 
@@ -132,19 +132,17 @@
   justify-content: flex-start;
 }
 
-/* Monumental Typography matching reference */
+/* Monumental Grotesque Typography matching Grace reference Images 4 & 6 */
 .v6-deck-flank-text {
-  font-family: var(--v6-font-display);
-  font-size: clamp(32px, 3.6vw, 60px);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(28px, 3.8vw, 58px);
   font-weight: 500;
   letter-spacing: -0.035em;
   color: #000000;
   margin: 0;
   line-height: 1.05;
   text-transform: none !important;
-  max-width: 11ch;
-  word-break: normal;
-  overflow-wrap: break-word;
+  white-space: nowrap;
 }
 
 .v6-deck-flank-text.text-right {
@@ -155,12 +153,12 @@
   text-align: left;
 }
 
-/* ─── CENTER CARD: MONUMENTAL CONTINUOUS FILMSTRIP VIEWPORT ─── */
+/* ─── CENTER CARD: MONUMENTAL PORTRAIT FILMSTRIP VIEWPORT ─── */
 .v6-deck-center-col {
   position: relative;
   width: 100%;
-  max-width: min(48vw, 550px);
-  aspect-ratio: 1 / 1;
+  max-width: min(34vw, 450px);
+  aspect-ratio: 4 / 5;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -171,9 +169,9 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  border-radius: 4px; /* Clean, flush luxury presentation matching reference */
-  background-color: #f5f5f5;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
+  border-radius: 14px;
+  background-color: #f2f2f2;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.08);
 }
 
 .v6-deck-filmstrip-track {
@@ -189,173 +187,48 @@
   height: 100%;
   flex-shrink: 0;
   position: relative;
-  background-color: #171717;
+  background-color: #000000;
   overflow: hidden;
   cursor: pointer;
-}
-
-/* ─── SINGLE PHOTO (SLIDES 1 & 3) ─── */
-.v6-deck-photo-single {
-  width: 100%;
-  height: 100%;
 }
 
 .v6-deck-single-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 30%;
   display: block;
-}
-
-/* ─── 2X2 GRID (SLIDE 2) ─── */
-.v6-deck-card-grid-2x2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 2px;
-  width: 100%;
-  height: 100%;
-  background-color: #ffffff;
-}
-
-.v6-grid-quarter-wrap {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.v6-grid-quarter-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.4s ease;
-}
-
-.v6-deck-card-slide:hover .v6-grid-quarter-img {
-  transform: scale(1.04);
-}
-
-/* ─── CUTOUT MONOGRAM (SLIDE 4) ─── */
-.v6-deck-cutout-box {
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at center, #171717 0%, #000000 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  padding: 2rem;
-  box-sizing: border-box;
-}
-
-.v6-cutout-monogram {
-  display: flex;
-  align-items: baseline;
-  gap: 4px;
-}
-
-.v6-cutout-char {
-  font-family: var(--v6-font-display);
-  font-size: clamp(84px, 14vw, 130px);
-  font-weight: 700;
-  line-height: 0.8;
-  color: #ffffff;
-  letter-spacing: -0.05em;
-}
-
-.v6-cutout-dot {
-  width: clamp(16px, 2.2vw, 24px);
-  height: clamp(16px, 2.2vw, 24px);
-  background-color: #e50914;
-  border-radius: 50%;
-}
-
-.v6-cutout-credo {
-  font-family: var(--v6-font-sans);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  color: rgba(255, 255, 255, 0.7);
-  text-align: center;
-  margin: 0;
-}
-
-/* ─── LIVE CARD BADGE ─── */
-.v6-deck-card-badge {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  background: rgba(0, 0, 0, 0.72);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color: #ffffff;
-  padding: 5px 12px;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--v6-font-sans);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  pointer-events: none;
-}
-
-.v6-card-badge-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: #22c55e;
-  animation: v6-badge-pulse 2s infinite ease-in-out;
-}
-
-@keyframes v6-badge-pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.85); }
 }
 
 /* ──────────────────────────────────────────────────────────
    RESPONSIVE DESIGN (MOBILE & TABLET)
    ────────────────────────────────────────────────────────── */
-@media (max-width: 859px) {
+@media (max-width: 900px) {
   .v6-deck-columns-grid {
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
     gap: 1.5rem;
-    padding: 0 4vw;
   }
 
-  .v6-deck-center-col {
-    max-width: min(82vw, 340px);
-    order: 2;
-  }
-
-  .v6-flank-col-left {
-    order: 1;
+  .v6-deck-flank-col {
     height: 50px;
-    justify-content: center;
   }
 
+  .v6-flank-col-left,
   .v6-flank-col-left .v6-deck-word-wrap {
     justify-content: center;
   }
 
-  .v6-flank-col-right {
-    order: 3;
-    height: 50px;
-    justify-content: center;
-  }
-
+  .v6-flank-col-right,
   .v6-flank-col-right .v6-deck-word-wrap {
     justify-content: center;
   }
 
-  .v6-deck-flank-text {
-    font-size: clamp(24px, 18px + 2vw, 34px);
-    max-width: 20ch;
-    text-align: center !important;
+  .v6-deck-flank-text.text-right,
+  .v6-deck-flank-text.text-left {
+    text-align: center;
+  }
+
+  .v6-deck-center-col {
+    max-width: 75vw;
   }
 }

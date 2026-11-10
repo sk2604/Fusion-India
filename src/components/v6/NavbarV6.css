@@ -1,8 +1,8 @@
 /* ========================================================
-   V6 NAVBAR (100% ALWAYS TRANSPARENT BACKGROUND + REVERT COLORS ON SCROLL)
+   V6 NAVBAR (100% ALWAYS TRANSPARENT BACKGROUND + AUTO-INVERTING THEME)
    Matches reference screenshot gracefashion.ai:
-   - Always 100% transparent background (no borders, no blur, no shadows)
-   - Colors revert from white to black on scroll
+   - Always 100% transparent background (no borders, no blur, no box)
+   - Colors automatically revert between white (#ffffff) and black (#000000)
    - Reference font style: bold lowercase brand, all-caps bold links, underlined CTA
    ======================================================== */
 
@@ -19,7 +19,7 @@
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   pointer-events: none;
-  font-family: var(--v6-font-sans);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   transition: padding 0.3s ease;
 }
 
@@ -53,12 +53,12 @@
 }
 
 .v6-brand-main {
-  font-family: var(--v6-font-display);
-  font-size: 22px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 24px;
   font-weight: 800;
   letter-spacing: -0.04em;
   text-transform: lowercase;
-  transition: color 0.35s ease;
+  transition: color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ─── CENTER LINKS: ALL CAPS, CLEAN BOLD TRACKING ─── */
@@ -81,13 +81,13 @@
   background: none;
   border: none;
   padding: 0;
-  font-family: var(--v6-font-sans);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: opacity 0.2s ease, color 0.35s ease;
+  transition: opacity 0.2s ease, color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .v6-nav-link:hover {
@@ -105,16 +105,16 @@
   background: none;
   border: none;
   padding: 0;
-  font-family: var(--v6-font-sans);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   text-decoration: underline;
   text-underline-offset: 4px;
   text-decoration-thickness: 1px;
   cursor: pointer;
-  transition: opacity 0.2s ease, color 0.35s ease;
+  transition: opacity 0.2s ease, color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .v6-nav-cta:hover {
@@ -122,52 +122,52 @@
 }
 
 .v6-nav-lang {
-  font-family: var(--v6-font-sans);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   cursor: default;
-  transition: color 0.35s ease;
+  transition: color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ─── STATE 1: TOP (OVER HERO) — PURE WHITE COLOR ─── */
-.v6-nav-fixed.is-top .v6-brand-main {
-  color: #ffffff;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+/* ─── THEME DARK: BACKGROUND IS DARK -> TEXT IS PURE WHITE ─── */
+.v6-nav-fixed.theme-dark .v6-brand-main {
+  color: #ffffff !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
 }
 
-.v6-nav-fixed.is-top .v6-nav-link {
-  color: #ffffff;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+.v6-nav-fixed.theme-dark .v6-nav-link {
+  color: #ffffff !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
 }
 
-.v6-nav-fixed.is-top .v6-nav-cta {
-  color: #ffffff;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+.v6-nav-fixed.theme-dark .v6-nav-cta {
+  color: #ffffff !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
 }
 
-.v6-nav-fixed.is-top .v6-nav-lang {
-  color: #ffffff;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+.v6-nav-fixed.theme-dark .v6-nav-lang {
+  color: #ffffff !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
 }
 
-/* ─── STATE 2: SCROLLED (OVER WHITE SECTIONS) — REVERT TO PURE BLACK ─── */
-.v6-nav-fixed.is-scrolled .v6-brand-main {
-  color: #000000;
+/* ─── THEME LIGHT: BACKGROUND IS LIGHT -> TEXT IS PURE BLACK ─── */
+.v6-nav-fixed.theme-light .v6-brand-main {
+  color: #000000 !important;
   text-shadow: none;
 }
 
-.v6-nav-fixed.is-scrolled .v6-nav-link {
-  color: #000000;
+.v6-nav-fixed.theme-light .v6-nav-link {
+  color: #000000 !important;
   text-shadow: none;
 }
 
-.v6-nav-fixed.is-scrolled .v6-nav-cta {
-  color: #000000;
+.v6-nav-fixed.theme-light .v6-nav-cta {
+  color: #000000 !important;
   text-shadow: none;
 }
 
-.v6-nav-fixed.is-scrolled .v6-nav-lang {
-  color: #000000;
+.v6-nav-fixed.theme-light .v6-nav-lang {
+  color: #000000 !important;
   text-shadow: none;
 }

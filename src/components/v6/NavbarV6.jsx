@@ -3,16 +3,59 @@ import { Link } from 'react-router-dom';
 import './NavbarV6.css';
 
 export default function NavbarV6({ onOpenDrawer }) {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [navTheme, setNavTheme] = useState('dark'); // 'dark' (white text) or 'light' (black text)
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Revert colors when scrolling past the Hero section onto light surfaces
-      setIsScrolled(window.scrollY > (window.innerHeight * 0.7));
+    const probeTheme = () => {
+      // 1. Probe element directly under center of navbar
+      const probeX = window.innerWidth / 2;
+      const probeY = 50;
+      let foundTheme = null;
+
+      try {
+        const elements = document.elementsFromPoint(probeX, probeY);
+        for (const el of elements) {
+          if (el.closest('.v6-nav-fixed')) continue;
+          const themeAttr = el.getAttribute?.('data-nav-theme') || el.closest?.('[data-nav-theme]')?.getAttribute('data-nav-theme');
+          if (themeAttr) {
+            foundTheme = themeAttr;
+            break;
+          }
+        }
+      } catch (err) {
+        // fallback to bounding client rect
+      }
+
+      // 2. Secondary check: check bounding rect of all [data-nav-theme] sections
+      if (!foundTheme) {
+        const sections = document.querySelectorAll('[data-nav-theme]');
+        for (const sec of sections) {
+          const rect = sec.getBoundingClientRect();
+          if (rect.top <= 65 && rect.bottom >= 35) {
+            foundTheme = sec.getAttribute('data-nav-theme');
+            break;
+          }
+        }
+      }
+
+      if (foundTheme) {
+        setNavTheme(foundTheme);
+      } else {
+        // Fallback: top of page (Hero) is dark
+        setNavTheme(window.scrollY < window.innerHeight * 0.8 ? 'dark' : 'light');
+      }
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', probeTheme, { passive: true });
+    probeTheme();
+
+    // Regular interval to catch pinned GSAP scrub transitions smoothly
+    const interval = setInterval(probeTheme, 120);
+
+    return () => {
+      window.removeEventListener('scroll', probeTheme);
+      clearInterval(interval);
+    };
   }, []);
 
   const scrollTo = (id) => {
@@ -23,7 +66,7 @@ export default function NavbarV6({ onOpenDrawer }) {
   };
 
   return (
-    <nav className={`v6-nav-fixed ${isScrolled ? 'is-scrolled' : 'is-top'}`}>
+    <nav className={`v6-nav-fixed theme-${navTheme}`}>
       <div className="v6-nav-inner">
         {/* Brand Wordmark matching reference "grace" */}
         <Link to="/v6" className="v6-nav-brand">

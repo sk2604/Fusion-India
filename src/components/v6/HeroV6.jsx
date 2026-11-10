@@ -19,11 +19,12 @@ export default function HeroV6({ onExplore }) {
   const sloganY = scrollY * 0.22;
 
   return (
-    <section className="v6-hero-wrapper" id="hero">
+    <section className="v6-hero-wrapper" id="hero" data-nav-theme="dark">
       {/* Pinned Fullscreen Hero Background with V4 Parallax & Scale */}
       <div 
         className="v6-hero-fixed"
         style={{ opacity: heroOpacity }}
+        data-nav-theme="dark"
       >
         <div 
           className="v6-hero-bg"
