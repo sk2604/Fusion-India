@@ -7,7 +7,7 @@ import PillarsV6 from '../components/v6/PillarsV6';
 import MotionV6 from '../components/v6/MotionV6';
 import TwoPathsV6 from '../components/v6/TwoPathsV6';
 import ReachV6 from '../components/v6/ReachV6';
-import MetricsV6 from '../components/v6/MetricsV6';
+import WhoWeAreV6 from '../components/v6/WhoWeAreV6';
 import HeadquartersV6 from '../components/v6/HeadquartersV6';
 import BrandsV6 from '../components/v6/BrandsV6';
 import TestimonialsV6 from '../components/v6/TestimonialsV6';
@@ -80,10 +80,10 @@ export default function HomeV6() {
       {/* 9. Section 06: Our Reach & Interactive World Map */}
       <ReachV6 id="reach" />
 
-      {/* 10. Section 07: Sourcing Economics Metrics */}
-      <MetricsV6 
-        id="metrics" 
-        onBookDemo={() => setDrawerOpen(true)} 
+      {/* 10. Section 07: Who We Are & Heritage Deck (Davaris-Style Stacking Cards) */}
+      <WhoWeAreV6 
+        id="who-we-are" 
+        onOpenDrawer={() => setDrawerOpen(true)} 
       />
 
       {/* 11. Section 08: Gurugram Head Office & Sampling Campus */}

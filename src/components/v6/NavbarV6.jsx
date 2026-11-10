@@ -107,6 +107,9 @@ export default function NavbarV6({ onOpenDrawer }) {
           <button type="button" onClick={() => scrollTo('reach')} className="v6-nav-link">
             OUR REACH
           </button>
+          <button type="button" onClick={() => scrollTo('who-we-are')} className="v6-nav-link">
+            ABOUT
+          </button>
           <button type="button" onClick={() => scrollTo('headquarters')} className="v6-nav-link">
             CAMPUS
           </button>

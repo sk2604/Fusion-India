@@ -1,0 +1,269 @@
+/* ========================================================
+   V6 WHO WE ARE (STACKING CARDS DECK - DAVARIS STYLE)
+   - Left Column: Sticky Editorial Manifesto + Coral Pill CTA
+   - Right Column: Vertical Stacking Metric Deck with Color Progression
+   - Pinned GSAP ScrollTrigger Scrubbing
+   - 100vh Viewport Centered
+   ======================================================== */
+
+.v6-who-section {
+  position: relative;
+  background-color: #f4f1ea;
+  color: #111116;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+.v6-who-container {
+  width: 100%;
+  max-width: 1680px;
+  height: 100%;
+  max-height: calc(100vh - 80px);
+  padding: 0 clamp(1.5rem, 4vw, 4.5rem);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+/* ──────────────────────────────────────────────────────────
+   2-COLUMN GRID (50% EDITORIAL / 50% STACKING DECK)
+   ────────────────────────────────────────────────────────── */
+.v6-who-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(2.5rem, 5vw, 6rem);
+  width: 100%;
+}
+
+/* ─── LEFT COLUMN: EDITORIAL MANIFESTO ─── */
+.v6-who-col-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.v6-who-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #77777e;
+  font-weight: 700;
+  margin-bottom: 0.85rem;
+}
+
+.v6-who-red-dot {
+  width: 6.5px;
+  height: 6.5px;
+  border-radius: 50%;
+  background-color: #d64d25;
+}
+
+.v6-who-title {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(30px, 3.4vw, 50px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  color: #111116;
+  margin: 0 0 1.25rem 0;
+  max-width: 26ch;
+}
+
+.v6-who-subtext {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(13.5px, 1vw, 15px);
+  line-height: 1.6;
+  color: #666670;
+  margin: 0 0 2rem 0;
+  max-width: 48ch;
+}
+
+.v6-who-cta-btn {
+  align-self: flex-start;
+  background-color: #e5734f;
+  border: none;
+  border-radius: 6px;
+  padding: 13px 26px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(229, 115, 79, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.v6-who-cta-btn:hover {
+  background-color: #d64d25;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(214, 77, 37, 0.45);
+}
+
+/* ──────────────────────────────────────────────────────────
+   RIGHT COLUMN: STACKING DECK STAGE
+   ────────────────────────────────────────────────────────── */
+.v6-who-col-right {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v6-who-deck-stage {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  height: clamp(480px, 66vh, 580px);
+  overflow: hidden;
+}
+
+/* Stacking Card Base */
+.v6-who-card {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: clamp(360px, 50vh, 440px);
+  border-radius: 14px;
+  box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.08), 0 16px 36px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  will-change: transform, opacity;
+}
+
+/* Card Top Tab (Header Bar visible in stacked state) */
+.v6-who-card-tab {
+  height: 44px;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.v6-who-card-label {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.v6-who-card-tag {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+}
+
+.v6-who-card-hairline {
+  height: 1px;
+  width: calc(100% - 3rem);
+  margin: 0 auto;
+}
+
+/* Card Body Content */
+.v6-who-card-content {
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  flex: 1;
+}
+
+.v6-who-card-number {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(56px, 6.5vw, 96px);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin: 0.35rem 0 0.75rem 0;
+}
+
+.v6-who-card-sub {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin-bottom: 0.65rem;
+}
+
+.v6-who-card-desc {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(12.5px, 0.95vw, 14px);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 44ch;
+  opacity: 0.9;
+}
+
+/* ══════════════════════════════════════════════════════════
+   MOBILE & TABLET RESPONSIVENESS (< 960px)
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 960px) {
+  .v6-who-section {
+    height: auto !important;
+    min-height: 100vh;
+    max-height: none !important;
+    padding: 5rem 1.5rem;
+    overflow: visible;
+  }
+
+  .v6-who-container {
+    max-height: none;
+    padding: 0;
+  }
+
+  .v6-who-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .v6-who-title {
+    font-size: clamp(28px, 6vw, 40px);
+  }
+
+  .v6-who-deck-stage {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    overflow: visible;
+  }
+
+  .v6-who-card {
+    position: relative !important;
+    top: auto !important;
+    height: auto;
+    padding-bottom: 1rem;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .v6-who-card-number {
+    font-size: clamp(48px, 10vw, 72px);
+  }
+}
