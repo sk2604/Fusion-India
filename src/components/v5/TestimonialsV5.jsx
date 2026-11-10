@@ -98,3 +98,4 @@ export default function TestimonialsV5({ id = 'testimonials' }) {
     </section>
   );
 }
+

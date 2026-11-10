@@ -99,3 +99,4 @@ export default function BloomingGarmentV5({ id = 'blooming', onSelectShot }) {
     </section>
   );
 }
+

@@ -1,5 +1,5 @@
 /* ========================================================
-   V5 MOTION (FRAMES 00:23-00:26 IN VIDEO)
+   V5 MOTION (MATCHING ELEVATOR SCENE IN USER'S ATTACHMENT)
    ======================================================== */
 
 .v5-motion-section {
@@ -8,7 +8,7 @@
   min-height: 100vh;
   min-height: 100dvh;
   overflow: hidden;
-  background-color: var(--v5-neutral-900);
+  background-color: #1a120c;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,10 +29,10 @@
   display: block;
 }
 
-.v5-motion-scrim {
+.v5-motion-elevator-scrim {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.8) 100%);
+  background: radial-gradient(circle at center, rgba(30, 20, 15, 0.45) 0%, rgba(10, 8, 6, 0.85) 100%);
 }
 
 .v5-motion-content {
@@ -40,4 +40,9 @@
   z-index: 20;
   padding: 0 1.5rem;
   max-width: 24ch;
+}
+
+.v5-motion-content .headline-large {
+  line-height: 1.15;
+  letter-spacing: -0.03em;
 }

@@ -158,3 +158,4 @@ export default function PillarsV5({ id = 'pillars', onExploreSpecs }) {
     </section>
   );
 }
+

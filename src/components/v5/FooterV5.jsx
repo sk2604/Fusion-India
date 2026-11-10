@@ -75,3 +75,4 @@ export default function FooterV5({ onOpenDrawer }) {
     </footer>
   );
 }
+

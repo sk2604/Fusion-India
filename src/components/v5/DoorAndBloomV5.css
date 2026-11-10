@@ -1,0 +1,169 @@
+/* ========================================================
+   V5 DOOR & BLOOMING SCROLL SYSTEM (FRAMES 00:12-00:19)
+   ======================================================== */
+
+.v5-door-bloom-wrap {
+  position: relative;
+  width: 100%;
+  height: 280vh;
+  background-color: var(--v5-dot-bg);
+  z-index: 10;
+}
+
+.v5-door-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* 1. DOOR ZOOM LAYER */
+.v5-door-zoom-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  background-color: var(--v5-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center center;
+  transition: opacity 0.1s linear, transform 0.1s linear;
+  box-shadow: 0 0 80px rgba(0, 0, 0, 0.4);
+}
+
+.v5-door-words-row {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 2rem;
+}
+
+.v5-door-side-text {
+  font-family: var(--v5-font-display);
+  font-size: clamp(24px, 18px + 1.5vw, 42px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: #000000;
+  white-space: nowrap;
+}
+
+.v5-door-cutout-monogram {
+  width: 110px;
+  height: 110px;
+  border-radius: 16px;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.v5-door-cutout-char {
+  font-family: var(--v5-font-display);
+  font-size: 54px;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: #ffffff;
+}
+
+/* 2. BLOOMING GARMENT STAGE */
+.v5-bloom-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v5-bloom-center-statement {
+  position: relative;
+  z-index: 35;
+  max-width: 24ch;
+  text-align: center;
+  padding: 1.5rem 2rem;
+  background-color: rgba(10, 10, 10, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.v5-bloom-packshot-capsule {
+  display: inline-block;
+  vertical-align: middle;
+  width: 44px;
+  height: 58px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 0 6px;
+}
+
+.v5-bloom-packshot-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 6 FLYING BLOOMING PHOTOS */
+.v5-bloom-orbit-system {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.v5-bloom-flying-card {
+  position: absolute;
+  width: min(22vw, 175px);
+  aspect-ratio: 3 / 4;
+  cursor: pointer;
+  z-index: 25;
+  transition: transform 0.15s ease-out;
+}
+
+.v5-bloom-flying-card.hovered {
+  z-index: 45;
+}
+
+.v5-bloom-card-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background-color: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.v5-bloom-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.v5-bloom-tag-label {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  border-radius: 4px;
+}

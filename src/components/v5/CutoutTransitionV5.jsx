@@ -17,3 +17,4 @@ export default function CutoutTransitionV5() {
     </section>
   );
 }
+

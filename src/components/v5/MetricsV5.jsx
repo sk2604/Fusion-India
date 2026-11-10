@@ -68,3 +68,4 @@ export default function MetricsV5({ id = 'metrics', onBookDemo }) {
     </section>
   );
 }
+
