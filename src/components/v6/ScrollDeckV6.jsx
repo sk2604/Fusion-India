@@ -8,16 +8,16 @@ gsap.registerPlugin(ScrollTrigger);
 const deckSlides = [
   {
     id: 1,
-    left: 'Atelier craft,',
+    left: 'Campaigns',
     right: 'at audited scale.',
-    tag: 'DIVISION 01 // TAILORED OUTERWEAR',
+    tag: 'DIVISION 01 // ATELIER CRAFT',
     sub: 'Double-face virgin wool, tailored canvas construction, horn hardware.',
-    img: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1200&auto=format&fit=crop'
+    img: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1400&auto=format&fit=crop'
   },
   {
     id: 2,
-    left: 'From tech pack',
-    right: 'to verified production.',
+    left: 'Lookbooks',
+    right: 'all of one piece.',
     tag: 'DIVISION 02 // SOURCING SUITE',
     sub: 'Tailored woolens, circular denim, bespoke leather goods, and silk.',
     isGrid: true,
@@ -42,8 +42,8 @@ const deckSlides = [
   },
   {
     id: 3,
-    left: 'Zero shortcuts,',
-    right: 'on runway quality.',
+    left: 'Product runs,',
+    right: 'who sell.',
     tag: 'DIVISION 03 // SCALED RUNWAYS',
     sub: '100% factory calibration across 50,000+ unit European delivery.',
     img: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop'
@@ -51,7 +51,7 @@ const deckSlides = [
   {
     id: 4,
     left: 'Right Product —',
-    right: 'Right Price. Right Performance.',
+    right: 'Right Performance.',
     tag: 'THE FUSION CREDO // EST. 1998',
     sub: 'Bridging global runway directions with ethical Indian manufacturing.',
     isDoorCutout: true
@@ -95,7 +95,7 @@ export default function ScrollDeckV6({ id = 'deck', onSelectCard }) {
       textLeftRefs.current.forEach((el, i) => {
         gsap.set(el, {
           opacity: i === 0 ? 1 : 0,
-          filter: i === 0 ? 'blur(0px)' : 'blur(12px)',
+          filter: i === 0 ? 'blur(0px)' : 'blur(14px)',
           y: i === 0 ? 0 : 25
         });
       });
@@ -103,7 +103,7 @@ export default function ScrollDeckV6({ id = 'deck', onSelectCard }) {
       textRightRefs.current.forEach((el, i) => {
         gsap.set(el, {
           opacity: i === 0 ? 1 : 0,
-          filter: i === 0 ? 'blur(0px)' : 'blur(12px)',
+          filter: i === 0 ? 'blur(0px)' : 'blur(14px)',
           y: i === 0 ? 0 : 25
         });
       });
@@ -121,7 +121,6 @@ export default function ScrollDeckV6({ id = 'deck', onSelectCard }) {
       });
 
       // ─── PART 1: Quote screen holds, then transitions into Deck stage ───
-      // Hold quote for 0.4s
       tl.to({}, { duration: 0.4 });
       
       // Quote exits upward with blur
@@ -144,40 +143,37 @@ export default function ScrollDeckV6({ id = 'deck', onSelectCard }) {
       }, 0.6);
 
       // ─── PART 2: Slide 0 holds, then glides to Slide 1 (2x2 Grid) ───
-      // Hold Slide 0 in focus until 1.8s
       tl.to({}, { duration: 0.5 });
       
       // Move track by -100%
       tl.to(track, { yPercent: -100, duration: 1.0, ease: 'power2.inOut' }, 1.8);
       // Blur and exit Slide 0 text
-      tl.to(textLeftRefs.current[0], { opacity: 0, filter: 'blur(12px)', y: -20, duration: 0.5, ease: 'power2.in' }, 1.8);
-      tl.to(textRightRefs.current[0], { opacity: 0, filter: 'blur(12px)', y: -20, duration: 0.5, ease: 'power2.in' }, 1.8);
+      tl.to(textLeftRefs.current[0], { opacity: 0, filter: 'blur(14px)', y: -20, duration: 0.5, ease: 'power2.in' }, 1.8);
+      tl.to(textRightRefs.current[0], { opacity: 0, filter: 'blur(14px)', y: -20, duration: 0.5, ease: 'power2.in' }, 1.8);
       // Unblur and enter Slide 1 text
       tl.to(textLeftRefs.current[1], { opacity: 1, filter: 'blur(0px)', y: 0, duration: 0.6, ease: 'power2.out' }, 2.2);
       tl.to(textRightRefs.current[1], { opacity: 1, filter: 'blur(0px)', y: 0, duration: 0.6, ease: 'power2.out' }, 2.2);
 
       // ─── PART 3: Slide 1 holds, then glides to Slide 2 (Runway Model) ───
-      // Hold Slide 1 in focus until 3.2s
       tl.to({}, { duration: 0.5 });
 
       // Move track by -200%
       tl.to(track, { yPercent: -200, duration: 1.0, ease: 'power2.inOut' }, 3.2);
       // Blur and exit Slide 1 text
-      tl.to(textLeftRefs.current[1], { opacity: 0, filter: 'blur(12px)', y: -20, duration: 0.5, ease: 'power2.in' }, 3.2);
-      tl.to(textRightRefs.current[1], { opacity: 0, filter: 'blur(12px)', y: -20, duration: 0.5, ease: 'power2.in' }, 3.2);
+      tl.to(textLeftRefs.current[1], { opacity: 0, filter: 'blur(14px)', y: -20, duration: 0.5, ease: 'power2.in' }, 3.2);
+      tl.to(textRightRefs.current[1], { opacity: 0, filter: 'blur(14px)', y: -20, duration: 0.5, ease: 'power2.in' }, 3.2);
       // Unblur and enter Slide 2 text
       tl.to(textLeftRefs.current[2], { opacity: 1, filter: 'blur(0px)', y: 0, duration: 0.6, ease: 'power2.out' }, 3.6);
       tl.to(textRightRefs.current[2], { opacity: 1, filter: 'blur(0px)', y: 0, duration: 0.6, ease: 'power2.out' }, 3.6);
 
       // ─── PART 4: Slide 2 holds, then glides to Slide 3 (Door Cutout) ───
-      // Hold Slide 2 in focus until 4.6s
       tl.to({}, { duration: 0.5 });
 
       // Move track by -300%
       tl.to(track, { yPercent: -300, duration: 1.0, ease: 'power2.inOut' }, 4.6);
       // Blur and exit Slide 2 text
-      tl.to(textLeftRefs.current[2], { opacity: 0, filter: 'blur(12px)', y: -20, duration: 0.5, ease: 'power2.in' }, 4.6);
-      tl.to(textRightRefs.current[2], { opacity: 0, filter: 'blur(12px)', y: -20, duration: 0.5, ease: 'power2.in' }, 4.6);
+      tl.to(textLeftRefs.current[2], { opacity: 0, filter: 'blur(14px)', y: -20, duration: 0.5, ease: 'power2.in' }, 4.6);
+      tl.to(textRightRefs.current[2], { opacity: 0, filter: 'blur(14px)', y: -20, duration: 0.5, ease: 'power2.in' }, 4.6);
       // Unblur and enter Slide 3 text
       tl.to(textLeftRefs.current[3], { opacity: 1, filter: 'blur(0px)', y: 0, duration: 0.6, ease: 'power2.out' }, 5.0);
       tl.to(textRightRefs.current[3], { opacity: 1, filter: 'blur(0px)', y: 0, duration: 0.6, ease: 'power2.out' }, 5.0);
@@ -193,7 +189,7 @@ export default function ScrollDeckV6({ id = 'deck', onSelectCard }) {
     <section className="v6-deck-section" id={id} ref={containerRef}>
       <div className="v6-deck-wrapper">
         
-        {/* 1. Introductory Atelier Philosophy Quote (user requested: comes first!) */}
+        {/* 1. Introductory Atelier Philosophy Quote */}
         <div className="v6-deck-quote-screen" ref={quoteRef}>
           <span className="v6-deck-quote-tag">FUSION INDIA // PHILOSOPHY</span>
           <blockquote className="v6-deck-quote-text">
@@ -201,7 +197,7 @@ export default function ScrollDeckV6({ id = 'deck', onSelectCard }) {
           </blockquote>
         </div>
 
-        {/* 2. Pinned 3-Column Deck Stage with Continuous Filmstrip Track */}
+        {/* 2. Pinned 3-Column Deck Stage with Large Monumental Visuals */}
         <div className="v6-deck-stage" ref={stageRef}>
           <div className="v6-deck-columns-grid">
             
@@ -220,7 +216,7 @@ export default function ScrollDeckV6({ id = 'deck', onSelectCard }) {
               ))}
             </div>
 
-            {/* Center Column: Square Card Viewport with Continuous Filmstrip Track */}
+            {/* Center Column: Monumental Square Card Viewport with Continuous Filmstrip Track */}
             <div className="v6-deck-center-col">
               <div className="v6-deck-card-viewport">
                 <div className="v6-deck-filmstrip-track" ref={trackRef}>
