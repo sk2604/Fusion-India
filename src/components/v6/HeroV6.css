@@ -1,5 +1,6 @@
 /* ========================================================
-   V6 HERO (V4 BLUR SCROLL EFFECT + V3 PHOTO + MONUMENTAL BRAND)
+   V6 HERO (V3 EDITORIAL PHOTO + MONUMENTAL SERIF + V4 SCROLL BLUR)
+   Matches exact layout from user reference screenshot
    ======================================================== */
 
 .v6-hero-wrapper {
@@ -16,10 +17,9 @@
   height: 100dvh;
   z-index: 1;
   overflow: hidden;
-  background-color: #000000;
+  background-color: #080808;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
   pointer-events: auto;
   transition: opacity 0.1s linear;
 }
@@ -27,6 +27,8 @@
 .v6-hero-bg {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
   transform-origin: center center;
   transition: transform 0.1s linear;
 }
@@ -35,81 +37,161 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center 25%;
   display: block;
 }
 
-.v6-hero-overlay {
+/* Luxury Editorial Scrim for text readability */
+.v6-hero-scrim {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.78) 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0.1) 35%,
+    rgba(0, 0, 0, 0.25) 60%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
 }
 
-/* Center Brand Box with Parallax & Blur */
-.v6-hero-center-box {
+/* ──────────────────────────────────────────────────────────
+   CONTENT OVERLAY: ANCHORED AT BOTTOM WITH HEADER CLEARANCE
+   ────────────────────────────────────────────────────────── */
+.v6-hero-content {
   position: relative;
-  z-index: 30;
+  z-index: 20;
+  width: 100%;
+  padding: max(88px, 12vh) 4vw 4.5vh;
+  box-sizing: border-box;
+  transition: transform 0.1s linear, filter 0.1s linear;
+  pointer-events: auto;
+}
+
+.v6-hero-bottom-lockup {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 4vw;
+  width: 100%;
+}
+
+/* Left Brand Lockup */
+.v6-hero-brand-lockup {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 0 1.5rem;
-  transition: transform 0.1s linear, filter 0.1s linear;
+  gap: 8px;
+  flex: 1 1 auto;
 }
 
-.v6-hero-credo {
+.v6-hero-eyebrow {
   font-family: var(--v6-font-sans);
-  font-size: clamp(13px, 11px + 0.6vw, 18px);
-  font-weight: 500;
-  letter-spacing: 0.18em;
+  font-size: clamp(0.75rem, 1.05vw, 1.05rem);
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.82);
-  margin-bottom: 1.25rem;
+  color: rgba(255, 255, 255, 0.88);
+  font-weight: 600;
+  margin: 0;
 }
 
-.v6-hero-brand-name {
-  font-family: var(--v6-font-display);
-  font-size: clamp(48px, 28px + 6vw, 110px);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  color: #ffffff;
-  line-height: 0.95;
-  margin: 0;
+.v6-hero-monumental {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: clamp(3.5rem, 9.5vw, 10.5rem) !important;
+  font-weight: 400 !important;
+  line-height: 0.88 !important;
+  letter-spacing: -0.03em !important;
   text-transform: uppercase !important;
-  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  color: #ffffff !important;
+  margin: 0 !important;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.45);
 }
 
 .v6-hero-dot {
   color: #e50914;
 }
 
-/* Scroll Indicator Prompt */
-.v6-hero-scroll-btn {
-  position: absolute;
-  bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 30;
+/* Right Action Lockup */
+.v6-hero-action {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  color: rgba(255, 255, 255, 0.7);
-  pointer-events: auto;
-  cursor: pointer;
-  transition: color 0.2s ease;
+  align-items: flex-end;
+  gap: 16px;
+  padding-bottom: 0.6vh;
+  flex-shrink: 0;
 }
 
-.v6-hero-scroll-btn:hover {
-  color: #ffffff;
+.v6-hero-credo-micro {
+  font-family: var(--v6-font-sans);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 400;
+  max-width: 280px;
+  text-align: right;
+  margin: 0;
+}
+
+/* Explore Cluster (Pill Button + Animated Drop Line) */
+.v6-hero-explore-cluster {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.v6-hero-explore-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #0a0a0a;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-family: var(--v6-font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  user-select: none;
+}
+
+.v6-hero-explore-cluster:hover .v6-hero-explore-pill {
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.3);
+}
+
+.v6-pill-arrow {
+  font-size: 0.88rem;
+  line-height: 1;
+  display: inline-block;
+  animation: v6-arrow-bounce 2s infinite ease-in-out;
+}
+
+@keyframes v6-arrow-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}
+
+/* Subtle Animated Scroll Drop Line */
+.v6-hero-scroll-line-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-right: 6px;
 }
 
 .v6-scroll-line {
   width: 1px;
-  height: 32px;
+  height: 28px;
   background-color: rgba(255, 255, 255, 0.3);
   position: relative;
   overflow: hidden;
+  display: block;
 }
 
 .v6-scroll-line::after {
@@ -129,6 +211,7 @@
   100% { transform: translateY(100%); }
 }
 
+/* 100vh spacer so the next white surface section smoothly scrolls over it */
 .v6-hero-spacer {
   height: 100vh;
   height: 100dvh;
@@ -137,13 +220,58 @@
   z-index: 1;
 }
 
-@media (max-width: 768px) {
-  .v6-hero-credo {
-    letter-spacing: 0.1em;
-    font-size: 12px;
-    margin-bottom: 0.85rem;
+/* ──────────────────────────────────────────────────────────
+   RESPONSIVE DESIGN (MOBILE & TABLET)
+   ────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .v6-hero-bottom-lockup {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.75rem;
   }
-  .v6-hero-brand-name {
-    font-size: clamp(38px, 24px + 5vw, 64px);
+
+  .v6-hero-monumental {
+    font-size: clamp(3rem, 11vw, 6rem) !important;
+    line-height: 0.92 !important;
+  }
+
+  .v6-hero-action {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .v6-hero-credo-micro {
+    text-align: left;
+    max-width: 90%;
+    font-size: 0.8rem;
+  }
+
+  .v6-hero-explore-cluster {
+    align-items: flex-start;
+  }
+
+  .v6-hero-scroll-line-indicator {
+    justify-content: flex-start;
+    padding-left: 20px;
+  }
+}
+
+@media (max-width: 540px) {
+  .v6-hero-content {
+    padding: max(72px, 10vh) 5vw 4vh;
+  }
+
+  .v6-hero-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+  }
+
+  .v6-hero-monumental {
+    font-size: clamp(2.6rem, 12vw, 4.2rem) !important;
+  }
+
+  .v6-hero-explore-pill {
+    padding: 10px 20px;
+    font-size: 0.68rem;
   }
 }

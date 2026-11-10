@@ -35,29 +35,54 @@ export default function HeroV6({ onExplore }) {
             alt="Fusion India High Fashion Campaign" 
             className="v6-hero-img"
           />
-          <div className="v6-hero-overlay" />
+          <div className="v6-hero-scrim" />
         </div>
 
-        {/* Center Brand Statement with V4 Smooth Parallax & Blur */}
+        {/* Editorial Content Container (Pinned Bottom Lockup matching User Reference) */}
         <div 
-          className="v6-hero-center-box"
+          className="v6-hero-content"
           style={{
             transform: `translateY(${sloganY}px)`,
             filter: `blur(${sloganBlur}px)`
           }}
         >
-          <p className="v6-hero-credo">
-            Right Product — Right Price and Right Performance
-          </p>
-          <h1 className="v6-hero-brand-name">
-            FUSION INDIA<span className="v6-hero-dot">.</span>
-          </h1>
-        </div>
+          {/* Bottom Monumental Lockup */}
+          <div className="v6-hero-bottom-lockup">
+            
+            {/* Left: Eyebrow + Monumental Serif Title */}
+            <div className="v6-hero-brand-lockup">
+              <span className="v6-hero-eyebrow">
+                Right Product — Right Price and Right Performance
+              </span>
+              <h1 className="v6-hero-monumental">
+                FUSION INDIA<span className="v6-hero-dot">.</span>
+              </h1>
+            </div>
 
-        {/* Scroll Indicator Prompt (Preserved exactly as requested) */}
-        <div className="v6-hero-scroll-btn" onClick={onExplore} role="button" tabIndex={0}>
-          <span className="label">SCROLL TO EXPLORE</span>
-          <span className="v6-scroll-line" />
+            {/* Right: Micro-Credo + Scroll To Explore Action */}
+            <div className="v6-hero-action">
+              <p className="v6-hero-credo-micro">
+                Turning global runway directions into ethically manufactured reality.
+              </p>
+              
+              <div 
+                className="v6-hero-explore-cluster"
+                onClick={onExplore}
+                role="button"
+                tabIndex={0}
+                aria-label="Scroll to explore"
+              >
+                <div className="v6-hero-explore-pill">
+                  <span>SCROLL TO EXPLORE</span>
+                  <span className="v6-pill-arrow">↓</span>
+                </div>
+                <div className="v6-hero-scroll-line-indicator">
+                  <span className="v6-scroll-line" />
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
 
