@@ -1,7 +1,10 @@
 /* ========================================================
-   V6 SCROLL DECK (PINNED FILMSTRIP 3-COLUMN STAGE)
-   Matches screen recording: continuous vertical sliding track,
-   butter-smooth blur crossfade, zero horizontal overflow.
+   V6 SCROLL DECK (PINNED FILMSTRIP 3-COLUMN STAGE + QUOTE)
+   Matches screen recording:
+   1. Introductory philosophy quote
+   2. Butter-smooth vertical sliding filmstrip track
+   3. Dynamic text blur crossfade
+   4. Zero horizontal overflow
    ======================================================== */
 
 .v6-deck-section {
@@ -19,8 +22,59 @@
   z-index: 10;
 }
 
-.v6-deck-stage {
+.v6-deck-wrapper {
   position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ──────────────────────────────────────────────────────────
+   1. INTRODUCTORY ATELIER PHILOSOPHY QUOTE
+   ────────────────────────────────────────────────────────── */
+.v6-deck-quote-screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 4vw;
+  text-align: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.v6-deck-quote-tag {
+  font-family: var(--v6-font-sans);
+  font-size: clamp(11px, 0.8vw, 13px);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #737373;
+  margin-bottom: 1.5rem;
+}
+
+.v6-deck-quote-text {
+  font-family: var(--v6-font-display);
+  font-size: clamp(30px, 18px + 2.5vw, 56px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  color: #000000;
+  max-width: 24ch;
+  margin: 0;
+  text-transform: none !important;
+}
+
+/* ──────────────────────────────────────────────────────────
+   2. PINNED 3-COLUMN STAGE (STAGE + FILMSTRIP TRACK)
+   ────────────────────────────────────────────────────────── */
+.v6-deck-stage {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   display: flex;
@@ -28,6 +82,7 @@
   justify-content: center;
   padding: 0 4vw;
   box-sizing: border-box;
+  z-index: 20;
 }
 
 /* ─── 3-COLUMN FLANKING GRID ─── */
