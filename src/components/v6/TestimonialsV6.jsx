@@ -59,7 +59,9 @@ export default function TestimonialsV6({ id = 'testimonials' }) {
     const leftCol = leftColRef.current;
     if (!section || !leftCol) return;
 
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 960px)', () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
@@ -78,9 +80,9 @@ export default function TestimonialsV6({ id = 'testimonials' }) {
       );
 
       tl.to({}, { duration: 0.3 });
-    }, section);
+    });
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
 
   return (
