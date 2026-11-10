@@ -6,62 +6,62 @@ import './DoorAndBloomV6.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// 6 Authentic Product Divisions directly matching Fusion India's Collections (fcindia.com)
-// Ladies Wear, Men's Wear, Accessories & Leather, Soft Goods, Hard Goods, Athleisure
+// 6 Authentic Product Divisions matching Fusion India's Collections (fcindia.com)
+// Studio-lit editorial product photography for each division
 const fusionCollections = [
   {
     id: 1,
-    tag: 'DIVISION 01',
+    tag: 'DIV 01',
     category: 'LADIES WEAR',
     sub: 'Tops, Blouses, Hi-Fashion & Dresses',
-    spec: 'Silk, Linen, Embroidered Rayon & Bias Cuts',
+    spec: 'Silk, Linen & Bias Cuts',
     baseAngle: (0 / 6) * 2 * Math.PI, // 12 o'clock
-    img: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop'
+    img: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600&auto=format&fit=crop'
   },
   {
     id: 2,
-    tag: 'DIVISION 02',
+    tag: 'DIV 02',
     category: "MEN'S WEAR",
-    sub: 'Shirts, Hoodies & Tailored Bottoms',
-    spec: 'Fine Egyptian Cotton & French Terry Fleece',
+    sub: 'Shirts, Hoodies & Tailoring',
+    spec: 'Fine Egyptian Cotton & French Terry',
     baseAngle: (1 / 6) * 2 * Math.PI, // 2 o'clock
-    img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop'
+    img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=600&auto=format&fit=crop'
   },
   {
     id: 3,
-    tag: 'DIVISION 03',
+    tag: 'DIV 03',
     category: 'ACCESSORIES & LEATHER',
-    sub: 'Handbags, Belts, Scarves & Footwear',
-    spec: 'Tuscan Full-Grain & Handcrafted Trims',
+    sub: 'Handbags, Belts & Footwear',
+    spec: 'Full-Grain & Bespoke Trims',
     baseAngle: (2 / 6) * 2 * Math.PI, // 4 o'clock
-    img: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=800&auto=format&fit=crop'
+    img: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=600&auto=format&fit=crop'
   },
   {
     id: 4,
-    tag: 'DIVISION 04',
+    tag: 'DIV 04',
     category: 'SOFT GOODS',
-    sub: 'Home Textiles, Throws & Living Linens',
-    spec: 'Jacquard Weaves, Organic Washed Percale',
+    sub: 'Home Textiles & Living Linens',
+    spec: 'Jacquard Weaves & Organic Percale',
     baseAngle: (3 / 6) * 2 * Math.PI, // 6 o'clock
-    img: 'https://images.unsplash.com/photo-1616046229478-9901c5536a45?q=80&w=800&auto=format&fit=crop'
+    img: 'https://images.unsplash.com/photo-1616046229478-9901c5536a45?q=80&w=600&auto=format&fit=crop'
   },
   {
     id: 5,
-    tag: 'DIVISION 05',
+    tag: 'DIV 05',
     category: 'HARD GOODS',
-    sub: 'Ceramics, Marble, Wood & Stoneware',
-    spec: 'Hand-Carved Marble & Studio Stoneware',
+    sub: 'Ceramics, Marble & Stoneware',
+    spec: 'Hand-Carved Marble & Tableware',
     baseAngle: (4 / 6) * 2 * Math.PI, // 8 o'clock
-    img: 'https://images.unsplash.com/photo-1615529182904-14819c35db37?q=80&w=800&auto=format&fit=crop'
+    img: 'https://images.unsplash.com/photo-1615529182904-14819c35db37?q=80&w=600&auto=format&fit=crop'
   },
   {
     id: 6,
-    tag: 'DIVISION 06',
+    tag: 'DIV 06',
     category: 'ATHLEISURE & YOGA',
-    sub: 'Performance Activewear & Seamless Knits',
-    spec: '4-Way Stretch, Recycled Technical Poly',
+    sub: 'Activewear & Seamless Knits',
+    spec: '4-Way Stretch Technical Poly',
     baseAngle: (5 / 6) * 2 * Math.PI, // 10 o'clock
-    img: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=800&auto=format&fit=crop'
+    img: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600&auto=format&fit=crop'
   }
 ];
 
@@ -72,6 +72,7 @@ export default function DoorAndBloomV6({ id = 'blooming', onSelectShot }) {
   const [doorScale, setDoorScale] = useState(1);
   const [autoAngle, setAutoAngle] = useState(0);
   const [hoveredShot, setHoveredShot] = useState(null);
+  const [exitOpacity, setExitOpacity] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
 
   const isHoveredRef = useRef(false);
@@ -87,8 +88,7 @@ export default function DoorAndBloomV6({ id = 'blooming', onSelectShot }) {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // ─── CONTINUOUS AUTO-ROTATION LOOP ───
-  // Cards smoothly orbit on their own continuously, pausing gently on hover
+  // ─── CONTINUOUS SMOOTH AUTO-ROTATION ───
   useEffect(() => {
     let animId;
     let lastTime = performance.now();
@@ -98,8 +98,8 @@ export default function DoorAndBloomV6({ id = 'blooming', onSelectShot }) {
       lastTime = time;
 
       if (!isHoveredRef.current && bloomProgressRef.current > 0.05) {
-        // Continuous smooth clockwise auto-rotation: 1 full 360 deg turn in ~36 seconds
-        autoAngleRef.current = (autoAngleRef.current + delta * 0.175) % (Math.PI * 2);
+        // Continuous smooth clockwise auto-rotation (~38 seconds per full turn)
+        autoAngleRef.current = (autoAngleRef.current + delta * 0.165) % (Math.PI * 2);
         setAutoAngle(autoAngleRef.current);
       }
       animId = requestAnimationFrame(updateOrbit);
@@ -118,7 +118,7 @@ export default function DoorAndBloomV6({ id = 'blooming', onSelectShot }) {
       ScrollTrigger.create({
         trigger: el,
         start: 'top top',
-        end: '+=3200',
+        end: '+=3000',
         pin: true,
         anticipatePin: 1,
         scrub: 0.6,
@@ -130,9 +130,9 @@ export default function DoorAndBloomV6({ id = 'blooming', onSelectShot }) {
             setDoorScale(1);
             setDoorOpacity(1);
           } 
-          // ─── Phase 2: Exponential Zoom In into dark universe (0.22 -> 0.52) ───
-          else if (p <= 0.52) {
-            const t = (p - 0.22) / 0.30;
+          // ─── Phase 2: Exponential Zoom In (0.22 -> 0.50) ───
+          else if (p <= 0.50) {
+            const t = (p - 0.22) / 0.28;
             const easedScale = 1 + Math.pow(t, 2.4) * 24;
             setDoorScale(easedScale);
             setDoorOpacity(Math.max(0, 1 - Math.pow(t, 1.5) * 1.3));
@@ -142,23 +142,29 @@ export default function DoorAndBloomV6({ id = 'blooming', onSelectShot }) {
             setDoorOpacity(0);
           }
 
-          // ─── Phase 3: Radial Blooming (0.42 -> 0.90) ───
+          // ─── Phase 3: Radial Blooming (0.42 -> 0.88) ───
           if (p < 0.42) {
             setBloomProgress(0);
             bloomProgressRef.current = 0;
-          } else if (p <= 0.90) {
-            const bT = (p - 0.42) / 0.48;
+            setExitOpacity(1);
+          } else if (p <= 0.88) {
+            const bT = (p - 0.42) / 0.46;
             const easedBloom = 1 - Math.pow(1 - bT, 2.2);
             setBloomProgress(easedBloom);
             bloomProgressRef.current = easedBloom;
+            setExitOpacity(1);
           } else {
+            // Full bloom
             setBloomProgress(1);
             bloomProgressRef.current = 1;
+            // Clean exit fadeout so cards don't bleed into next section
+            const exitT = (p - 0.88) / 0.12;
+            setExitOpacity(Math.max(0, 1 - exitT * 1.5));
           }
 
-          // Dynamically toggle navbar theme on section element
+          // Dynamically toggle navbar theme
           if (el) {
-            const isDark = p > 0.32;
+            const isDark = p > 0.30;
             el.setAttribute('data-nav-theme', isDark ? 'dark' : 'light');
           }
         }
@@ -169,8 +175,8 @@ export default function DoorAndBloomV6({ id = 'blooming', onSelectShot }) {
   }, []);
 
   // Generous orbit radius so cards never crowd or overlap center text
-  const orbitRadiusX = isMobile ? 32 : 36; // in vw
-  const orbitRadiusY = isMobile ? 28 : 31; // in vh
+  const orbitRadiusX = isMobile ? 33 : 38; // in vw
+  const orbitRadiusY = isMobile ? 28 : 32; // in vh
 
   return (
     <section 
@@ -180,7 +186,7 @@ export default function DoorAndBloomV6({ id = 'blooming', onSelectShot }) {
       data-nav-theme={doorOpacity > 0.4 ? 'light' : 'dark'}
     >
       
-      {/* ─── 1. DOOR ZOOM OVERLAY: MODULAR GEOMETRIC "fusion." LOGO (IMAGE 10) ─── */}
+      {/* ─── 1. DOOR ZOOM OVERLAY: MODULAR GEOMETRIC "fusion." LOGO ─── */}
       <div 
         className="v6-door-zoom-layer"
         style={{
@@ -194,17 +200,17 @@ export default function DoorAndBloomV6({ id = 'blooming', onSelectShot }) {
         </div>
       </div>
 
-      {/* ─── 2. BLOOMING GARMENT & LIFESTYLE STAGE (FUSION INDIA COLLECTIONS) ─── */}
-      <div className="v6-bloom-stage" data-nav-theme="dark">
+      {/* ─── 2. BLOOMING COLLECTIONS STAGE ─── */}
+      <div 
+        className="v6-bloom-stage" 
+        data-nav-theme="dark"
+        style={{ opacity: exitOpacity }}
+      >
         
-        {/* Authentic Fusion India Center Statement */}
+        {/* Minimal High-Fashion Center Statement: 2 Clean Lines */}
         <div className="v6-bloom-center-statement">
-          <div className="v6-bloom-category-pills">
-            <span className="v6-bloom-pill-tag">GLOBAL SOURCING ECOSYSTEM</span>
-          </div>
-
           <h2 className="v6-bloom-statement-title">
-            From Runway Ready Garments{' '}
+            The Collections.{' '}
             <span className="v6-bloom-packshot-capsule">
               <img 
                 src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=300&auto=format&fit=crop" 
@@ -213,27 +219,17 @@ export default function DoorAndBloomV6({ id = 'blooming', onSelectShot }) {
                 data-pin-nopin="true"
                 data-pin-no-hover="true"
               />
-            </span>{' '}
-            to Handcrafted Lifestyle Collections.
+            </span>
           </h2>
 
           <p className="v6-bloom-statement-sub">
-            Ladies Wear • Men's Wear • Leather & Accessories • Home Textiles • Hard Goods • Athleisure
+            Six dedicated manufacturing divisions. Crafted in India for global retail.
           </p>
-
-          <div className="v6-bloom-credo-chips">
-            <span className="v6-chip-item">500+ Audited Facilities</span>
-            <span className="v6-chip-dot">•</span>
-            <span className="v6-chip-item">Direct FOB / Full DDP</span>
-            <span className="v6-chip-dot">•</span>
-            <span className="v6-chip-item">Zero Quality Tolerance</span>
-          </div>
         </div>
 
         {/* 6 Clean Portrait Cards Auto-Rotating Clockwise Continuously Around Center */}
         <div className="v6-bloom-orbit-system">
           {fusionCollections.map((shot) => {
-            // Auto-rotation angle + base angle
             const currentAngle = shot.baseAngle + autoAngle;
             const distance = 0.2 + 0.8 * bloomProgress;
             const currentX = Math.cos(currentAngle) * orbitRadiusX * distance;
@@ -246,7 +242,7 @@ export default function DoorAndBloomV6({ id = 'blooming', onSelectShot }) {
                 key={shot.id} 
                 className={`v6-bloom-flying-card ${isHovered ? 'hovered' : ''}`}
                 style={{
-                  transform: `translate(calc(-50% + ${currentX}vw), calc(-50% + ${currentY}vh)) scale(${isHovered ? cardScale * 1.06 : cardScale})`,
+                  transform: `translate(calc(-50% + ${currentX}vw), calc(-50% + ${currentY}vh)) scale(${isHovered ? cardScale * 1.08 : cardScale})`,
                   opacity: bloomProgress > 0.05 ? 1 : bloomProgress * 20,
                   pointerEvents: bloomProgress > 0.3 ? 'auto' : 'none'
                 }}
@@ -262,9 +258,8 @@ export default function DoorAndBloomV6({ id = 'blooming', onSelectShot }) {
                 role="button"
                 tabIndex={0}
               >
-                {/* Clean, luxury presentation card */}
+                {/* Clean, sleek luxury presentation card */}
                 <div className="v6-bloom-card-box">
-                  {/* Subtle top division badge */}
                   <div className="v6-card-top-tag">
                     <span className="v6-tag-pill">{shot.tag}</span>
                   </div>
@@ -278,7 +273,7 @@ export default function DoorAndBloomV6({ id = 'blooming', onSelectShot }) {
                     data-pin-no-hover="true"
                   />
 
-                  {/* Clean bottom information badge */}
+                  {/* Clean bottom information badge visible on hover */}
                   <div className="v6-bloom-card-caption">
                     <span className="v6-caption-title">{shot.category}</span>
                     <span className="v6-caption-sub">{shot.sub}</span>

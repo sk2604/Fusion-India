@@ -1,150 +1,409 @@
 /* ========================================================
-   V6 REACH (OUR REACH & GLOBAL MAP IN GRACE DESIGN LANGUAGE)
+   V6 REACH (V1 STYLE DESKTOP MAP + 3D INTERACTIVE GLOBE FOR MOBILE)
    ======================================================== */
 
 .v6-reach-section {
   position: relative;
-  z-index: 10;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5rem 0;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 6rem 0 7rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
   box-sizing: border-box;
+  z-index: 10;
 }
 
-@media (min-width: 960px) {
-  .v6-reach-section {
-    padding: 0;
-  }
+/* ──────────────────────────────────────────────────────────
+   1. SECTION HEADER (V1 EDITORIAL LOOK)
+   ────────────────────────────────────────────────────────── */
+.v6-reach-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 3rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-wrap: wrap;
 }
 
-.v6-reach-split-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3.5rem;
+.v6-reach-header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.v6-reach-eyebrow {
+  display: inline-flex;
   align-items: center;
-}
-
-@media (min-width: 960px) {
-  .v6-reach-split-grid {
-    grid-template-columns: 1fr 1.25fr;
-    gap: 4rem;
-  }
-}
-
-.v6-reach-left-col {
-  display: flex;
-  flex-direction: column;
-}
-
-.v6-reach-title {
-  font-family: var(--v6-font-display);
-  font-size: clamp(34px, 20px + 3vw, 64px);
-  font-weight: 500;
-  letter-spacing: -0.034em;
-  line-height: 1.05;
-  text-transform: none !important;
-}
-
-.v6-reach-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 2.5rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--v6-black);
-}
-
-@media (max-width: 640px) {
-  .v6-reach-stats-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-}
-
-.v6-reach-stat-item {
-  display: flex;
-  flex-direction: column;
-}
-
-.v6-stat-num {
-  font-family: var(--v6-font-display);
-  font-size: clamp(28px, 18px + 1.2vw, 42px);
+  gap: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
   font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1;
+  margin-bottom: 0.75rem;
 }
 
-.v6-reach-stat-item sup {
-  font-size: 0.55em;
-  font-weight: 400;
+.v6-eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #e50914;
+}
+
+.v6-reach-main-title {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(34px, 4.5vw, 64px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0;
+}
+
+.v6-title-dot {
   color: #e50914;
 }
 
-.v6-reach-hubs-list {
+.v6-reach-header-right {
+  max-width: 480px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 2rem;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
-.v6-hub-tag {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  padding: 4px 12px;
+.v6-reach-subtext {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+}
+
+/* Mode Switcher Toggle */
+.v6-reach-view-toggle {
+  display: inline-flex;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 9999px;
-  border: 1px solid var(--v6-neutral-200);
-  background-color: var(--v6-neutral-100);
-  color: var(--v6-neutral-600);
+  padding: 3px;
+  gap: 4px;
+  width: fit-content;
 }
 
-/* Map Wrapper */
-.v6-reach-right-col {
+.v6-toggle-btn {
+  background: none;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.v6-toggle-btn.active {
+  background-color: #ffffff;
+  color: #000000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ──────────────────────────────────────────────────────────
+   2A. 2D MAP WRAPPER (V1 HIGH-CONTRAST LOOK)
+   ────────────────────────────────────────────────────────── */
+.v6-reach-map-wrapper {
+  position: relative;
   width: 100%;
+  background: radial-gradient(circle at center, rgba(22, 22, 28, 0.7) 0%, rgba(8, 8, 10, 0.98) 75%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: 1.5rem 1rem;
+  margin-bottom: 2.5rem;
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.7);
+}
+
+.v6-presence-svg-map {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Pulses */
+.v6-pulse-hq {
+  fill: none;
+  stroke: #e50914;
+  stroke-width: 1.5;
+  animation: v6PulseWaveHQ 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+.v6-pulse-sub {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.7);
+  stroke-width: 1;
+  animation: v6PulseWaveSub 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+@keyframes v6PulseWaveHQ {
+  0% { r: 5; opacity: 1; }
+  100% { r: 24; opacity: 0; }
+}
+
+@keyframes v6PulseWaveSub {
+  0% { r: 4; opacity: 0.9; }
+  100% { r: 18; opacity: 0; }
+}
+
+/* Map Callouts */
+.v6-map-callout-card {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.v6-map-callout-card:hover,
+.v6-map-callout-card.active {
+  transform: translate(var(--boxX), var(--boxY)) scale(1.04);
+}
+
+.v6-map-callout-title {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.v6-map-callout-subtitle {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 6.8px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* ──────────────────────────────────────────────────────────
+   2B. 3D COBE GLOBE (FOR MOBILE & 3D VIEW)
+   ────────────────────────────────────────────────────────── */
+.v6-reach-globe-wrapper {
+  position: relative;
+  width: 100%;
+  background: radial-gradient(circle at center, rgba(22, 22, 28, 0.6) 0%, rgba(6, 6, 8, 0.98) 75%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 2rem 1rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.8);
+}
+
+.v6-globe-canvas-container {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.v6-reach-map-wrapper {
-  width: 100%;
-  max-width: 800px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  overflow: hidden;
+.v6-cobe-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  cursor: grab;
 }
 
-.v6-badge-text {
-  font-family: var(--v6-font-display);
-  font-size: 8.5px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+.v6-cobe-canvas:active {
+  cursor: grabbing;
+}
+
+.v6-globe-drag-hint {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
   pointer-events: none;
 }
 
-/* Beacons */
-.v6-pulse-hq {
-  fill: rgba(229, 9, 20, 0.4);
-  animation: v6-beacon 2s infinite ease-out;
-  transform-origin: center;
+/* ──────────────────────────────────────────────────────────
+   3. BOTTOM BAR (V1 STYLE STATS + 4 STRATEGIC HUB CARDS)
+   ────────────────────────────────────────────────────────── */
+.v6-reach-bottom-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-.v6-pulse-sub {
-  fill: rgba(255, 255, 255, 0.35);
-  animation: v6-beacon 2s infinite ease-out;
-  transform-origin: center;
+/* Stats Strip */
+.v6-reach-stats-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
 }
 
-@keyframes v6-beacon {
-  0% {
-    r: 4;
-    opacity: 0.8;
+.v6-presence-stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.v6-stat-giant {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(28px, 3.4vw, 48px);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.v6-stat-giant sup {
+  color: #e50914;
+  font-size: 0.55em;
+  margin-left: 2px;
+}
+
+.v6-stat-desc {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 6px;
+}
+
+.v6-stat-divider-vert {
+  display: none;
+}
+
+/* 4 Hub Switcher Cards */
+.v6-presence-hubs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 860px) {
+  .v6-presence-hubs-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
   }
-  100% {
-    r: 16;
-    opacity: 0;
+}
+
+.v6-hub-card {
+  background-color: rgba(20, 20, 24, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 1.25rem;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.v6-hub-card:hover {
+  background-color: rgba(28, 28, 34, 0.9);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.v6-hub-card.active {
+  background-color: rgba(28, 28, 36, 0.95);
+  border-color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.v6-hub-card-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0.35rem;
+}
+
+.v6-hub-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+
+.v6-hub-dot.hq {
+  background-color: #e50914;
+}
+
+.v6-hub-card-name {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.v6-hub-badge-hq {
+  background-color: #e50914;
+  color: #ffffff;
+  font-size: 8.5px;
+  font-weight: 800;
+  padding: 1px 5px;
+  border-radius: 3px;
+  margin-left: auto;
+}
+
+.v6-hub-card-city {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+}
+
+.v6-hub-card-role {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+
+.v6-hub-card-detail {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* ──────────────────────────────────────────────────────────
+   RESPONSIVE DESIGN (MOBILE & TABLET)
+   ────────────────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .v6-reach-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .v6-reach-stats-strip {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 }

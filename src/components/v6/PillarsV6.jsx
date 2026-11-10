@@ -13,21 +13,21 @@ export default function PillarsV6({ id = 'pillars', onExploreSpecs }) {
   };
 
   return (
-    <section className="v6-dot-grid v6-pillars-section" id={id}>
-      <div className="v6-container v6-px">
+    <section className="v6-dot-grid v6-pillars-section" id={id} data-nav-theme="dark">
+      <div className="v6-container v6-px v6-pillars-inner">
         
         {/* 3 Pillars Grid Matching Frame 00:20-00:22 */}
         <div className="v6-pillars-grid">
           
           {/* ─── COLUMN 1: EVERY DETAIL IS PERFECT ─── */}
           <div className="v6-pillar-col">
-            <h3 className="headline-medium text-white mb-5">
+            <h3 className="v6-pillar-heading">
               Every detail is perfect.
             </h3>
             
             {/* Macro Detail Zoom Card with Crosshair */}
             <div 
-              className="v6-pillar-card-lens aspect-square"
+              className="v6-pillar-card-lens"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               onMouseMove={handleMouseMove}
@@ -36,6 +36,8 @@ export default function PillarsV6({ id = 'pillars', onExploreSpecs }) {
                 src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?q=80&w=1200&auto=format&fit=crop" 
                 alt="High Precision Textile Weave" 
                 className="v6-macro-img"
+                data-pin-nopin="true"
+                data-pin-no-hover="true"
                 style={{
                   transformOrigin: `${zoomPos.x}% ${zoomPos.y}%`,
                   transform: isHovered ? 'scale(2.2)' : 'scale(1)'
@@ -46,23 +48,25 @@ export default function PillarsV6({ id = 'pillars', onExploreSpecs }) {
               </span>
             </div>
 
-            <p className="body-default text-neutral-400 mt-5">
+            <p className="v6-pillar-desc">
               Seams, buttons, prints, logos: exactly the item you're selling. Zoom in and check it.
             </p>
           </div>
 
           {/* ─── COLUMN 2: MASTER SAMPLE. EVERY BATCH ─── */}
           <div className="v6-pillar-col">
-            <h3 className="headline-medium text-white mb-5">
+            <h3 className="v6-pillar-heading">
               Master sample. Every batch.
             </h3>
 
             {/* 2x2 Grid matching Frame 00:20 */}
-            <div className="v6-pillar-card aspect-square v6-grid-2x2">
+            <div className="v6-pillar-card v6-grid-2x2">
               <div className="v6-cell">
                 <img 
                   src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=800&auto=format&fit=crop" 
                   alt="CAD Grading" 
+                  data-pin-nopin="true"
+                  data-pin-no-hover="true"
                 />
                 <span className="v6-cell-tag">CAD MARKER</span>
               </div>
@@ -70,6 +74,8 @@ export default function PillarsV6({ id = 'pillars', onExploreSpecs }) {
                 <img 
                   src="https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?q=80&w=800&auto=format&fit=crop" 
                   alt="Assembly" 
+                  data-pin-nopin="true"
+                  data-pin-no-hover="true"
                 />
                 <span className="v6-cell-tag">ASSEMBLY</span>
               </div>
@@ -77,6 +83,8 @@ export default function PillarsV6({ id = 'pillars', onExploreSpecs }) {
                 <img 
                   src="https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?q=80&w=800&auto=format&fit=crop" 
                   alt="Wash Lab" 
+                  data-pin-nopin="true"
+                  data-pin-no-hover="true"
                 />
                 <span className="v6-cell-tag">WASH LAB</span>
               </div>
@@ -84,24 +92,26 @@ export default function PillarsV6({ id = 'pillars', onExploreSpecs }) {
                 <img 
                   src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800&auto=format&fit=crop" 
                   alt="Golden Seal" 
+                  data-pin-nopin="true"
+                  data-pin-no-hover="true"
                 />
                 <span className="v6-cell-tag">GOLDEN SEAL</span>
               </div>
             </div>
 
-            <p className="body-default text-neutral-400 mt-5">
+            <p className="v6-pillar-desc">
               Created exclusively for your brand. Zero batch deviation from pre-production to 50,000 units.
             </p>
           </div>
 
           {/* ─── COLUMN 3: IT FITS INTO YOUR SYSTEMS ─── */}
           <div className="v6-pillar-col">
-            <h3 className="headline-medium text-white mb-5">
+            <h3 className="v6-pillar-heading">
               It fits into your systems.
             </h3>
 
             {/* Concentric Orbit with Badges matching Frame 00:21 */}
-            <div className="v6-pillar-card aspect-square v6-orbit-card">
+            <div className="v6-pillar-card v6-orbit-card">
               <div className="v6-orbit-stage">
                 
                 <span className="v6-ring v6-ring-outer" />
@@ -136,8 +146,8 @@ export default function PillarsV6({ id = 'pillars', onExploreSpecs }) {
               </div>
             </div>
 
-            <p className="body-default text-neutral-400 mt-5">
-              Tech packs in, sealed containers out: direct EDI & ERP synchronization with your European warehouse network.
+            <p className="v6-pillar-desc">
+              Tech packs in, sealed containers out: direct EDI & ERP synchronization with European warehouses.
             </p>
           </div>
 
@@ -158,4 +168,3 @@ export default function PillarsV6({ id = 'pillars', onExploreSpecs }) {
     </section>
   );
 }
-

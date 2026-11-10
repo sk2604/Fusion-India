@@ -4,8 +4,8 @@
    - Standalone modular geometric "fusion." logo (Image 10)
    - First frame rock-solid hold
    - Exponential zoom plunging into dark dot-grid
-   - 6 clean un-crowded product division cards auto-rotating continuously clockwise
-   - Authentic Fusion India collections (Ladies Wear, Men's Wear, Leather, Soft Goods, Hard Goods, Athleisure)
+   - 6 sleek compact product division cards auto-rotating continuously clockwise
+   - Zero collision with center statement (wide orbit + compact footprint)
    ======================================================== */
 
 .v6-door-section {
@@ -24,7 +24,7 @@
 }
 
 /* ──────────────────────────────────────────────────────────
-   1. DOOR ZOOM LAYER (CLEAN WHITE BG + MODULAR FUSION LOGO MATCHING IMAGE 10)
+   1. DOOR ZOOM LAYER (CLEAN WHITE BG + MODULAR FUSION LOGO)
    ────────────────────────────────────────────────────────── */
 .v6-door-zoom-layer {
   position: absolute;
@@ -56,7 +56,7 @@
 }
 
 /* ──────────────────────────────────────────────────────────
-   2. BLOOMING GARMENT STAGE (FUSION INDIA COLLECTIONS)
+   2. BLOOMING GARMENT STAGE
    ────────────────────────────────────────────────────────── */
 .v6-bloom-stage {
   position: relative;
@@ -65,52 +65,35 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: opacity 0.2s ease;
 }
 
-/* Center Statement (Spacious, Clear, Authoritative) */
+/* Center Statement (Compact, 2 Clean Lines, Maximum Breathing Room) */
 .v6-bloom-center-statement {
   position: relative;
   z-index: 35;
-  max-width: 42ch;
+  max-width: 28ch;
   text-align: center;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   pointer-events: none;
-}
-
-.v6-bloom-category-pills {
-  margin-bottom: 0.9rem;
-}
-
-.v6-bloom-pill-tag {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #ff3333;
-  background: rgba(255, 51, 51, 0.12);
-  padding: 4px 14px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 51, 51, 0.28);
-  display: inline-block;
 }
 
 .v6-bloom-statement-title {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(23px, 2.6vw, 40px);
+  font-size: clamp(24px, 2.8vw, 42px);
   font-weight: 500;
-  line-height: 1.22;
+  line-height: 1.18;
   letter-spacing: -0.035em;
   color: #ffffff;
-  margin: 0 0 0.85rem 0;
+  margin: 0;
   display: inline;
 }
 
 .v6-bloom-packshot-capsule {
   display: inline-block;
   vertical-align: middle;
-  width: clamp(40px, 3.8vw, 54px);
-  height: clamp(28px, 2.7vw, 38px);
+  width: clamp(38px, 3.4vw, 50px);
+  height: clamp(26px, 2.4vw, 36px);
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.45);
@@ -127,35 +110,12 @@
 
 .v6-bloom-statement-sub {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(12px, 1.1vw, 15px);
+  font-size: clamp(12px, 1.05vw, 15px);
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.7);
   letter-spacing: 0.01em;
-  margin: 0.6rem 0 0 0;
-  line-height: 1.45;
-}
-
-.v6-bloom-credo-chips {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.7rem;
-  flex-wrap: wrap;
-  margin-top: 0.85rem;
-}
-
-.v6-chip-item {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 10.5px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
-}
-
-.v6-chip-dot {
-  color: rgba(255, 255, 255, 0.3);
-  font-size: 12px;
+  margin: 0.65rem 0 0 0;
+  line-height: 1.4;
 }
 
 /* Orbit Blooming System (True Absolute Center with Wide Orbit) */
@@ -169,13 +129,13 @@
   pointer-events: none;
 }
 
-/* Clean Portrait Cards matching Reference Image 4 */
+/* Sleek Compact Portrait Cards matching Grace Reference */
 .v6-bloom-flying-card {
   position: absolute;
   top: 0;
   left: 0;
-  width: clamp(135px, 13.5vw, 215px);
-  height: clamp(185px, 18.5vw, 290px);
+  width: clamp(115px, 11vw, 150px);
+  height: clamp(155px, 15vw, 205px);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
   will-change: transform, opacity;
   cursor: pointer;
@@ -185,33 +145,33 @@
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 14px;
+  border-radius: 12px;
   overflow: hidden;
   background-color: #171717;
   border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6);
 }
 
 /* Subtle top division badge */
 .v6-card-top-tag {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 8px;
+  left: 8px;
   z-index: 10;
 }
 
 .v6-tag-pill {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: #ffffff;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 9px;
+  font-size: 8.5px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 4px 8px;
-  border-radius: 6px;
+  padding: 3px 7px;
+  border-radius: 5px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
@@ -224,7 +184,7 @@
 }
 
 .v6-bloom-flying-card:hover .v6-bloom-photo-img {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
 /* Subtle clean bottom tag visible on hover */
@@ -233,7 +193,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 1.4rem 0.85rem 0.75rem;
+  padding: 1.2rem 0.75rem 0.65rem;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 65%, transparent 100%);
   display: flex;
   flex-direction: column;
@@ -250,7 +210,7 @@
 
 .v6-caption-title {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -259,19 +219,19 @@
 
 .v6-caption-sub {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 9.5px;
+  font-size: 8.5px;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.88);
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
 .v6-caption-spec {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 8.5px;
+  font-size: 8px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.65);
   letter-spacing: 0.02em;
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 /* ──────────────────────────────────────────────────────────
@@ -279,11 +239,11 @@
    ────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .v6-bloom-center-statement {
-    max-width: 88vw;
+    max-width: 85vw;
   }
 
   .v6-bloom-flying-card {
-    width: clamp(100px, 28vw, 150px);
-    height: clamp(130px, 38vw, 200px);
+    width: clamp(90px, 24vw, 130px);
+    height: clamp(120px, 32vw, 175px);
   }
 }
