@@ -2,27 +2,27 @@ import React from 'react';
 import './GraceTestimonials.css';
 
 const clientLogos = [
-  'ZARA', 'H&M', 'MANGO', 'COS', 'ACNE STUDIOS', 'TOMMY HILFIGER', 'ARKET'
+  'ZARA', 'H&M GROUP', 'MANGO', 'COS', 'ACNE STUDIOS', 'TOMMY HILFIGER', 'ARKET'
 ];
 
 const testimonials = [
   {
-    quote: 'For our online collections and flagship stores, we need continuous high-volume production, ethical compliance, and rapid prototyping. With Fusion, we have',
-    highlight: 'drastically accelerated product delivery and brought new articles to market weeks ahead of schedule',
+    quote: 'For our seasonal European collections and retail stores, we require impeccable fabric drape, strict ethical compliance, and reliable shipment timelines. With Fusion, we have',
+    highlight: 'consistently received exceptional garment finishing and brought new seasonal ranges to market ahead of schedule',
     author: 'Felix Wolf',
     role: 'Head of Sourcing & Operations, European Retail Group'
   },
   {
-    quote: 'Fusion has become an indispensable creative and industrial engine for us, spanning tailored apparel, organic cottons, and outerwear, all from',
-    highlight: 'one unified, completely audited supply source in Gurugram',
+    quote: 'Fusion is our trusted one-stop sourcing partner, delivering woven tailoring, fine silks, organic jerseys, and leather goods, all coordinated through',
+    highlight: 'their central 40,000 sq.ft manufacturing and design campus in Gurugram, India',
     author: 'Astrid Lindqvist',
-    role: 'Creative Director, Nordic Apparel House'
+    role: 'Creative Buying Director, Nordic Fashion Alliance'
   },
   {
-    quote: 'Fusion fits seamlessly into our corporate buying workflow. Their 40,000 sq.ft design campus in India and local presence in Germany consistently convinces our board with',
-    highlight: 'flawless garment hand-feel, zero child-labour verification, and transparent FOB pricing',
+    quote: 'Working with Fusion eliminated the uncertainty of traditional factory brokers. Their transparent FOB pricing, local presence in Germany, and SEDEX audit verification gives us',
+    highlight: 'absolute product security and uncompromised quality from yarn to container',
     author: 'Markus Weber',
-    role: 'VP Global Supply Chain, Continental Fashion Brand'
+    role: 'VP Global Supply Chain, Continental Brand Group'
   }
 ];
 
@@ -33,15 +33,15 @@ export default function GraceTestimonials() {
         
         {/* Head */}
         <div className="grace-test-head">
-          <span className="test-kicker">EXECUTIVE TESTIMONIALS // CLIENT TRUST</span>
+          <span className="test-kicker">EXECUTIVE TESTIMONIALS // INDUSTRY PARTNERSHIPS</span>
           <h2 className="test-title">
-            Trusted across <em>European & Global</em> buying houses.
+            Trusted by <em>Tier-1 European</em> buying houses.
           </h2>
         </div>
 
         {/* Client Logos Strip */}
         <div className="test-logos-bar">
-          <span className="logos-label">IN ACTIVE PRODUCTION FOR:</span>
+          <span className="logos-label">PARTNERING WITH GLOBAL APPAREL BRANDS:</span>
           <div className="logos-row">
             {clientLogos.map((logo, i) => (
               <span key={i} className="client-logo-item">{logo}</span>

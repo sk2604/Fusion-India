@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import './GraceCTA.css';
 
 export default function GraceCTA({ onOpenModal }) {
@@ -12,12 +12,12 @@ export default function GraceCTA({ onOpenModal }) {
           
           <h2 className="cta-huge-title">
             Your collection.<br />
-            <em>Without limits.</em>
+            <em>Manufactured with discipline.</em>
           </h2>
 
           <p className="cta-desc">
-            From initial CAD blueprint to audited mass delivery across Scandinavia, Germany, and the USA. 
-            Begin your production run with Fusion.
+            From initial CAD blueprint to audited mass container delivery across Scandinavia, Germany, and the USA. 
+            Connect directly with our Chief Sourcing Team.
           </p>
 
           <div className="cta-action-row">
@@ -26,13 +26,13 @@ export default function GraceCTA({ onOpenModal }) {
               className="cta-master-btn"
               onClick={onOpenModal}
             >
-              <span>BOOK AN ATELIER SESSION</span>
+              <span>REQUEST SOURCING INTAKE</span>
               <ArrowRight size={16} />
             </button>
           </div>
 
           <div className="cta-meta-bar">
-            <span>40,000 SQ.FT CAMPUS</span>
+            <span>40,000 SQ.FT GURUGRAM CAMPUS</span>
             <span>•</span>
             <span>500+ AUDITED MILLS</span>
             <span>•</span>

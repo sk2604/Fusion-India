@@ -8,29 +8,29 @@ export default function GraceMetrics({ onBookDemo }) {
         
         {/* Top Header */}
         <div className="metrics-header">
-          <span className="metrics-kicker">EFFICIENCY ARCHITECTURE</span>
+          <span className="metrics-kicker">THE FUSION INDIA ADVANTAGE</span>
           <h2 className="metrics-title">
-            The same global collection.<br />
-            <em>One-fifth of the turnaround time.</em>
+            The Right Product. The Right Price.<br />
+            <em>The Right Performance.</em>
           </h2>
         </div>
 
-        {/* 3 Giant Metric Pillars (Exact Grace Layout) */}
+        {/* 3 Giant Metric Pillars (Exact Grace Layout, Real Sourcing Metrics) */}
         <div className="metrics-triple-grid">
           
           <div className="metric-unit-card">
-            <span className="metric-huge-number">80%</span>
-            <span className="metric-unit-label">Reduction in sampling freight & physical iteration cycles</span>
+            <span className="metric-huge-number">15+</span>
+            <span className="metric-unit-label">Years of disciplined global fashion sourcing & manufacturing</span>
           </div>
 
           <div className="metric-unit-card">
-            <span className="metric-huge-number">100%</span>
-            <span className="metric-unit-label">Audited ethical trading (SEDEX, BSCI, GOTS certified mills)</span>
+            <span className="metric-huge-number">500+</span>
+            <span className="metric-unit-label">Audited Tier-1 mills with zero child labour & living wage guarantee</span>
           </div>
 
           <div className="metric-unit-card">
             <span className="metric-huge-number">72h</span>
-            <span className="metric-unit-label">Master physical prototype ready from our Gurugram campus</span>
+            <span className="metric-unit-label">Physical master prototype cut and finished at our Gurugram campus</span>
           </div>
 
         </div>
@@ -38,8 +38,8 @@ export default function GraceMetrics({ onBookDemo }) {
         {/* Comparison Callout */}
         <div className="metrics-callout-row">
           <p className="callout-p">
-            Traditional sourcing brokers require 6 to 8 weeks of courier back-and-forth and steep margin markups. 
-            Fusion engineers your master physical sample in days and scales seamlessly to volume production.
+            "We do not broker factories. We engineer the bridge between European design vision and audited ethical scale. 
+            From initial CAD blueprint to finished container delivery worldwide."
           </p>
 
           <button 
@@ -47,7 +47,7 @@ export default function GraceMetrics({ onBookDemo }) {
             className="callout-cta-btn"
             onClick={onBookDemo}
           >
-            <span>BOOK ATELIER SESSION</span>
+            <span>REQUEST SOURCING CONSULTATION</span>
           </button>
         </div>
 

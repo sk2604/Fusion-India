@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 import './GraceHero.css';
 
-const words = ['You', 'decide', 'what', 'the', 'world', 'sees', 'and', 'wears.'];
+const words = ['You', 'design', 'what', 'the', 'world', 'wears.'];
 
 export default function GraceHero({ onExplore }) {
   const [activeWordIdx, setActiveWordIdx] = useState(0);
@@ -11,7 +11,7 @@ export default function GraceHero({ onExplore }) {
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveWordIdx((prev) => (prev + 1) % words.length);
-    }, 450);
+    }, 550);
     return () => clearInterval(timer);
   }, []);
 
@@ -21,13 +21,13 @@ export default function GraceHero({ onExplore }) {
       <div className="grace-hero-bg">
         <img 
           src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=2400&auto=format&fit=crop" 
-          alt="Fusion Atelier Model" 
+          alt="Fusion India Atelier" 
           className="grace-hero-img"
         />
         <div className="grace-hero-scrim" />
       </div>
 
-      {/* Center Slogan (Exact Grace Typography & Framing) */}
+      {/* Center Slogan (Grace Typography & Stance, Real Sourcing Content) */}
       <div className="grace-hero-content">
         <motion.span 
           className="grace-kicker-label"
@@ -35,13 +35,13 @@ export default function GraceHero({ onExplore }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          AN ATELIER WITHOUT LIMITS.
+          A GLOBAL SOURCING ATELIER // EST. 1998
         </motion.span>
 
         <h1 className="grace-hero-headline">
           <span className="grace-kinetic-word">{words[activeWordIdx]}</span>
           <span className="grace-headline-rest">
-            decides what the world wears.
+            manufactured at audited scale.
           </span>
         </h1>
 
@@ -51,8 +51,8 @@ export default function GraceHero({ onExplore }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.25 }}
         >
-          From your tech-pack becomes an entire production run. In days.<br />
-          We take care of the ethical scale and audited craft.
+          Direct supply chain partner linking European runway vision to audited Indian manufacturing.<br />
+          Women’s atelier, men’s tailoring, fine leather goods, and sustainable outerwear.
         </motion.p>
 
         <motion.div 
@@ -66,7 +66,7 @@ export default function GraceHero({ onExplore }) {
             className="grace-btn-white"
             onClick={onExplore}
           >
-            <span>EXPLORE THE ATELIER</span>
+            <span>EXPLORE SOURCING DIVISIONS</span>
             <ArrowDown size={14} />
           </button>
         </motion.div>
@@ -76,7 +76,7 @@ export default function GraceHero({ onExplore }) {
       <div className="grace-hero-bottom-bar">
         <span className="bar-unit">GURUGRAM HQ // 40,000 SQ.FT CAMPUS</span>
         <span className="bar-unit">SCANDINAVIA • GERMANY • NORTH AMERICA</span>
-        <span className="bar-unit">500+ AUDITED MILLS</span>
+        <span className="bar-unit">500+ AUDITED TIER-1 MILLS</span>
       </div>
     </section>
   );
