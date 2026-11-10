@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './NavbarV6.css';
 
 export default function NavbarV6({ onOpenDrawer }) {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 80);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) {
@@ -11,17 +22,17 @@ export default function NavbarV6({ onOpenDrawer }) {
   };
 
   return (
-    <nav className="v6-nav-fixed">
+    <nav className={`v6-nav-fixed ${isScrolled ? 'is-scrolled' : 'is-top'}`}>
       <div className="v6-nav-inner">
-        {/* Brand Wordmark (matching video) */}
+        {/* Brand Wordmark */}
         <Link to="/v6" className="v6-nav-brand">
           <span className="v6-brand-main">fusion</span>
-          <span className="v6-brand-sub">Atelier.</span>
+          <span className="v6-brand-sub">Atelier<span className="v6-nav-dot">.</span></span>
         </Link>
 
         {/* Center Links */}
         <div className="v6-nav-center">
-          <button type="button" onClick={() => scrollTo('showcase')} className="v6-nav-link">
+          <button type="button" onClick={() => scrollTo('deck')} className="v6-nav-link">
             DIVISIONS
           </button>
           <button type="button" onClick={() => scrollTo('blooming')} className="v6-nav-link">
@@ -56,4 +67,3 @@ export default function NavbarV6({ onOpenDrawer }) {
     </nav>
   );
 }
-

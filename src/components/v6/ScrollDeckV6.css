@@ -1,5 +1,6 @@
 /* ========================================================
-   V6 SCROLL DECK (GSAP PINNED STAGE MATCHING 00:03-00:11)
+   V6 SCROLL DECK (PINNED GSAP 3-COLUMN STAGE)
+   Matches exact screen recording from gracefashion.ai
    ======================================================== */
 
 .v6-deck-section {
@@ -7,231 +8,352 @@
   width: 100%;
   height: 100vh;
   height: 100dvh;
-  min-height: 100vh;
-  background-color: var(--v6-white);
-  color: var(--v6-black);
+  background-color: #ffffff;
+  color: #000000;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   box-sizing: border-box;
   z-index: 10;
 }
 
-.v6-deck-inner {
+.v6-deck-wrapper {
   position: relative;
   width: 100%;
   height: 100%;
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ──────────────────────────────────────────────────────────
+   1. INTRODUCTORY ATELIER PHILOSOPHY QUOTE
+   ────────────────────────────────────────────────────────── */
+.v6-deck-quote-screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 4rem;
-  padding-bottom: 2rem;
-}
-
-.v6-deck-header-box {
-  width: 100%;
+  padding: 2rem;
   text-align: center;
-  margin-bottom: 2rem;
-  padding: 0 1rem;
+  z-index: 10;
+  pointer-events: none;
 }
 
-.v6-deck-headline {
+.v6-deck-quote-tag {
+  font-family: var(--v6-font-sans);
+  font-size: clamp(11px, 0.8vw, 13px);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #737373;
+  margin-bottom: 1.5rem;
+}
+
+.v6-deck-quote-text {
   font-family: var(--v6-font-display);
-  letter-spacing: -0.03em;
-  font-size: clamp(28px, 18px + 2vw, 48px);
+  font-size: clamp(32px, 20px + 3vw, 64px);
   font-weight: 500;
   line-height: 1.15;
+  letter-spacing: -0.035em;
   color: #000000;
-  margin: 0 auto;
-  max-width: 26ch;
+  max-width: 24ch;
+  margin: 0;
   text-transform: none !important;
 }
 
-.v6-deck-flanking-stage {
-  position: relative;
+/* ──────────────────────────────────────────────────────────
+   2. PINNED 3-COLUMN STAGE (FLANK LEFT + CENTER CARD + FLANK RIGHT)
+   ────────────────────────────────────────────────────────── */
+.v6-deck-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
+  height: 100%;
+  z-index: 20;
+  padding: 0 4vw;
+  box-sizing: border-box;
 }
 
-.v6-deck-flanking-grid {
+.v6-deck-columns-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
   align-items: center;
   justify-items: center;
-}
-
-@media (max-width: 859px) {
-  .v6-deck-inner {
-    padding-top: 3.5rem;
-    padding-bottom: 1.5rem;
-  }
-  .v6-deck-header-box {
-    margin-bottom: 1rem;
-  }
-  .v6-deck-headline {
-    font-size: clamp(20px, 16px + 1.5vw, 28px);
-  }
-  .v6-deck-flanking-grid {
-    grid-template-columns: 1fr;
-    gap: 0.6rem;
-  }
-  .v6-deck-card-wrap {
-    max-width: min(65vw, 250px);
-  }
-  .v6-deck-flank-word {
-    font-size: clamp(20px, 16px + 1.5vw, 28px);
-  }
-  .v6-deck-dots-bar {
-    margin-top: 0.75rem;
-  }
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  gap: 1.5rem;
 }
 
 @media (min-width: 860px) {
-  .v6-deck-flanking-grid {
+  .v6-deck-columns-grid {
     grid-template-columns: 1fr min(38vw, 420px) 1fr;
-    gap: 3rem;
+    gap: 3.5vw;
   }
 }
 
-.v6-deck-flank {
+/* ─── FLANKING COLUMNS ─── */
+.v6-deck-flank-col {
+  position: relative;
+  width: 100%;
+  height: 120px;
   display: flex;
   align-items: center;
 }
 
-.v6-flank-left {
+.v6-flank-col-left {
   justify-content: center;
 }
 
 @media (min-width: 860px) {
-  .v6-flank-left {
+  .v6-flank-col-left {
     justify-content: flex-end;
   }
 }
 
-.v6-flank-right {
+.v6-flank-col-right {
   justify-content: center;
 }
 
 @media (min-width: 860px) {
-  .v6-flank-right {
+  .v6-flank-col-right {
     justify-content: flex-start;
   }
 }
 
-.v6-deck-flank-word {
+.v6-deck-word-wrap {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.v6-flank-col-left .v6-deck-word-wrap {
+  justify-content: center;
+}
+
+@media (min-width: 860px) {
+  .v6-flank-col-left .v6-deck-word-wrap {
+    justify-content: flex-end;
+  }
+}
+
+.v6-flank-col-right .v6-deck-word-wrap {
+  justify-content: center;
+}
+
+@media (min-width: 860px) {
+  .v6-flank-col-right .v6-deck-word-wrap {
+    justify-content: flex-start;
+  }
+}
+
+.v6-deck-flank-text {
   font-family: var(--v6-font-display);
-  font-size: clamp(28px, 20px + 2.5vw, 54px);
+  font-size: clamp(26px, 16px + 2.5vw, 56px);
   font-weight: 500;
   letter-spacing: -0.03em;
   color: #000000;
+  margin: 0;
   line-height: 1.1;
   text-transform: none !important;
   white-space: nowrap;
 }
 
-/* Center Photo Card */
-.v6-deck-card-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: min(38vw, 420px);
+@media (max-width: 859px) {
+  .v6-deck-flank-text {
+    white-space: normal;
+    text-align: center;
+  }
 }
 
-.v6-deck-photo-card {
+/* ─── CENTER CARD VIEWPORT ─── */
+.v6-deck-center-col {
   position: relative;
   width: 100%;
+  max-width: min(78vw, 420px);
   aspect-ratio: 1 / 1;
-  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v6-deck-card-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
-  background-color: #000000;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
-  cursor: pointer;
-  transition: transform 0.25s ease;
+  border-radius: 14px;
+  background-color: #f5f5f5;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
-.v6-deck-photo-card:hover {
-  transform: scale(1.02);
-}
-
-.v6-deck-photo-layer {
+.v6-deck-card-item {
   position: absolute;
   inset: 0;
-  opacity: 0;
-  transition: opacity 0.35s ease-in-out;
-  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  background-color: #171717;
+  overflow: hidden;
 }
 
-.v6-deck-photo-layer.active {
-  opacity: 1;
-  pointer-events: auto;
+/* ─── SINGLE PHOTO (SLIDES 1 & 3) ─── */
+.v6-deck-photo-single {
+  width: 100%;
+  height: 100%;
 }
 
-.v6-deck-photo-img {
+.v6-deck-single-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 25%;
   display: block;
 }
 
-/* 2x2 Lookbook Grid for Card 2 */
-.v6-deck-inner-grid {
-  width: 100%;
-  height: 100%;
+/* ─── 2X2 GRID (SLIDE 2) ─── */
+.v6-deck-card-grid-2x2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 2px;
+  width: 100%;
+  height: 100%;
   background-color: #ffffff;
 }
 
-.v6-grid-quarter {
+.v6-grid-quarter-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.v6-grid-quarter-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.4s ease;
 }
 
-.v6-deck-badge {
+.v6-deck-card-item:hover .v6-grid-quarter-img {
+  transform: scale(1.05);
+}
+
+/* ─── CUTOUT MONOGRAM (SLIDE 4) ─── */
+.v6-deck-cutout-box {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #171717 0%, #000000 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.v6-cutout-monogram {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.v6-cutout-char {
+  font-family: var(--v6-font-display);
+  font-size: clamp(72px, 12vw, 120px);
+  font-weight: 700;
+  line-height: 0.8;
+  color: #ffffff;
+  letter-spacing: -0.05em;
+}
+
+.v6-cutout-dot {
+  width: clamp(14px, 2vw, 22px);
+  height: clamp(14px, 2vw, 22px);
+  background-color: #e50914;
+  border-radius: 50%;
+}
+
+.v6-cutout-credo {
+  font-family: var(--v6-font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  margin: 0;
+}
+
+/* ─── LIVE CARD BADGE ─── */
+.v6-deck-card-badge {
   position: absolute;
   bottom: 12px;
   left: 12px;
-  padding: 4px 10px;
-  border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.72);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: #ffffff;
+  padding: 5px 12px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-family: var(--v6-font-sans);
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
-  z-index: 5;
+  pointer-events: none;
 }
 
-/* Progress Step Bars (matching video dots) */
-.v6-deck-dots-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 1.25rem;
+.v6-card-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #22c55e;
+  animation: v6-badge-pulse 2s infinite ease-in-out;
 }
 
-.v6-deck-dot-line {
-  height: 3px;
-  width: 20px;
-  border-radius: 2px;
-  background-color: var(--v6-neutral-300);
-  transition: width 0.3s ease, background-color 0.3s ease;
+@keyframes v6-badge-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
 }
 
-.v6-deck-dot-line.active {
-  background-color: var(--v6-black);
-  width: 36px;
+/* ──────────────────────────────────────────────────────────
+   MOBILE RESPONSIVENESS
+   ────────────────────────────────────────────────────────── */
+@media (max-width: 859px) {
+  .v6-deck-columns-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .v6-deck-center-col {
+    max-width: min(72vw, 300px);
+    order: 2;
+  }
+
+  .v6-flank-col-left {
+    order: 1;
+    height: 60px;
+  }
+
+  .v6-flank-col-right {
+    order: 3;
+    height: 60px;
+  }
+
+  .v6-deck-flank-text {
+    font-size: clamp(20px, 16px + 2vw, 32px);
+  }
 }
