@@ -1,0 +1,145 @@
+/* ========================================================
+   GRACE FAQ (EXACT GRACEFASHION.AI ACCORDION ARCHITECTURE)
+   ======================================================== */
+
+.grace-faq-section {
+  padding: 120px 0 140px;
+  background-color: #000000;
+  color: #ffffff;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.grace-faq-container {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.faq-sticky-box {
+  position: sticky;
+  top: 120px;
+  display: flex;
+  flex-direction: column;
+}
+
+.faq-kicker {
+  font-family: "Space Grotesk", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.6);
+  display: block;
+  margin-bottom: 14px;
+}
+
+.faq-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2.2rem, 3.6vw, 3.2rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0 0 18px;
+  color: #fff;
+}
+
+.faq-title em {
+  font-style: italic;
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+}
+
+.faq-sub {
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+}
+
+/* Right Accordion List */
+.faq-accordion-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.faq-summary-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 0;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  text-align: left;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.faq-summary-btn:hover {
+  opacity: 0.75;
+}
+
+.faq-question-text {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.12rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  color: #ffffff;
+}
+
+.faq-toggle-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.toggle-icon {
+  font-family: "Space Grotesk", monospace;
+  font-size: 1rem;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s ease;
+}
+
+.faq-item.open .faq-toggle-circle {
+  border-color: #ffffff;
+  transform: rotate(45deg);
+}
+
+.faq-answer-box {
+  padding-bottom: 28px;
+}
+
+.faq-answer-box p {
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+  max-width: 60ch;
+}
+
+@media (max-width: 900px) {
+  .grace-faq-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .faq-sticky-box {
+    position: static;
+  }
+}

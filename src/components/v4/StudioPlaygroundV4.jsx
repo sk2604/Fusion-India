@@ -393,3 +393,4 @@ export default function StudioPlaygroundV4({ id = 'studio', onOpenModal }) {
     </section>
   );
 }
+

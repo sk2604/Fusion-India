@@ -65,3 +65,4 @@ export default function BrandTrustV4() {
     </section>
   );
 }
+

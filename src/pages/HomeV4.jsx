@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import HeroV4 from '../components/v4/HeroV4';
-import StudioPlaygroundV4 from '../components/v4/StudioPlaygroundV4';
-import BentoGridV4 from '../components/v4/BentoGridV4';
-import WorkflowV4 from '../components/v4/WorkflowV4';
-import ReachTelemetryV4 from '../components/v4/ReachTelemetryV4';
-import BrandTrustV4 from '../components/v4/BrandTrustV4';
+import GraceHero from '../components/v4/GraceHero';
+import GracePillars from '../components/v4/GracePillars';
+import GraceTwoPaths from '../components/v4/GraceTwoPaths';
+import GraceMetrics from '../components/v4/GraceMetrics';
+import GraceTestimonials from '../components/v4/GraceTestimonials';
+import GraceFAQ from '../components/v4/GraceFAQ';
+import GraceCTA from '../components/v4/GraceCTA';
 import SampleDrawerV4 from '../components/v4/SampleDrawerV4';
 import './HomeV4.css';
 
@@ -15,40 +16,40 @@ export default function HomeV4() {
     window.scrollTo(0, 0);
   }, []);
 
-  const scrollToStudio = () => {
-    const el = document.getElementById('studio');
+  const scrollToPillars = () => {
+    const el = document.getElementById('pillars');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
-    <div className="home-v4-wrap">
-      {/* 1. Hero */}
-      <HeroV4 
-        onOpenStudio={scrollToStudio} 
-        onOpenModal={() => setDrawerOpen(true)} 
+    <div className="home-v4-wrap grace-theme">
+      {/* 1. Grace Hero: Fullscreen Pinned Statement */}
+      <GraceHero onExplore={scrollToPillars} />
+
+      {/* 2. Grace 3 Core Pillars (Zoom Inspector + 7 Consistent Scenes + Animated Orbit System) */}
+      <GracePillars id="pillars" />
+
+      {/* 3. Grace Two Paths: "Do it yourself or Let us produce" */}
+      <GraceTwoPaths 
+        onSelectDigital={() => setDrawerOpen(true)}
+        onSelectService={() => setDrawerOpen(true)}
       />
 
-      {/* 2. Interactive AI Studio Playground (Flagship Feature) */}
-      <StudioPlaygroundV4 
-        id="studio" 
-        onOpenModal={() => setDrawerOpen(true)} 
-      />
+      {/* 4. Grace Giant Metrics: 80% / 100% / 72h */}
+      <GraceMetrics onBookDemo={() => setDrawerOpen(true)} />
 
-      {/* 3. Bento Capability Grid */}
-      <BentoGridV4 />
+      {/* 5. Grace Testimonials & Logos ("Kundenstimmen") */}
+      <GraceTestimonials />
 
-      {/* 4. 3-Step Operating Protocol */}
-      <WorkflowV4 />
+      {/* 6. Grace FAQ Accordion (Left sticky title, right rotating + buttons) */}
+      <GraceFAQ />
 
-      {/* 5. Global Reach & Telemetry */}
-      <ReachTelemetryV4 />
+      {/* 7. Grace Final CTA */}
+      <GraceCTA onOpenModal={() => setDrawerOpen(true)} />
 
-      {/* 6. Brand Trust & Certifications */}
-      <BrandTrustV4 />
-
-      {/* 7. Slide-Out Inquiry Drawer */}
+      {/* 8. Slide-out Atelier Intake Drawer */}
       <SampleDrawerV4 
         isOpen={drawerOpen} 
         onClose={() => setDrawerOpen(false)} 

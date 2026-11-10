@@ -1,0 +1,178 @@
+/* ========================================================
+   GRACE TWO PATHS SECTION (SELBST MACHEN. ODER MACHEN LASSEN.)
+   ======================================================== */
+
+.two-paths-section {
+  padding: 120px 0;
+  background-color: #050507;
+  color: #ffffff;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.two-paths-container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.two-paths-head {
+  max-width: 780px;
+}
+
+.two-paths-kicker {
+  font-family: "Space Grotesk", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.6);
+  display: block;
+  margin-bottom: 14px;
+}
+
+.two-paths-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2.4rem, 4.2vw, 3.8rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin: 0 0 16px;
+  color: #fff;
+}
+
+.two-paths-title em {
+  font-style: italic;
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+}
+
+.two-paths-sub {
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+}
+
+/* Two Paths Grid */
+.two-paths-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.path-card {
+  background: rgba(18, 18, 22, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 28px;
+  transition: all 0.3s ease;
+}
+
+.path-card:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.path-card-service {
+  background: rgba(25, 25, 32, 0.85);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.path-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Space Grotesk", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  width: max-content;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.highlight-badge {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.path-main h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+  color: #fff;
+}
+
+.path-main p {
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0 0 24px;
+}
+
+.path-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.path-features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.path-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 22px;
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-top: 10px;
+}
+
+.path-action-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+}
+
+.path-btn-highlight {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+.path-btn-highlight:hover {
+  background: #e2e8f0;
+}
+
+@media (max-width: 900px) {
+  .two-paths-grid {
+    grid-template-columns: 1fr;
+  }
+}

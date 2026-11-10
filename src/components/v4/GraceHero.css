@@ -1,0 +1,140 @@
+/* ========================================================
+   GRACE HERO (EXACT GRACEFASHION.AI MINIMALIST LUXURY STYLE)
+   ======================================================== */
+
+.grace-hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #000000;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 120px 24px 60px;
+}
+
+.grace-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.grace-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.42;
+  filter: contrast(1.1) brightness(0.85);
+}
+
+.grace-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.85) 90%);
+}
+
+.grace-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 960px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grace-kicker-label {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 24px;
+}
+
+.grace-hero-headline {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2.8rem, 6.2vw, 5.4rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.034em;
+  color: #ffffff;
+  margin: 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grace-kinetic-word {
+  display: inline-block;
+  color: #ffffff;
+  border-bottom: 2px solid #ffffff;
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+}
+
+.grace-headline-rest {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.grace-hero-sub {
+  font-family: "Instrument Sans", "Inter", sans-serif;
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 640px;
+  margin: 0 0 36px;
+  font-weight: 400;
+}
+
+.grace-btn-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #ffffff;
+  border-radius: 999px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.grace-btn-white:hover {
+  background: transparent;
+  color: #ffffff;
+}
+
+/* Bottom Bar */
+.grace-hero-bottom-bar {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 14px;
+  font-family: "Space Grotesk", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+  .grace-hero-bottom-bar {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
+}

@@ -196,3 +196,4 @@ export default function HeroV4({ onOpenStudio, onOpenModal }) {
     </section>
   );
 }
+

@@ -1,0 +1,380 @@
+/* ========================================================
+   GRACE PILLARS (3 CORE EXPERIENCES DIRECT FROM GRACE)
+   ======================================================== */
+
+.grace-pillars-wrap {
+  width: 100%;
+  background: #000000;
+  color: #ffffff;
+}
+
+.pillar-block {
+  padding: 120px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.pillar-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.pillar-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.pillar-mono-tag {
+  font-family: "Space Grotesk", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.6);
+  display: block;
+  margin-bottom: 16px;
+}
+
+.pillar-headline {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2.4rem, 4.2vw, 3.8rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin: 0 0 20px;
+}
+
+.pillar-headline em {
+  font-style: italic;
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+}
+
+.pillar-body {
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0 0 28px;
+}
+
+/* Pillar 1: Spec list */
+.pillar-spec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.p-spec-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Macro Zoom Box */
+.macro-zoom-card {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  cursor: crosshair;
+}
+
+.macro-base-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.15s ease-out;
+}
+
+.macro-hud-overlay {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  right: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.macro-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Space Grotesk", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: #ffffff;
+}
+
+.macro-tech-tag {
+  font-family: "Space Grotesk", monospace;
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Pillar 2: 7 Scenes */
+.scenes-header {
+  max-width: 720px;
+  margin-bottom: 40px;
+}
+
+.scenes-interactive-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 30px;
+  align-items: stretch;
+}
+
+.scene-stage-wrap {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0d0d0f;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  min-height: 540px;
+}
+
+.stage-img-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.stage-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.stage-card-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.92) 50%);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.scene-badge {
+  font-family: "Space Grotesk", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  color: #fff;
+  opacity: 0.7;
+}
+
+.stage-card-caption h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+
+.stage-card-caption p {
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+/* Thumbs Track */
+.scenes-thumbs-track {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 560px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.scene-thumb-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #fff;
+}
+
+.scene-thumb-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.scene-thumb-btn.active {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #ffffff;
+}
+
+.thumb-img-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.thumb-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumb-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.t-tag {
+  font-family: "Space Grotesk", monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.t-name {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+/* Pillar 3: Orbit System (Grace Exact Feature) */
+.orbit-visual-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orbit-system-wrapper {
+  position: relative;
+  width: 380px;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orbit-center-node {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.3);
+}
+
+.node-logo-text {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.node-sub {
+  font-family: "Space Grotesk", monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+}
+
+.orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.ring-1 {
+  width: 240px;
+  height: 240px;
+}
+
+.ring-2 {
+  width: 360px;
+  height: 360px;
+}
+
+.satellite {
+  position: absolute;
+  padding: 6px 12px;
+  background: rgba(20, 20, 24, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  font-family: "Space Grotesk", monospace;
+  font-size: 0.65rem;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.sat-1 { top: -14px; left: 50%; transform: translateX(-50%); }
+.sat-2 { bottom: -14px; left: 50%; transform: translateX(-50%); }
+.sat-3 { top: 50%; left: -25px; transform: translateY(-50%); }
+.sat-4 { top: 50%; right: -25px; transform: translateY(-50%); }
+
+/* Orbit Animation */
+@keyframes covered-orbit {
+  to { transform: rotate(1turn); }
+}
+
+@keyframes covered-orbit-counter {
+  to { transform: rotate(-1turn); }
+}
+
+.covered-orbit-spin {
+  animation: covered-orbit 40s linear infinite;
+}
+
+.covered-orbit-counter {
+  animation: covered-orbit-counter 40s linear infinite;
+}
+
+.pipeline-chips {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pipeline-chips span {
+  font-family: "Space Grotesk", monospace;
+  font-size: 0.72rem;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .pillar-grid, .scenes-interactive-grid {
+    grid-template-columns: 1fr;
+  }
+}
