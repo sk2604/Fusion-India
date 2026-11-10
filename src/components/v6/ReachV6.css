@@ -1,0 +1,150 @@
+/* ========================================================
+   V6 REACH (OUR REACH & GLOBAL MAP IN GRACE DESIGN LANGUAGE)
+   ======================================================== */
+
+.v6-reach-section {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 0;
+  box-sizing: border-box;
+}
+
+@media (min-width: 960px) {
+  .v6-reach-section {
+    padding: 0;
+  }
+}
+
+.v6-reach-split-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .v6-reach-split-grid {
+    grid-template-columns: 1fr 1.25fr;
+    gap: 4rem;
+  }
+}
+
+.v6-reach-left-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.v6-reach-title {
+  font-family: var(--v6-font-display);
+  font-size: clamp(34px, 20px + 3vw, 64px);
+  font-weight: 500;
+  letter-spacing: -0.034em;
+  line-height: 1.05;
+  text-transform: none !important;
+}
+
+.v6-reach-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--v6-black);
+}
+
+@media (max-width: 640px) {
+  .v6-reach-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.v6-reach-stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.v6-stat-num {
+  font-family: var(--v6-font-display);
+  font-size: clamp(28px, 18px + 1.2vw, 42px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.v6-reach-stat-item sup {
+  font-size: 0.55em;
+  font-weight: 400;
+  color: #e50914;
+}
+
+.v6-reach-hubs-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 2rem;
+}
+
+.v6-hub-tag {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  border: 1px solid var(--v6-neutral-200);
+  background-color: var(--v6-neutral-100);
+  color: var(--v6-neutral-600);
+}
+
+/* Map Wrapper */
+.v6-reach-right-col {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v6-reach-map-wrapper {
+  width: 100%;
+  max-width: 800px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.v6-badge-text {
+  font-family: var(--v6-font-display);
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  pointer-events: none;
+}
+
+/* Beacons */
+.v6-pulse-hq {
+  fill: rgba(229, 9, 20, 0.4);
+  animation: v6-beacon 2s infinite ease-out;
+  transform-origin: center;
+}
+
+.v6-pulse-sub {
+  fill: rgba(255, 255, 255, 0.35);
+  animation: v6-beacon 2s infinite ease-out;
+  transform-origin: center;
+}
+
+@keyframes v6-beacon {
+  0% {
+    r: 4;
+    opacity: 0.8;
+  }
+  100% {
+    r: 16;
+    opacity: 0;
+  }
+}

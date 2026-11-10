@@ -1,0 +1,62 @@
+/* ========================================================
+   V6 CUTOUT TRANSITION (FRAMES 00:12-00:13 IN VIDEO)
+   ======================================================== */
+
+.v6-cutout-section {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding: 4rem 1.5rem;
+  background-color: var(--v6-white);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.v6-cutout-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .v6-cutout-container {
+    flex-direction: row;
+    gap: 2.5rem;
+  }
+}
+
+.v6-cutout-left-text,
+.v6-cutout-right-text {
+  font-family: var(--v6-font-display);
+  font-size: clamp(22px, 16px + 1.2vw, 36px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #000000;
+}
+
+.v6-cutout-brand {
+  position: relative;
+  padding: 0 1rem;
+}
+
+.v6-cutout-word {
+  font-family: var(--v6-font-display);
+  font-size: clamp(48px, 28px + 4.5vw, 92px);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: transparent;
+  background-image: radial-gradient(circle, #0a0a0a 2px, transparent 2px);
+  background-size: 8px 8px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  border: 2px dashed rgba(0, 0, 0, 0.25);
+  padding: 4px 18px;
+  border-radius: 8px;
+  display: inline-block;
+}
+

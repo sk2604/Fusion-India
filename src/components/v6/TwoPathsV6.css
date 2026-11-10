@@ -1,0 +1,120 @@
+/* ========================================================
+   V6 TWO PATHS (DIRECT FOB VS DDP FROM 00:27-00:30)
+   ======================================================== */
+
+.v6-paths-section {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  min-height: 100vh;
+  padding: 6rem 0;
+  box-sizing: border-box;
+}
+
+.v6-paths-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.v6-paths-header {
+  margin-bottom: 4rem;
+}
+
+.v6-paths-title {
+  font-family: var(--v6-font-display);
+  font-size: clamp(32px, 20px + 2.5vw, 56px);
+  font-weight: 500;
+  letter-spacing: -0.032em;
+  line-height: 1.1;
+  color: #000000;
+  text-transform: none !important;
+}
+
+.v6-title-line {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.v6-paths-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  width: 100%;
+}
+
+@media (min-width: 860px) {
+  .v6-paths-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+.v6-path-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.v6-path-card {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.v6-path-img-wrap {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--v6-neutral-100);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.v6-path-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.v6-path-card:hover .v6-path-img {
+  transform: scale(1.03);
+}
+
+.v6-path-card-title {
+  font-family: var(--v6-font-display);
+  font-size: clamp(22px, 16px + 1vw, 32px);
+  font-weight: 500;
+  letter-spacing: -0.026em;
+  line-height: 1.2;
+  text-transform: none !important;
+}
+
+.v6-link-underline {
+  transition: transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.v6-path-card:hover .v6-link-underline {
+  transform: translateX(4px);
+}
+
+/* Bottom Bar matching 00:30 */
+.v6-paths-bottom-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-top: 5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--v6-neutral-200);
+}
+
+@media (min-width: 768px) {
+  .v6-paths-bottom-bar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

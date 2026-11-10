@@ -1,0 +1,237 @@
+/* ========================================================
+   V6 SCROLL DECK (GSAP PINNED STAGE MATCHING 00:03-00:11)
+   ======================================================== */
+
+.v6-deck-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100vh;
+  background-color: var(--v6-white);
+  color: var(--v6-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+.v6-deck-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+}
+
+.v6-deck-header-box {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+.v6-deck-headline {
+  font-family: var(--v6-font-display);
+  letter-spacing: -0.03em;
+  font-size: clamp(28px, 18px + 2vw, 48px);
+  font-weight: 500;
+  line-height: 1.15;
+  color: #000000;
+  margin: 0 auto;
+  max-width: 26ch;
+  text-transform: none !important;
+}
+
+.v6-deck-flanking-stage {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.v6-deck-flanking-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  justify-items: center;
+}
+
+@media (max-width: 859px) {
+  .v6-deck-inner {
+    padding-top: 3.5rem;
+    padding-bottom: 1.5rem;
+  }
+  .v6-deck-header-box {
+    margin-bottom: 1rem;
+  }
+  .v6-deck-headline {
+    font-size: clamp(20px, 16px + 1.5vw, 28px);
+  }
+  .v6-deck-flanking-grid {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+  .v6-deck-card-wrap {
+    max-width: min(65vw, 250px);
+  }
+  .v6-deck-flank-word {
+    font-size: clamp(20px, 16px + 1.5vw, 28px);
+  }
+  .v6-deck-dots-bar {
+    margin-top: 0.75rem;
+  }
+}
+
+@media (min-width: 860px) {
+  .v6-deck-flanking-grid {
+    grid-template-columns: 1fr min(38vw, 420px) 1fr;
+    gap: 3rem;
+  }
+}
+
+.v6-deck-flank {
+  display: flex;
+  align-items: center;
+}
+
+.v6-flank-left {
+  justify-content: center;
+}
+
+@media (min-width: 860px) {
+  .v6-flank-left {
+    justify-content: flex-end;
+  }
+}
+
+.v6-flank-right {
+  justify-content: center;
+}
+
+@media (min-width: 860px) {
+  .v6-flank-right {
+    justify-content: flex-start;
+  }
+}
+
+.v6-deck-flank-word {
+  font-family: var(--v6-font-display);
+  font-size: clamp(28px, 20px + 2.5vw, 54px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: #000000;
+  line-height: 1.1;
+  text-transform: none !important;
+  white-space: nowrap;
+}
+
+/* Center Photo Card */
+.v6-deck-card-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: min(38vw, 420px);
+}
+
+.v6-deck-photo-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #000000;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.v6-deck-photo-card:hover {
+  transform: scale(1.02);
+}
+
+.v6-deck-photo-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.35s ease-in-out;
+  pointer-events: none;
+}
+
+.v6-deck-photo-layer.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.v6-deck-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 2x2 Lookbook Grid for Card 2 */
+.v6-deck-inner-grid {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2px;
+  background-color: #ffffff;
+}
+
+.v6-grid-quarter {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.v6-deck-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-family: var(--v6-font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  z-index: 5;
+}
+
+/* Progress Step Bars (matching video dots) */
+.v6-deck-dots-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 1.25rem;
+}
+
+.v6-deck-dot-line {
+  height: 3px;
+  width: 20px;
+  border-radius: 2px;
+  background-color: var(--v6-neutral-300);
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.v6-deck-dot-line.active {
+  background-color: var(--v6-black);
+  width: 36px;
+}

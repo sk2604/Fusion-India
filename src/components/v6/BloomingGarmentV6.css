@@ -1,0 +1,191 @@
+/* ========================================================
+   V6 BLOOMING GARMENT (FRAMES 00:14-00:19 IN VIDEO)
+   ======================================================== */
+
+.v6-blooming-section {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .v6-blooming-section {
+    padding: 3rem 0;
+  }
+}
+
+.v6-blooming-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.v6-blooming-stage {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 1024px) {
+  .v6-blooming-stage {
+    min-height: 720px;
+  }
+}
+
+/* Center Statement */
+.v6-blooming-center-statement {
+  position: relative;
+  z-index: 30;
+  max-width: 22ch;
+  text-align: center;
+  padding: 1.5rem;
+  background-color: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.v6-packshot-capsule {
+  display: inline-block;
+  vertical-align: middle;
+  width: 44px;
+  height: 58px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 0 6px;
+}
+
+.v6-packshot-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 6 Blooming Photos Orbit Grid */
+.v6-blooming-orbit-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 640px) {
+  .v6-blooming-orbit-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+/* On Desktop: Position them in blooming circular array around center statement! */
+@media (min-width: 1024px) {
+  .v6-blooming-orbit-grid {
+    position: absolute;
+    inset: 0;
+    display: block;
+    margin-top: 0;
+    pointer-events: none;
+  }
+
+  .v6-bloom-card {
+    position: absolute;
+    width: 170px;
+    height: 220px;
+    pointer-events: auto;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.1s linear;
+  }
+
+  /* Specific positions matching 00:16 in video */
+  .v6-bloom-card.pos-top-center {
+    top: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .v6-bloom-card.pos-top-right {
+    top: 8%;
+    right: 14%;
+  }
+
+  .v6-bloom-card.pos-right {
+    top: 50%;
+    right: 6%;
+    transform: translateY(-50%);
+  }
+
+  .v6-bloom-card.pos-bottom-center {
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .v6-bloom-card.pos-bottom-left {
+    bottom: 8%;
+    left: 14%;
+  }
+
+  .v6-bloom-card.pos-left {
+    top: 50%;
+    left: 6%;
+    transform: translateY(-50%);
+  }
+
+  .v6-bloom-card:hover {
+    transform: scale(1.08) !important;
+    z-index: 40;
+  }
+}
+
+.v6-bloom-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background-color: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+}
+
+.v6-bloom-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.v6-bloom-card:hover .v6-bloom-img {
+  transform: scale(1.06);
+}
+
+.v6-bloom-tag {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: 4px;
+}
+
