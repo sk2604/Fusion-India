@@ -54,6 +54,9 @@ export default function GraceFooter({ onOpenDrawer }) {
           <button type="button" onClick={() => scrollTo('paths')} className="grace-footer-link">
             FOB & DDP
           </button>
+          <button type="button" onClick={() => scrollTo('reach')} className="grace-footer-link">
+            Our Reach
+          </button>
           <button type="button" onClick={() => scrollTo('metrics')} className="grace-footer-link">
             Compliance
           </button>
@@ -73,3 +76,4 @@ export default function GraceFooter({ onOpenDrawer }) {
     </footer>
   );
 }
+

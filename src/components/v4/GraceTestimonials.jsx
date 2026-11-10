@@ -68,7 +68,7 @@ export default function GraceTestimonials() {
   const current = testimonials[activeIdx];
 
   return (
-    <section className="page-surface grace-testimonials-section">
+    <section className="page-surface grace-testimonials-section" id="testimonials">
       <div className="grace-container grace-px grace-py">
         
         {/* Brand Trust Header */}

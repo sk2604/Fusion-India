@@ -1,36 +1,38 @@
 /* ========================================================
-   GRACE DECK (SCROLL-DRIVEN WHITE SURFACE STATEMENT)
+   GRACE DECK (100VH ALIGNED EDITORIAL SHOWCASE)
    ======================================================== */
 
 .grace-deck-section {
   position: relative;
-  height: 240vh;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
   background-color: var(--grace-white);
   color: var(--grace-black);
   z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 0 3rem;
+  box-sizing: border-box;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 960px) {
   .grace-deck-section {
-    height: 300vh;
+    padding: 0;
   }
 }
 
-.grace-deck-sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  height: 100dvh;
+.grace-deck-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  overflow: hidden;
 }
 
 .grace-deck-headline-wrap {
   text-align: center;
   margin-bottom: 2.5rem;
-  transition: opacity 0.3s ease;
 }
 
 .grace-deck-headline-wrap .headline-xl {
@@ -45,31 +47,87 @@
 .grace-deck-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 2.5rem;
   align-items: center;
 }
 
-@media (min-width: 860px) {
+@media (min-width: 960px) {
   .grace-deck-grid {
-    grid-template-columns: 1fr min(42vw, 440px) 1fr;
-    gap: 3rem;
+    grid-template-columns: 1fr min(38vw, 420px) 1fr;
+    gap: 3.5rem;
   }
 }
 
 .grace-deck-col-left {
   text-align: left;
+  display: flex;
+  flex-direction: column;
 }
 
-@media (min-width: 860px) {
+@media (min-width: 960px) {
   .grace-deck-col-left {
     text-align: right;
+    align-items: flex-end;
   }
 }
 
+.grace-deck-pills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 280px;
+}
+
+.grace-division-pill-btn {
+  background: var(--grace-neutral-100);
+  border: 1px solid var(--grace-neutral-200);
+  border-radius: 9999px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  color: var(--grace-neutral-600);
+  text-align: left;
+}
+
+@media (min-width: 960px) {
+  .grace-division-pill-btn {
+    justify-content: flex-end;
+  }
+}
+
+.grace-division-pill-btn:hover {
+  border-color: var(--grace-black);
+  color: var(--grace-black);
+}
+
+.grace-division-pill-btn.active {
+  background: var(--grace-black);
+  border-color: var(--grace-black);
+  color: #ffffff;
+}
+
+.pill-index {
+  font-family: var(--grace-font-display);
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+.pill-title {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Center Photography Card */
 .grace-deck-card-wrap {
   position: relative;
   width: 100%;
-  max-width: 440px;
+  max-width: 420px;
   margin: 0 auto;
 }
 
@@ -79,6 +137,7 @@
   aspect-ratio: 1 / 1;
   overflow: hidden;
   background-color: var(--grace-neutral-100);
+  border-radius: 4px;
 }
 
 .grace-deck-img {
@@ -89,7 +148,8 @@
   object-fit: cover;
   opacity: 0;
   transform: scale(1.05);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
 }
 
 .grace-deck-img.active {
@@ -97,24 +157,59 @@
   transform: scale(1);
 }
 
+.grace-deck-live-tag {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  pointer-events: none;
+}
+
+/* Right Column */
 .grace-deck-col-right {
   text-align: left;
-}
-
-.grace-deck-dots {
   display: flex;
-  gap: 8px;
-  margin-top: 1.5rem;
+  flex-direction: column;
 }
 
-.grace-deck-dot {
-  width: 24px;
+.grace-deck-timeline-wrap {
+  margin-top: 2rem;
+}
+
+.grace-deck-progress-bar {
+  width: 100%;
+  max-width: 260px;
   height: 2px;
-  background-color: var(--grace-neutral-300);
-  transition: background-color 0.3s ease, width 0.3s ease;
+  background-color: var(--grace-neutral-200);
+  margin-top: 8px;
+  overflow: hidden;
+  position: relative;
 }
 
-.grace-deck-dot.active {
+.grace-deck-progress-fill {
+  height: 100%;
   background-color: var(--grace-black);
-  width: 40px;
+  animation: deck-progress 4.8s linear infinite;
+  transform-origin: left;
+}
+
+.grace-deck-progress-fill.paused {
+  animation-play-state: paused;
+}
+
+@keyframes deck-progress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
 }

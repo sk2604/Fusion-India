@@ -6,6 +6,19 @@
   position: relative;
   z-index: 10;
   width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 0;
+  box-sizing: border-box;
+}
+
+@media (min-width: 960px) {
+  .grace-two-paths-section {
+    padding: 2rem 0;
+  }
 }
 
 .grace-paths-grid {

@@ -30,6 +30,9 @@ export default function GraceNavbar({ onOpenDrawer }) {
           <button type="button" onClick={() => scrollTo('paths')} className="grace-nav-link">
             FOB & DDP
           </button>
+          <button type="button" onClick={() => scrollTo('reach')} className="grace-nav-link">
+            OUR REACH
+          </button>
           <button type="button" onClick={() => scrollTo('metrics')} className="grace-nav-link">
             COMPLIANCE
           </button>
@@ -53,3 +56,4 @@ export default function GraceNavbar({ onOpenDrawer }) {
     </nav>
   );
 }
+

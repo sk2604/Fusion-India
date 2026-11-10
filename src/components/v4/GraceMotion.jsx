@@ -3,7 +3,7 @@ import './GraceMotion.css';
 
 export default function GraceMotion() {
   return (
-    <section className="grace-motion-section">
+    <section className="grace-motion-section" id="motion">
       {/* Background cinematic looping video or luxury drape visual */}
       <div className="grace-motion-bg">
         <img 
@@ -23,3 +23,4 @@ export default function GraceMotion() {
     </section>
   );
 }
+

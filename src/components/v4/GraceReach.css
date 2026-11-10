@@ -1,0 +1,132 @@
+/* ========================================================
+   GRACE REACH (OUR REACH & GLOBAL MAP IN GRACE DESIGN LANGUAGE)
+   ======================================================== */
+
+.grace-reach-section {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 0;
+}
+
+@media (min-width: 960px) {
+  .grace-reach-section {
+    padding: 0;
+  }
+}
+
+.grace-reach-split-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .grace-reach-split-grid {
+    grid-template-columns: 1fr 1.25fr;
+    gap: 4rem;
+  }
+}
+
+.grace-reach-left-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.grace-reach-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--grace-black);
+}
+
+@media (max-width: 640px) {
+  .grace-reach-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.grace-reach-stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.grace-reach-stat-item sup {
+  font-size: 0.55em;
+  font-weight: 400;
+  color: #e50914;
+}
+
+.grace-reach-hubs-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 2rem;
+}
+
+.grace-hub-tag {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  border: 1px solid var(--grace-neutral-200);
+  background-color: var(--grace-neutral-100);
+  color: var(--grace-neutral-600);
+}
+
+/* Map Wrapper */
+.grace-reach-right-col {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grace-reach-map-wrapper {
+  width: 100%;
+  max-width: 800px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.grace-badge-text {
+  font-family: var(--grace-font-display);
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  pointer-events: none;
+}
+
+/* Beacons */
+.grace-pulse-hq {
+  fill: rgba(229, 9, 20, 0.4);
+  animation: grace-beacon 2s infinite ease-out;
+  transform-origin: center;
+}
+
+.grace-pulse-sub {
+  fill: rgba(255, 255, 255, 0.35);
+  animation: grace-beacon 2s infinite ease-out;
+  transform-origin: center;
+}
+
+@keyframes grace-beacon {
+  0% {
+    r: 4;
+    opacity: 0.8;
+  }
+  100% {
+    r: 16;
+    opacity: 0;
+  }
+}

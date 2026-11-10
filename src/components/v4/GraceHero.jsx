@@ -19,7 +19,7 @@ export default function GraceHero({ onExplore }) {
   const sloganY = scrollY * 0.2;
 
   return (
-    <div className="grace-hero-wrapper">
+    <div className="grace-hero-wrapper" id="hero">
       {/* Pinned Fullscreen Hero Background */}
       <div 
         className="grace-hero-fixed"

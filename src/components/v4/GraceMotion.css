@@ -4,19 +4,22 @@
 
 .grace-motion-section {
   position: relative;
-  height: 70vh;
-  min-height: 500px;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
   background-color: var(--grace-neutral-900);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 10;
+  box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
   .grace-motion-section {
     height: 100vh;
+    min-height: 100vh;
   }
 }
 
@@ -45,3 +48,4 @@
   padding: 0 2rem;
   max-width: 24ch;
 }
+
