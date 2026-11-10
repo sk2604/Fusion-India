@@ -172,7 +172,6 @@ export default function ReachV5({ id = 'reach' }) {
                         height="26" 
                         rx="4" 
                         fill={hub.isHQ ? '#e50914' : 'rgba(255,255,255,0.92)'} 
-                        boxShadow="0 4px 12px rgba(0,0,0,0.5)"
                       />
                       <text 
                         x="10" 
