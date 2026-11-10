@@ -1,9 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './PillarsV6.css';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function PillarsV6({ id = 'pillars', onExploreSpecs }) {
+  const sectionRef = useRef(null);
+  const headerRef = useRef(null);
+  const colsRef = useRef([]);
+  colsRef.current = [];
+
   const [zoomPos, setZoomPos] = useState({ x: 50, y: 50 });
   const [isHovered, setIsHovered] = useState(false);
+
+  const addToCols = (el) => {
+    if (el && !colsRef.current.includes(el)) colsRef.current.push(el);
+  };
 
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -12,12 +25,51 @@ export default function PillarsV6({ id = 'pillars', onExploreSpecs }) {
     setZoomPos({ x, y });
   };
 
+  // ─── PINNED GSAP SCROLLTRIGGER SNAP & REVEAL ───
+  useEffect(() => {
+    const section = sectionRef.current;
+    const header = headerRef.current;
+    if (!section || !header) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: '+=1600',
+          pin: true,
+          anticipatePin: 1,
+          scrub: 0.65,
+        }
+      });
+
+      // Header glides down with unblur
+      tl.fromTo(header,
+        { opacity: 0, y: -25, filter: 'blur(8px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.5, ease: 'power2.out' },
+        0
+      );
+
+      // 3 Monumental Pillar Columns stagger in with upward glide and unblur
+      tl.fromTo(colsRef.current,
+        { opacity: 0, y: 50, filter: 'blur(12px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.75, stagger: 0.12, ease: 'power2.out' },
+        0.1
+      );
+
+      // Solid hold before release
+      tl.to({}, { duration: 0.4 });
+    }, section);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="v6-dot-grid v6-pillars-section" id={id} data-nav-theme="dark">
+    <section className="v6-dot-grid v6-pillars-section" id={id} ref={sectionRef} data-nav-theme="dark">
       <div className="v6-container v6-px v6-pillars-inner">
         
-        {/* Top Editorial Section Header (Eliminates empty void, establishes authority) */}
-        <div className="v6-pillars-header">
+        {/* Top Editorial Section Header */}
+        <div className="v6-pillars-header" ref={headerRef}>
           <div className="v6-pillars-eyebrow">
             <span className="v6-eyebrow-red-dot" />
             <span>ATELIER MANUFACTURING STANDARDS</span>
@@ -27,16 +79,16 @@ export default function PillarsV6({ id = 'pillars', onExploreSpecs }) {
           </h2>
         </div>
 
-        {/* 3 Pillars Grid with Proper Square Proportions */}
+        {/* 3 Monumental Pillar Columns with Large, Luxurious Proportions */}
         <div className="v6-pillars-grid">
           
           {/* ─── COLUMN 1: PRECISION IN EVERY SEAM ─── */}
-          <div className="v6-pillar-col">
+          <div className="v6-pillar-col" ref={addToCols}>
             <h3 className="v6-pillar-heading">
               Precision in every seam.
             </h3>
             
-            {/* Macro Detail Zoom Card with Crosshair */}
+            {/* Monumental Macro Detail Zoom Card */}
             <div 
               className="v6-pillar-card-lens"
               onMouseEnter={() => setIsHovered(true)}
@@ -65,7 +117,7 @@ export default function PillarsV6({ id = 'pillars', onExploreSpecs }) {
           </div>
 
           {/* ─── COLUMN 2: GOLDEN SAMPLE. ZERO DEVIATION ─── */}
-          <div className="v6-pillar-col">
+          <div className="v6-pillar-col" ref={addToCols}>
             <h3 className="v6-pillar-heading">
               Golden sample. Zero deviation.
             </h3>
@@ -116,7 +168,7 @@ export default function PillarsV6({ id = 'pillars', onExploreSpecs }) {
           </div>
 
           {/* ─── COLUMN 3: GLOBAL COMPLIANCE. BUILT IN. ─── */}
-          <div className="v6-pillar-col">
+          <div className="v6-pillar-col" ref={addToCols}>
             <h3 className="v6-pillar-heading">
               Global compliance. Built in.
             </h3>

@@ -17,7 +17,7 @@ export default function MotionV6({ id = 'motion' }) {
     if (!section || !videoBg || !content) return;
 
     const ctx = gsap.context(() => {
-      // Pinned GSAP ScrollTrigger timeline with cinematic scale & text unblur
+      // Pinned GSAP ScrollTrigger timeline with cinematic zoom and text reveal
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
@@ -36,7 +36,7 @@ export default function MotionV6({ id = 'motion' }) {
         0
       );
 
-      // Text content enters with unblur and glide up
+      // Text content enters with unblur and upward glide
       tl.fromTo(content,
         { y: 50, opacity: 0, filter: 'blur(12px)' },
         { y: 0, opacity: 1, filter: 'blur(0px)', ease: 'power2.out', duration: 0.7 },
@@ -72,19 +72,23 @@ export default function MotionV6({ id = 'motion' }) {
         <div className="v6-motion-scrim" />
       </div>
 
-      {/* Centered High-Fashion Atelier Motion Statement (Authentic to Fusion India) */}
+      {/* Centered High-Fashion Atelier Motion Statement (Authentic Fusion India Brand Credo) */}
       <div className="v6-motion-content" ref={contentRef}>
         <div className="v6-motion-badge">
           <span className="v6-motion-badge-dot" />
-          <span>PRECISION AT SCALE</span>
+          <span>THE FUSION CREDO // EST. 1998</span>
         </div>
 
         <h2 className="v6-motion-headline">
-          Runway aesthetics. Industrial precision. Manufactured for global retail.
+          Right Product. Right Price. Right Performance.
         </h2>
 
+        <p className="v6-motion-credo-lead">
+          We build what global fashion wears.
+        </p>
+
         <span className="v6-motion-sub">
-          500+ AUDITED ATELIER MILLS // ZERO QUALITY TOLERANCE // GURUGRAM HQ
+          30+ YEARS OF GLOBAL SOURCING // 500+ AUDITED MILLS // GURUGRAM HQ
         </span>
       </div>
     </section>

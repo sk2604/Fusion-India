@@ -1,27 +1,75 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './TwoPathsV6.css';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function TwoPathsV6({ id = 'paths', onSelectFOB, onSelectDDP, onRequestDeck }) {
+  const sectionRef = useRef(null);
+  const headerRef = useRef(null);
+  const cardsRef = useRef([]);
+  cardsRef.current = [];
+
+  const addToCards = (el) => {
+    if (el && !cardsRef.current.includes(el)) cardsRef.current.push(el);
+  };
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const header = headerRef.current;
+    if (!section || !header) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: '+=1300',
+          pin: true,
+          anticipatePin: 1,
+          scrub: 0.65,
+        }
+      });
+
+      tl.fromTo(header,
+        { opacity: 0, y: -20, filter: 'blur(8px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.5, ease: 'power2.out' },
+        0
+      );
+
+      tl.fromTo(cardsRef.current,
+        { opacity: 0, y: 40, filter: 'blur(10px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.7, stagger: 0.15, ease: 'power2.out' },
+        0.1
+      );
+
+      tl.to({}, { duration: 0.3 });
+    }, section);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="v6-page-surface-white v6-paths-section" id={id} data-nav-theme="light">
+    <section className="v6-page-surface-white v6-paths-section" id={id} ref={sectionRef} data-nav-theme="light">
       <div className="v6-container v6-px v6-paths-container">
         
-        {/* Top Headline matching 00:27 in video */}
-        <div className="v6-paths-header">
+        {/* Top Headline */}
+        <div className="v6-paths-header" ref={headerRef}>
           <h2 className="v6-paths-title">
             <span className="v6-title-line">Direct FOB.</span>
-            <span className="v6-title-line">Or have it done for you.</span>
+            <span className="v6-title-line">Or full DDP concierge.</span>
           </h2>
           <p className="v6-paths-desc">
-            Same Indian manufacturing excellence, two flexible models: Your team directs freight, or we deliver duty-paid to your European distribution center.
+            Same Indian manufacturing excellence, two flexible fulfillment models tailored to your supply chain.
           </p>
         </div>
 
-        {/* 2 Big Cards matching 00:28-00:29 in video */}
+        {/* 2 Big Cards with Pinned 100vh Proportions */}
         <div className="v6-paths-grid">
           
           {/* Card 1: FOB */}
-          <div className="v6-path-col">
+          <div className="v6-path-col" ref={addToCards}>
             <div className="group v6-path-card" onClick={onSelectFOB} role="button" tabIndex={0}>
               <div className="v6-path-img-wrap">
                 <img 
@@ -46,7 +94,7 @@ export default function TwoPathsV6({ id = 'paths', onSelectFOB, onSelectDDP, onR
           </div>
 
           {/* Card 2: DDP */}
-          <div className="v6-path-col">
+          <div className="v6-path-col" ref={addToCards}>
             <div className="group v6-path-card" onClick={onSelectDDP} role="button" tabIndex={0}>
               <div className="v6-path-img-wrap">
                 <img 
@@ -62,7 +110,7 @@ export default function TwoPathsV6({ id = 'paths', onSelectFOB, onSelectDDP, onR
                 We produce & deliver for you.
               </h3>
               <p className="v6-path-body">
-                You send us tech packs and briefing. We handle yarn spinning, EU customs clearance, duty settlement, and palletized dock delivery direct to your European warehouse.
+                You send tech packs and briefs. We handle raw material, manufacturing, EU customs clearance, and palletized delivery direct to your European warehouse.
               </p>
               <p className="v6-link-underline">
                 Go to service <span aria-hidden="true">→</span>
@@ -72,12 +120,12 @@ export default function TwoPathsV6({ id = 'paths', onSelectFOB, onSelectDDP, onR
 
         </div>
 
-        {/* Bottom Bar matching 00:30 in video */}
+        {/* Bottom Bar */}
         <div className="v6-paths-bottom-bar">
           <p>
             Hundreds of styles per season?{' '}
             <span 
-              className="text-black font-medium underline underline-offset-4 cursor-pointer"
+              className="text-black font-semibold underline underline-offset-4 cursor-pointer"
               onClick={onRequestDeck}
               role="button"
               tabIndex={0}
