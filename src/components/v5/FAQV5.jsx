@@ -39,7 +39,7 @@ export default function FAQV5({ id = 'faq' }) {
           {/* Left Column (Sticky) */}
           <div className="v5-faq-col-left">
             <div className="v5-faq-sticky-box">
-              <h2 className="headline-large text-black">
+              <h2 className="v5-faq-title">
                 Direct apparel sourcing for campaigns, lookbooks and retail shops
               </h2>
               <p className="body-default text-neutral-500 mt-5 max-w-[40ch]">
@@ -54,7 +54,7 @@ export default function FAQV5({ id = 'faq' }) {
               {faqs.map((faq, idx) => (
                 <details key={idx} className="group v5-faq-item">
                   <summary className="v5-faq-summary">
-                    <span className="body-large font-medium text-black">
+                    <span className="v5-faq-question">
                       {faq.q}
                     </span>
                     <span className="v5-faq-circle-btn" aria-hidden="true">
@@ -74,7 +74,7 @@ export default function FAQV5({ id = 'faq' }) {
         {/* 3 Columns Below FAQ matching 00:36 in video */}
         <div className="v5-faq-bottom-3col">
           <div className="v5-bottom-col">
-            <h3 className="headline-small text-black">
+            <h3 className="v5-bottom-title">
               Outerwear & Tailoring: Direct from campus
             </h3>
             <p className="body-small text-neutral-500 mt-3">
@@ -83,7 +83,7 @@ export default function FAQV5({ id = 'faq' }) {
           </div>
 
           <div className="v5-bottom-col">
-            <h3 className="headline-small text-black">
+            <h3 className="v5-bottom-title">
               Circular Denim: Low-impact ozone washes
             </h3>
             <p className="body-small text-neutral-500 mt-3">
@@ -92,7 +92,7 @@ export default function FAQV5({ id = 'faq' }) {
           </div>
 
           <div className="v5-bottom-col">
-            <h3 className="headline-small text-black">
+            <h3 className="v5-bottom-title">
               Series Production: Scaled container logistics
             </h3>
             <p className="body-small text-neutral-500 mt-3">
@@ -105,4 +105,3 @@ export default function FAQV5({ id = 'faq' }) {
     </section>
   );
 }
-

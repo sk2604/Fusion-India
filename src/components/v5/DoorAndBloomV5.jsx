@@ -6,43 +6,42 @@ const bloomShots = [
     id: 1,
     title: 'Runway Motion',
     targetX: 0,
-    targetY: -26, // in vh
-    unit: 'vh',
+    targetY: -27, // in vh
     img: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800&auto=format&fit=crop'
   },
   {
     id: 2,
     title: 'Studio Lookbook',
     targetX: 25, // in vw
-    targetY: -14, // in vh
+    targetY: -15, // in vh
     img: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800&auto=format&fit=crop'
   },
   {
     id: 3,
     title: 'Tailored Editorial',
-    targetX: 29, // in vw
-    targetY: 6, // in vh
+    targetX: 28, // in vw
+    targetY: 15, // in vh
     img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop'
   },
   {
     id: 4,
     title: 'Atelier Interior',
     targetX: 0,
-    targetY: 26, // in vh
+    targetY: 27, // in vh
     img: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop'
   },
   {
     id: 5,
     title: 'Hardware & Draping',
-    targetX: -25, // in vw
-    targetY: 14, // in vh
+    targetX: -28, // in vw
+    targetY: 15, // in vh
     img: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=800&auto=format&fit=crop'
   },
   {
     id: 6,
     title: 'Precision Fitting',
-    targetX: -29, // in vw
-    targetY: -6, // in vh
+    targetX: -25, // in vw
+    targetY: -15, // in vh
     img: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?q=80&w=800&auto=format&fit=crop'
   }
 ];
@@ -69,20 +68,15 @@ export default function DoorAndBloomV5({ id = 'blooming', onSelectShot }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // ─── PHASE 1: DOOR ZOOM TRANSITION (progress 0.0 -> 0.32) ───
-  // White aperture zooms open from scale 1 -> 8 and fades
-  const doorT = Math.min(progress / 0.30, 1);
-  const doorScale = 1 + doorT * 7;
-  const doorOpacity = Math.max(0, 1 - doorT * 1.3);
+  // Phase 1: White Door Zoom (progress 0.0 -> 0.24)
+  const doorT = Math.min(progress / 0.22, 1);
+  const doorScale = 1 + doorT * 6;
+  const doorOpacity = Math.max(0, 1 - doorT * 1.25);
 
-  // ─── PHASE 2: PACKSHOT & BLOOMING SCROLL ANIMATION (progress 0.28 -> 1.0) ───
-  const bloomT = Math.min(Math.max((progress - 0.28) / 0.65, 0), 1);
-  // Cubic easing for realistic spring blooming feel
-  const easedBloom = bloomT < 0.5 ? 4 * bloomT * bloomT * bloomT : 1 - Math.pow(-2 * bloomT + 2, 3) / 2;
-
-  // Center statement opacity
-  const centerTextOpacity = Math.min(1, Math.max(0, (progress - 0.22) * 4));
-  const centerTextScale = 0.9 + 0.1 * Math.min(1, (progress - 0.22) * 2.5);
+  // Phase 2: Blooming Radial Photos (progress 0.18 -> 0.85)
+  const bloomT = Math.min(Math.max((progress - 0.18) / 0.65, 0), 1);
+  // Smooth cubic ease-out
+  const easedBloom = 1 - Math.pow(1 - bloomT, 2.5);
 
   return (
     <section className="v5-door-bloom-wrap" id={id} ref={containerRef}>
@@ -107,18 +101,12 @@ export default function DoorAndBloomV5({ id = 'blooming', onSelectShot }) {
           </div>
         </div>
 
-        {/* ─── 2. BLOOMING GARMENT STAGE (FRAMES 00:14-00:19) ─── */}
+        {/* ─── 2. BLOOMING GARMENT STAGE ON DOT-GRID (FRAMES 00:14-00:19) ─── */}
         <div className="v5-bloom-stage">
           
-          {/* Center Statement with Packshot Icon (matching 00:16) */}
-          <div 
-            className="v5-bloom-center-statement"
-            style={{
-              opacity: centerTextOpacity,
-              transform: `scale(${centerTextScale})`
-            }}
-          >
-            <p className="subheadline text-white text-center">
+          {/* Center Statement with Packshot Capsule (matching frame 00:16) */}
+          <div className="v5-bloom-center-statement">
+            <p className="v5-bloom-statement-text">
               <span>From your tech pack</span>{' '}
               <span className="v5-bloom-packshot-capsule">
                 <img 
@@ -131,27 +119,30 @@ export default function DoorAndBloomV5({ id = 'blooming', onSelectShot }) {
             </p>
           </div>
 
-          {/* 6 Blooming Photos that Radiate Outward on Scroll */}
+          {/* 6 Blooming Photos that Radiate Outward Smoothly */}
           <div className="v5-bloom-orbit-system">
             {bloomShots.map((shot) => {
-              // Calculate radial position driven by scroll easedBloom
-              const currentX = shot.targetX * easedBloom;
-              const currentY = shot.targetY * easedBloom;
-              const photoScale = 0.2 + 0.8 * easedBloom;
-              const photoOpacity = Math.min(1, easedBloom * 2.2);
+              // Smooth outward bloom from 30% distance to 100% distance
+              const distanceFactor = 0.3 + 0.7 * easedBloom;
+              const currentX = shot.targetX * distanceFactor;
+              const currentY = shot.targetY * distanceFactor;
+              const photoScale = 0.6 + 0.4 * easedBloom;
+              const isHovered = hoveredShot === shot.id;
 
               return (
                 <div 
                   key={shot.id} 
-                  className={`v5-bloom-flying-card ${hoveredShot === shot.id ? 'hovered' : ''}`}
+                  className={`v5-bloom-flying-card ${isHovered ? 'hovered' : ''}`}
                   style={{
-                    transform: `translate(${currentX}vw, ${currentY}vh) scale(${hoveredShot === shot.id ? photoScale * 1.1 : photoScale})`,
-                    opacity: photoOpacity,
-                    pointerEvents: easedBloom > 0.4 ? 'auto' : 'none'
+                    transform: `translate(${currentX}vw, ${currentY}vh) scale(${isHovered ? photoScale * 1.08 : photoScale})`,
+                    opacity: 1,
+                    pointerEvents: easedBloom > 0.15 ? 'auto' : 'none'
                   }}
                   onMouseEnter={() => setHoveredShot(shot.id)}
                   onMouseLeave={() => setHoveredShot(null)}
                   onClick={() => onSelectShot && onSelectShot(shot)}
+                  role="button"
+                  tabIndex={0}
                 >
                   <div className="v5-bloom-card-box">
                     <img 

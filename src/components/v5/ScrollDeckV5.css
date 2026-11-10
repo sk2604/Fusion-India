@@ -1,11 +1,11 @@
 /* ========================================================
-   V5 SCROLL DECK (320VH STICKY SCROLL MATCHING 00:03-00:11)
+   V5 SCROLL DECK (STICKY SCROLL MATCHING 00:03-00:11)
    ======================================================== */
 
 .v5-deck-scroll-wrapper {
   position: relative;
   width: 100%;
-  height: 320vh;
+  height: 260vh;
   background-color: var(--v5-white);
   color: var(--v5-black);
   z-index: 10;
@@ -28,28 +28,37 @@
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-top: 5rem;
+  padding-bottom: 2rem;
 }
 
-.v5-deck-headline-box {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 1.5rem;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+.v5-deck-header-box {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
 }
 
-.v5-deck-headline-box .headline-xl {
-  max-width: 20ch;
+.v5-deck-headline {
+  font-family: var(--v5-font-display);
+  letter-spacing: -0.03em;
+  font-size: clamp(28px, 18px + 2vw, 48px);
+  font-weight: 500;
+  line-height: 1.15;
+  color: #000000;
+  margin: 0 auto;
+  max-width: 26ch;
+  text-transform: none !important;
 }
 
 .v5-deck-flanking-stage {
   position: relative;
   width: 100%;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .v5-deck-flanking-grid {
@@ -57,11 +66,12 @@
   grid-template-columns: 1fr;
   gap: 1.5rem;
   align-items: center;
+  justify-items: center;
 }
 
 @media (min-width: 860px) {
   .v5-deck-flanking-grid {
-    grid-template-columns: 1fr min(40vw, 440px) 1fr;
+    grid-template-columns: 1fr min(38vw, 420px) 1fr;
     gap: 3rem;
   }
 }
@@ -98,84 +108,109 @@
   letter-spacing: -0.03em;
   color: #000000;
   line-height: 1.1;
-  text-align: center;
-  transition: transform 0.3s ease;
+  text-transform: none !important;
+  white-space: nowrap;
 }
 
-@media (min-width: 860px) {
-  .v5-flank-left .v5-deck-flank-word {
-    text-align: right;
-  }
-  .v5-flank-right .v5-deck-flank-word {
-    text-align: left;
-  }
-}
-
+/* Center Photo Card */
 .v5-deck-card-wrap {
-  width: 100%;
-  max-width: 440px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  max-width: min(38vw, 420px);
 }
 
 .v5-deck-photo-card {
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
+  border-radius: 8px;
   overflow: hidden;
-  background-color: var(--v5-neutral-100);
+  background-color: #000000;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
   cursor: pointer;
-  border-radius: 4px;
+  transition: transform 0.25s ease;
+}
+
+.v5-deck-photo-card:hover {
+  transform: scale(1.02);
+}
+
+.v5-deck-photo-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+  pointer-events: none;
+}
+
+.v5-deck-photo-layer.active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .v5-deck-photo-img {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0;
-  transform: scale(1.04);
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
 }
 
-.v5-deck-photo-img.active {
-  opacity: 1;
-  transform: scale(1);
+/* 2x2 Lookbook Grid for Card 2 */
+.v5-deck-inner-grid {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2px;
+  background-color: #ffffff;
+}
+
+.v5-grid-quarter {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .v5-deck-badge {
   position: absolute;
   bottom: 12px;
   left: 12px;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
   padding: 4px 10px;
-  border-radius: 9999px;
-  background: rgba(0, 0, 0, 0.75);
-  color: #ffffff;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  pointer-events: none;
+  color: #ffffff;
+  font-family: var(--v5-font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  z-index: 5;
 }
 
+/* Progress Step Bars (matching video dots) */
 .v5-deck-dots-bar {
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 8px;
   margin-top: 1.25rem;
 }
 
 .v5-deck-dot-line {
-  width: 24px;
-  height: 2px;
+  height: 3px;
+  width: 20px;
+  border-radius: 2px;
   background-color: var(--v5-neutral-300);
-  transition: background-color 0.3s ease, width 0.3s ease;
+  transition: width 0.3s ease, background-color 0.3s ease;
 }
 
 .v5-deck-dot-line.active {
   background-color: var(--v5-black);
-  width: 42px;
+  width: 36px;
 }

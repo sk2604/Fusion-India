@@ -1,33 +1,34 @@
 /* ========================================================
-   V5 HERO (WARM GOLDEN EDITORIAL PINNED HERO MATCHING VIDEO)
+   V5 HERO (PINNED EDITORIAL HERO MATCHING VIDEO 00:00-00:02)
    ======================================================== */
 
 .v5-hero-wrapper {
   position: relative;
   width: 100%;
-}
-
-.v5-hero-fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
   height: 100vh;
   height: 100dvh;
-  z-index: 0;
-  overflow: hidden;
   background-color: #000000;
-  pointer-events: none;
+  z-index: 1;
+}
+
+.v5-hero-sticky {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #000000;
 }
 
 .v5-hero-bg {
   position: absolute;
   inset: 0;
   transform-origin: center center;
-  transition: transform 0.1s linear;
 }
 
 .v5-hero-img {
@@ -63,12 +64,12 @@
 
 .v5-hero-logo-main {
   font-family: var(--v5-font-display);
-  font-size: clamp(52px, 32px + 6vw, 110px);
+  font-size: clamp(56px, 36px + 7vw, 120px);
   font-weight: 700;
   letter-spacing: -0.05em;
   color: #ffffff;
   line-height: 0.95;
-  text-transform: lowercase;
+  text-transform: lowercase !important;
 }
 
 .v5-hero-logo-sub {
@@ -76,8 +77,9 @@
   font-size: clamp(16px, 12px + 0.8vw, 24px);
   font-weight: 400;
   letter-spacing: -0.02em;
-  color: rgba(255, 255, 255, 0.85);
-  margin-top: 0.25rem;
+  color: rgba(255, 255, 255, 0.88);
+  margin-top: 0.35rem;
+  text-transform: none !important;
 }
 
 .v5-hero-tagline {
@@ -87,6 +89,7 @@
   color: rgba(255, 255, 255, 0.65);
   letter-spacing: 0.02em;
   margin: 0;
+  text-transform: none !important;
 }
 
 .v5-hero-scroll-btn {
@@ -133,12 +136,3 @@
   50% { transform: translateY(100%); }
   100% { transform: translateY(100%); }
 }
-
-.v5-hero-spacer {
-  height: 100vh;
-  height: 100dvh;
-  pointer-events: none;
-  position: relative;
-  z-index: 1;
-}
-

@@ -16,7 +16,14 @@ const deckCards = [
     right: 'all of one piece.',
     tag: 'DIVISION 02 // SOURCING SUITE',
     sub: 'From denim and heavy loopback to bespoke leather goods and silk.',
-    img: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop'
+    // Lookbook grid of 4 images matching frame 00:09 in reference video
+    isGrid: true,
+    gridImages: [
+      'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=600&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=600&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=600&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600&auto=format&fit=crop'
+    ]
   },
   {
     id: 3,
@@ -24,7 +31,7 @@ const deckCards = [
     right: 'who sell.',
     tag: 'DIVISION 03 // SCALED PRODUCTION',
     sub: '100% factory calibration across 50,000+ unit European delivery.',
-    img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200&auto=format&fit=crop'
+    img: 'https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1200&auto=format&fit=crop'
   }
 ];
 
@@ -49,54 +56,35 @@ export default function ScrollDeckV5({ id = 'deck', onSelectCard }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Phase 1: Headline visible at start (0.00 -> 0.22)
-  const headlineOpacity = scrollProgress < 0.22 ? 1 - scrollProgress * 3.5 : 0;
-  const headlineY = scrollProgress * 60;
-
-  // Phase 2: 3 Cards progression (0.18 -> 1.00)
-  // 0.18 - 0.48: Card 0
-  // 0.48 - 0.74: Card 1
-  // 0.74 - 1.00: Card 2
+  // 3 Cards progression driven cleanly by scroll
+  // 0.00 - 0.35: Card 0 (Campaigns with attitude)
+  // 0.35 - 0.68: Card 1 (Lookbooks all of one piece)
+  // 0.68 - 1.00: Card 2 (Product runs, who sell)
   let activeCardIdx = 0;
-  if (scrollProgress >= 0.74) {
+  if (scrollProgress >= 0.68) {
     activeCardIdx = 2;
-  } else if (scrollProgress >= 0.48) {
+  } else if (scrollProgress >= 0.35) {
     activeCardIdx = 1;
   } else {
     activeCardIdx = 0;
   }
 
   const currentCard = deckCards[activeCardIdx];
-  const cardsVisible = scrollProgress >= 0.12;
-  const cardsOpacity = Math.min(1, (scrollProgress - 0.12) * 5);
 
   return (
     <section className="v5-deck-scroll-wrapper" id={id} ref={containerRef}>
       <div className="v5-deck-sticky">
         <div className="v5-container v5-px v5-deck-inner">
           
-          {/* Centered Initial Statement (matching frame 00:04 in video) */}
-          <div 
-            className="v5-deck-headline-box"
-            style={{ 
-              opacity: headlineOpacity,
-              transform: `translateY(-${headlineY}px)`,
-              pointerEvents: headlineOpacity > 0.1 ? 'auto' : 'none'
-            }}
-          >
-            <h2 className="headline-xl text-black text-center">
+          {/* Centered Top Eyebrow Headline (matching frame 00:04 in video) */}
+          <div className="v5-deck-header-box">
+            <h2 className="v5-deck-headline">
               You design what the world wears. We build it.
             </h2>
           </div>
 
-          {/* 3-Part Flanking Layout Driven by Scroll (matching frames 00:07-00:11) */}
-          <div 
-            className="v5-deck-flanking-stage"
-            style={{ 
-              opacity: cardsVisible ? cardsOpacity : 0,
-              transform: `scale(${0.96 + cardsOpacity * 0.04})`
-            }}
-          >
+          {/* 3-Part Flanking Layout Always Visible with Active Card (matching frames 00:07-00:11) */}
+          <div className="v5-deck-flanking-stage">
             <div className="v5-deck-flanking-grid">
               
               {/* Left Flank Word */}
@@ -111,19 +99,38 @@ export default function ScrollDeckV5({ id = 'deck', onSelectCard }) {
                 <div 
                   className="v5-deck-photo-card"
                   onClick={() => onSelectCard && onSelectCard(currentCard)}
+                  role="button"
+                  tabIndex={0}
                 >
                   {deckCards.map((card, i) => (
-                    <img 
-                      key={card.id}
-                      src={card.img} 
-                      alt={card.left}
-                      className={`v5-deck-photo-img ${i === activeCardIdx ? 'active' : ''}`}
-                    />
+                    <div 
+                      key={card.id} 
+                      className={`v5-deck-photo-layer ${i === activeCardIdx ? 'active' : ''}`}
+                    >
+                      {card.isGrid ? (
+                        <div className="v5-deck-inner-grid">
+                          {card.gridImages.map((src, gIdx) => (
+                            <img 
+                              key={gIdx} 
+                              src={src} 
+                              alt={`Look ${gIdx + 1}`} 
+                              className="v5-grid-quarter" 
+                            />
+                          ))}
+                        </div>
+                      ) : (
+                        <img 
+                          src={card.img} 
+                          alt={card.left}
+                          className="v5-deck-photo-img"
+                        />
+                      )}
+                    </div>
                   ))}
                   <span className="v5-deck-badge">{currentCard.tag}</span>
                 </div>
 
-                {/* Step Dots */}
+                {/* Step Indicator Bars (matching 3 dots in video) */}
                 <div className="v5-deck-dots-bar">
                   {deckCards.map((_, i) => (
                     <span 
