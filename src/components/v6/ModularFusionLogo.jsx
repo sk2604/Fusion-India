@@ -83,3 +83,4 @@ export default function ModularFusionLogo({ className = '', scale = 1 }) {
     </div>
   );
 }
+

@@ -1,10 +1,11 @@
 /* ========================================================
    V6 DOOR & BLOOMING GSAP PINNED STAGE
-   Matches Reference:
-   - Standalone modular geometric "fusion" logo with internal dot matrix (Image 10)
+   Matches Fusion India Collections & Grace Reference:
+   - Standalone modular geometric "fusion." logo (Image 10)
    - First frame rock-solid hold
    - Exponential zoom plunging into dark dot-grid
-   - 6 clean un-crowded portrait cards slowly rotating clockwise (Image 4)
+   - 6 clean un-crowded product division cards auto-rotating continuously clockwise
+   - Authentic Fusion India collections (Ladies Wear, Men's Wear, Leather, Soft Goods, Hard Goods, Athleisure)
    ======================================================== */
 
 .v6-door-section {
@@ -55,7 +56,7 @@
 }
 
 /* ──────────────────────────────────────────────────────────
-   2. BLOOMING GARMENT STAGE (MATCHING REFERENCE IMAGE 4)
+   2. BLOOMING GARMENT STAGE (FUSION INDIA COLLECTIONS)
    ────────────────────────────────────────────────────────── */
 .v6-bloom-stage {
   position: relative;
@@ -66,24 +67,42 @@
   justify-content: center;
 }
 
-/* Center Minimal Statement (Spacious, Clear & Uncrowded) */
+/* Center Statement (Spacious, Clear, Authoritative) */
 .v6-bloom-center-statement {
   position: relative;
   z-index: 35;
-  max-width: 32ch;
+  max-width: 42ch;
   text-align: center;
   padding: 0 1.5rem;
   pointer-events: none;
 }
 
+.v6-bloom-category-pills {
+  margin-bottom: 0.9rem;
+}
+
+.v6-bloom-pill-tag {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #ff3333;
+  background: rgba(255, 51, 51, 0.12);
+  padding: 4px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 51, 51, 0.28);
+  display: inline-block;
+}
+
 .v6-bloom-statement-title {
-  font-family: var(--v6-font-sans);
-  font-size: clamp(22px, 2.4vw, 38px);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(23px, 2.6vw, 40px);
   font-weight: 500;
-  line-height: 1.25;
-  letter-spacing: -0.03em;
+  line-height: 1.22;
+  letter-spacing: -0.035em;
   color: #ffffff;
-  margin: 0 0 0.75rem 0;
+  margin: 0 0 0.85rem 0;
   display: inline;
 }
 
@@ -107,13 +126,36 @@
 }
 
 .v6-bloom-statement-sub {
-  font-family: var(--v6-font-sans);
-  font-size: clamp(12px, 1.05vw, 15px);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(12px, 1.1vw, 15px);
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.65);
-  letter-spacing: 0.02em;
-  margin: 0.5rem 0 0 0;
-  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.01em;
+  margin: 0.6rem 0 0 0;
+  line-height: 1.45;
+}
+
+.v6-bloom-credo-chips {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  margin-top: 0.85rem;
+}
+
+.v6-chip-item {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.v6-chip-dot {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 12px;
 }
 
 /* Orbit Blooming System (True Absolute Center with Wide Orbit) */
@@ -133,7 +175,7 @@
   top: 0;
   left: 0;
   width: clamp(135px, 13.5vw, 215px);
-  height: clamp(180px, 18vw, 285px);
+  height: clamp(185px, 18.5vw, 290px);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
   will-change: transform, opacity;
   cursor: pointer;
@@ -143,11 +185,34 @@
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
   background-color: #171717;
   border: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Subtle top division badge */
+.v6-card-top-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+}
+
+.v6-tag-pill {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .v6-bloom-photo-img {
@@ -162,17 +227,17 @@
   transform: scale(1.05);
 }
 
-/* Subtle clean bottom tag visible only on hover */
+/* Subtle clean bottom tag visible on hover */
 .v6-bloom-card-caption {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 1.2rem 0.8rem 0.65rem;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, transparent 100%);
+  padding: 1.4rem 0.85rem 0.75rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 65%, transparent 100%);
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 2px;
   opacity: 0;
   transform: translateY(6px);
   transition: opacity 0.25s ease, transform 0.25s ease;
@@ -184,20 +249,29 @@
 }
 
 .v6-caption-title {
-  font-family: var(--v6-font-sans);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #ffffff;
 }
 
+.v6-caption-sub {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 9.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.25;
+}
+
 .v6-caption-spec {
-  font-family: var(--v6-font-sans);
-  font-size: 9px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 8.5px;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.65);
   letter-spacing: 0.02em;
+  margin-top: 2px;
 }
 
 /* ──────────────────────────────────────────────────────────
