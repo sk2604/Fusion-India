@@ -1,0 +1,120 @@
+/* ========================================================
+   GRACE DECK (SCROLL-DRIVEN WHITE SURFACE STATEMENT)
+   ======================================================== */
+
+.grace-deck-section {
+  position: relative;
+  height: 240vh;
+  background-color: var(--grace-white);
+  color: var(--grace-black);
+  z-index: 10;
+}
+
+@media (min-width: 768px) {
+  .grace-deck-section {
+    height: 300vh;
+  }
+}
+
+.grace-deck-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.grace-deck-headline-wrap {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  transition: opacity 0.3s ease;
+}
+
+.grace-deck-headline-wrap .headline-xl {
+  max-width: 22ch;
+  margin: 0 auto;
+}
+
+.grace-deck-stage {
+  width: 100%;
+}
+
+.grace-deck-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 860px) {
+  .grace-deck-grid {
+    grid-template-columns: 1fr min(42vw, 440px) 1fr;
+    gap: 3rem;
+  }
+}
+
+.grace-deck-col-left {
+  text-align: left;
+}
+
+@media (min-width: 860px) {
+  .grace-deck-col-left {
+    text-align: right;
+  }
+}
+
+.grace-deck-card-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.grace-deck-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background-color: var(--grace-neutral-100);
+}
+
+.grace-deck-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.grace-deck-img.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.grace-deck-col-right {
+  text-align: left;
+}
+
+.grace-deck-dots {
+  display: flex;
+  gap: 8px;
+  margin-top: 1.5rem;
+}
+
+.grace-deck-dot {
+  width: 24px;
+  height: 2px;
+  background-color: var(--grace-neutral-300);
+  transition: background-color 0.3s ease, width 0.3s ease;
+}
+
+.grace-deck-dot.active {
+  background-color: var(--grace-black);
+  width: 40px;
+}

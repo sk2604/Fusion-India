@@ -19,9 +19,9 @@ export default function VersionToggle() {
         <Link
           to="/v4"
           className={`vt-pill ${isV4 ? 'active' : ''}`}
-          title="V4: Grace AI Fashion OS"
+          title="V4: Grace Editorial Minimal"
         >
-          ✨ V4 (Grace AI)
+          ✨ V4 (Grace)
         </Link>
         <Link
           to="/"

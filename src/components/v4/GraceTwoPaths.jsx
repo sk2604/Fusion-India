@@ -1,89 +1,90 @@
 import React from 'react';
-import { ArrowRight, Scissors, Factory, Check } from 'lucide-react';
 import './GraceTwoPaths.css';
 
-export default function GraceTwoPaths({ onSelectService, onSelectDigital }) {
+export default function GraceTwoPaths({ onSelectFOB, onSelectDDP, onRequestDeck }) {
   return (
-    <section className="two-paths-section">
-      <div className="container two-paths-container">
+    <section className="page-surface grace-two-paths-section" id="paths">
+      <div className="grace-container grace-px grace-py">
         
-        {/* Header */}
-        <div className="two-paths-head">
-          <span className="two-paths-kicker">FLEXIBLE SOURCING ENGAGEMENT // SCALE ON DEMAND</span>
-          <h2 className="two-paths-title">
-            Capsule prototyping. <em>Or full enterprise volume.</em>
-          </h2>
-          <p className="two-paths-sub">
-            Whether you need a rapid 72-hour physical master sample for runway review or 50,000 units delivered 
-            to European distribution centers, Fusion executes with zero-compromise precision.
-          </p>
+        {/* Section Heading */}
+        <h2 className="headline-large text-black">
+          <span className="block">Direct FOB contract. </span>
+          <span className="block">Or full DDP delivery.</span>
+        </h2>
+        
+        <p className="body-large text-neutral-500 mt-5 max-w-[46ch]">
+          Same Indian manufacturing excellence, two flexible models calibrated to European fashion houses and global D2C brands.
+        </p>
+
+        {/* 2 Column Image Cards */}
+        <div className="grace-paths-grid">
+          
+          {/* Path 1: FOB */}
+          <div className="grace-path-col">
+            <div className="group grace-path-card" onClick={onSelectFOB}>
+              <div className="grace-path-img-box aspect-square">
+                <img 
+                  src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop" 
+                  alt="Direct FOB Sourcing" 
+                  className="grace-path-img"
+                />
+              </div>
+              <p className="label text-neutral-500 mt-6">DIRECT FOB CONTRACT</p>
+              <h3 className="headline-medium text-black mt-2">
+                Your team directs freight. We deliver to port.
+              </h3>
+              <p className="body-default text-neutral-500 mt-3 max-w-[46ch]">
+                Full production oversight from our 40,000 sq.ft Gurugram campus. Handover at Mumbai / Delhi JNPT ports with verified AQL 1.5 inspection and lab certifications.
+              </p>
+              <p className="body-default font-medium text-black mt-4 grace-link-underline">
+                Explore FOB Terms <span aria-hidden="true">→</span>
+              </p>
+            </div>
+          </div>
+
+          {/* Path 2: DDP */}
+          <div className="grace-path-col">
+            <div className="group grace-path-card" onClick={onSelectDDP}>
+              <div className="grace-path-img-box aspect-square">
+                <img 
+                  src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200&auto=format&fit=crop" 
+                  alt="Full DDP Concierge" 
+                  className="grace-path-img"
+                />
+              </div>
+              <p className="label text-neutral-500 mt-6">FULL DDP CONCIERGE</p>
+              <h3 className="headline-medium text-black mt-2">
+                Delivered direct to your European warehouse.
+              </h3>
+              <p className="body-default text-neutral-500 mt-3 max-w-[46ch]">
+                End-to-end management from yarn spinning to EU customs clearance, duty settlement, and palletized dock delivery into Germany, Scandinavia, and the UK.
+              </p>
+              <p className="body-default font-medium text-black mt-4 grace-link-underline">
+                Explore DDP Terms <span aria-hidden="true">→</span>
+              </p>
+            </div>
+          </div>
+
         </div>
 
-        {/* 2 Big Split Cards */}
-        <div className="two-paths-grid">
-          
-          {/* Card A: Rapid Prototyping & Capsule Runs */}
-          <div className="path-card path-card-digital">
-            <div className="path-badge">
-              <Scissors size={14} />
-              <span>CAPSULE & SAMPLING</span>
-            </div>
-
-            <div className="path-main">
-              <h3>Rapid Atelier Prototyping.</h3>
-              <p>
-                Send us your design sketches, tech packs, or physical swatches. Our 40,000 sq.ft Gurugram 
-                sample room cuts, fits, and finishes your master proto within 72 hours.
-              </p>
-
-              <ul className="path-features">
-                <li><Check size={14} /> 72-Hour Physical Master Prototype</li>
-                <li><Check size={14} /> Agile Capsule MOQs (150 – 500 pcs)</li>
-                <li><Check size={14} /> Precision Pattern Grading & Fabric Shrinkage Testing</li>
-              </ul>
-            </div>
-
-            <button 
-              type="button" 
-              className="path-action-btn"
-              onClick={onSelectDigital}
+        {/* Bottom Bar (Grace Format) */}
+        <div className="grace-paths-bottom-bar">
+          <p className="body-default text-neutral-500">
+            Need 50,000+ units per season?{' '}
+            <span 
+              className="text-black font-medium underline underline-offset-4 cursor-pointer"
+              onClick={onRequestDeck}
             >
-              <span>REQUEST ATELIER SWATCHES</span>
-              <ArrowRight size={14} />
-            </button>
-          </div>
-
-          {/* Card B: Enterprise Volume & Audited Scale */}
-          <div className="path-card path-card-service">
-            <div className="path-badge highlight-badge">
-              <Factory size={14} />
-              <span>MASS PRODUCTION SCALE</span>
-            </div>
-
-            <div className="path-main">
-              <h3>Enterprise Manufacturing at Scale.</h3>
-              <p>
-                Full industrial capacity across 500+ SEDEX, BSCI, and GOTS-certified Tier-1 mills. 
-                Complete inline quality management with direct air and sea container freight to Europe and USA.
-              </p>
-
-              <ul className="path-features">
-                <li><Check size={14} /> Volume Capacity (2,500 – 50,000+ units)</li>
-                <li><Check size={14} /> 100% Inline AQL 1.5 Quality Guarantee</li>
-                <li><Check size={14} /> DDP Customs Clearance into Germany, Scandinavia, & USA</li>
-              </ul>
-            </div>
-
-            <button 
-              type="button" 
-              className="path-action-btn path-btn-highlight"
-              onClick={onSelectService}
-            >
-              <span>SUBMIT PRODUCTION BRIEF</span>
-              <ArrowRight size={14} />
-            </button>
-          </div>
-
+              Annual Sourcing Frameworks <span aria-hidden="true">→</span>
+            </span>
+          </p>
+          <button 
+            type="button" 
+            className="grace-pill-btn-black"
+            onClick={onRequestDeck}
+          >
+            Request Sourcing Deck
+          </button>
         </div>
 
       </div>

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Magnetic from './Magnetic';
 import './Navbar.css';
 
 export default function Navbar() {
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -19,6 +20,11 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isOpen]);
+
+  // V4 has its own dedicated Grace-style fixed mix-blend-difference navbar
+  if (location.pathname === '/v4' || location.pathname === '/grace') {
+    return null;
+  }
 
   return (
     <>

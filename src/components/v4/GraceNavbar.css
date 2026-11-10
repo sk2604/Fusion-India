@@ -1,0 +1,128 @@
+/* ========================================================
+   GRACE FIXED NAVBAR (MIX-BLEND-DIFFERENCE)
+   ======================================================== */
+
+.grace-nav-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.5rem 1.5rem;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  font-family: var(--grace-font-sans);
+}
+
+@media (min-width: 768px) {
+  .grace-nav-fixed {
+    padding: 1.75rem 3rem;
+  }
+}
+
+.grace-nav-inner {
+  width: 100%;
+  max-width: 2000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: auto;
+}
+
+.grace-nav-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.grace-brand-name {
+  font-family: var(--grace-font-display);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.grace-brand-sub {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+}
+
+.grace-nav-center {
+  display: none;
+  align-items: center;
+  gap: 2rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (min-width: 860px) {
+  .grace-nav-center {
+    display: flex;
+  }
+}
+
+.grace-nav-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #ffffff;
+  font-family: var(--grace-font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  opacity: 0.9;
+}
+
+.grace-nav-link:hover {
+  opacity: 0.55;
+}
+
+.grace-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.grace-nav-cta {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #ffffff;
+  font-family: var(--grace-font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .grace-nav-cta {
+    display: inline-block;
+  }
+}
+
+.grace-nav-cta:hover {
+  opacity: 0.6;
+}
+
+.grace-nav-lang {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+}

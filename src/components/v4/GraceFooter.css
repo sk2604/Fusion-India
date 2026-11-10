@@ -1,0 +1,86 @@
+/* ========================================================
+   GRACE FOOTER (DARK EDITORIAL LUXURY FINALE)
+   ======================================================== */
+
+.grace-footer-section {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  min-height: 65vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--grace-black);
+}
+
+.grace-footer-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.grace-footer-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+
+.grace-footer-scrim {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.9) 100%);
+}
+
+.grace-footer-content {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grace-footer-brand-wrap {
+  margin-bottom: 2.5rem;
+}
+
+.grace-footer-cta-wrap {
+  margin-bottom: 3.5rem;
+}
+
+.grace-footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.grace-footer-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #ffffff;
+  font-family: var(--grace-font-sans);
+  font-size: 13px;
+  letter-spacing: -0.005em;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.grace-footer-link:hover {
+  opacity: 1;
+}
+
+.grace-footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 2rem;
+  width: 100%;
+}

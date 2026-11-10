@@ -1,53 +1,65 @@
 import React from 'react';
 import './GraceMetrics.css';
 
-export default function GraceMetrics({ onBookDemo }) {
+export default function GraceMetrics({ onBookAudit }) {
   return (
-    <section className="grace-metrics-section">
-      <div className="container grace-metrics-container">
+    <section className="page-surface grace-metrics-section" id="metrics">
+      <div className="grace-container grace-px grace-py">
         
-        {/* Top Header */}
-        <div className="metrics-header">
-          <span className="metrics-kicker">THE FUSION INDIA ADVANTAGE</span>
-          <h2 className="metrics-title">
-            The Right Product. The Right Price.<br />
-            <em>The Right Performance.</em>
-          </h2>
-        </div>
+        {/* Giant Headline */}
+        <h2 className="headline-xl max-w-[18ch] text-black">
+          Direct manufacturer. Zero agent markup.
+        </h2>
 
-        {/* 3 Giant Metric Pillars (Exact Grace Layout, Real Sourcing Metrics) */}
-        <div className="metrics-triple-grid">
+        {/* 3 Metric Columns with Top Border */}
+        <div className="grace-metrics-grid">
           
-          <div className="metric-unit-card">
-            <span className="metric-huge-number">15+</span>
-            <span className="metric-unit-label">Years of disciplined global fashion sourcing & manufacturing</span>
+          <div className="grace-metric-col">
+            <div className="grace-metric-border">
+              <p className="headline-large tabular-nums text-black">
+                35 %
+              </p>
+              <p className="body-large mt-2 text-neutral-500">
+                savings vs third-party trading agencies
+              </p>
+            </div>
           </div>
 
-          <div className="metric-unit-card">
-            <span className="metric-huge-number">500+</span>
-            <span className="metric-unit-label">Audited Tier-1 mills with zero child labour & living wage guarantee</span>
+          <div className="grace-metric-col">
+            <div className="grace-metric-border">
+              <p className="headline-large tabular-nums text-black">
+                100 %
+              </p>
+              <p className="body-large mt-2 text-neutral-500">
+                audited social & environmental compliance
+              </p>
+            </div>
           </div>
 
-          <div className="metric-unit-card">
-            <span className="metric-huge-number">72h</span>
-            <span className="metric-unit-label">Physical master prototype cut and finished at our Gurugram campus</span>
+          <div className="grace-metric-col">
+            <div className="grace-metric-border">
+              <p className="headline-large tabular-nums text-black">
+                14 Days
+              </p>
+              <p className="body-large mt-2 text-neutral-500">
+                prototype turnaround from tech pack
+              </p>
+            </div>
           </div>
 
         </div>
 
-        {/* Comparison Callout */}
-        <div className="metrics-callout-row">
-          <p className="callout-p">
-            "We do not broker factories. We engineer the bridge between European design vision and audited ethical scale. 
-            From initial CAD blueprint to finished container delivery worldwide."
+        {/* Bottom Explainer & CTA */}
+        <div className="grace-metrics-bottom-bar">
+          <p className="body-large max-w-[46ch] text-neutral-500">
+            Traditional buying agencies add 3 layers of middleman margin and weeks of communication friction. We build direct from our Gurugram campus to your distribution hubs.
           </p>
-
           <button 
             type="button" 
-            className="callout-cta-btn"
-            onClick={onBookDemo}
+            className="grace-pill-btn-black"
+            onClick={onBookAudit}
           >
-            <span>REQUEST SOURCING CONSULTATION</span>
+            Schedule Factory Audit
           </button>
         </div>
 

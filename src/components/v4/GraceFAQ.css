@@ -1,146 +1,116 @@
 /* ========================================================
-   GRACE FAQ (EXACT GRACEFASHION.AI ACCORDION ARCHITECTURE)
+   GRACE FAQ (STICKY 2-COLUMN ACCORDION + DIVISION CARDS)
    ======================================================== */
 
 .grace-faq-section {
-  padding: 120px 0 140px;
-  background-color: #000000;
-  color: #ffffff;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.grace-faq-container {
-  display: grid;
-  grid-template-columns: 420px 1fr;
-  gap: 80px;
-  align-items: start;
-}
-
-.faq-sticky-box {
-  position: sticky;
-  top: 120px;
-  display: flex;
-  flex-direction: column;
-}
-
-.faq-kicker {
-  font-family: "Space Grotesk", monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
-  color: rgba(255, 255, 255, 0.6);
-  display: block;
-  margin-bottom: 14px;
-}
-
-.faq-title {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(2.2rem, 3.6vw, 3.2rem);
-  font-weight: 500;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  margin: 0 0 18px;
-  color: #fff;
-}
-
-.faq-title em {
-  font-style: italic;
-  font-family: "Playfair Display", serif;
-  font-weight: 400;
-}
-
-.faq-sub {
-  font-family: "Instrument Sans", sans-serif;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.65);
-  margin: 0;
-}
-
-/* Right Accordion List */
-.faq-accordion-list {
-  display: flex;
-  flex-direction: column;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.faq-item {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.faq-summary-btn {
+  position: relative;
+  z-index: 10;
   width: 100%;
+}
+
+.grace-faq-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 960px) {
+  .grace-faq-grid {
+    grid-template-columns: 5fr 6fr;
+    gap: 5rem;
+  }
+}
+
+.grace-faq-col-left {
+  position: relative;
+}
+
+.grace-faq-sticky {
+  position: relative;
+}
+
+@media (min-width: 960px) {
+  .grace-faq-sticky {
+    position: sticky;
+    top: 7rem;
+  }
+}
+
+.grace-accordion-wrap {
+  border-top: 1px solid var(--grace-neutral-200);
+}
+
+.grace-faq-item {
+  border-bottom: 1px solid var(--grace-neutral-200);
+}
+
+.grace-faq-summary {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 20px;
-  padding: 24px 0;
-  background: transparent;
-  border: none;
-  color: #ffffff;
-  text-align: left;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
   cursor: pointer;
+  list-style: none;
   transition: opacity 0.2s ease;
 }
 
-.faq-summary-btn:hover {
-  opacity: 0.75;
+.grace-faq-summary::-webkit-details-marker {
+  display: none;
 }
 
-.faq-question-text {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 1.12rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  line-height: 1.4;
+.grace-faq-summary:hover {
+  opacity: 0.65;
+}
+
+.grace-faq-icon {
+  margin-top: 2px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  border: 1px solid var(--grace-neutral-300);
+  font-size: 14px;
+  line-height: 1;
+  color: var(--grace-neutral-500);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, color 0.2s ease;
+}
+
+.grace-faq-item[open] .grace-faq-icon {
+  transform: rotate(45deg);
+  background-color: var(--grace-black);
+  border-color: var(--grace-black);
   color: #ffffff;
 }
 
-.faq-toggle-circle {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+.grace-faq-answer {
+  padding-bottom: 1.5rem;
+  margin-top: -0.25rem;
+  max-width: 52ch;
+}
+
+/* 3 Division Cards Below FAQ */
+.grace-faq-bottom-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-top: 5rem;
+  border-top: 1px solid var(--grace-neutral-200);
+  padding-top: 3rem;
+}
+
+@media (min-width: 768px) {
+  .grace-faq-bottom-cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-top: 8rem;
+    padding-top: 3rem;
+  }
+}
+
+.grace-faq-card {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: transform 0.3s ease;
+  flex-direction: column;
 }
-
-.toggle-icon {
-  font-family: "Space Grotesk", monospace;
-  font-size: 1rem;
-  line-height: 1;
-  color: rgba(255, 255, 255, 0.8);
-  transition: transform 0.3s ease;
-}
-
-.faq-item.open .faq-toggle-circle {
-  border-color: #ffffff;
-  transform: rotate(45deg);
-}
-
-.faq-answer-box {
-  padding-bottom: 28px;
-}
-
-.faq-answer-box p {
-  font-family: "Instrument Sans", sans-serif;
-  font-size: 0.98rem;
-  line-height: 1.65;
-  color: rgba(255, 255, 255, 0.65);
-  margin: 0;
-  max-width: 60ch;
-}
-
-@media (max-width: 900px) {
-  .grace-faq-container {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .faq-sticky-box {
-    position: static;
-  }
-}
-

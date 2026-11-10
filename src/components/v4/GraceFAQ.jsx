@@ -1,85 +1,106 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './GraceFAQ.css';
 
-const faqItems = [
+const faqs = [
   {
-    q: 'What product categories does Fusion India specialize in?',
-    a: 'Fusion India is a comprehensive multi-product manufacturing partner specializing in Women’s Atelier (silk charmeuse, contemporary dresses), Men’s Tailoring (wool suiting, formal blazers), Leather Goods & Bags (full-grain Tuscan calfskin totes and crossbody bags), Circular Denim (low-water selvedge jackets and jeans), and Organic Cotton Essentials (GOTS-certified loopback hoodies, tees, and loungewear).'
+    q: 'What apparel categories does Fusion India manufacture?',
+    a: 'We specialize in tailored outerwear (wool coats, trench coats), men’s and women’s tailoring (jackets, trousers), circular organic denim, heavyweight knitted jersey, fine silk garments, and handcrafted leather accessories across our audited Gurugram campus and certified tier-1 mills.'
   },
   {
-    q: 'Where is your manufacturing headquarters and sampling facility?',
-    a: 'Our global headquarters and central 40,000 sq.ft manufacturing and design campus are based in Gurugram (Udyog Vihar), Haryana, India. We house complete pattern making, master sampling, material testing, and QA divisions on-site, supported by partner distribution hubs in Germany (Hamburg), Scandinavia, and North America.'
+    q: 'What are your Minimum Order Quantities (MOQs)?',
+    a: 'Our flexible structure allows 300 to 500 units per style/colorway for specialized outerwear and tailoring, scaling seamlessly to 50,000+ units for seasonal retail rollouts and basic programs.'
   },
   {
-    q: 'What are your production Minimum Order Quantities (MOQs)?',
-    a: 'We support both fast-turnaround capsule collections and high-volume enterprise production. Capsule trial runs start at 150 to 500 pieces per style, while our audited mill network easily scales to volume orders of 5,000 to 50,000+ units per run.'
+    q: 'Can you source certified organic and sustainable fabrics?',
+    a: 'Yes. Over 70% of our production runs utilize GOTS-certified organic cotton, BCI cotton, OEKO-TEX Standard 100 dyes, European linen, and recycled wool with complete traceability documentation.'
   },
   {
-    q: 'How fast can a physical master prototype be completed?',
-    a: 'Upon receiving your design sketches, CAD files, or physical reference garments, our Gurugram sample room engineers, fits, and finishes your master physical prototype within 72 hours, complete with accurate fabric swatches and trim cards.'
+    q: 'What is the standard turnaround time for samples and production?',
+    a: 'Proto-samples and fit garments are completed within 10–14 business days from tech-pack submission. Production bulk lead time is typically 60–90 days depending on fabric milling, with expedited air-freight options available.'
   },
   {
-    q: 'How do you ensure ethical trading, fair wages, and compliance?',
-    a: 'Ethical trading is the foundation of our business model. All our facilities and tier-1 partner mills adhere strictly to international standards: SEDEX SMETA 4-pillar, BSCI social compliance, and GOTS organic certification, guaranteeing safe working conditions, living wages, and zero child labor.'
+    q: 'Which factory social and technical audits do you maintain?',
+    a: 'Our facilities and Tier-1 mill partners hold active Sedex SMETA 4-Pillar, BSCI Grade-A, ISO 9001/14001, and GOTS certifications, fully compliant with stringent EU Corporate Sustainability Due Diligence (CSDDD) rules.'
   },
   {
-    q: 'How do you handle logistics and customs clearance for overseas buyers?',
-    a: 'We manage complete FOB, CIF, or DDP shipping. Our direct freight corridors deliver seamlessly into Hamburg and Munich for Central Europe, Stockholm and Copenhagen for Scandinavia, and New York and Los Angeles for North America, with full export documentation and customs clearance.'
+    q: 'Do you deliver on DDP terms to European distribution centers?',
+    a: 'Yes. We offer complete DDP (Delivered Duty Paid) service. We handle all Indian customs export, sea/air shipping, EU import clearance, tariff payment, and palletized dock delivery direct to your warehouse in Germany, Scandinavia, or the UK.'
   }
 ];
 
 export default function GraceFAQ() {
-  const [openIdx, setOpenIdx] = useState(0);
-
-  const toggle = (idx) => {
-    setOpenIdx(openIdx === idx ? -1 : idx);
-  };
-
   return (
-    <section className="grace-faq-section">
-      <div className="container grace-faq-container">
+    <section className="page-surface grace-faq-section" id="faq">
+      <div className="grace-container grace-px grace-py-large">
         
-        {/* Left Sticky Column */}
-        <div className="faq-left-col">
-          <div className="faq-sticky-box">
-            <span className="faq-kicker">KNOWLEDGE BASE // FAQ</span>
-            <h2 className="faq-title">
-              Frequently asked <em>sourcing questions</em>.
-            </h2>
-            <p className="faq-sub">
-              Everything you need to know about our Gurugram manufacturing campus, 
-              72-hour prototyping, MOQs, and ethical compliance standards.
-            </p>
+        {/* 2 Column Sticky Layout */}
+        <div className="grace-faq-grid">
+          
+          {/* Left Sticky Column */}
+          <div className="grace-faq-col-left">
+            <div className="grace-faq-sticky">
+              <h2 className="headline-large text-black">
+                Direct apparel sourcing & manufacturing.
+              </h2>
+              <p className="body-default text-neutral-500 mt-5 max-w-[40ch]">
+                Everything European fashion houses, retail groups, and D2C brands verify prior to placing production purchase orders.
+              </p>
+            </div>
           </div>
+
+          {/* Right Accordion Column */}
+          <div className="grace-faq-col-right">
+            <div className="grace-accordion-wrap">
+              {faqs.map((faq, idx) => (
+                <details key={idx} className="group grace-faq-item">
+                  <summary className="grace-faq-summary">
+                    <span className="body-large font-medium text-black">
+                      {faq.q}
+                    </span>
+                    <span className="grace-faq-icon" aria-hidden="true">
+                      +
+                    </span>
+                  </summary>
+                  <p className="body-default text-neutral-500 grace-faq-answer">
+                    {faq.a}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </div>
+
         </div>
 
-        {/* Right Accordion Column */}
-        <div className="faq-right-col">
-          <div className="faq-accordion-list">
-            {faqItems.map((item, idx) => (
-              <div 
-                key={idx} 
-                className={`faq-item ${openIdx === idx ? 'open' : ''}`}
-              >
-                <button 
-                  type="button" 
-                  className="faq-summary-btn"
-                  onClick={() => toggle(idx)}
-                >
-                  <span className="faq-question-text">{item.q}</span>
-                  <span className="faq-toggle-circle">
-                    <span className="toggle-icon">+</span>
-                  </span>
-                </button>
-
-                {openIdx === idx && (
-                  <div className="faq-answer-box">
-                    <p>{item.a}</p>
-                  </div>
-                )}
-              </div>
-            ))}
+        {/* 3 Sourcing Division Cards Below FAQ */}
+        <div className="grace-faq-bottom-cards">
+          
+          <div className="grace-faq-card">
+            <h3 className="headline-small text-black">
+              Tailored Outerwear & Suits
+            </h3>
+            <p className="body-small text-neutral-500 mt-3">
+              Double-face wool, half-canvas jackets, trench coats, and custom horn/metal hardware for premium European labels.
+            </p>
           </div>
+
+          <div className="grace-faq-card">
+            <h3 className="headline-small text-black">
+              Organic Knits & Fine Jersey
+            </h3>
+            <p className="body-small text-neutral-500 mt-3">
+              GOTS certified loopback fleece, combed single-jersey, and pure mulberry silk blouses engineered for zero torquing.
+            </p>
+          </div>
+
+          <div className="grace-faq-card">
+            <h3 className="headline-small text-black">
+              Circular Denim & Leather
+            </h3>
+            <p className="body-small text-neutral-500 mt-3">
+              Shuttle-loomed selvedge denim with low-impact ozone washing and vegetable-tanned Tuscan calfskin accessories.
+            </p>
+          </div>
+
         </div>
 
       </div>
