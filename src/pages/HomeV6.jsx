@@ -45,60 +45,63 @@ export default function HomeV6() {
       {/* 1. Mix-Blend-Difference Fixed Header */}
       <NavbarV6 onOpenDrawer={() => setDrawerOpen(true)} />
 
-      {/* 2. Hero (Warm Golden Atelier Lighting) */}
-      <HeroV6 onExplore={() => scrollToSection('deck')} />
+      {/* Main Content Curtain (z-index: 10 over sticky footer) */}
+      <div className="v6-main-curtain">
+        {/* 2. Hero (Warm Golden Atelier Lighting) */}
+        <HeroV6 onExplore={() => scrollToSection('deck')} />
 
-      {/* 4. Section 01: GSAP Pinned Scroll Deck */}
-      <ScrollDeckV6 
-        id="deck" 
-        onSelectCard={() => setDrawerOpen(true)}
-      />
+        {/* 4. Section 01: GSAP Pinned Scroll Deck */}
+        <ScrollDeckV6 
+          id="deck" 
+          onSelectCard={() => setDrawerOpen(true)}
+        />
 
-      {/* 5. Section 02: GSAP Pinned Cutout Door Zoom & Blooming Garment Photoshoot on Dot-Grid */}
-      <DoorAndBloomV6 
-        id="blooming" 
-        onSelectShot={() => setDrawerOpen(true)}
-      />
+        {/* 5. Section 02: GSAP Pinned Cutout Door Zoom & Blooming Garment Photoshoot on Dot-Grid */}
+        <DoorAndBloomV6 
+          id="blooming" 
+          onSelectShot={() => setDrawerOpen(true)}
+        />
 
-      {/* 6. Section 03: 3 Pillars on Dot-Grid (Detail Zoom + 2x2 Grid + Concentric Orbit) */}
-      <PillarsV6 
-        id="pillars" 
-        onExploreSpecs={() => setDrawerOpen(true)} 
-      />
+        {/* 6. Section 03: 3 Pillars on Dot-Grid (Detail Zoom + 2x2 Grid + Concentric Orbit) */}
+        <PillarsV6 
+          id="pillars" 
+          onExploreSpecs={() => setDrawerOpen(true)} 
+        />
 
-      {/* 7. Section 04: Elevator Scene */}
-      <MotionV6 id="motion" />
+        {/* 7. Section 04: Elevator Scene */}
+        <MotionV6 id="motion" />
 
-      {/* 8. Section 05: Two Sourcing Paths on White (Direct FOB vs Full DDP) */}
-      <TwoPathsV6 
-        id="paths"
-        onSelectFOB={() => setDrawerOpen(true)}
-        onSelectDDP={() => setDrawerOpen(true)}
-        onRequestDeck={() => setDrawerOpen(true)}
-      />
+        {/* 8. Section 05: Two Sourcing Paths on White (Direct FOB vs Full DDP) */}
+        <TwoPathsV6 
+          id="paths"
+          onSelectFOB={() => setDrawerOpen(true)}
+          onSelectDDP={() => setDrawerOpen(true)}
+          onRequestDeck={() => setDrawerOpen(true)}
+        />
 
-      {/* 9. Section 06: Our Reach & Interactive World Map */}
-      <ReachV6 id="reach" />
+        {/* 9. Section 06: Our Reach & Interactive World Map */}
+        <ReachV6 id="reach" />
 
-      {/* 10. Section 07: Who We Are & Heritage Deck (Davaris-Style Stacking Cards) */}
-      <WhoWeAreV6 
-        id="who-we-are" 
-        onOpenDrawer={() => setDrawerOpen(true)} 
-      />
+        {/* 10. Section 07: Who We Are & Heritage Deck (Davaris-Style Stacking Cards) */}
+        <WhoWeAreV6 
+          id="who-we-are" 
+          onOpenDrawer={() => setDrawerOpen(true)} 
+        />
 
-      {/* 11. Section 08: Gurugram Head Office & Sampling Campus */}
-      <HeadquartersV6 id="headquarters" />
+        {/* 11. Section 08: Gurugram Head Office & Sampling Campus */}
+        <HeadquartersV6 id="headquarters" />
 
-      {/* 12. Section 09: Brands We Work With (Infinite Dual-Track Marquee) */}
-      <BrandsV6 id="brands" />
+        {/* 12. Section 09: Brands We Work With (Infinite Dual-Track Marquee) */}
+        <BrandsV6 id="brands" />
 
-      {/* 12. Section 09: Client Trust & Quotes */}
-      <TestimonialsV6 id="testimonials" />
+        {/* 12. Section 09: Client Trust & Quotes */}
+        <TestimonialsV6 id="testimonials" />
 
-      {/* 12. Section 09: Sticky 2-Column FAQ Accordion */}
-      <FAQV6 id="faq" />
+        {/* 12. Section 09: Sticky 2-Column FAQ Accordion */}
+        <FAQV6 id="faq" />
+      </div>
 
-      {/* 13. Section 10: Warm Red/Orange Editorial Footer */}
+      {/* 13. Section 10: Warm Red/Orange Editorial Curtain Footer */}
       <FooterV6 onOpenDrawer={() => setDrawerOpen(true)} />
 
       {/* 14. Slide-out Sourcing Intake Drawer */}

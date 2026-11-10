@@ -21,6 +21,11 @@
   --v6-amber-red: #c0392b;
 }
 
+html:has(.home-v6-wrap),
+body:has(.home-v6-wrap) {
+  overflow-x: clip !important;
+}
+
 .home-v6-wrap {
   position: relative;
   width: 100%;
@@ -30,6 +35,12 @@
   font-family: var(--v6-font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.v6-main-curtain {
+  position: relative;
+  z-index: 10;
+  background-color: var(--v6-black);
 }
 
 /* ─── ISOLATE TYPOGRAPHY: PREVENT GLOBAL UPPERCASE LEAKS ─── */
