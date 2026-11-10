@@ -8,6 +8,7 @@ import MotionV6 from '../components/v6/MotionV6';
 import TwoPathsV6 from '../components/v6/TwoPathsV6';
 import ReachV6 from '../components/v6/ReachV6';
 import MetricsV6 from '../components/v6/MetricsV6';
+import BrandsV6 from '../components/v6/BrandsV6';
 import TestimonialsV6 from '../components/v6/TestimonialsV6';
 import FAQV6 from '../components/v6/FAQV6';
 import FooterV6 from '../components/v6/FooterV6';
@@ -84,7 +85,10 @@ export default function HomeV6() {
         onBookDemo={() => setDrawerOpen(true)} 
       />
 
-      {/* 11. Section 08: Client Trust & Quotes */}
+      {/* 11. Section 08: Brands We Work With (Infinite Dual-Track Marquee) */}
+      <BrandsV6 id="brands" />
+
+      {/* 12. Section 09: Client Trust & Quotes */}
       <TestimonialsV6 id="testimonials" />
 
       {/* 12. Section 09: Sticky 2-Column FAQ Accordion */}

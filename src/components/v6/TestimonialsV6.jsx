@@ -4,43 +4,34 @@ import './TestimonialsV6.css';
 const testimonials = [
   {
     id: 1,
-    quote: 'Fusion India is an excellent fit for our studio and our way of working. It integrates seamlessly into our existing processes and has consistently impressed both our clients and our team with the quality of the results .',
+    quote: 'Fusion India has been our most dependable production partner in Asia for over six seasons. From 14-day sample turnaround to 50,000-unit bulk delivery across our European stores, their garment finishing, fabric drape, and AQL 1.5 quality control have been flawless.',
     author: 'Ronald Kloiber',
-    role: 'Officer Online Shop & Operations, Carl Gross & Club of Gents, Création Gross GmbH & Co. KG'
+    role: 'Head of Sourcing & Global Supply, Création Gross GmbH (Carl Gross & Club of Gents)'
   },
   {
     id: 2,
-    quote: 'For our European retail stores, we need continuous premium garment quality without batch deviations. With Fusion India, we accelerated sample approval by 60% and achieved 100% on-time container delivery .',
+    quote: 'Finding an ethical factory network in India that understands European luxury tailoring standards was our biggest challenge. Fusion India solved that completely — their 40,000 sq.ft sampling campus and audited tier-1 mills deliver exceptional garment quality every single season.',
     author: 'Frederik Lind',
-    role: 'Head of Sourcing & Global Supply, Nordic Apparel Group, Copenhagen'
+    role: 'Director of Production & Sourcing, Nordic Retail Group (Copenhagen)'
   },
   {
     id: 3,
-    quote: 'Fusion India has become our core technical partner for tailored wool overcoats and denim, from runway development to commercial container production, all backed by audited Indian manufacturing .',
+    quote: 'Their direct DDP delivery direct to our Hamburg warehouse removes all logistics headaches. European customs cleared, duty settled, and containers unloaded exactly on schedule. They are truly our manufacturing backbone in Asia.',
     author: 'Markus Weber',
-    role: 'Director of Apparel Production, Sartorial Hamburg'
+    role: 'Director of Apparel Supply Chain, Sartorial Hamburg'
   },
   {
     id: 4,
-    quote: 'Their 40,000 sq.ft facility and in-house CAD lab fits naturally into our workflows. They meet our strictest European social and chemical audits while delivering exceptional garment finishing every season .',
+    quote: "Whether it's complex silk bias cuts, circular selvedge denim, or technical outerwear, Fusion India's fabric sourcing and pattern calibration are second to none. They meet our strictest European chemical and social audit standards without compromise.",
     author: 'Helena Berg',
-    role: 'VP Sourcing & Sustainability, Stockholm Fashion House'
+    role: 'VP Quality & Compliance, Stockholm Apparel House'
   },
   {
     id: 5,
-    quote: 'With Fusion India, we didn’t just find another supplier; we streamlined our entire Asian supply chain. We now have direct factory communication with zero middleman friction .',
+    quote: 'With Fusion India, we eliminated 3 layers of middleman markups and gained direct atelier communication with zero friction. We accelerated our sample-to-shelf lead time by 4 weeks across our core menswear lines.',
     author: 'Julian Vance',
-    role: 'Managing Director, British Tailoring Guild, London'
+    role: 'Managing Director, British Tailoring Guild (London)'
   }
-];
-
-const partners = [
-  'CARL GROSS',
-  'MUSTANG',
-  'NOVA STUDIOS',
-  'MARC AUREL',
-  'FALKE',
-  'and many more'
 ];
 
 export default function TestimonialsV6({ id = 'testimonials' }) {
@@ -48,39 +39,30 @@ export default function TestimonialsV6({ id = 'testimonials' }) {
   const current = testimonials[activeIdx];
 
   return (
-    <section className="v6-page-surface-white v6-testimonials-section" id={id}>
+    <section className="v6-page-surface-white v6-testimonials-section" id={id} data-nav-theme="light">
       <div className="v6-container v6-px v6-testimonials-container">
         
-        {/* Brand row matching 00:32 in video */}
-        <div className="v6-testimonials-brand-row">
-          <p className="label text-neutral-400">IN USE AT</p>
-          <div className="v6-brand-list">
-            {partners.map((p, i) => (
-              <span 
-                key={i} 
-                className={p === 'and many more' ? 'v6-brand-more' : 'v6-brand-item'}
-              >
-                {p}
-              </span>
-            ))}
-          </div>
+        {/* Top Eyebrow */}
+        <div className="v6-testimonials-eyebrow-row">
+          <span className="v6-test-tag">CLIENT PERSPECTIVES // EUROPEAN RETAIL LEADERS</span>
         </div>
 
-        {/* Large Quote matching 00:33 in video */}
+        {/* Large Quote */}
         <div className="v6-quote-box">
           <blockquote className="v6-quote-text">
             “ {current.quote} ”
           </blockquote>
 
-          <p className="caption text-neutral-500 mt-6">
-            <span className="text-black font-medium">{current.author}</span>, {current.role}
-          </p>
+          <div className="v6-quote-author-block">
+            <p className="v6-author-name">{current.author}</p>
+            <p className="v6-author-role">{current.role}</p>
+          </div>
 
-          {/* 5 Slim Horizontal Tabs matching video */}
+          {/* 5 Slim Horizontal Tabs for interactive testimonial switching */}
           <div className="v6-quote-tabs" role="tablist">
-            {testimonials.map((_, i) => (
+            {testimonials.map((t, i) => (
               <button
-                key={i}
+                key={t.id}
                 type="button"
                 role="tab"
                 aria-selected={i === activeIdx}
@@ -98,4 +80,3 @@ export default function TestimonialsV6({ id = 'testimonials' }) {
     </section>
   );
 }
-

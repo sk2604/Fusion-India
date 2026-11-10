@@ -3,7 +3,7 @@ import './MetricsV6.css';
 
 export default function MetricsV6({ id = 'metrics', onBookDemo }) {
   return (
-    <section className="v6-page-surface-white v6-metrics-section" id={id}>
+    <section className="v6-page-surface-white v6-metrics-section" id={id} data-nav-theme="light">
       <div className="v6-container v6-px v6-metrics-container">
         
         {/* Headline matching 00:31 in video */}

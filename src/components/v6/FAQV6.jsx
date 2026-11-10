@@ -30,7 +30,7 @@ const faqs = [
 
 export default function FAQV6({ id = 'faq' }) {
   return (
-    <section className="v6-page-surface-white v6-faq-section" id={id}>
+    <section className="v6-page-surface-white v6-faq-section" id={id} data-nav-theme="light">
       <div className="v6-container v6-px">
         
         {/* 2-Column Sticky Grid matching 00:34-00:35 in video */}

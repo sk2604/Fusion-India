@@ -1,9 +1,11 @@
 /* ========================================================
-   V6 NAVBAR (100% ALWAYS TRANSPARENT BACKGROUND + AUTO-INVERTING THEME)
-   Matches reference screenshot gracefashion.ai:
-   - Always 100% transparent background (no borders, no blur, no box)
-   - Colors automatically revert between white (#ffffff) and black (#000000)
-   - Reference font style: bold lowercase brand, all-caps bold links, underlined CTA
+   V6 NAVBAR (DYNAMIC BACKGROUND CONTRAST AUTO-DETECTION)
+   - When on dark sections (Hero, Blooming, Pillars, Motion, Reach, Brands, Footer):
+     text and CTA are pure white (#ffffff)
+   - When on light sections (ScrollDeck, TwoPaths, Metrics, Testimonials, FAQ):
+     text and CTA are pure black (#000000)
+   - Always 100% visible, crisp, and high-contrast
+   - Buttery smooth transitions between sections
    ======================================================== */
 
 .v6-nav-fixed {
@@ -11,7 +13,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 9999;
   padding: 1.25rem 2rem;
   background: transparent !important;
   border: none !important;
@@ -20,7 +22,7 @@
   -webkit-backdrop-filter: none !important;
   pointer-events: none;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  transition: padding 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 @media (min-width: 768px) {
@@ -58,7 +60,8 @@
   font-weight: 800;
   letter-spacing: -0.04em;
   text-transform: lowercase;
-  transition: color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #ffffff;
+  transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ─── CENTER LINKS: ALL CAPS, CLEAN BOLD TRACKING ─── */
@@ -86,12 +89,13 @@
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  color: #ffffff;
   cursor: pointer;
-  transition: opacity 0.2s ease, color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
 }
 
 .v6-nav-link:hover {
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 /* ─── RIGHT CTA: UNDERLINED TEXT (LIKE "BOOK A DEMO") + EN ─── */
@@ -104,21 +108,22 @@
 .v6-nav-cta {
   background: none;
   border: none;
-  padding: 0;
+  padding: 0 0 2px 0;
+  border-bottom: 1.5px solid #ffffff;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 1px;
+  color: #ffffff;
   cursor: pointer;
-  transition: opacity 0.2s ease, color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 0.2s ease;
 }
 
 .v6-nav-cta:hover {
-  opacity: 0.55;
+  opacity: 0.65;
 }
 
 .v6-nav-lang {
@@ -126,48 +131,51 @@
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.06em;
-  cursor: default;
-  transition: color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-transform: uppercase;
+  color: #ffffff;
+  transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ─── THEME DARK: BACKGROUND IS DARK -> TEXT IS PURE WHITE ─── */
+/* ══════════════════════════════════════════════════════════
+   THEME ADAPTATION: DARK THEME (WHITE TEXT OVER DARK BACKGROUNDS)
+   ══════════════════════════════════════════════════════════ */
 .v6-nav-fixed.theme-dark .v6-brand-main {
   color: #ffffff !important;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
 }
 
 .v6-nav-fixed.theme-dark .v6-nav-link {
   color: #ffffff !important;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
 }
 
 .v6-nav-fixed.theme-dark .v6-nav-cta {
   color: #ffffff !important;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+  border-bottom-color: #ffffff !important;
 }
 
 .v6-nav-fixed.theme-dark .v6-nav-lang {
   color: #ffffff !important;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
 }
 
-/* ─── THEME LIGHT: BACKGROUND IS LIGHT -> TEXT IS PURE BLACK ─── */
+/* ══════════════════════════════════════════════════════════
+   THEME ADAPTATION: LIGHT THEME (PITCH BLACK TEXT OVER WHITE BACKGROUNDS)
+   ══════════════════════════════════════════════════════════ */
 .v6-nav-fixed.theme-light .v6-brand-main {
   color: #000000 !important;
-  text-shadow: none;
 }
 
 .v6-nav-fixed.theme-light .v6-nav-link {
   color: #000000 !important;
-  text-shadow: none;
+}
+
+.v6-nav-fixed.theme-light .v6-nav-link:hover {
+  opacity: 0.55;
 }
 
 .v6-nav-fixed.theme-light .v6-nav-cta {
   color: #000000 !important;
-  text-shadow: none;
+  border-bottom-color: #000000 !important;
 }
 
 .v6-nav-fixed.theme-light .v6-nav-lang {
   color: #000000 !important;
-  text-shadow: none;
 }

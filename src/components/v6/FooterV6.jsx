@@ -10,7 +10,7 @@ export default function FooterV6({ onOpenDrawer }) {
   };
 
   return (
-    <footer className="v6-footer-section">
+    <footer className="v6-footer-section" data-nav-theme="dark">
       {/* Background Visual (Warm red/orange editorial matching 00:38 in video) */}
       <div className="v6-footer-bg">
         <img 

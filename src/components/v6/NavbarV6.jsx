@@ -3,58 +3,75 @@ import { Link } from 'react-router-dom';
 import './NavbarV6.css';
 
 export default function NavbarV6({ onOpenDrawer }) {
-  const [navTheme, setNavTheme] = useState('dark'); // 'dark' (white text) or 'light' (black text)
+  const [navTheme, setNavTheme] = useState('dark'); // 'dark' = white text on dark bg, 'light' = black text on light bg
 
   useEffect(() => {
-    const probeTheme = () => {
-      // 1. Probe element directly under center of navbar
-      const probeX = window.innerWidth / 2;
-      const probeY = 50;
-      let foundTheme = null;
+    const detectNavTheme = () => {
+      const checkY = 45;
+      const checkX = Math.min(window.innerWidth / 2, 600);
 
-      try {
-        const elements = document.elementsFromPoint(probeX, probeY);
+      // 1. Try elementsFromPoint first for exact rendered pixel detection
+      if (typeof document.elementsFromPoint === 'function') {
+        const elements = document.elementsFromPoint(checkX, checkY);
         for (const el of elements) {
-          if (el.closest('.v6-nav-fixed')) continue;
-          const themeAttr = el.getAttribute?.('data-nav-theme') || el.closest?.('[data-nav-theme]')?.getAttribute('data-nav-theme');
-          if (themeAttr) {
-            foundTheme = themeAttr;
-            break;
+          if (el.classList.contains('v6-nav-fixed') || el.closest('.v6-nav-fixed')) {
+            continue;
           }
-        }
-      } catch (err) {
-        // fallback to bounding client rect
-      }
-
-      // 2. Secondary check: check bounding rect of all [data-nav-theme] sections
-      if (!foundTheme) {
-        const sections = document.querySelectorAll('[data-nav-theme]');
-        for (const sec of sections) {
-          const rect = sec.getBoundingClientRect();
-          if (rect.top <= 65 && rect.bottom >= 35) {
-            foundTheme = sec.getAttribute('data-nav-theme');
-            break;
+          const themed = el.closest('[data-nav-theme]');
+          if (themed) {
+            const theme = themed.getAttribute('data-nav-theme');
+            if (theme === 'light' || theme === 'dark') {
+              setNavTheme(theme);
+              return;
+            }
           }
         }
       }
 
-      if (foundTheme) {
-        setNavTheme(foundTheme);
-      } else {
-        // Fallback: top of page (Hero) is dark
-        setNavTheme(window.scrollY < window.innerHeight * 0.8 ? 'dark' : 'light');
+      // 2. Fallback: Check boundingClientRect of all sections with [data-nav-theme]
+      const themedSections = document.querySelectorAll('[data-nav-theme]');
+      for (const sec of themedSections) {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top <= checkY && rect.bottom >= checkY) {
+          const theme = sec.getAttribute('data-nav-theme');
+          if (theme === 'light' || theme === 'dark') {
+            setNavTheme(theme);
+            return;
+          }
+        }
       }
     };
 
-    window.addEventListener('scroll', probeTheme, { passive: true });
-    probeTheme();
+    // Run on initial load and next animation frame
+    detectNavTheme();
+    const rafId = requestAnimationFrame(detectNavTheme);
 
-    // Regular interval to catch pinned GSAP scrub transitions smoothly
-    const interval = setInterval(probeTheme, 120);
+    // Listen to native scroll & resize
+    window.addEventListener('scroll', detectNavTheme, { passive: true });
+    window.addEventListener('resize', detectNavTheme, { passive: true });
+
+    // Hook into Lenis smooth scroll if available
+    let lenisUnsub = null;
+    if (window.lenis) {
+      window.lenis.on('scroll', detectNavTheme);
+      lenisUnsub = () => {
+        try { window.lenis.off('scroll', detectNavTheme); } catch (e) {}
+      };
+    } else {
+      const interval = setInterval(() => {
+        if (window.lenis) {
+          window.lenis.on('scroll', detectNavTheme);
+          clearInterval(interval);
+        }
+      }, 250);
+      setTimeout(() => clearInterval(interval), 4000);
+    }
 
     return () => {
-      window.removeEventListener('scroll', probeTheme);
-      clearInterval(interval);
+      cancelAnimationFrame(rafId);
+      window.removeEventListener('scroll', detectNavTheme);
+      window.removeEventListener('resize', detectNavTheme);
+      if (lenisUnsub) lenisUnsub();
     };
   }, []);
 
@@ -66,14 +83,14 @@ export default function NavbarV6({ onOpenDrawer }) {
   };
 
   return (
-    <nav className={`v6-nav-fixed theme-${navTheme}`}>
+    <nav className={`v6-nav-fixed theme-${navTheme}`} aria-label="Main Navigation">
       <div className="v6-nav-inner">
-        {/* Brand Wordmark matching reference "grace" */}
+        {/* Brand Wordmark */}
         <Link to="/v6" className="v6-nav-brand">
           <span className="v6-brand-main">fusion</span>
         </Link>
 
-        {/* Center Links matching reference font & spacing */}
+        {/* Center Links */}
         <div className="v6-nav-center">
           <button type="button" onClick={() => scrollTo('deck')} className="v6-nav-link">
             DIVISIONS
@@ -81,21 +98,24 @@ export default function NavbarV6({ onOpenDrawer }) {
           <button type="button" onClick={() => scrollTo('blooming')} className="v6-nav-link">
             MANUFACTURING
           </button>
+          <button type="button" onClick={() => scrollTo('pillars')} className="v6-nav-link">
+            STANDARDS
+          </button>
           <button type="button" onClick={() => scrollTo('paths')} className="v6-nav-link">
             FOB / DDP
           </button>
           <button type="button" onClick={() => scrollTo('reach')} className="v6-nav-link">
             OUR REACH
           </button>
-          <button type="button" onClick={() => scrollTo('metrics')} className="v6-nav-link">
-            COMPLIANCE
+          <button type="button" onClick={() => scrollTo('brands')} className="v6-nav-link">
+            BRANDS
           </button>
           <button type="button" onClick={() => scrollTo('faq')} className="v6-nav-link">
             FAQ
           </button>
         </div>
 
-        {/* Right CTA with Underline & Language matching reference */}
+        {/* Right CTA with Underline & Language */}
         <div className="v6-nav-right">
           <button 
             type="button" 
