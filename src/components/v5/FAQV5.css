@@ -1,0 +1,119 @@
+/* ========================================================
+   V5 FAQ (FRAMES 00:34-00:36 IN VIDEO)
+   ======================================================== */
+
+.v5-faq-section {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  min-height: 100vh;
+  padding: 6rem 0;
+  box-sizing: border-box;
+}
+
+.v5-faq-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 960px) {
+  .v5-faq-grid {
+    grid-template-columns: 5fr 6fr;
+    gap: 5rem;
+  }
+}
+
+.v5-faq-col-left {
+  position: relative;
+}
+
+.v5-faq-sticky-box {
+  position: relative;
+}
+
+@media (min-width: 960px) {
+  .v5-faq-sticky-box {
+    position: sticky;
+    top: 7rem;
+  }
+}
+
+.v5-accordion-wrap {
+  border-top: 1px solid var(--v5-neutral-200);
+}
+
+.v5-faq-item {
+  border-bottom: 1px solid var(--v5-neutral-200);
+}
+
+.v5-faq-summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  cursor: pointer;
+  list-style: none;
+  transition: opacity 0.2s ease;
+}
+
+.v5-faq-summary::-webkit-details-marker {
+  display: none;
+}
+
+.v5-faq-summary:hover {
+  opacity: 0.65;
+}
+
+.v5-faq-circle-btn {
+  margin-top: 2px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  border: 1px solid var(--v5-neutral-300);
+  font-size: 14px;
+  line-height: 1;
+  color: var(--v5-neutral-500);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, color 0.2s ease;
+}
+
+.v5-faq-item[open] .v5-faq-circle-btn {
+  transform: rotate(45deg);
+  background-color: var(--v5-black);
+  border-color: var(--v5-black);
+  color: #ffffff;
+}
+
+.v5-faq-answer {
+  padding-bottom: 1.5rem;
+  margin-top: -0.25rem;
+  max-width: 52ch;
+}
+
+/* 3 Columns Below FAQ matching 00:36 in video */
+.v5-faq-bottom-3col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-top: 5rem;
+  border-top: 1px solid var(--v5-neutral-200);
+  padding-top: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  .v5-faq-bottom-3col {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3.5rem;
+    margin-top: 7rem;
+    padding-top: 4rem;
+  }
+}
+
+.v5-bottom-col {
+  display: flex;
+  flex-direction: column;
+}

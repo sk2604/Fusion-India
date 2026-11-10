@@ -1,0 +1,43 @@
+/* ========================================================
+   V5 MOTION (FRAMES 00:23-00:26 IN VIDEO)
+   ======================================================== */
+
+.v5-motion-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  background-color: var(--v5-neutral-900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.v5-motion-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.v5-motion-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+}
+
+.v5-motion-scrim {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+.v5-motion-content {
+  position: relative;
+  z-index: 20;
+  padding: 0 1.5rem;
+  max-width: 24ch;
+}

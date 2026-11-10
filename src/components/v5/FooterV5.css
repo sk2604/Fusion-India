@@ -1,0 +1,132 @@
+/* ========================================================
+   V5 FOOTER (WARM RED/ORANGE EDITORIAL FROM 00:37-00:40)
+   ======================================================== */
+
+.v5-footer-section {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #8b1c11;
+}
+
+.v5-footer-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.v5-footer-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+}
+
+.v5-footer-red-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(168, 30, 20, 0.88) 0%, rgba(110, 15, 10, 0.94) 100%);
+}
+
+.v5-footer-content {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 1.5rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.v5-footer-brand-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.v5-footer-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 0 2rem;
+}
+
+.v5-footer-logo-main {
+  font-family: var(--v5-font-display);
+  font-size: clamp(52px, 32px + 6vw, 110px);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  color: #ffffff;
+  line-height: 0.95;
+  text-transform: lowercase;
+}
+
+.v5-footer-logo-sub {
+  font-family: var(--v5-font-sans);
+  font-size: clamp(16px, 12px + 0.8vw, 24px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 0.25rem;
+}
+
+.v5-footer-cta-btn {
+  height: 44px;
+  padding: 0 28px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.006em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  background-color: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.v5-footer-cta-btn:hover {
+  transform: scale(1.05);
+}
+
+.v5-footer-links-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem 2.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.v5-footer-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #ffffff;
+  font-family: var(--v5-font-sans);
+  font-size: 13px;
+  opacity: 0.85;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.v5-footer-link:hover {
+  opacity: 1;
+}
+
+.v5-footer-bottom-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  padding-top: 2rem;
+  width: 100%;
+}

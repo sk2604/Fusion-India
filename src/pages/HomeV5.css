@@ -1,0 +1,251 @@
+/* ========================================================
+   FUSION INDIA — V5 (EXACT SCREEN RECORDING ARCHITECTURE)
+   ======================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Space+Grotesk:wght@400..700&display=swap');
+
+:root {
+  --v5-font-sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --v5-font-display: "Space Grotesk", "Instrument Sans", sans-serif;
+  --v5-black: #000000;
+  --v5-white: #ffffff;
+  --v5-dot-bg: #0a0a0a;
+  --v5-neutral-100: #f5f5f5;
+  --v5-neutral-200: #e5e5e5;
+  --v5-neutral-300: #d4d4d4;
+  --v5-neutral-400: #a3a3a3;
+  --v5-neutral-500: #737373;
+  --v5-neutral-600: #525252;
+  --v5-neutral-800: #262626;
+  --v5-neutral-900: #171717;
+  --v5-amber-red: #c0392b;
+}
+
+.home-v5-wrap {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--v5-black);
+  color: var(--v5-white);
+  font-family: var(--v5-font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── TYPOGRAPHY MATCHING VIDEO ─── */
+.home-v5-wrap .headline-xl {
+  font-family: var(--v5-font-display);
+  letter-spacing: -0.034em;
+  font-size: clamp(34px, 18px + 4vw, 68px);
+  font-weight: 500;
+  line-height: 1.05;
+  margin: 0;
+}
+
+.home-v5-wrap .headline-large {
+  font-family: var(--v5-font-display);
+  letter-spacing: -0.032em;
+  font-size: clamp(30px, 20px + 2.5vw, 52px);
+  font-weight: 500;
+  line-height: 1.08;
+  margin: 0;
+}
+
+.home-v5-wrap .headline-medium {
+  font-family: var(--v5-font-display);
+  letter-spacing: -0.026em;
+  font-size: clamp(22px, 16px + 1.2vw, 32px);
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.home-v5-wrap .headline-small {
+  font-family: var(--v5-font-display);
+  letter-spacing: -0.018em;
+  font-size: clamp(17px, 15px + 0.5vw, 22px);
+  font-weight: 500;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.home-v5-wrap .subheadline {
+  font-family: var(--v5-font-display);
+  letter-spacing: -0.02em;
+  font-size: clamp(20px, 16px + 1.2vw, 30px);
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.home-v5-wrap .body-large {
+  letter-spacing: -0.011em;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.home-v5-wrap .body-default {
+  letter-spacing: -0.006em;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.home-v5-wrap .body-small {
+  letter-spacing: -0.006em;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.home-v5-wrap .label {
+  letter-spacing: -0.005em;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.35;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.home-v5-wrap .caption {
+  letter-spacing: -0.005em;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ─── SURFACES & PATTERNS ─── */
+.home-v5-wrap .v5-page-surface-white {
+  background-color: var(--v5-white);
+  color: var(--v5-black);
+  transition: background-color 0.7s cubic-bezier(0.16, 1, 0.3, 1), color 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.home-v5-wrap .v5-dot-grid {
+  background-color: var(--v5-dot-bg);
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.22) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+  color: var(--v5-white);
+}
+
+.home-v5-wrap .v5-container {
+  width: 100%;
+  max-width: 2000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-v5-wrap .v5-px {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .home-v5-wrap .v5-px {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .home-v5-wrap .v5-px {
+    padding-left: 5.5rem;
+    padding-right: 5.5rem;
+  }
+}
+
+/* ─── 100VH SECTION FRAME ─── */
+.home-v5-wrap .v5-section-100vh {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* ─── BUTTONS ─── */
+.home-v5-wrap .v5-pill-btn-black {
+  height: 44px;
+  padding: 0 24px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.006em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #ffffff;
+  background-color: #000000;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  text-decoration: none;
+}
+
+.home-v5-wrap .v5-pill-btn-black:hover {
+  transform: scale(1.04);
+}
+
+.home-v5-wrap .v5-pill-btn-translucent {
+  height: 44px;
+  padding: 0 24px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.006em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  text-decoration: none;
+}
+
+.home-v5-wrap .v5-pill-btn-translucent:hover {
+  transform: scale(1.04);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ─── CONTINUOUS ORBIT ANIMATION ─── */
+@keyframes v5-covered-orbit {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes v5-covered-orbit-counter {
+  to {
+    transform: rotate(-1turn);
+  }
+}
+
+.v5-orbit-spin {
+  animation: v5-covered-orbit 80s linear infinite;
+}
+
+.v5-orbit-counter {
+  animation: v5-covered-orbit-counter 80s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v5-orbit-spin,
+  .v5-orbit-counter {
+    animation: none;
+  }
+}

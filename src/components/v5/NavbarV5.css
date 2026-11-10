@@ -1,0 +1,128 @@
+/* ========================================================
+   V5 NAVBAR (MIX-BLEND-DIFFERENCE FIXED HEADER)
+   ======================================================== */
+
+.v5-nav-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.25rem 1.5rem;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  font-family: var(--v5-font-sans);
+}
+
+@media (min-width: 768px) {
+  .v5-nav-fixed {
+    padding: 1.5rem 3.5rem;
+  }
+}
+
+.v5-nav-inner {
+  width: 100%;
+  max-width: 2000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: auto;
+}
+
+.v5-nav-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.v5-brand-main {
+  font-family: var(--v5-font-display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.v5-brand-sub {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  opacity: 0.8;
+}
+
+.v5-nav-center {
+  display: none;
+  align-items: center;
+  gap: 2rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (min-width: 960px) {
+  .v5-nav-center {
+    display: flex;
+  }
+}
+
+.v5-nav-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #ffffff;
+  font-family: var(--v5-font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  opacity: 0.85;
+}
+
+.v5-nav-link:hover {
+  opacity: 0.5;
+}
+
+.v5-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.v5-nav-cta {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #ffffff;
+  font-family: var(--v5-font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .v5-nav-cta {
+    display: inline-block;
+  }
+}
+
+.v5-nav-cta:hover {
+  opacity: 0.6;
+}
+
+.v5-nav-lang {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  opacity: 0.85;
+}

@@ -1,0 +1,135 @@
+/* ========================================================
+   V5 REACH (OUR REACH WORLD MAP & GLOBAL FOOTPRINT)
+   ======================================================== */
+
+.v5-reach-section {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 0;
+  box-sizing: border-box;
+}
+
+@media (min-width: 960px) {
+  .v5-reach-section {
+    padding: 3rem 0;
+  }
+}
+
+.v5-reach-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.v5-reach-split-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .v5-reach-split-grid {
+    grid-template-columns: 1fr 1.25fr;
+    gap: 4.5rem;
+  }
+}
+
+.v5-reach-left-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.v5-reach-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--v5-black);
+}
+
+@media (max-width: 640px) {
+  .v5-reach-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.v5-reach-stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.v5-reach-stat-item sup {
+  font-size: 0.55em;
+  font-weight: 400;
+  color: #e50914;
+}
+
+.v5-reach-hubs-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 2rem;
+}
+
+.v5-hub-pill {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  border: 1px solid var(--v5-neutral-200);
+  background-color: var(--v5-neutral-100);
+  color: var(--v5-neutral-600);
+}
+
+/* Map Wrapper */
+.v5-reach-right-col {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v5-reach-map-box {
+  width: 100%;
+  max-width: 800px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.v5-badge-text {
+  font-family: var(--v5-font-display);
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  pointer-events: none;
+}
+
+/* Beacons */
+.v5-pulse-hq {
+  fill: rgba(229, 9, 20, 0.4);
+  animation: v5-beacon 2s infinite ease-out;
+  transform-origin: center;
+}
+
+.v5-pulse-sub {
+  fill: rgba(255, 255, 255, 0.35);
+  animation: v5-beacon 2s infinite ease-out;
+  transform-origin: center;
+}
+
+@keyframes v5-beacon {
+  0% { r: 4; opacity: 0.8; }
+  100% { r: 16; opacity: 0; }
+}

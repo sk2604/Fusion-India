@@ -1,0 +1,88 @@
+/* ========================================================
+   V5 TRACKER (FLOATING RIGHT-SIDE VERTICAL NAVIGATION)
+   ======================================================== */
+
+.v5-tracker-nav {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90;
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .v5-tracker-nav {
+    display: block;
+  }
+}
+
+.v5-tracker-pill-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 8px;
+  background-color: rgba(10, 10, 10, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.v5-tracker-dot-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.v5-tracker-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.v5-tracker-dot-btn:hover .v5-tracker-dot {
+  background-color: rgba(255, 255, 255, 0.85);
+  transform: scale(1.4);
+}
+
+.v5-tracker-dot-btn.active .v5-tracker-dot {
+  width: 5px;
+  height: 18px;
+  background-color: #ffffff;
+  border-radius: 9999px;
+}
+
+.v5-tracker-tooltip {
+  position: absolute;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: var(--v5-font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.v5-tracker-dot-btn:hover .v5-tracker-tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(-4px);
+}

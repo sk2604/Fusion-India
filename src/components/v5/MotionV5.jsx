@@ -1,0 +1,25 @@
+import React from 'react';
+import './MotionV5.css';
+
+export default function MotionV5({ id = 'motion' }) {
+  return (
+    <section className="v5-motion-section" id={id}>
+      {/* Background Cinematic Visual (Matching 00:24 elevator scene) */}
+      <div className="v5-motion-bg">
+        <img 
+          src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2400&auto=format&fit=crop" 
+          alt="Fusion India Atelier Runway Movement"
+          className="v5-motion-img" 
+        />
+        <div className="v5-motion-scrim" />
+      </div>
+
+      {/* Centered Large Headline */}
+      <div className="v5-motion-content">
+        <h2 className="headline-large text-white text-center">
+          From flat pattern to fluid runway. 500+ audited Tier-1 mills.
+        </h2>
+      </div>
+    </section>
+  );
+}

@@ -6,16 +6,24 @@ export default function VersionToggle() {
   const location = useLocation();
   const path = location.pathname;
 
+  const isV5 = path === '/v5';
   const isV4 = path === '/v4' || path === '/grace';
   const isV1 = path === '/v1' || path === '/old';
   const isV2 = path === '/v2';
   const isV3 = path === '/v3' || path === '/white';
-  const isDark2 = !isV1 && !isV2 && !isV3 && !isV4; // Default is / or /dark2
+  const isDark2 = !isV1 && !isV2 && !isV3 && !isV4 && !isV5; // Default is / or /dark2
 
   return (
     <div className="version-toggle-container">
       <div className="version-toggle-bar">
         <span className="vt-label">DESIGN:</span>
+        <Link
+          to="/v5"
+          className={`vt-pill ${isV5 ? 'active' : ''}`}
+          title="V5: Exact Screen Recording Design & Animations"
+        >
+          🔥 V5 (Recording)
+        </Link>
         <Link
           to="/v4"
           className={`vt-pill ${isV4 ? 'active' : ''}`}

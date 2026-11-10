@@ -4,8 +4,8 @@ import './Footer.css';
 
 export default function Footer() {
   const location = useLocation();
-  // V4 has its own dedicated Grace-style footer
-  if (location.pathname === '/v4' || location.pathname === '/grace') {
+  // V4 and V5 have their own dedicated luxury footers
+  if (location.pathname === '/v4' || location.pathname === '/grace' || location.pathname === '/v5') {
     return null;
   }
 

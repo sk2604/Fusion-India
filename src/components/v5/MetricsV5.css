@@ -1,0 +1,72 @@
+/* ========================================================
+   V5 METRICS (FRAMES 00:31-00:32 IN VIDEO)
+   ======================================================== */
+
+.v5-metrics-section {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 0;
+  box-sizing: border-box;
+}
+
+@media (min-width: 960px) {
+  .v5-metrics-section {
+    padding: 3rem 0;
+  }
+}
+
+.v5-metrics-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.v5-metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  .v5-metrics-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3.5rem;
+    margin-top: 5rem;
+  }
+}
+
+.v5-metric-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.v5-metric-divider {
+  border-top: 1px solid var(--v5-black);
+  padding-top: 1.25rem;
+}
+
+.v5-metrics-bottom-bar {
+  margin-top: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+@media (min-width: 768px) {
+  .v5-metrics-bottom-bar {
+    margin-top: 5rem;
+    flex-direction: row;
+    align-items: center;
+    gap: 3.5rem;
+  }
+}

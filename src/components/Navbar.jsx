@@ -21,8 +21,8 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isOpen]);
 
-  // V4 has its own dedicated Grace-style fixed mix-blend-difference navbar
-  if (location.pathname === '/v4' || location.pathname === '/grace') {
+  // V4 and V5 have their own dedicated fixed mix-blend-difference navbars
+  if (location.pathname === '/v4' || location.pathname === '/grace' || location.pathname === '/v5') {
     return null;
   }
 
