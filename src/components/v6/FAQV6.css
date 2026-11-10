@@ -40,11 +40,11 @@
 }
 
 .v6-faq-title {
-  font-family: var(--v6-font-display);
-  font-size: clamp(30px, 20px + 2.5vw, 52px);
-  font-weight: 500;
-  letter-spacing: -0.032em;
-  line-height: 1.1;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(28px, 3.2vw, 44px);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
   color: #000000;
   text-transform: none !important;
 }
@@ -77,10 +77,10 @@
 }
 
 .v6-faq-question {
-  font-family: var(--v6-font-sans);
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(16px, 1.25vw, 19px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
   color: #000000;
   text-transform: none !important;
 }

@@ -99,7 +99,7 @@ export default function HeadquartersV6({ id = 'headquarters' }) {
           </div>
           <div className="v6-hq-title-row">
             <h2 className="v6-hq-title">
-              HEAD OFFICE & SAMPLING CAMPUS<span className="text-red-500">.</span>
+              Head office & sampling campus<span className="text-red-500">.</span>
             </h2>
             <div className="v6-hq-actions">
               {entered ? (

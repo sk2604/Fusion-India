@@ -79,11 +79,11 @@
 
 .v6-reach-heading {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(38px, 4vw, 60px);
-  font-weight: 800;
-  line-height: 0.92;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
+  font-size: clamp(30px, 3.2vw, 46px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  text-transform: none;
   color: #ffffff;
   margin: 0 0 1rem 0;
 }

@@ -117,7 +117,7 @@ export default function ReachV6({ id = 'reach' }) {
             </div>
 
             <h2 className="v6-reach-heading">
-              OUR REACH<span className="text-red-500">.</span>
+              Our reach<span className="text-red-500">.</span>
             </h2>
 
             <p className="v6-reach-intro">

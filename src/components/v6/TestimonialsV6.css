@@ -1,5 +1,8 @@
 /* ========================================================
-   V6 TESTIMONIALS (EXACT 100VH CENTERING + AUTHENTIC LUXURY)
+   V6 TESTIMONIALS (FULL-HEIGHT SPLIT SCREEN WITH RIGHT EDITORIAL IMAGE)
+   - Left Column: Client Quote & Attribution + 5 Slim Tab Bars
+   - Right Column: 100% Full-Height Luxury Editorial Fashion Photography
+   - Exact Heading Font Style from Image 1 (Semi-bold 600, -0.035em)
    ======================================================== */
 
 .v6-testimonials-section {
@@ -12,16 +15,35 @@
   max-height: 100vh;
   overflow: hidden;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 2rem;
   box-sizing: border-box;
   background-color: #ffffff;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
-.v6-testimonials-container {
+.v6-testimonials-split {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
   width: 100%;
-  max-width: 1200px;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ─── LEFT COLUMN: EDITORIAL CONTENT ─── */
+.v6-testimonials-col-left {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 clamp(2rem, 5vw, 6rem);
+  box-sizing: border-box;
+  background-color: #ffffff;
+  z-index: 2;
+}
+
+.v6-testimonials-inner {
+  width: 100%;
+  max-width: 680px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -46,16 +68,18 @@
   text-align: left;
 }
 
+/* EXACT HEADING FONT STYLE FROM IMAGE 1 (Semi-bold 600, tight tracking) */
 .v6-quote-text {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(24px, 2.8vw, 42px);
-  font-weight: 500;
-  line-height: 1.25;
-  letter-spacing: -0.03em;
+  font-size: clamp(20px, 2.2vw, 32px);
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: -0.035em;
   color: #000000;
   margin: 0;
-  max-width: 38ch;
-  min-height: 160px;
+  min-height: 190px;
+  display: flex;
+  align-items: center;
 }
 
 .v6-quote-author-block {
@@ -76,6 +100,7 @@
   font-weight: 400;
   color: #777777;
   margin: 0.25rem 0 0 0;
+  line-height: 1.45;
 }
 
 /* 5 Slim Horizontal Tabs */
@@ -92,15 +117,19 @@
   padding: 8px 0;
   cursor: pointer;
   flex: 1;
-  max-width: 90px;
+  max-width: 80px;
 }
 
 .v6-quote-tab-bar {
   display: block;
   height: 2px;
-  background-color: #e5e5e5;
-  border-radius: 2px;
-  transition: background-color 0.3s ease, height 0.3s ease;
+  background-color: #e0e0e0;
+  border-radius: 1px;
+  transition: all 0.3s ease;
+}
+
+.v6-quote-tab:hover .v6-quote-tab-bar {
+  background-color: #999999;
 }
 
 .v6-quote-tab.active .v6-quote-tab-bar {
@@ -108,18 +137,92 @@
   height: 3px;
 }
 
-/* ──────────────────────────────────────────────────────────
-   RESPONSIVE DESIGN (MOBILE & TABLET)
-   ────────────────────────────────────────────────────────── */
-@media (max-width: 860px) {
+/* ─── RIGHT COLUMN: FULL-HEIGHT EDITORIAL IMAGE STAGE ─── */
+.v6-testimonials-col-right {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #111116;
+}
+
+.v6-test-img-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.v6-test-editorial-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.v6-test-editorial-img.is-active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
+.v6-test-img-tag {
+  position: absolute;
+  bottom: 2.2rem;
+  right: 2.2rem;
+  background: rgba(0, 0, 0, 0.68);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: #ffffff;
+  font-family: 'Space Mono', 'SF Mono', Consolas, monospace;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  z-index: 5;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* ══════════════════════════════════════════════════════════
+   MOBILE & TABLET (< 960px)
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 960px) {
   .v6-testimonials-section {
-    height: auto;
-    max-height: none;
+    height: auto !important;
     min-height: 100vh;
-    padding: 5rem 1.5rem;
+    max-height: none !important;
+    overflow: visible;
+  }
+
+  .v6-testimonials-split {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .v6-testimonials-col-left {
+    padding: 5rem 1.5rem 3rem;
+  }
+
+  .v6-testimonials-col-right {
+    height: 380px;
   }
 
   .v6-quote-text {
+    font-size: clamp(20px, 5.5vw, 26px);
     min-height: auto;
+  }
+
+  .v6-test-img-tag {
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 9.5px;
   }
 }

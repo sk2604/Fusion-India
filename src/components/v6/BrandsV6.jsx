@@ -67,7 +67,7 @@ export default function BrandsV6({ id = 'brands' }) {
             <span>GLOBAL RETAIL CLIENTELE</span>
           </div>
           <h2 className="v6-brands-main-title">
-            BRANDS WE WORK WITH<span className="text-red-500">.</span>
+            Brands we work with<span className="text-red-500">.</span>
           </h2>
           <p className="v6-brands-subtext">
             Trusted by Europe and North America's leading apparel brands and retail conglomerates for high-capacity, ethically audited volume production.
