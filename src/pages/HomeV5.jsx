@@ -20,6 +20,16 @@ export default function HomeV5() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    if (window.lenis) {
+      window.lenis.scrollTo(0, { immediate: true });
+    }
+    const timer = setTimeout(() => {
+      window.scrollTo(0, 0);
+      if (window.lenis) {
+        window.lenis.scrollTo(0, { immediate: true });
+      }
+    }, 50);
+    return () => clearTimeout(timer);
   }, []);
 
   const scrollToSection = (id) => {

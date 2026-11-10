@@ -1,12 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './HeroV5.css';
 
 export default function HeroV5({ onExplore }) {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const heroScale = 1 + scrollY * 0.0003;
+  const heroOpacity = Math.max(0, 1 - scrollY / 700);
+
   return (
     <section className="v5-hero-wrapper" id="hero">
-      <div className="v5-hero-sticky">
-        {/* Pinned Atelier Visual (Warm golden lighting matching frame 00:00) */}
-        <div className="v5-hero-bg">
+      {/* Pinned Fullscreen Hero Background & Logo (frame 00:00-00:02) */}
+      <div 
+        className="v5-hero-fixed"
+        style={{ opacity: heroOpacity }}
+      >
+        <div 
+          className="v5-hero-bg"
+          style={{ transform: `scale(${heroScale})` }}
+        >
           <img 
             src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=2400&auto=format&fit=crop" 
             alt="Fusion India Atelier" 
@@ -15,7 +34,7 @@ export default function HeroV5({ onExplore }) {
           <div className="v5-hero-overlay" />
         </div>
 
-        {/* Center Brand Statement (Matching frame 00:01 in video) */}
+        {/* Center Brand Statement */}
         <div className="v5-hero-center-box">
           <h1 className="v5-hero-logo">
             <span className="v5-hero-logo-main">fusion</span>
@@ -26,12 +45,15 @@ export default function HeroV5({ onExplore }) {
           </p>
         </div>
 
-        {/* Scroll Prompt */}
+        {/* Scroll Indicator Prompt */}
         <div className="v5-hero-scroll-btn" onClick={onExplore} role="button" tabIndex={0}>
           <span className="label">SCROLL TO EXPLORE</span>
           <span className="v5-scroll-line" />
         </div>
       </div>
+
+      {/* 100vh spacer so the next white surface section smoothly scrolls over it */}
+      <div className="v5-hero-spacer" />
     </section>
   );
 }

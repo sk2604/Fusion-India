@@ -6,42 +6,42 @@ const bloomShots = [
     id: 1,
     title: 'Runway Motion',
     targetX: 0,
-    targetY: -27, // in vh
+    targetY: -28, // in vh above center
     img: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800&auto=format&fit=crop'
   },
   {
     id: 2,
     title: 'Studio Lookbook',
-    targetX: 25, // in vw
-    targetY: -15, // in vh
+    targetX: 25, // in vw right of center
+    targetY: -16, // in vh above center
     img: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800&auto=format&fit=crop'
   },
   {
     id: 3,
     title: 'Tailored Editorial',
-    targetX: 28, // in vw
-    targetY: 15, // in vh
+    targetX: 28, // in vw right of center
+    targetY: 15, // in vh below center
     img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop'
   },
   {
     id: 4,
-    title: 'Atelier Interior',
+    title: 'Atelier Fitting',
     targetX: 0,
-    targetY: 27, // in vh
+    targetY: 28, // in vh below center
     img: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop'
   },
   {
     id: 5,
     title: 'Hardware & Draping',
-    targetX: -28, // in vw
-    targetY: 15, // in vh
+    targetX: -28, // in vw left of center
+    targetY: 15, // in vh below center
     img: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=800&auto=format&fit=crop'
   },
   {
     id: 6,
-    title: 'Precision Fitting',
-    targetX: -25, // in vw
-    targetY: -15, // in vh
+    title: 'Precision Cut',
+    targetX: -25, // in vw left of center
+    targetY: -16, // in vh above center
     img: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?q=80&w=800&auto=format&fit=crop'
   }
 ];
@@ -68,13 +68,13 @@ export default function DoorAndBloomV5({ id = 'blooming', onSelectShot }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Phase 1: White Door Zoom (progress 0.0 -> 0.24)
+  // Phase 1: White Door Zoom (progress 0.0 -> 0.25)
   const doorT = Math.min(progress / 0.22, 1);
   const doorScale = 1 + doorT * 6;
-  const doorOpacity = Math.max(0, 1 - doorT * 1.25);
+  const doorOpacity = Math.max(0, 1 - doorT * 1.3);
 
-  // Phase 2: Blooming Radial Photos (progress 0.18 -> 0.85)
-  const bloomT = Math.min(Math.max((progress - 0.18) / 0.65, 0), 1);
+  // Phase 2: Blooming Radial Photos (progress 0.15 -> 0.75)
+  const bloomT = Math.min(Math.max((progress - 0.15) / 0.60, 0), 1);
   // Smooth cubic ease-out
   const easedBloom = 1 - Math.pow(1 - bloomT, 2.5);
 
@@ -119,14 +119,14 @@ export default function DoorAndBloomV5({ id = 'blooming', onSelectShot }) {
             </p>
           </div>
 
-          {/* 6 Blooming Photos that Radiate Outward Smoothly */}
+          {/* 6 Blooming Photos Radiating From True Center Outward */}
           <div className="v5-bloom-orbit-system">
             {bloomShots.map((shot) => {
-              // Smooth outward bloom from 30% distance to 100% distance
-              const distanceFactor = 0.3 + 0.7 * easedBloom;
+              // Smooth outward bloom from 15% distance to 100% distance
+              const distanceFactor = 0.2 + 0.8 * easedBloom;
               const currentX = shot.targetX * distanceFactor;
               const currentY = shot.targetY * distanceFactor;
-              const photoScale = 0.6 + 0.4 * easedBloom;
+              const photoScale = 0.65 + 0.35 * easedBloom;
               const isHovered = hoveredShot === shot.id;
 
               return (
@@ -134,9 +134,9 @@ export default function DoorAndBloomV5({ id = 'blooming', onSelectShot }) {
                   key={shot.id} 
                   className={`v5-bloom-flying-card ${isHovered ? 'hovered' : ''}`}
                   style={{
-                    transform: `translate(${currentX}vw, ${currentY}vh) scale(${isHovered ? photoScale * 1.08 : photoScale})`,
-                    opacity: 1,
-                    pointerEvents: easedBloom > 0.15 ? 'auto' : 'none'
+                    transform: `translate(calc(-50% + ${currentX}vw), calc(-50% + ${currentY}vh)) scale(${isHovered ? photoScale * 1.08 : photoScale})`,
+                    opacity: easedBloom > 0.05 ? 1 : easedBloom * 20,
+                    pointerEvents: easedBloom > 0.2 ? 'auto' : 'none'
                   }}
                   onMouseEnter={() => setHoveredShot(shot.id)}
                   onMouseLeave={() => setHoveredShot(null)}
