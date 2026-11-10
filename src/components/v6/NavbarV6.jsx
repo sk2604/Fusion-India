@@ -7,7 +7,8 @@ export default function NavbarV6({ onOpenDrawer }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 80);
+      // Revert colors when scrolling past the Hero section onto light surfaces
+      setIsScrolled(window.scrollY > (window.innerHeight * 0.7));
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
@@ -24,13 +25,12 @@ export default function NavbarV6({ onOpenDrawer }) {
   return (
     <nav className={`v6-nav-fixed ${isScrolled ? 'is-scrolled' : 'is-top'}`}>
       <div className="v6-nav-inner">
-        {/* Brand Wordmark */}
+        {/* Brand Wordmark matching reference "grace" */}
         <Link to="/v6" className="v6-nav-brand">
           <span className="v6-brand-main">fusion</span>
-          <span className="v6-brand-sub">Atelier<span className="v6-nav-dot">.</span></span>
         </Link>
 
-        {/* Center Links */}
+        {/* Center Links matching reference font & spacing */}
         <div className="v6-nav-center">
           <button type="button" onClick={() => scrollTo('deck')} className="v6-nav-link">
             DIVISIONS
@@ -52,7 +52,7 @@ export default function NavbarV6({ onOpenDrawer }) {
           </button>
         </div>
 
-        {/* Right CTA */}
+        {/* Right CTA with Underline & Language matching reference */}
         <div className="v6-nav-right">
           <button 
             type="button" 

@@ -1,6 +1,9 @@
 /* ========================================================
-   V6 NAVBAR (DYNAMIC ADAPTIVE LUXURY HEADER)
-   Fixes visibility issues over yellow hero image & white surfaces
+   V6 NAVBAR (100% ALWAYS TRANSPARENT BACKGROUND + REVERT COLORS ON SCROLL)
+   Matches reference screenshot gracefashion.ai:
+   - Always 100% transparent background (no borders, no blur, no shadows)
+   - Colors revert from white to black on scroll
+   - Reference font style: bold lowercase brand, all-caps bold links, underlined CTA
    ======================================================== */
 
 .v6-nav-fixed {
@@ -9,116 +12,26 @@
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 1.25rem 1.5rem;
+  padding: 1.25rem 2rem;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   pointer-events: none;
   font-family: var(--v6-font-sans);
-  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              padding 0.3s ease;
+  transition: padding 0.3s ease;
 }
 
 @media (min-width: 768px) {
   .v6-nav-fixed {
-    padding: 1.5rem 3.5rem;
+    padding: 1.35rem 3rem;
   }
 }
 
-/* ─── STATE 1: AT TOP OVER HERO (DARK/YELLOW PHOTO) ─── */
-.v6-nav-fixed.is-top {
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.72) 0%,
-    rgba(0, 0, 0, 0.35) 55%,
-    rgba(0, 0, 0, 0) 100%
-  );
-  border-bottom: 1px solid transparent;
-}
-
-.v6-nav-fixed.is-top .v6-brand-main {
-  color: #ffffff;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
-}
-
-.v6-nav-fixed.is-top .v6-brand-sub {
-  color: rgba(255, 255, 255, 0.85);
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
-}
-
-.v6-nav-fixed.is-top .v6-nav-link {
-  color: #ffffff;
-  opacity: 0.95;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
-}
-
-.v6-nav-fixed.is-top .v6-nav-link:hover {
-  opacity: 0.6;
-}
-
-.v6-nav-fixed.is-top .v6-nav-cta {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-.v6-nav-fixed.is-top .v6-nav-cta:hover {
-  background: #ffffff;
-  color: #000000;
-  border-color: #ffffff;
-}
-
-.v6-nav-fixed.is-top .v6-nav-lang {
-  color: rgba(255, 255, 255, 0.85);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
-}
-
-/* ─── STATE 2: SCROLLED OVER LIGHT/WHITE SURFACES ─── */
-.v6-nav-fixed.is-scrolled {
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-}
-
-.v6-nav-fixed.is-scrolled .v6-brand-main {
-  color: #000000;
-}
-
-.v6-nav-fixed.is-scrolled .v6-brand-sub {
-  color: #525252;
-}
-
-.v6-nav-fixed.is-scrolled .v6-nav-link {
-  color: #171717;
-  opacity: 0.85;
-}
-
-.v6-nav-fixed.is-scrolled .v6-nav-link:hover {
-  opacity: 0.45;
-}
-
-.v6-nav-fixed.is-scrolled .v6-nav-cta {
-  color: #ffffff;
-  background: #000000;
-  border: 1px solid #000000;
-}
-
-.v6-nav-fixed.is-scrolled .v6-nav-cta:hover {
-  background: #262626;
-  border-color: #262626;
-}
-
-.v6-nav-fixed.is-scrolled .v6-nav-lang {
-  color: #525252;
-}
-
-/* ─── INNER CONTAINER & SHARED STYLES ─── */
 .v6-nav-inner {
   width: 100%;
-  max-width: 2000px;
+  max-width: 1920px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -126,37 +39,33 @@
   pointer-events: auto;
 }
 
+/* ─── BRAND LOGO: MATCHING REFERENCE "grace" ─── */
 .v6-nav-brand {
   display: flex;
   align-items: baseline;
-  gap: 4px;
   text-decoration: none;
   cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.v6-nav-brand:hover {
+  opacity: 0.65;
 }
 
 .v6-brand-main {
   font-family: var(--v6-font-display);
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 800;
   letter-spacing: -0.04em;
-  transition: color 0.3s ease;
+  text-transform: lowercase;
+  transition: color 0.35s ease;
 }
 
-.v6-brand-sub {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  transition: color 0.3s ease;
-}
-
-.v6-nav-dot {
-  color: #e50914;
-}
-
+/* ─── CENTER LINKS: ALL CAPS, CLEAN BOLD TRACKING ─── */
 .v6-nav-center {
   display: none;
   align-items: center;
-  gap: 2rem;
+  gap: 2.2rem;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -173,35 +82,92 @@
   border: none;
   padding: 0;
   font-family: var(--v6-font-sans);
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: opacity 0.2s ease, color 0.3s ease;
+  transition: opacity 0.2s ease, color 0.35s ease;
 }
 
+.v6-nav-link:hover {
+  opacity: 0.5;
+}
+
+/* ─── RIGHT CTA: UNDERLINED TEXT (LIKE "BOOK A DEMO") + EN ─── */
 .v6-nav-right {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1.5rem;
 }
 
 .v6-nav-cta {
-  padding: 8px 18px;
-  border-radius: 999px;
+  background: none;
+  border: none;
+  padding: 0;
   font-family: var(--v6-font-sans);
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: opacity 0.2s ease, color 0.35s ease;
+}
+
+.v6-nav-cta:hover {
+  opacity: 0.55;
 }
 
 .v6-nav-lang {
-  font-size: 12px;
-  font-weight: 600;
+  font-family: var(--v6-font-sans);
+  font-size: 11px;
+  font-weight: 700;
   letter-spacing: 0.05em;
-  transition: color 0.3s ease;
+  cursor: default;
+  transition: color 0.35s ease;
+}
+
+/* ─── STATE 1: TOP (OVER HERO) — PURE WHITE COLOR ─── */
+.v6-nav-fixed.is-top .v6-brand-main {
+  color: #ffffff;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+}
+
+.v6-nav-fixed.is-top .v6-nav-link {
+  color: #ffffff;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+}
+
+.v6-nav-fixed.is-top .v6-nav-cta {
+  color: #ffffff;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+}
+
+.v6-nav-fixed.is-top .v6-nav-lang {
+  color: #ffffff;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+}
+
+/* ─── STATE 2: SCROLLED (OVER WHITE SECTIONS) — REVERT TO PURE BLACK ─── */
+.v6-nav-fixed.is-scrolled .v6-brand-main {
+  color: #000000;
+  text-shadow: none;
+}
+
+.v6-nav-fixed.is-scrolled .v6-nav-link {
+  color: #000000;
+  text-shadow: none;
+}
+
+.v6-nav-fixed.is-scrolled .v6-nav-cta {
+  color: #000000;
+  text-shadow: none;
+}
+
+.v6-nav-fixed.is-scrolled .v6-nav-lang {
+  color: #000000;
+  text-shadow: none;
 }
