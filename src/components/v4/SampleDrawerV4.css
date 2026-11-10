@@ -1,0 +1,213 @@
+/* ========================================================
+   FUSION V4 SAMPLE DRAWER / MODAL
+   ======================================================== */
+
+.drawer-v4-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(4, 4, 6, 0.75);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.drawer-v4-panel {
+  width: 100%;
+  max-width: 520px;
+  height: 100%;
+  background: #0d0d12;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.8);
+}
+
+.drawer-v4-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.drawer-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: #e2e8f0;
+}
+
+.drawer-close-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.drawer-close-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: rotate(90deg);
+}
+
+.drawer-v4-body {
+  padding: 34px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.drawer-head h2 {
+  font-family: var(--font-heading, "Cinzel", "Syne", sans-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 10px;
+}
+
+.drawer-head p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+/* Form */
+.drawer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field label {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  color: #ffffff;
+  font-family: var(--font-body, sans-serif);
+  font-size: 0.88rem;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.form-field select option {
+  background: #0d0d12;
+  color: #ffffff;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: #a78bfa;
+  box-shadow: 0 0 15px rgba(167, 139, 250, 0.25);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.drawer-submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px;
+  background: #ffffff;
+  color: #050508;
+  border: 1px solid #ffffff;
+  border-radius: 999px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-top: 10px;
+}
+
+.drawer-submit-btn:hover {
+  background: #f1f5f9;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.drawer-guarantee {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.45);
+  justify-content: center;
+  margin-top: 6px;
+}
+
+/* Success View */
+.drawer-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  padding: 60px 20px;
+}
+
+.success-icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid #10b981;
+  color: #10b981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drawer-success h3 {
+  font-family: var(--font-heading, sans-serif);
+  font-size: 1.6rem;
+  color: #fff;
+  margin: 0;
+}
+
+.drawer-success p {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 360px;
+  margin: 0;
+}
+
+.success-node {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  color: #a78bfa;
+}

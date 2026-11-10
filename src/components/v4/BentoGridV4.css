@@ -1,0 +1,332 @@
+/* ========================================================
+   FUSION V4 BENTO CAPABILITY GRID (GRACE AI INSPIRATION)
+   ======================================================== */
+
+.bento-v4 {
+  position: relative;
+  background-color: #08080a;
+  color: #ffffff;
+  padding: 120px 0 100px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.bento-v4-container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+/* Head */
+.bento-v4-head {
+  max-width: 780px;
+}
+
+.bento-kicker {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  color: #38bdf8;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.bento-title {
+  font-family: var(--font-heading, "Cinzel", "Syne", sans-serif);
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.bento-title em {
+  font-style: italic;
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+  color: #e2e8f0;
+}
+
+.bento-sub {
+  font-family: var(--font-body, "Plus Jakarta Sans", sans-serif);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+/* Bento Grid */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+}
+
+/* Base Card Styling */
+.bento-card {
+  position: relative;
+  background: rgba(18, 18, 24, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 30px;
+  overflow: hidden;
+  backdrop-filter: blur(24px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-card:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Ambient Glows */
+.card-ambient-glow {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.glow-purple { background: #8b5cf6; }
+.glow-emerald { background: #10b981; }
+.glow-cyan { background: #06b6d4; }
+.glow-blue { background: #3b82f6; }
+
+/* Grid Spans */
+.card-large {
+  grid-column: span 7;
+  min-height: 440px;
+}
+
+.card-compact {
+  grid-column: span 5;
+  min-height: 260px;
+}
+
+.card-wide {
+  grid-column: span 12;
+}
+
+/* Card Header */
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  z-index: 2;
+}
+
+.card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: #fff;
+  font-weight: 600;
+}
+
+.card-metric-pill {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.64rem;
+  letter-spacing: 0.12em;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  color: #94a3b8;
+}
+
+/* Card Visual (Large) */
+.card-visual-wrap {
+  position: relative;
+  height: 180px;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.card-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.75;
+  transition: transform 0.6s ease;
+}
+
+.bento-card:hover .card-bg-img {
+  transform: scale(1.04);
+}
+
+.card-scanner-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #a78bfa, transparent);
+  box-shadow: 0 0 10px #a78bfa;
+  animation: v4-scan 3s ease-in-out infinite;
+}
+
+@keyframes v4-scan {
+  0%, 100% { top: 0%; opacity: 0; }
+  50% { top: 98%; opacity: 1; }
+}
+
+/* Content */
+.card-content h3 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 0 0 10px;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.card-content p {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0 0 16px;
+}
+
+.card-tags-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.card-tags-row span {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  color: #cbd5e1;
+}
+
+/* Mini Stat Card */
+.card-mini-stat {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+
+.mini-num {
+  font-family: var(--font-heading, sans-serif);
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(135deg, #fff 40%, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mini-num sup {
+  font-size: 1.4rem;
+  color: #38bdf8;
+}
+
+.mini-label {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+
+/* Wide Card Layout */
+.card-wide-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.wide-text {
+  max-width: 650px;
+}
+
+.wide-text h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0 0 10px;
+  color: #fff;
+}
+
+.wide-text p {
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0 0 18px;
+}
+
+.corridor-chips {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.corridor-chips span {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  color: #e2e8f0;
+}
+
+.circle-stat {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 1px dashed rgba(56, 189, 248, 0.4);
+  background: rgba(56, 189, 248, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+}
+
+.circle-stat strong {
+  font-family: var(--font-heading, sans-serif);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #38bdf8;
+  line-height: 1;
+}
+
+.circle-stat span {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.62rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 4px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .card-large, .card-compact {
+    grid-column: span 12;
+  }
+
+  .card-wide-body {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

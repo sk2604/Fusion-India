@@ -6,15 +6,23 @@ export default function VersionToggle() {
   const location = useLocation();
   const path = location.pathname;
 
+  const isV4 = path === '/v4' || path === '/grace';
   const isV1 = path === '/v1' || path === '/old';
   const isV2 = path === '/v2';
   const isV3 = path === '/v3' || path === '/white';
-  const isDark2 = !isV1 && !isV2 && !isV3; // Default is / or /dark2
+  const isDark2 = !isV1 && !isV2 && !isV3 && !isV4; // Default is / or /dark2
 
   return (
     <div className="version-toggle-container">
       <div className="version-toggle-bar">
         <span className="vt-label">DESIGN:</span>
+        <Link
+          to="/v4"
+          className={`vt-pill ${isV4 ? 'active' : ''}`}
+          title="V4: Grace AI Fashion OS"
+        >
+          ✨ V4 (Grace AI)
+        </Link>
         <Link
           to="/"
           className={`vt-pill ${isDark2 ? 'active' : ''}`}

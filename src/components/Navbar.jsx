@@ -55,11 +55,20 @@ export default function Navbar() {
             transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
           >
             <div className="container nav-menu-container">
-              <motion.div initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2, duration: 0.5 }}>
-                <Link to="/" onClick={() => setIsOpen(false)}>HOME</Link>
+              <motion.div initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.15, duration: 0.5 }}>
+                <Link to="/v4" onClick={() => setIsOpen(false)}>✨ V4 // GRACE AI FASHION OS</Link>
               </motion.div>
-              <motion.div initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3, duration: 0.5 }}>
-                <Link to="/contact" onClick={() => setIsOpen(false)}>CONTACT US</Link>
+              <motion.div initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.22, duration: 0.5 }}>
+                <Link to="/" onClick={() => setIsOpen(false)}>DARK (2) // EDITORIAL RUNWAY</Link>
+              </motion.div>
+              <motion.div initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.28, duration: 0.5 }}>
+                <Link to="/v3" onClick={() => setIsOpen(false)}>WHITE (V3) // ATELIER HOUSE</Link>
+              </motion.div>
+              <motion.div initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.34, duration: 0.5 }}>
+                <Link to="/v2" onClick={() => setIsOpen(false)}>DARK (V2) // STUDIO SOURCING</Link>
+              </motion.div>
+              <motion.div initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4, duration: 0.5 }}>
+                <Link to="/contact" onClick={() => setIsOpen(false)}>CONTACT & INTAKE</Link>
               </motion.div>
             </div>
           </motion.div>
