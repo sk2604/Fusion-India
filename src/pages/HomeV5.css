@@ -28,7 +28,6 @@
   background-color: var(--v5-black);
   color: var(--v5-white);
   font-family: var(--v5-font-sans);
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

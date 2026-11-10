@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Lenis from '@studio-freight/lenis';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function SmoothScroll({ children }) {
   const location = useLocation();
@@ -20,24 +24,29 @@ export default function SmoothScroll({ children }) {
 
     window.lenis = lenis;
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+    // Official Lenis + GSAP ScrollTrigger synchronization
+    lenis.on('scroll', ScrollTrigger.update);
 
-    requestAnimationFrame(raf);
+    const updateLenis = (time) => {
+      lenis.raf(time * 1000);
+    };
+
+    gsap.ticker.add(updateLenis);
+    gsap.ticker.lagSmoothing(0);
 
     return () => {
+      gsap.ticker.remove(updateLenis);
       lenis.destroy();
     };
   }, []);
 
-  // Reset scroll to top on every route transition
+  // Reset scroll to top on every route transition & refresh ScrollTrigger
   useEffect(() => {
     if (window.lenis) {
       window.lenis.scrollTo(0, { immediate: true });
     }
     window.scrollTo(0, 0);
+    ScrollTrigger.refresh();
   }, [location.pathname]);
 
   return <>{children}</>;

@@ -1,5 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './ScrollDeckV5.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const deckCards = [
   {
@@ -16,7 +20,6 @@ const deckCards = [
     right: 'all of one piece.',
     tag: 'DIVISION 02 // SOURCING SUITE',
     sub: 'From denim and heavy loopback to bespoke leather goods and silk.',
-    // Lookbook grid of 4 images matching frame 00:09 in reference video
     isGrid: true,
     gridImages: [
       'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=600&auto=format&fit=crop',
@@ -36,122 +39,118 @@ const deckCards = [
 ];
 
 export default function ScrollDeckV5({ id = 'deck', onSelectCard }) {
-  const containerRef = useRef(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const sectionRef = useRef(null);
+  const [activeCardIdx, setActiveCardIdx] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const totalScrollable = rect.height - window.innerHeight;
-      if (totalScrollable <= 0) return;
+    const el = sectionRef.current;
+    if (!el) return;
 
-      const current = -rect.top;
-      const p = Math.min(Math.max(current / totalScrollable, 0), 1);
-      setScrollProgress(p);
-    };
+    const ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top top',
+        end: '+=2000',
+        pin: true,
+        anticipatePin: 1,
+        scrub: 0.5,
+        onUpdate: (self) => {
+          const p = self.progress;
+          if (p >= 0.66) {
+            setActiveCardIdx(2);
+          } else if (p >= 0.33) {
+            setActiveCardIdx(1);
+          } else {
+            setActiveCardIdx(0);
+          }
+        }
+      });
+    }, el);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => ctx.revert();
   }, []);
-
-  // 3 Cards progression driven cleanly by scroll
-  // 0.00 - 0.35: Card 0 (Campaigns with attitude)
-  // 0.35 - 0.68: Card 1 (Lookbooks all of one piece)
-  // 0.68 - 1.00: Card 2 (Product runs, who sell)
-  let activeCardIdx = 0;
-  if (scrollProgress >= 0.68) {
-    activeCardIdx = 2;
-  } else if (scrollProgress >= 0.35) {
-    activeCardIdx = 1;
-  } else {
-    activeCardIdx = 0;
-  }
 
   const currentCard = deckCards[activeCardIdx];
 
   return (
-    <section className="v5-deck-scroll-wrapper" id={id} ref={containerRef}>
-      <div className="v5-deck-sticky">
-        <div className="v5-container v5-px v5-deck-inner">
-          
-          {/* Centered Top Eyebrow Headline (matching frame 00:04 in video) */}
-          <div className="v5-deck-header-box">
-            <h2 className="v5-deck-headline">
-              You design what the world wears. We build it.
-            </h2>
-          </div>
-
-          {/* 3-Part Flanking Layout Always Visible with Active Card (matching frames 00:07-00:11) */}
-          <div className="v5-deck-flanking-stage">
-            <div className="v5-deck-flanking-grid">
-              
-              {/* Left Flank Word */}
-              <div className="v5-deck-flank v5-flank-left">
-                <span className="v5-deck-flank-word">
-                  {currentCard.left}
-                </span>
-              </div>
-
-              {/* Center Square Photo with Crossfade */}
-              <div className="v5-deck-card-wrap">
-                <div 
-                  className="v5-deck-photo-card"
-                  onClick={() => onSelectCard && onSelectCard(currentCard)}
-                  role="button"
-                  tabIndex={0}
-                >
-                  {deckCards.map((card, i) => (
-                    <div 
-                      key={card.id} 
-                      className={`v5-deck-photo-layer ${i === activeCardIdx ? 'active' : ''}`}
-                    >
-                      {card.isGrid ? (
-                        <div className="v5-deck-inner-grid">
-                          {card.gridImages.map((src, gIdx) => (
-                            <img 
-                              key={gIdx} 
-                              src={src} 
-                              alt={`Look ${gIdx + 1}`} 
-                              className="v5-grid-quarter" 
-                            />
-                          ))}
-                        </div>
-                      ) : (
-                        <img 
-                          src={card.img} 
-                          alt={card.left}
-                          className="v5-deck-photo-img"
-                        />
-                      )}
-                    </div>
-                  ))}
-                  <span className="v5-deck-badge">{currentCard.tag}</span>
-                </div>
-
-                {/* Step Indicator Bars (matching 3 dots in video) */}
-                <div className="v5-deck-dots-bar">
-                  {deckCards.map((_, i) => (
-                    <span 
-                      key={i} 
-                      className={`v5-deck-dot-line ${i === activeCardIdx ? 'active' : ''}`} 
-                    />
-                  ))}
-                </div>
-              </div>
-
-              {/* Right Flank Word */}
-              <div className="v5-deck-flank v5-flank-right">
-                <span className="v5-deck-flank-word">
-                  {currentCard.right}
-                </span>
-              </div>
-
-            </div>
-          </div>
-
+    <section className="v5-deck-section" id={id} ref={sectionRef}>
+      <div className="v5-container v5-px v5-deck-inner">
+        
+        {/* Centered Top Eyebrow Headline (matching frame 00:04 in video) */}
+        <div className="v5-deck-header-box">
+          <h2 className="v5-deck-headline">
+            You design what the world wears. We build it.
+          </h2>
         </div>
+
+        {/* 3-Part Flanking Layout Pinned by GSAP (matching frames 00:07-00:11) */}
+        <div className="v5-deck-flanking-stage">
+          <div className="v5-deck-flanking-grid">
+            
+            {/* Left Flank Word */}
+            <div className="v5-deck-flank v5-flank-left">
+              <span className="v5-deck-flank-word">
+                {currentCard.left}
+              </span>
+            </div>
+
+            {/* Center Square Photo with Crossfade */}
+            <div className="v5-deck-card-wrap">
+              <div 
+                className="v5-deck-photo-card"
+                onClick={() => onSelectCard && onSelectCard(currentCard)}
+                role="button"
+                tabIndex={0}
+              >
+                {deckCards.map((card, i) => (
+                  <div 
+                    key={card.id} 
+                    className={`v5-deck-photo-layer ${i === activeCardIdx ? 'active' : ''}`}
+                  >
+                    {card.isGrid ? (
+                      <div className="v5-deck-inner-grid">
+                        {card.gridImages.map((src, gIdx) => (
+                          <img 
+                            key={gIdx} 
+                            src={src} 
+                            alt={`Look ${gIdx + 1}`} 
+                            className="v5-grid-quarter" 
+                          />
+                        ))}
+                      </div>
+                    ) : (
+                      <img 
+                        src={card.img} 
+                        alt={card.left}
+                        className="v5-deck-photo-img"
+                      />
+                    )}
+                  </div>
+                ))}
+                <span className="v5-deck-badge">{currentCard.tag}</span>
+              </div>
+
+              {/* Step Indicator Bars (matching 3 dots in video) */}
+              <div className="v5-deck-dots-bar">
+                {deckCards.map((_, i) => (
+                  <span 
+                    key={i} 
+                    className={`v5-deck-dot-line ${i === activeCardIdx ? 'active' : ''}`} 
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Right Flank Word */}
+            <div className="v5-deck-flank v5-flank-right">
+              <span className="v5-deck-flank-word">
+                {currentCard.right}
+              </span>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </section>
   );
