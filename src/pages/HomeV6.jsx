@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import NavbarV6 from '../components/v6/NavbarV6';
-import TrackerV6 from '../components/v6/TrackerV6';
 import HeroV6 from '../components/v6/HeroV6';
 import ScrollDeckV6 from '../components/v6/ScrollDeckV6';
 import DoorAndBloomV6 from '../components/v6/DoorAndBloomV6';
@@ -44,10 +43,7 @@ export default function HomeV6() {
       {/* 1. Mix-Blend-Difference Fixed Header */}
       <NavbarV6 onOpenDrawer={() => setDrawerOpen(true)} />
 
-      {/* 2. Floating Right-Side Vertical 100vh Tracker */}
-      <TrackerV6 />
-
-      {/* 3. Hero (Warm Golden Atelier Lighting) */}
+      {/* 2. Hero (Warm Golden Atelier Lighting) */}
       <HeroV6 onExplore={() => scrollToSection('deck')} />
 
       {/* 4. Section 01: GSAP Pinned Scroll Deck */}

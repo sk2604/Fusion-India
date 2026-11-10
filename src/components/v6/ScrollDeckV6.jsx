@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 const deckSlides = [
   {
     id: 1,
-    left: 'Atelier Craft,',
+    left: 'Atelier craft,',
     right: 'at audited scale.',
     tag: 'DIVISION 01 // TAILORED OUTERWEAR',
     sub: 'Double-face virgin wool, tailored canvas construction, horn hardware.',
@@ -17,7 +17,7 @@ const deckSlides = [
   {
     id: 2,
     left: 'From tech pack',
-    right: 'to verified production.',
+    right: 'to verified run.',
     tag: 'DIVISION 02 // SOURCING SUITE',
     sub: 'Tailored woolens, circular denim, bespoke leather goods, and silk.',
     isGrid: true,
@@ -42,7 +42,7 @@ const deckSlides = [
   },
   {
     id: 3,
-    left: 'Zero compromise,',
+    left: 'Zero shortcuts,',
     right: 'on runway quality.',
     tag: 'DIVISION 03 // SCALED RUNWAYS',
     sub: '100% factory calibration across 50,000+ unit European delivery.',
@@ -51,7 +51,7 @@ const deckSlides = [
   {
     id: 4,
     left: 'Right Product —',
-    right: 'Right Price. Right Performance.',
+    right: 'Right Performance.',
     tag: 'THE FUSION CREDO // EST. 1998',
     sub: 'Bridging global runway directions with ethical Indian manufacturing.',
     isDoorCutout: true
@@ -60,19 +60,13 @@ const deckSlides = [
 
 export default function ScrollDeckV6({ id = 'deck', onSelectCard }) {
   const containerRef = useRef(null);
-  const quoteRef = useRef(null);
-  const stageRef = useRef(null);
-  const cardRefs = useRef([]);
+  const trackRef = useRef(null);
   const textLeftRefs = useRef([]);
   const textRightRefs = useRef([]);
 
-  cardRefs.current = [];
   textLeftRefs.current = [];
   textRightRefs.current = [];
 
-  const addToCardRefs = (el) => {
-    if (el && !cardRefs.current.includes(el)) cardRefs.current.push(el);
-  };
   const addToTextLeftRefs = (el) => {
     if (el && !textLeftRefs.current.includes(el)) textLeftRefs.current.push(el);
   };
@@ -82,98 +76,74 @@ export default function ScrollDeckV6({ id = 'deck', onSelectCard }) {
 
   useEffect(() => {
     const container = containerRef.current;
-    const quote = quoteRef.current;
-    const stage = stageRef.current;
-    if (!container || !quote || !stage) return;
+    const track = trackRef.current;
+    if (!container || !track) return;
 
     const ctx = gsap.context(() => {
-      // Initialize cards and texts
-      cardRefs.current.forEach((card, i) => {
-        if (i === 0) {
-          gsap.set(card, { yPercent: 0, opacity: 1, scale: 1 });
-        } else {
-          gsap.set(card, { yPercent: 120, opacity: 0, scale: 0.96 });
-        }
+      // Initialize states: Slide 0 is razor-sharp in view; others start below & blurred
+      gsap.set(track, { yPercent: 0 });
+
+      textLeftRefs.current.forEach((el, i) => {
+        gsap.set(el, {
+          opacity: i === 0 ? 1 : 0,
+          filter: i === 0 ? 'blur(0px)' : 'blur(12px)',
+          y: i === 0 ? 0 : 25
+        });
       });
 
-      textLeftRefs.current.forEach((t, i) => {
-        if (i === 0) {
-          gsap.set(t, { y: 0, opacity: 1, filter: 'blur(0px)' });
-        } else {
-          gsap.set(t, { y: 30, opacity: 0, filter: 'blur(12px)' });
-        }
+      textRightRefs.current.forEach((el, i) => {
+        gsap.set(el, {
+          opacity: i === 0 ? 1 : 0,
+          filter: i === 0 ? 'blur(0px)' : 'blur(12px)',
+          y: i === 0 ? 0 : 25
+        });
       });
 
-      textRightRefs.current.forEach((t, i) => {
-        if (i === 0) {
-          gsap.set(t, { y: 0, opacity: 1, filter: 'blur(0px)' });
-        } else {
-          gsap.set(t, { y: 30, opacity: 0, filter: 'blur(12px)' });
-        }
-      });
-
-      // Pinned GSAP ScrollTrigger timeline matching user screen recording
+      // Pinned Master Timeline with deliberate resting plateaus (holds)
+      // This prevents the rushing feeling and delivers rock-solid luxury pacing
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: container,
           start: 'top top',
-          end: '+=3600',
+          end: '+=2800',
           pin: true,
           anticipatePin: 1,
-          scrub: 0.7,
+          scrub: 0.6,
         }
       });
 
-      // ─── STEP 0: Initial Quote transitions out as Stage enters ───
-      tl.to(quote, {
-        y: -50,
-        opacity: 0,
-        filter: 'blur(14px)',
-        duration: 0.8,
-        ease: 'power2.inOut'
-      }, 0);
-
-      tl.fromTo(stage, 
-        { y: 60, opacity: 0, filter: 'blur(10px)' },
-        { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.8, ease: 'power2.out' },
-        0.2
-      );
-
       // ─── STEP 1: Slide 0 -> Slide 1 (Transition to 2x2 Grid) ───
-      tl.addLabel('slide1', 1.2);
-      // Exit Slide 0
-      tl.to(cardRefs.current[0], { yPercent: -120, opacity: 0, scale: 0.94, duration: 1, ease: 'power2.inOut' }, 'slide1');
-      tl.to(textLeftRefs.current[0], { y: -25, opacity: 0, filter: 'blur(12px)', duration: 0.6, ease: 'power2.in' }, 'slide1');
-      tl.to(textRightRefs.current[0], { y: -25, opacity: 0, filter: 'blur(12px)', duration: 0.6, ease: 'power2.in' }, 'slide1');
-      // Enter Slide 1
-      tl.to(cardRefs.current[1], { yPercent: 0, opacity: 1, scale: 1, duration: 1, ease: 'power2.inOut' }, 'slide1+=0.1');
-      tl.to(textLeftRefs.current[1], { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.7, ease: 'power2.out' }, 'slide1+=0.2');
-      tl.to(textRightRefs.current[1], { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.7, ease: 'power2.out' }, 'slide1+=0.2');
+      // Hold Slide 0 for 0.4s of scroll, then glide track by -100%
+      tl.to(track, { yPercent: -100, duration: 1.0, ease: 'power2.inOut' }, 0.4);
+      // Blur and exit Slide 0 text
+      tl.to(textLeftRefs.current[0], { opacity: 0, filter: 'blur(12px)', y: -20, duration: 0.5, ease: 'power2.in' }, 0.4);
+      tl.to(textRightRefs.current[0], { opacity: 0, filter: 'blur(12px)', y: -20, duration: 0.5, ease: 'power2.in' }, 0.4);
+      // Unblur and enter Slide 1 text
+      tl.to(textLeftRefs.current[1], { opacity: 1, filter: 'blur(0px)', y: 0, duration: 0.6, ease: 'power2.out' }, 0.8);
+      tl.to(textRightRefs.current[1], { opacity: 1, filter: 'blur(0px)', y: 0, duration: 0.6, ease: 'power2.out' }, 0.8);
 
       // ─── STEP 2: Slide 1 -> Slide 2 (Transition to Runway Model) ───
-      tl.addLabel('slide2', 2.6);
-      // Exit Slide 1
-      tl.to(cardRefs.current[1], { yPercent: -120, opacity: 0, scale: 0.94, duration: 1, ease: 'power2.inOut' }, 'slide2');
-      tl.to(textLeftRefs.current[1], { y: -25, opacity: 0, filter: 'blur(12px)', duration: 0.6, ease: 'power2.in' }, 'slide2');
-      tl.to(textRightRefs.current[1], { y: -25, opacity: 0, filter: 'blur(12px)', duration: 0.6, ease: 'power2.in' }, 'slide2');
-      // Enter Slide 2
-      tl.to(cardRefs.current[2], { yPercent: 0, opacity: 1, scale: 1, duration: 1, ease: 'power2.inOut' }, 'slide2+=0.1');
-      tl.to(textLeftRefs.current[2], { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.7, ease: 'power2.out' }, 'slide2+=0.2');
-      tl.to(textRightRefs.current[2], { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.7, ease: 'power2.out' }, 'slide2+=0.2');
+      // Hold Slide 1 from 1.4 to 1.8s
+      tl.to(track, { yPercent: -200, duration: 1.0, ease: 'power2.inOut' }, 1.8);
+      // Blur and exit Slide 1 text
+      tl.to(textLeftRefs.current[1], { opacity: 0, filter: 'blur(12px)', y: -20, duration: 0.5, ease: 'power2.in' }, 1.8);
+      tl.to(textRightRefs.current[1], { opacity: 0, filter: 'blur(12px)', y: -20, duration: 0.5, ease: 'power2.in' }, 1.8);
+      // Unblur and enter Slide 2 text
+      tl.to(textLeftRefs.current[2], { opacity: 1, filter: 'blur(0px)', y: 0, duration: 0.6, ease: 'power2.out' }, 2.2);
+      tl.to(textRightRefs.current[2], { opacity: 1, filter: 'blur(0px)', y: 0, duration: 0.6, ease: 'power2.out' }, 2.2);
 
-      // ─── STEP 3: Slide 2 -> Slide 3 (Transition to Door Cutout Motif) ───
-      tl.addLabel('slide3', 4.0);
-      // Exit Slide 2
-      tl.to(cardRefs.current[2], { yPercent: -120, opacity: 0, scale: 0.94, duration: 1, ease: 'power2.inOut' }, 'slide3');
-      tl.to(textLeftRefs.current[2], { y: -25, opacity: 0, filter: 'blur(12px)', duration: 0.6, ease: 'power2.in' }, 'slide3');
-      tl.to(textRightRefs.current[2], { y: -25, opacity: 0, filter: 'blur(12px)', duration: 0.6, ease: 'power2.in' }, 'slide3');
-      // Enter Slide 3
-      tl.to(cardRefs.current[3], { yPercent: 0, opacity: 1, scale: 1, duration: 1, ease: 'power2.inOut' }, 'slide3+=0.1');
-      tl.to(textLeftRefs.current[3], { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.7, ease: 'power2.out' }, 'slide3+=0.2');
-      tl.to(textRightRefs.current[3], { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.7, ease: 'power2.out' }, 'slide3+=0.2');
+      // ─── STEP 3: Slide 2 -> Slide 3 (Transition to Door Cutout) ───
+      // Hold Slide 2 from 2.8 to 3.2s
+      tl.to(track, { yPercent: -300, duration: 1.0, ease: 'power2.inOut' }, 3.2);
+      // Blur and exit Slide 2 text
+      tl.to(textLeftRefs.current[2], { opacity: 0, filter: 'blur(12px)', y: -20, duration: 0.5, ease: 'power2.in' }, 3.2);
+      tl.to(textRightRefs.current[2], { opacity: 0, filter: 'blur(12px)', y: -20, duration: 0.5, ease: 'power2.in' }, 3.2);
+      // Unblur and enter Slide 3 text
+      tl.to(textLeftRefs.current[3], { opacity: 1, filter: 'blur(0px)', y: 0, duration: 0.6, ease: 'power2.out' }, 3.6);
+      tl.to(textRightRefs.current[3], { opacity: 1, filter: 'blur(0px)', y: 0, duration: 0.6, ease: 'power2.out' }, 3.6);
 
-      // Hold slide 3 at end before unpinning
-      tl.to({}, { duration: 0.5 });
+      // Hold Slide 3 from 4.2 to 4.6s before smoothly releasing pin
+      tl.to({}, { duration: 0.4 });
     }, container);
 
     return () => ctx.revert();
@@ -181,43 +151,32 @@ export default function ScrollDeckV6({ id = 'deck', onSelectCard }) {
 
   return (
     <section className="v6-deck-section" id={id} ref={containerRef}>
-      <div className="v6-deck-wrapper">
-        
-        {/* 1. Introductory Atelier Philosophy Quote (matches frame 00:00 - 00:02 in user video) */}
-        <div className="v6-deck-quote-screen" ref={quoteRef}>
-          <p className="v6-deck-quote-tag">FUSION INDIA // PHILOSOPHY</p>
-          <blockquote className="v6-deck-quote-text">
-            Garments designed to be worn, loved, and carried across seasons.
-          </blockquote>
-        </div>
+      <div className="v6-deck-stage">
+        <div className="v6-deck-columns-grid">
+          
+          {/* Left Flank Column (Right-aligned text towards center card) */}
+          <div className="v6-deck-flank-col v6-flank-col-left">
+            {deckSlides.map((slide) => (
+              <div 
+                key={`left-${slide.id}`} 
+                className="v6-deck-word-wrap"
+                ref={addToTextLeftRefs}
+              >
+                <h3 className="v6-deck-flank-text text-right">
+                  {slide.left}
+                </h3>
+              </div>
+            ))}
+          </div>
 
-        {/* 2. Pinned 3-Column Deck Stage (matches frames 00:03 - 00:10 in user video) */}
-        <div className="v6-deck-stage" ref={stageRef}>
-          <div className="v6-deck-columns-grid">
-            
-            {/* Left Flank Column (Right-aligned text towards center card) */}
-            <div className="v6-deck-flank-col v6-flank-col-left">
-              {deckSlides.map((slide, i) => (
-                <div 
-                  key={`left-${slide.id}`} 
-                  className="v6-deck-word-wrap"
-                  ref={addToTextLeftRefs}
-                >
-                  <h3 className="v6-deck-flank-text">
-                    {slide.left}
-                  </h3>
-                </div>
-              ))}
-            </div>
-
-            {/* Center Column: Square Card Stage with Vertical Slide Motion */}
-            <div className="v6-deck-center-col">
-              <div className="v6-deck-card-viewport">
-                {deckSlides.map((slide, i) => (
+          {/* Center Column: Square Card Viewport with Continuous Filmstrip Track */}
+          <div className="v6-deck-center-col">
+            <div className="v6-deck-card-viewport">
+              <div className="v6-deck-filmstrip-track" ref={trackRef}>
+                {deckSlides.map((slide) => (
                   <div 
                     key={`card-${slide.id}`} 
-                    className="v6-deck-card-item"
-                    ref={addToCardRefs}
+                    className="v6-deck-card-slide"
                     onClick={() => onSelectCard && onSelectCard(slide)}
                     role="button"
                     tabIndex={0}
@@ -237,7 +196,7 @@ export default function ScrollDeckV6({ id = 'deck', onSelectCard }) {
                         ))}
                       </div>
                     ) : slide.isDoorCutout ? (
-                      /* Slide 4: Geometric Doorway Cutout matching frame 00:09 */
+                      /* Slide 4: Geometric Doorway Cutout Motif */
                       <div className="v6-deck-cutout-box">
                         <div className="v6-cutout-monogram">
                           <span className="v6-cutout-char">f</span>
@@ -266,25 +225,24 @@ export default function ScrollDeckV6({ id = 'deck', onSelectCard }) {
                 ))}
               </div>
             </div>
-
-            {/* Right Flank Column (Left-aligned text starting from center card) */}
-            <div className="v6-deck-flank-col v6-flank-col-right">
-              {deckSlides.map((slide, i) => (
-                <div 
-                  key={`right-${slide.id}`} 
-                  className="v6-deck-word-wrap"
-                  ref={addToTextRightRefs}
-                >
-                  <h3 className="v6-deck-flank-text">
-                    {slide.right}
-                  </h3>
-                </div>
-              ))}
-            </div>
-
           </div>
-        </div>
 
+          {/* Right Flank Column (Left-aligned text starting from center card) */}
+          <div className="v6-deck-flank-col v6-flank-col-right">
+            {deckSlides.map((slide) => (
+              <div 
+                key={`right-${slide.id}`} 
+                className="v6-deck-word-wrap"
+                ref={addToTextRightRefs}
+              >
+                <h3 className="v6-deck-flank-text text-left">
+                  {slide.right}
+                </h3>
+              </div>
+            ))}
+          </div>
+
+        </div>
       </div>
     </section>
   );
