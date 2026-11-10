@@ -137,7 +137,7 @@ export default function PillarsV5({ id = 'pillars', onExploreSpecs }) {
             </div>
 
             <p className="body-default text-neutral-400 mt-5">
-              Tech packs in, finished containers back: direct synchronization into shop, PLM, DAM or ERP system.
+              Tech packs in, sealed containers out: direct EDI & ERP synchronization with your European warehouse network.
             </p>
           </div>
 
