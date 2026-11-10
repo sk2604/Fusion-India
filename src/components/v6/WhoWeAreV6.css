@@ -1,15 +1,16 @@
 /* ========================================================
    V6 WHO WE ARE (STACKING CARDS DECK - DAVARIS STYLE)
-   - Left Column: Sticky Editorial Manifesto + Coral Pill CTA
-   - Right Column: Vertical Stacking Metric Deck with Color Progression
-   - Pinned GSAP ScrollTrigger Scrubbing
-   - 100vh Viewport Centered
+   - Color Scheme: Fusion India Pure Obsidian (#000000) & Crimson Red (#e50914)
+   - Layout & Size: Exact proportions from Davaris.gr reference
+   - Left Column: Sticky Editorial Headline + Red CTA Button
+   - Right Column: Compact Stacking Cards Deck with 54px exposed tabs
+   - GSAP ScrollTrigger Scrubbing with 100vh Viewport Centering
    ======================================================== */
 
 .v6-who-section {
   position: relative;
-  background-color: #f4f1ea;
-  color: #111116;
+  background-color: #000000 !important;
+  color: #ffffff !important;
   width: 100%;
   height: 100vh;
   height: 100dvh;
@@ -19,29 +20,29 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   box-sizing: border-box;
   z-index: 10;
 }
 
 .v6-who-container {
   width: 100%;
-  max-width: 1680px;
+  max-width: 1540px;
   height: 100%;
-  max-height: calc(100vh - 80px);
-  padding: 0 clamp(1.5rem, 4vw, 4.5rem);
+  max-height: calc(100vh - 60px);
+  padding: 0 clamp(1.5rem, 4.5vw, 5rem);
   box-sizing: border-box;
   display: flex;
   align-items: center;
 }
 
 /* ──────────────────────────────────────────────────────────
-   2-COLUMN GRID (50% EDITORIAL / 50% STACKING DECK)
+   2-COLUMN GRID (EDITORIAL 55% / STACKING DECK 45%)
    ────────────────────────────────────────────────────────── */
 .v6-who-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.15fr 0.85fr;
   align-items: center;
   gap: clamp(2.5rem, 5vw, 6rem);
   width: 100%;
@@ -59,45 +60,37 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Space Mono', 'SF Mono', Consolas, monospace;
   font-size: 11px;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #77777e;
+  color: rgba(255, 255, 255, 0.55);
   font-weight: 700;
-  margin-bottom: 0.85rem;
+  margin-bottom: 1.25rem;
 }
 
 .v6-who-red-dot {
-  width: 6.5px;
-  height: 6.5px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background-color: #d64d25;
+  background-color: #e50914;
+  box-shadow: 0 0 10px rgba(229, 9, 20, 0.6);
 }
 
 .v6-who-title {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(30px, 3.4vw, 50px);
+  font-size: clamp(32px, 3.3vw, 48px);
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.035em;
-  color: #111116;
-  margin: 0 0 1.25rem 0;
-  max-width: 26ch;
-}
-
-.v6-who-subtext {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(13.5px, 1vw, 15px);
-  line-height: 1.6;
-  color: #666670;
-  margin: 0 0 2rem 0;
-  max-width: 48ch;
+  color: #ffffff;
+  margin: 0 0 2.2rem 0;
+  max-width: 25ch;
 }
 
 .v6-who-cta-btn {
   align-self: flex-start;
-  background-color: #e5734f;
+  background-color: #e50914;
   border: none;
   border-radius: 6px;
   padding: 13px 26px;
@@ -108,116 +101,76 @@
   text-transform: uppercase;
   color: #ffffff;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(229, 115, 79, 0.35);
+  box-shadow: 0 4px 18px rgba(229, 9, 20, 0.35);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .v6-who-cta-btn:hover {
-  background-color: #d64d25;
+  background-color: #ff1e27;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(214, 77, 37, 0.45);
+  box-shadow: 0 8px 24px rgba(229, 9, 20, 0.55);
 }
 
 /* ──────────────────────────────────────────────────────────
-   RIGHT COLUMN: STACKING DECK STAGE
+   RIGHT COLUMN: STACKING DECK STAGE (EXACT DAVARIS PROPORTIONS)
    ────────────────────────────────────────────────────────── */
 .v6-who-col-right {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .v6-who-deck-stage {
   position: relative;
   width: 100%;
-  max-width: 580px;
-  height: clamp(480px, 66vh, 580px);
-  overflow: hidden;
+  max-width: 440px;
+  height: clamp(470px, 58vh, 510px);
+  overflow: visible;
 }
 
-/* Stacking Card Base */
+/* Stacking Card Base - Compact, Clean, Sleek */
 .v6-who-card {
   position: absolute;
   left: 0;
   right: 0;
   width: 100%;
-  height: clamp(360px, 50vh, 440px);
-  border-radius: 14px;
-  box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.08), 0 16px 36px rgba(0, 0, 0, 0.06);
+  height: clamp(250px, 31vh, 275px);
+  border-radius: 16px;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.75), 0 16px 36px rgba(0, 0, 0, 0.65);
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  will-change: transform, opacity;
+  will-change: transform;
 }
 
-/* Card Top Tab (Header Bar visible in stacked state) */
-.v6-who-card-tab {
-  height: 44px;
-  padding: 0 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.v6-who-card-label {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 10.5px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.v6-who-card-tag {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 9.5px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+/* Top Hairline Divider across card */
+.v6-who-card-hairline {
+  height: 1px;
+  width: calc(100% - 48px);
+  margin: 18px auto 14px auto;
   opacity: 0.7;
 }
 
-.v6-who-card-hairline {
-  height: 1px;
-  width: calc(100% - 3rem);
-  margin: 0 auto;
-}
-
-/* Card Body Content */
-.v6-who-card-content {
-  padding: 1.5rem 1.75rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: left;
-  flex: 1;
-}
-
-.v6-who-card-number {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(56px, 6.5vw, 96px);
-  font-weight: 800;
-  line-height: 0.95;
-  letter-spacing: -0.04em;
-  margin: 0.35rem 0 0.75rem 0;
-}
-
-.v6-who-card-sub {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+/* Monospace Uppercase Metric Label */
+.v6-who-card-label {
+  font-family: 'Space Mono', 'SF Mono', Consolas, monospace;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  opacity: 0.85;
-  margin-bottom: 0.65rem;
+  padding: 0 24px;
 }
 
-.v6-who-card-desc {
+/* Giant Monumental Left-Aligned Metric Number */
+.v6-who-card-number {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(12.5px, 0.95vw, 14px);
-  line-height: 1.55;
-  margin: 0;
-  max-width: 44ch;
-  opacity: 0.9;
+  font-size: clamp(66px, 6.2vw, 88px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  padding: 2.2rem 24px 0 24px;
+  text-align: left;
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -243,7 +196,8 @@
   }
 
   .v6-who-title {
-    font-size: clamp(28px, 6vw, 40px);
+    font-size: clamp(28px, 6vw, 38px);
+    max-width: 100%;
   }
 
   .v6-who-deck-stage {
@@ -251,6 +205,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
+    max-width: 100%;
     overflow: visible;
   }
 
@@ -258,12 +213,13 @@
     position: relative !important;
     top: auto !important;
     height: auto;
-    padding-bottom: 1rem;
+    min-height: 200px;
+    padding-bottom: 2rem;
     transform: none !important;
-    opacity: 1 !important;
   }
 
   .v6-who-card-number {
-    font-size: clamp(48px, 10vw, 72px);
+    font-size: clamp(52px, 12vw, 72px);
+    padding: 1.5rem 24px 0 24px;
   }
 }
