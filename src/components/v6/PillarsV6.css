@@ -1,5 +1,5 @@
 /* ========================================================
-   V6 PILLARS (3 COLUMNS - EXACT 100VH VERTICALLY CENTERED)
+   V6 PILLARS (3 COLUMNS - BALANCED 100VH LUXURY LAYOUT)
    ======================================================== */
 
 .v6-pillars-section {
@@ -27,6 +27,43 @@
   justify-content: center;
 }
 
+/* ─── TOP EDITORIAL SECTION HEADER ─── */
+.v6-pillars-header {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.v6-pillars-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.4rem;
+}
+
+.v6-eyebrow-red-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #e50914;
+}
+
+.v6-pillars-main-title {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(24px, 2.6vw, 38px);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* ─── 3 PILLARS GRID ─── */
 .v6-pillars-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -37,7 +74,7 @@
 @media (min-width: 860px) {
   .v6-pillars-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: clamp(1.5rem, 2.8vw, 3rem);
+    gap: clamp(1.8rem, 3vw, 3.5rem);
   }
 }
 
@@ -48,23 +85,25 @@
 
 .v6-pillar-heading {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(18px, 1.8vw, 24px);
-  font-weight: 500;
+  font-size: clamp(17px, 1.6vw, 21px);
+  font-weight: 600;
   letter-spacing: -0.025em;
   color: #ffffff;
   margin: 0 0 0.85rem 0;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
+/* CARDS: TRUE SQUARE PROPORTION FOR BALANCED LUXURY LOOK */
 .v6-pillar-card,
 .v6-pillar-card-lens {
   position: relative;
   width: 100%;
-  height: clamp(170px, 24vh, 230px);
+  aspect-ratio: 1 / 1;
+  max-height: clamp(200px, 26vh, 260px);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background-color: rgba(255, 255, 255, 0.04);
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .v6-pillar-card-lens {
@@ -83,14 +122,14 @@
   position: absolute;
   bottom: 10px;
   right: 10px;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  font-size: 9px;
-  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 8.5px;
+  font-weight: 700;
   letter-spacing: 0.08em;
-  padding: 4px 9px;
+  padding: 4px 10px;
   border-radius: 9999px;
   color: #ffffff;
   pointer-events: none;
@@ -101,14 +140,14 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 1px;
-  background-color: rgba(255, 255, 255, 0.1);
+  gap: 1.5px;
+  background-color: rgba(255, 255, 255, 0.12);
 }
 
 .v6-cell {
   position: relative;
   overflow: hidden;
-  background-color: #0a0a0a;
+  background-color: #0c0c0e;
 }
 
 .v6-cell img {
@@ -123,27 +162,29 @@
   bottom: 6px;
   left: 6px;
   font-size: 8px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #ffffff;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.75);
   padding: 2px 6px;
   border-radius: 3px;
   backdrop-filter: blur(4px);
 }
 
-/* Orbit Card in Pillar 3 */
+/* Orbit Card in Pillar 3 (PERFECTLY CIRCULAR) */
 .v6-orbit-card {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: radial-gradient(circle at center, rgba(25, 25, 30, 0.5) 0%, rgba(10, 10, 12, 0.95) 75%);
 }
 
 .v6-orbit-stage {
   position: relative;
-  width: clamp(140px, 20vh, 190px);
-  height: clamp(140px, 20vh, 190px);
+  width: clamp(150px, 20vh, 200px);
+  height: clamp(150px, 20vh, 200px);
+  aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -152,7 +193,7 @@
 .v6-ring {
   position: absolute;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .v6-ring-outer {
@@ -171,11 +212,11 @@
 }
 
 .v6-orbit-center {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background-color: #000000;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -184,7 +225,7 @@
 
 .v6-center-glyph {
   font-family: var(--v6-font-display);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 800;
   color: #ffffff;
   letter-spacing: -0.04em;
@@ -193,7 +234,7 @@
 .v6-orbit-track {
   position: absolute;
   inset: 0;
-  animation: v6SpinOrbit 24s linear infinite;
+  animation: v6SpinOrbit 22s linear infinite;
 }
 
 @keyframes v6SpinOrbit {
@@ -209,20 +250,20 @@
 
 .v6-node-pill {
   display: inline-block;
-  font-family: var(--v6-font-sans);
-  font-size: 8.5px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 8px;
   font-weight: 700;
   letter-spacing: 0.08em;
-  padding: 2px 7px;
+  padding: 3px 8px;
   border-radius: 9999px;
-  background-color: rgba(23, 23, 23, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(20, 20, 24, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .v6-orbit-counter {
-  animation: v6CounterSpin 24s linear infinite;
+  animation: v6CounterSpin 22s linear infinite;
 }
 
 @keyframes v6CounterSpin {
@@ -230,24 +271,24 @@
   to { transform: rotate(-360deg); }
 }
 
-.v6-n1 { transform: rotate(0deg) translate(clamp(55px, 8vh, 75px)) rotate(0deg); }
-.v6-n2 { transform: rotate(60deg) translate(clamp(55px, 8vh, 75px)) rotate(-60deg); }
-.v6-n3 { transform: rotate(120deg) translate(clamp(55px, 8vh, 75px)) rotate(-120deg); }
-.v6-n4 { transform: rotate(180deg) translate(clamp(55px, 8vh, 75px)) rotate(-180deg); }
-.v6-n5 { transform: rotate(240deg) translate(clamp(55px, 8vh, 75px)) rotate(-240deg); }
-.v6-n6 { transform: rotate(300deg) translate(clamp(55px, 8vh, 75px)) rotate(-300deg); }
+.v6-n1 { transform: rotate(0deg) translate(clamp(60px, 8.5vh, 85px)) rotate(0deg); }
+.v6-n2 { transform: rotate(60deg) translate(clamp(60px, 8.5vh, 85px)) rotate(-60deg); }
+.v6-n3 { transform: rotate(120deg) translate(clamp(60px, 8.5vh, 85px)) rotate(-120deg); }
+.v6-n4 { transform: rotate(180deg) translate(clamp(60px, 8.5vh, 85px)) rotate(-180deg); }
+.v6-n5 { transform: rotate(240deg) translate(clamp(60px, 8.5vh, 85px)) rotate(-240deg); }
+.v6-n6 { transform: rotate(300deg) translate(clamp(60px, 8.5vh, 85px)) rotate(-300deg); }
 
 .v6-pillar-desc {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(11.5px, 0.92vw, 13px);
-  color: rgba(255, 255, 255, 0.6);
+  font-size: clamp(12px, 0.95vw, 13.5px);
+  color: rgba(255, 255, 255, 0.62);
   line-height: 1.45;
-  margin: 0.75rem 0 0 0;
+  margin: 0.85rem 0 0 0;
 }
 
 /* Bottom Link */
 .v6-pillars-bottom-link {
-  margin-top: 1.5rem;
+  margin-top: 1.8rem;
   text-align: center;
 }
 
@@ -256,9 +297,9 @@
   border: none;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.85);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -283,6 +324,6 @@
 
   .v6-pillar-card,
   .v6-pillar-card-lens {
-    height: 200px;
+    max-height: none;
   }
 }

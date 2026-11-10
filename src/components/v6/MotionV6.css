@@ -1,12 +1,13 @@
 /* ========================================================
-   V6 MOTION (CINEMATIC HIGH-FASHION ATELIER MOVEMENT)
+   V6 MOTION (PINNED CINEMATIC HIGH-FASHION ATELIER MOVEMENT)
    ======================================================== */
 
 .v6-motion-section {
   position: relative;
   width: 100%;
+  height: 100vh;
+  height: 100dvh;
   min-height: 100vh;
-  min-height: 100dvh;
   overflow: hidden;
   background-color: #000000;
   display: flex;
@@ -22,6 +23,7 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
+  will-change: transform;
 }
 
 .v6-motion-video {
@@ -35,7 +37,7 @@
 .v6-motion-scrim {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.8) 100%);
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.82) 100%);
   pointer-events: none;
 }
 
@@ -43,32 +45,56 @@
 .v6-motion-content {
   position: relative;
   z-index: 20;
-  max-width: 860px;
+  max-width: 900px;
   padding: 2rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.25rem;
+  will-change: transform, opacity, filter;
+}
+
+.v6-motion-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ff3333;
+  background: rgba(255, 51, 51, 0.12);
+  border: 1px solid rgba(255, 51, 51, 0.28);
+  padding: 4px 14px;
+  border-radius: 9999px;
+}
+
+.v6-motion-badge-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #ff3333;
 }
 
 .v6-motion-headline {
-  font-family: var(--v6-font-display);
-  font-size: clamp(32px, 20px + 3vw, 68px);
-  font-weight: 500;
-  line-height: 1.1;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(28px, 2.8vw, 54px);
+  font-weight: 600;
+  line-height: 1.15;
   letter-spacing: -0.035em;
   color: #ffffff;
   margin: 0;
-  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
   text-transform: none !important;
 }
 
 .v6-motion-sub {
-  font-family: var(--v6-font-sans);
-  font-size: clamp(11px, 0.8vw, 13px);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(10.5px, 0.8vw, 12.5px);
   font-weight: 600;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.7);
 }

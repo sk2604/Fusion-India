@@ -16,13 +16,24 @@ export default function PillarsV6({ id = 'pillars', onExploreSpecs }) {
     <section className="v6-dot-grid v6-pillars-section" id={id} data-nav-theme="dark">
       <div className="v6-container v6-px v6-pillars-inner">
         
-        {/* 3 Pillars Grid Matching Frame 00:20-00:22 */}
+        {/* Top Editorial Section Header (Eliminates empty void, establishes authority) */}
+        <div className="v6-pillars-header">
+          <div className="v6-pillars-eyebrow">
+            <span className="v6-eyebrow-red-dot" />
+            <span>ATELIER MANUFACTURING STANDARDS</span>
+          </div>
+          <h2 className="v6-pillars-main-title">
+            Engineered to runway perfection<span className="text-red-500">.</span>
+          </h2>
+        </div>
+
+        {/* 3 Pillars Grid with Proper Square Proportions */}
         <div className="v6-pillars-grid">
           
-          {/* ─── COLUMN 1: EVERY DETAIL IS PERFECT ─── */}
+          {/* ─── COLUMN 1: PRECISION IN EVERY SEAM ─── */}
           <div className="v6-pillar-col">
             <h3 className="v6-pillar-heading">
-              Every detail is perfect.
+              Precision in every seam.
             </h3>
             
             {/* Macro Detail Zoom Card with Crosshair */}
@@ -33,8 +44,8 @@ export default function PillarsV6({ id = 'pillars', onExploreSpecs }) {
               onMouseMove={handleMouseMove}
             >
               <img 
-                src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?q=80&w=1200&auto=format&fit=crop" 
-                alt="High Precision Textile Weave" 
+                src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1200&auto=format&fit=crop" 
+                alt="Luxury Tailored Wool Texture & Pick Stitching" 
                 className="v6-macro-img"
                 data-pin-nopin="true"
                 data-pin-no-hover="true"
@@ -44,22 +55,22 @@ export default function PillarsV6({ id = 'pillars', onExploreSpecs }) {
                 }}
               />
               <span className="v6-lens-tag">
-                {isHovered ? '2.2X MACRO VIEW' : 'ZOOM IN AND CHECK IT'}
+                {isHovered ? '2.2X MACRO ZOOM' : 'HOVER TO INSPECT WEAVE'}
               </span>
             </div>
 
             <p className="v6-pillar-desc">
-              Seams, buttons, prints, logos: exactly the item you're selling. Zoom in and check it.
+              Yarn count, stitch density, button tensile, color fastness: tested and inspected to AQL 1.5 standard.
             </p>
           </div>
 
-          {/* ─── COLUMN 2: MASTER SAMPLE. EVERY BATCH ─── */}
+          {/* ─── COLUMN 2: GOLDEN SAMPLE. ZERO DEVIATION ─── */}
           <div className="v6-pillar-col">
             <h3 className="v6-pillar-heading">
-              Master sample. Every batch.
+              Golden sample. Zero deviation.
             </h3>
 
-            {/* 2x2 Grid matching Frame 00:20 */}
+            {/* 2x2 Grid of Atelier Production Stages */}
             <div className="v6-pillar-card v6-grid-2x2">
               <div className="v6-cell">
                 <img 
@@ -68,30 +79,30 @@ export default function PillarsV6({ id = 'pillars', onExploreSpecs }) {
                   data-pin-nopin="true"
                   data-pin-no-hover="true"
                 />
-                <span className="v6-cell-tag">CAD MARKER</span>
+                <span className="v6-cell-tag">PATTERN CAD</span>
               </div>
               <div className="v6-cell">
                 <img 
                   src="https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?q=80&w=800&auto=format&fit=crop" 
-                  alt="Assembly" 
+                  alt="Master Tailoring Lab" 
                   data-pin-nopin="true"
                   data-pin-no-hover="true"
                 />
-                <span className="v6-cell-tag">ASSEMBLY</span>
+                <span className="v6-cell-tag">SAMPLE LAB</span>
               </div>
               <div className="v6-cell">
                 <img 
                   src="https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?q=80&w=800&auto=format&fit=crop" 
-                  alt="Wash Lab" 
+                  alt="Fabric Wash & Color Lab" 
                   data-pin-nopin="true"
                   data-pin-no-hover="true"
                 />
-                <span className="v6-cell-tag">WASH LAB</span>
+                <span className="v6-cell-tag">DYE & WASH</span>
               </div>
               <div className="v6-cell">
                 <img 
                   src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800&auto=format&fit=crop" 
-                  alt="Golden Seal" 
+                  alt="Approved Golden Seal Overcoat" 
                   data-pin-nopin="true"
                   data-pin-no-hover="true"
                 />
@@ -100,17 +111,17 @@ export default function PillarsV6({ id = 'pillars', onExploreSpecs }) {
             </div>
 
             <p className="v6-pillar-desc">
-              Created exclusively for your brand. Zero batch deviation from pre-production to 50,000 units.
+              Every production run calibrated to your approved golden seal. Consistent fit and hand-feel across bulk deliveries.
             </p>
           </div>
 
-          {/* ─── COLUMN 3: IT FITS INTO YOUR SYSTEMS ─── */}
+          {/* ─── COLUMN 3: GLOBAL COMPLIANCE. BUILT IN. ─── */}
           <div className="v6-pillar-col">
             <h3 className="v6-pillar-heading">
-              It fits into your systems.
+              Global compliance. Built in.
             </h3>
 
-            {/* Concentric Orbit with Badges matching Frame 00:21 */}
+            {/* Perfect Circular Compliance Radar */}
             <div className="v6-pillar-card v6-orbit-card">
               <div className="v6-orbit-stage">
                 
@@ -124,22 +135,22 @@ export default function PillarsV6({ id = 'pillars', onExploreSpecs }) {
 
                 <div className="v6-orbit-spin v6-orbit-track">
                   <div className="v6-node v6-n1">
-                    <span className="v6-orbit-counter v6-node-pill">PLM</span>
-                  </div>
-                  <div className="v6-node v6-n2">
-                    <span className="v6-orbit-counter v6-node-pill">CAD</span>
-                  </div>
-                  <div className="v6-node v6-n3">
-                    <span className="v6-orbit-counter v6-node-pill">SAP</span>
-                  </div>
-                  <div className="v6-node v6-n4">
-                    <span className="v6-orbit-counter v6-node-pill">SEDEX</span>
-                  </div>
-                  <div className="v6-node v6-n5">
                     <span className="v6-orbit-counter v6-node-pill">GOTS</span>
                   </div>
-                  <div className="v6-node v6-n6">
+                  <div className="v6-node v6-n2">
+                    <span className="v6-orbit-counter v6-node-pill">SEDEX</span>
+                  </div>
+                  <div className="v6-node v6-n3">
                     <span className="v6-orbit-counter v6-node-pill">BSCI</span>
+                  </div>
+                  <div className="v6-node v6-n4">
+                    <span className="v6-orbit-counter v6-node-pill">OEKO-TEX</span>
+                  </div>
+                  <div className="v6-node v6-n5">
+                    <span className="v6-orbit-counter v6-node-pill">ISO 9001</span>
+                  </div>
+                  <div className="v6-node v6-n6">
+                    <span className="v6-orbit-counter v6-node-pill">AQL 1.5</span>
                   </div>
                 </div>
 
@@ -147,20 +158,20 @@ export default function PillarsV6({ id = 'pillars', onExploreSpecs }) {
             </div>
 
             <p className="v6-pillar-desc">
-              Tech packs in, sealed containers out: direct EDI & ERP synchronization with European warehouses.
+              Audited ethical facilities adhering to European standards. 100% verified traceability from raw yarn to final shipment.
             </p>
           </div>
 
         </div>
 
-        {/* Bottom Link matching 00:22 in video */}
+        {/* Bottom Link */}
         <div className="v6-pillars-bottom-link">
           <button 
             type="button" 
             className="v6-link-white-arrow"
             onClick={onExploreSpecs}
           >
-            Explore manufacturing standards <span aria-hidden="true">→</span>
+            Explore factory audit certifications <span aria-hidden="true">→</span>
           </button>
         </div>
 

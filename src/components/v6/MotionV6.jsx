@@ -1,11 +1,59 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './MotionV6.css';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function MotionV6({ id = 'motion' }) {
+  const sectionRef = useRef(null);
+  const videoBgRef = useRef(null);
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const videoBg = videoBgRef.current;
+    const content = contentRef.current;
+    if (!section || !videoBg || !content) return;
+
+    const ctx = gsap.context(() => {
+      // Pinned GSAP ScrollTrigger timeline with cinematic scale & text unblur
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: '+=1400',
+          pin: true,
+          anticipatePin: 1,
+          scrub: 0.65,
+        }
+      });
+
+      // Video zooms out smoothly from scale(1.18) to scale(1.0)
+      tl.fromTo(videoBg, 
+        { scale: 1.18 },
+        { scale: 1.0, ease: 'none', duration: 1 },
+        0
+      );
+
+      // Text content enters with unblur and glide up
+      tl.fromTo(content,
+        { y: 50, opacity: 0, filter: 'blur(12px)' },
+        { y: 0, opacity: 1, filter: 'blur(0px)', ease: 'power2.out', duration: 0.7 },
+        0.15
+      );
+
+      // Hold before unpinning
+      tl.to({}, { duration: 0.3 });
+    }, section);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="v6-motion-section" id={id} data-nav-theme="dark">
-      {/* Background Cinematic High-Fashion Video Loop */}
-      <div className="v6-motion-bg">
+    <section className="v6-motion-section" id={id} ref={sectionRef} data-nav-theme="dark">
+      {/* Background Cinematic High-Fashion Video Loop with Pinned Zoom */}
+      <div className="v6-motion-bg" ref={videoBgRef}>
         <video
           autoPlay
           loop
@@ -13,6 +61,8 @@ export default function MotionV6({ id = 'motion' }) {
           playsInline
           poster="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=2400&auto=format&fit=crop"
           className="v6-motion-video"
+          data-pin-nopin="true"
+          data-pin-no-hover="true"
         >
           <source 
             src="https://assets.mixkit.co/videos/preview/mixkit-model-posing-in-a-fur-coat-in-an-elevator-41588-large.mp4" 
@@ -22,13 +72,19 @@ export default function MotionV6({ id = 'motion' }) {
         <div className="v6-motion-scrim" />
       </div>
 
-      {/* Centered High-Fashion Atelier Motion Statement */}
-      <div className="v6-motion-content">
+      {/* Centered High-Fashion Atelier Motion Statement (Authentic to Fusion India) */}
+      <div className="v6-motion-content" ref={contentRef}>
+        <div className="v6-motion-badge">
+          <span className="v6-motion-badge-dot" />
+          <span>PRECISION AT SCALE</span>
+        </div>
+
         <h2 className="v6-motion-headline">
-          From master pattern to runway motion. Every drape engineered to move.
+          Runway aesthetics. Industrial precision. Manufactured for global retail.
         </h2>
+
         <span className="v6-motion-sub">
-          CERTIFIED ATELIER PRODUCTION // 500+ AUDITED MILLS
+          500+ AUDITED ATELIER MILLS // ZERO QUALITY TOLERANCE // GURUGRAM HQ
         </span>
       </div>
     </section>
