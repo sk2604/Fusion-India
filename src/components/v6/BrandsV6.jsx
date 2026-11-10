@@ -89,3 +89,4 @@ export default function BrandsV6({ id = 'brands' }) {
     </section>
   );
 }
+

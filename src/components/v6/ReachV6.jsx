@@ -10,13 +10,13 @@ const hubs = [
     name: 'India (HQ)',
     city: 'Gurugram',
     countryLabel: 'INDIA (HQ)',
-    subLabel: 'Gurugram • QA Hub',
+    subLabel: 'Gurugram • QA Powerhouse',
     role: 'Manufacturing & QA Powerhouse',
     detail: 'Corporate headquarters, CAD pattern labs, and 500+ audited factory network delivering ethical volume production.',
     coordinates: [78.9629, 20.5937],
-    labelDx: 14,
-    labelDy: -16,
-    boxWidth: 140,
+    labelDx: 18,
+    labelDy: -20,
+    boxWidth: 176,
     isHQ: true
   },
   {
@@ -24,13 +24,13 @@ const hubs = [
     name: 'Germany',
     city: 'Hamburg',
     countryLabel: 'GERMANY',
-    subLabel: 'Hamburg • European Logistics',
+    subLabel: 'Hamburg • Logistics Hub',
     role: 'European Logistics & Sourcing',
     detail: 'Central European logistics node ensuring rapid warehousing, customs clearance, and duty-paid dock delivery.',
     coordinates: [10.4515, 51.1657],
-    labelDx: -150,
-    labelDy: -24,
-    boxWidth: 144,
+    labelDx: -188,
+    labelDy: -28,
+    boxWidth: 174,
     isHQ: false
   },
   {
@@ -42,9 +42,9 @@ const hubs = [
     role: 'Design & Sourcing Hub',
     detail: 'Nordic design partnerships, seasonal forecasting, and technical buyer relations for contemporary labels.',
     coordinates: [12.5683, 55.6761],
-    labelDx: 14,
-    labelDy: -32,
-    boxWidth: 155,
+    labelDx: 18,
+    labelDy: -42,
+    boxWidth: 184,
     isHQ: false
   },
   {
@@ -56,9 +56,9 @@ const hubs = [
     role: 'Retail & Distribution Partners',
     detail: 'Strategic retail accounts, replenishment logistics, and fulfillment channels across USA and Canada.',
     coordinates: [-74.0060, 40.7128],
-    labelDx: -160,
-    labelDy: -20,
-    boxWidth: 154,
+    labelDx: -198,
+    labelDy: -24,
+    boxWidth: 186,
     isHQ: false
   }
 ];
@@ -69,7 +69,7 @@ export default function ReachV6({ id = 'reach' }) {
 
   return (
     <section className="v6-page-surface-dark v6-reach-section" id={id} data-nav-theme="dark">
-      <div className="v6-container v6-px v6-reach-container">
+      <div className="v6-reach-container">
         
         <div className="v6-reach-layout">
           
@@ -128,6 +128,7 @@ export default function ReachV6({ id = 'reach' }) {
             <div className="v6-reach-detail-card">
               <div className="v6-detail-top">
                 <span className="v6-detail-city">{currentHub.city}</span>
+                <span className="v6-detail-sep">/</span>
                 <span className="v6-detail-role">{currentHub.role}</span>
               </div>
               <p className="v6-detail-body">{currentHub.detail}</p>
@@ -135,13 +136,13 @@ export default function ReachV6({ id = 'reach' }) {
 
           </div>
 
-          {/* ─── RIGHT COLUMN: V1 2D MAP WITH PERMANENT VISIBLE COUNTRY LABELS ─── */}
+          {/* ─── RIGHT COLUMN: EXPANDED 2D MAP WITH PERMANENT VISIBLE COUNTRY LABELS ─── */}
           <div className="v6-reach-col-map">
             <div className="v6-map-inner">
               <ComposableMap
-                projectionConfig={{ scale: 175, center: [12, 24] }}
-                width={780}
-                height={420}
+                projectionConfig={{ scale: 205, center: [14, 25] }}
+                width={940}
+                height={540}
                 className="v6-reach-svg"
               >
                 {/* World Landmasses */}
@@ -151,12 +152,12 @@ export default function ReachV6({ id = 'reach' }) {
                       <Geography
                         key={geo.rsmKey}
                         geography={geo}
-                        fill="#15151a"
-                        stroke="#262630"
-                        strokeWidth={0.6}
+                        fill="#1a1a22"
+                        stroke="#2c2c38"
+                        strokeWidth={0.7}
                         style={{
-                          default: { outline: 'none' },
-                          hover: { fill: '#1f1f26', outline: 'none' },
+                          default: { outline: 'none', transition: 'fill 0.2s ease' },
+                          hover: { fill: '#242430', outline: 'none' },
                           pressed: { outline: 'none' },
                         }}
                       />
@@ -176,25 +177,25 @@ export default function ReachV6({ id = 'reach' }) {
                     >
                       {/* Pulse Wave Animation */}
                       <circle
-                        r={hub.isHQ ? 12 : 9}
+                        r={hub.isHQ ? 14 : 10}
                         className={hub.isHQ ? "v6-pulse-hq" : "v6-pulse-sub"}
                       />
 
                       {/* Main Center Dot */}
                       <circle
-                        r={hub.isHQ ? 5.5 : 4}
+                        r={hub.isHQ ? 6 : 4.5}
                         fill={hub.isHQ ? '#e50914' : isActive ? '#ffffff' : '#dddddd'}
                       />
-                      <circle r={1.5} fill="#000000" />
+                      <circle r={1.8} fill="#000000" />
 
                       {/* Connecting Hairline */}
                       <line
                         x1={0}
                         y1={0}
-                        x2={hub.labelDx > 0 ? 10 : -10}
-                        y2={hub.labelDy > 0 ? 8 : -8}
-                        stroke={hub.isHQ ? '#e50914' : 'rgba(255, 255, 255, 0.45)'}
-                        strokeWidth={0.8}
+                        x2={hub.labelDx > 0 ? 12 : -12}
+                        y2={hub.labelDy > 0 ? 10 : -10}
+                        stroke={hub.isHQ ? '#e50914' : 'rgba(255, 255, 255, 0.5)'}
+                        strokeWidth={1}
                         strokeDasharray="2,2"
                       />
 
@@ -208,28 +209,28 @@ export default function ReachV6({ id = 'reach' }) {
                           x="0"
                           y="0"
                           width={hub.boxWidth}
-                          height="32"
-                          rx="4"
-                          fill={isActive ? "rgba(22, 22, 28, 0.98)" : "rgba(12, 12, 16, 0.92)"}
-                          stroke={hub.isHQ ? "#e50914" : isActive ? "#ffffff" : "rgba(255, 255, 255, 0.3)"}
-                          strokeWidth={hub.isHQ || isActive ? "1.4" : "0.9"}
-                          filter="drop-shadow(0 4px 10px rgba(0,0,0,0.65))"
+                          height="36"
+                          rx="5"
+                          fill={isActive ? "rgba(22, 22, 30, 0.98)" : "rgba(12, 12, 16, 0.94)"}
+                          stroke={hub.isHQ ? "#e50914" : isActive ? "#ffffff" : "rgba(255, 255, 255, 0.28)"}
+                          strokeWidth={hub.isHQ || isActive ? "1.6" : "1"}
+                          filter="drop-shadow(0 6px 14px rgba(0,0,0,0.75))"
                         />
 
                         {/* Accent Left Bar */}
                         <rect
                           x="0"
                           y="0"
-                          width="3.5"
-                          height="32"
-                          rx="1"
+                          width="4"
+                          height="36"
+                          rx="1.5"
                           fill={hub.isHQ ? "#e50914" : isActive ? "#ffffff" : "rgba(255, 255, 255, 0.6)"}
                         />
 
                         {/* Country Name (Always Bold and Visible) */}
                         <text
-                          x="10"
-                          y="13"
+                          x="12"
+                          y="15"
                           fill="#ffffff"
                           className="v6-svg-country-name"
                         >
@@ -238,9 +239,9 @@ export default function ReachV6({ id = 'reach' }) {
 
                         {/* City / Role Subtitle */}
                         <text
-                          x="10"
-                          y="24"
-                          fill={isActive ? "#e50914" : "#a2a2aa"}
+                          x="12"
+                          y="27"
+                          fill={isActive ? (hub.isHQ ? "#ff4d58" : "#ffffff") : "#a6a6b0"}
                           className="v6-svg-country-sub"
                         >
                           {hub.subLabel}

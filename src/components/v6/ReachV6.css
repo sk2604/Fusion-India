@@ -1,9 +1,9 @@
 /* ========================================================
-   V6 REACH (V1 ARCHITECTURE: 2-COLUMN SPLIT, 100VH ON DESKTOP)
-   - Left Column: V1 Editorial Header, 3 Metrics, 4 Interactive Hub Pills
-   - Right Column: High-contrast 2D World Map with Permanent Visible Country Names
-   - Desktop: Strictly 100vh vertically centered, zero page bloat
-   - Mobile: Responsive vertical stack with touch-friendly layout
+   V6 REACH (EXPANDED MAP & PERFECT 100VH VIEWPORT FIT)
+   - Left Column: Bold V1 Editorial Header, 3 Metrics, 4 Hub Pills, Detail Card
+   - Right Column: Grand 2D World Map (expanded scale 205, max-height 66vh)
+   - Desktop: 100vh vertically centered with 1680px max-width (no awkward black voids)
+   - Mobile: Fluid vertical stack with touch-friendly cards and responsive map
    ======================================================== */
 
 .v6-reach-section {
@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 2rem;
+  padding: clamp(1.2rem, 3vh, 3rem) clamp(1.5rem, 3.5vw, 4rem);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   box-sizing: border-box;
@@ -28,22 +28,26 @@
 
 .v6-reach-container {
   width: 100%;
-  max-width: 1380px;
+  max-width: 1680px;
   margin: 0 auto;
+  height: 100%;
+  max-height: calc(100vh - 110px);
+  display: flex;
+  align-items: center;
 }
 
 /* ──────────────────────────────────────────────────────────
-   2-COLUMN SPLIT GRID
+   2-COLUMN SPLIT GRID (BALANCED 38% / 62% EXPANDED STAGE)
    ────────────────────────────────────────────────────────── */
 .v6-reach-layout {
   display: grid;
-  grid-template-columns: 1fr 1.35fr;
+  grid-template-columns: minmax(360px, 460px) 1fr;
   align-items: center;
-  gap: clamp(2rem, 3.5vw, 4.5rem);
+  gap: clamp(2rem, 4vw, 4.5rem);
   width: 100%;
 }
 
-/* ─── LEFT COLUMN: TEXT, STATS, TABS ─── */
+/* ─── LEFT COLUMN: EDITORIAL, STATS, TABS ─── */
 .v6-reach-col-text {
   display: flex;
   flex-direction: column;
@@ -61,7 +65,7 @@
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.55);
   font-weight: 700;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .v6-reach-red-dot {
@@ -73,7 +77,7 @@
 
 .v6-reach-heading {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(32px, 3.4vw, 52px);
+  font-size: clamp(34px, 3.8vw, 56px);
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.04em;
@@ -84,22 +88,22 @@
 
 .v6-reach-intro {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(12.5px, 0.95vw, 14px);
+  font-size: clamp(13px, 0.95vw, 14.5px);
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.65);
-  margin: 0 0 1.5rem 0;
-  max-width: 48ch;
+  margin: 0 0 1.4rem 0;
+  max-width: 46ch;
 }
 
 /* 3-Column Stats Row (V1 Look) */
 .v6-reach-stats-row {
   display: flex;
   align-items: center;
-  gap: clamp(1rem, 2vw, 1.8rem);
-  padding: 1rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  margin-bottom: 1.25rem;
+  gap: clamp(1rem, 2vw, 2rem);
+  padding: 1.1rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  margin-bottom: 1.35rem;
 }
 
 .v6-r-stat-block {
@@ -109,9 +113,9 @@
 
 .v6-r-stat-val {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(22px, 2.2vw, 32px);
+  font-size: clamp(24px, 2.4vw, 36px);
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
   line-height: 1;
   color: #ffffff;
 }
@@ -119,7 +123,7 @@
 .v6-r-stat-val sup {
   font-size: 0.55em;
   color: #e50914;
-  margin-left: 1px;
+  margin-left: 2px;
 }
 
 .v6-r-stat-txt {
@@ -134,8 +138,8 @@
 
 .v6-r-stat-line {
   width: 1px;
-  height: 28px;
-  background-color: rgba(255, 255, 255, 0.12);
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 /* 4 Interactive Hub Selector Tabs */
@@ -143,34 +147,35 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 1rem;
+  margin-bottom: 1.1rem;
 }
 
 .v6-reach-tab-btn {
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 6px;
-  padding: 6px 12px;
+  padding: 7px 14px;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .v6-reach-tab-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .v6-reach-tab-btn.active {
   background: rgba(255, 255, 255, 0.12);
   border-color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 
 .v6-tab-pip {
-  width: 6px;
-  height: 6px;
+  width: 6.5px;
+  height: 6.5px;
   border-radius: 50%;
   background-color: #ffffff;
 }
@@ -181,7 +186,7 @@
 
 .v6-tab-btn-title {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -190,46 +195,55 @@
 
 /* Active Hub Detail Card */
 .v6-reach-detail-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-left: 2px solid #e50914;
-  border-radius: 6px;
-  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 3px solid #e50914;
+  border-radius: 8px;
+  padding: 12px 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
 }
 
 .v6-detail-top {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 }
 
 .v6-detail-city {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #ffffff;
 }
 
+.v6-detail-sep {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 11px;
+}
+
 .v6-detail-role {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 10.5px;
-  color: rgba(255, 255, 255, 0.45);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .v6-detail-body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 12px;
-  line-height: 1.45;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.72);
   margin: 0;
 }
 
-/* ─── RIGHT COLUMN: 2D MAP ─── */
+/* ──────────────────────────────────────────────────────────
+   RIGHT COLUMN: EXPANDED 2D MAP STAGE (FILLS AVAILABLE 100VH)
+   ────────────────────────────────────────────────────────── */
 .v6-reach-col-map {
   width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -238,21 +252,26 @@
 .v6-map-inner {
   width: 100%;
   position: relative;
-  background: radial-gradient(circle at center, rgba(30, 30, 38, 0.35) 0%, rgba(0, 0, 0, 0.8) 70%);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 12px;
-  padding: 0.5rem;
+  background: radial-gradient(circle at 55% 45%, rgba(28, 28, 38, 0.45) 0%, rgba(8, 8, 12, 0.95) 75%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: clamp(0.5rem, 1.2vw, 1rem);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .v6-reach-svg {
   width: 100%;
   height: auto;
-  max-height: clamp(320px, 46vh, 440px);
+  max-height: clamp(420px, 66vh, 600px);
   display: block;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.5));
 }
 
-/* Markers and Animated Beacon */
+/* Markers and Animated Beacons */
 .v6-map-marker-item {
   cursor: pointer;
   transition: transform 0.2s ease;
@@ -269,37 +288,37 @@
 }
 
 @keyframes pulse-ring-v6-hq {
-  0% { r: 5; opacity: 1; stroke: #e50914; stroke-width: 1.5px; fill: rgba(229, 9, 20, 0.3); }
-  100% { r: 24; opacity: 0; stroke: rgba(229, 9, 20, 0); stroke-width: 0.1px; fill: rgba(229, 9, 20, 0); }
+  0% { r: 6; opacity: 1; stroke: #e50914; stroke-width: 2px; fill: rgba(229, 9, 20, 0.35); }
+  100% { r: 28; opacity: 0; stroke: rgba(229, 9, 20, 0); stroke-width: 0.1px; fill: rgba(229, 9, 20, 0); }
 }
 
 @keyframes pulse-ring-v6-sub {
-  0% { r: 4; opacity: 1; stroke: #ffffff; stroke-width: 1.2px; fill: rgba(255, 255, 255, 0.25); }
-  100% { r: 20; opacity: 0; stroke: rgba(255, 255, 255, 0); stroke-width: 0.1px; fill: rgba(255, 255, 255, 0); }
+  0% { r: 5; opacity: 1; stroke: #ffffff; stroke-width: 1.5px; fill: rgba(255, 255, 255, 0.3); }
+  100% { r: 24; opacity: 0; stroke: rgba(255, 255, 255, 0); stroke-width: 0.1px; fill: rgba(255, 255, 255, 0); }
 }
 
-/* SVG Country Name Labels (PERMANENTLY VISIBLE) */
+/* SVG Country Name Labels (PERMANENTLY VISIBLE & BOLD) */
 .v6-svg-country-name {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 8.5px;
+  font-size: 10.5px;
   font-weight: 800;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .v6-svg-country-sub {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 7.5px;
+  font-size: 9px;
   font-weight: 600;
   letter-spacing: 0.04em;
 }
 
 .v6-map-badge-group {
-  transition: filter 0.2s ease, opacity 0.2s ease;
+  transition: filter 0.25s ease, opacity 0.2s ease;
 }
 
 .v6-map-badge-group.is-active {
-  filter: drop-shadow(0 0 14px rgba(229, 9, 20, 0.45));
+  filter: drop-shadow(0 0 16px rgba(229, 9, 20, 0.5));
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -314,13 +333,13 @@
     overflow: visible;
   }
 
+  .v6-reach-container {
+    max-height: none;
+  }
+
   .v6-reach-layout {
     grid-template-columns: 1fr;
     gap: 2.5rem;
-  }
-
-  .v6-reach-col-text {
-    text-align: left;
   }
 
   .v6-reach-heading {
@@ -328,7 +347,7 @@
   }
 
   .v6-map-inner {
-    padding: 0.25rem;
+    padding: 0.5rem;
   }
 
   .v6-reach-svg {
