@@ -217,7 +217,7 @@
 /* ──────────────────────────────────────────────────────────
    RESPONSIVE DESIGN (MOBILE & TABLET)
    ────────────────────────────────────────────────────────── */
-@media (max-width: 860px) {
+@media (max-width: 959px) {
   .v6-brands-section {
     height: auto;
     max-height: none;

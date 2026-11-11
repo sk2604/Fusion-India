@@ -71,7 +71,7 @@
   text-align: left;
 }
 
-@media (min-width: 860px) {
+@media (min-width: 960px) {
   .v6-pillars-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: clamp(2rem, 3.2vw, 4rem);
@@ -316,7 +316,7 @@
 /* ──────────────────────────────────────────────────────────
    RESPONSIVE DESIGN (MOBILE & TABLET)
    ────────────────────────────────────────────────────────── */
-@media (max-width: 860px) {
+@media (max-width: 959px) {
   .v6-pillars-section {
     height: auto;
     max-height: none;

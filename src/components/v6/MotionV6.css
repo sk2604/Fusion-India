@@ -108,3 +108,16 @@
   color: rgba(255, 255, 255, 0.65);
   margin-top: 0.5rem;
 }
+
+/* ─── MOBILE & TABLET (< 960px) ─── */
+@media (max-width: 959px) {
+  .v6-motion-section {
+    height: clamp(460px, 72vh, 620px);
+    height: clamp(460px, 72svh, 620px);
+    min-height: 0;
+  }
+
+  .v6-motion-content {
+    padding: 4rem 1.25rem;
+  }
+}

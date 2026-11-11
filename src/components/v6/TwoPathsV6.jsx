@@ -20,7 +20,9 @@ export default function TwoPathsV6({ id = 'paths', onSelectFOB, onSelectDDP, onR
     const header = headerRef.current;
     if (!section || !header) return;
 
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 960px)', () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
@@ -45,9 +47,9 @@ export default function TwoPathsV6({ id = 'paths', onSelectFOB, onSelectDDP, onR
       );
 
       tl.to({}, { duration: 0.3 });
-    }, section);
+    });
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
 
   return (

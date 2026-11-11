@@ -25,13 +25,15 @@ export default function PillarsV6({ id = 'pillars', onExploreSpecs }) {
     setZoomPos({ x, y });
   };
 
-  // ─── PINNED GSAP SCROLLTRIGGER SNAP & REVEAL ───
+  // ─── PINNED GSAP SCROLLTRIGGER SNAP & REVEAL (DESKTOP ONLY) ───
   useEffect(() => {
     const section = sectionRef.current;
     const header = headerRef.current;
     if (!section || !header) return;
 
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 960px)', () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
@@ -59,9 +61,9 @@ export default function PillarsV6({ id = 'pillars', onExploreSpecs }) {
 
       // Solid hold before release
       tl.to({}, { duration: 0.4 });
-    }, section);
+    });
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
 
   return (

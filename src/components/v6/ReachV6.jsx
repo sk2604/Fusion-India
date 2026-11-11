@@ -78,7 +78,9 @@ export default function ReachV6({ id = 'reach' }) {
     const content = contentRef.current;
     if (!section || !content) return;
 
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 960px)', () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
@@ -97,9 +99,9 @@ export default function ReachV6({ id = 'reach' }) {
       );
 
       tl.to({}, { duration: 0.4 });
-    }, section);
+    });
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
 
   return (

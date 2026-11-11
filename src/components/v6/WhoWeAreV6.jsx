@@ -102,6 +102,32 @@ export default function WhoWeAreV6({ id = 'who-we-are', onOpenDrawer }) {
       tl.to({}, { duration: 0.35 });
     });
 
+    mm.add('(max-width: 959px)', () => {
+      const slideStartY = Math.max(window.innerHeight * 0.85, 620);
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: '+=1050',
+          pin: true,
+          anticipatePin: 1,
+          scrub: 0.4,
+          invalidateOnRefresh: true,
+        }
+      });
+
+      cards.forEach((card, idx) => {
+        if (idx === 0) return;
+        tl.fromTo(card,
+          { y: slideStartY, opacity: 1 },
+          { y: 0, opacity: 1, duration: 1, ease: 'power1.out' },
+          (idx - 1) * 0.85
+        );
+      });
+
+      tl.to({}, { duration: 0.35 });
+    });
+
     return () => mm.revert();
   }, []);
 
@@ -146,7 +172,8 @@ export default function WhoWeAreV6({ id = 'who-we-are', onOpenDrawer }) {
                     color: card.text,
                     border: `1px solid ${card.border}`,
                     zIndex: idx + 1,
-                    top: `${idx * 54}px`
+                    top: `${idx * 54}px`,
+                    '--card-idx': idx,
                   }}
                 >
                   {/* Top Hairline Divider */}

@@ -16,7 +16,9 @@ export default function MotionV6({ id = 'motion' }) {
     const content = contentRef.current;
     if (!section || !videoBg || !content) return;
 
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 960px)', () => {
       // Pinned GSAP ScrollTrigger timeline with cinematic zoom and text reveal
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -45,9 +47,9 @@ export default function MotionV6({ id = 'motion' }) {
 
       // Hold before unpinning
       tl.to({}, { duration: 0.3 });
-    }, section);
+    });
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
 
   return (

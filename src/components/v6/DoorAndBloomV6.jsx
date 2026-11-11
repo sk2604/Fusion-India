@@ -81,15 +81,16 @@ export default function DoorAndBloomV6({ id = 'blooming', onSelectShot }) {
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 960);
     };
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // ─── CONTINUOUS SMOOTH AUTO-ROTATION ───
+  // ─── CONTINUOUS SMOOTH AUTO-ROTATION (DESKTOP >= 960PX ONLY) ───
   useEffect(() => {
+    if (isMobile) return;
     let animId;
     let lastTime = performance.now();
 
@@ -107,14 +108,16 @@ export default function DoorAndBloomV6({ id = 'blooming', onSelectShot }) {
 
     animId = requestAnimationFrame(updateOrbit);
     return () => cancelAnimationFrame(animId);
-  }, []);
+  }, [isMobile]);
 
-  // ─── MASTER PINNED GSAP SCROLLTRIGGER ───
+  // ─── MASTER PINNED GSAP SCROLLTRIGGER (DESKTOP >= 960PX ONLY) ───
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
 
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 960px)', () => {
       ScrollTrigger.create({
         trigger: el,
         start: 'top top',
@@ -169,9 +172,13 @@ export default function DoorAndBloomV6({ id = 'blooming', onSelectShot }) {
           }
         }
       });
-    }, el);
+    });
 
-    return () => ctx.revert();
+    mm.add('(max-width: 959px)', () => {
+      if (el) el.setAttribute('data-nav-theme', 'dark');
+    });
+
+    return () => mm.revert();
   }, []);
 
   // Generous orbit radius so cards never crowd or overlap center text
@@ -183,7 +190,7 @@ export default function DoorAndBloomV6({ id = 'blooming', onSelectShot }) {
       className="v6-door-section v6-dot-grid" 
       id={id} 
       ref={sectionRef}
-      data-nav-theme={doorOpacity > 0.4 ? 'light' : 'dark'}
+      data-nav-theme={!isMobile && doorOpacity > 0.4 ? 'light' : 'dark'}
     >
       
       {/* ─── 1. DOOR ZOOM OVERLAY: MODULAR GEOMETRIC "fusion." LOGO ─── */}
@@ -283,6 +290,37 @@ export default function DoorAndBloomV6({ id = 'blooming', onSelectShot }) {
               </div>
             );
           })}
+        </div>
+
+        {/* Mobile-Only Non-Pinned 2-Column Collection Grid (Hidden >= 960px) */}
+        <div className="v6-bloom-mobile-grid">
+          {fusionCollections.map((shot) => (
+            <div
+              key={`mob-bloom-${shot.id}`}
+              className="v6-bloom-mobile-card"
+              onClick={() => onSelectShot && onSelectShot(shot)}
+              role="button"
+              tabIndex={0}
+            >
+              <div className="v6-bloom-card-box">
+                <div className="v6-card-top-tag">
+                  <span className="v6-tag-pill">{shot.tag}</span>
+                </div>
+                <img
+                  src={shot.img}
+                  alt={shot.category}
+                  className="v6-bloom-photo-img"
+                  loading="lazy"
+                  data-pin-nopin="true"
+                  data-pin-no-hover="true"
+                />
+                <div className="v6-bloom-mobile-caption">
+                  <span className="v6-caption-title">{shot.category}</span>
+                  <span className="v6-caption-sub">{shot.sub}</span>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
 
       </div>

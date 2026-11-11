@@ -234,16 +234,70 @@
   margin-top: 1px;
 }
 
+.v6-bloom-mobile-grid {
+  display: none;
+}
+
 /* ──────────────────────────────────────────────────────────
-   RESPONSIVE DESIGN (MOBILE & TABLET)
+   RESPONSIVE DESIGN (MOBILE & TABLET < 960px - ZERO PIN FREEZE)
    ────────────────────────────────────────────────────────── */
-@media (max-width: 768px) {
-  .v6-bloom-center-statement {
-    max-width: 85vw;
+@media (max-width: 959px) {
+  .v6-door-section {
+    height: auto;
+    min-height: auto;
+    overflow: visible;
+    padding: 4.5rem 1.25rem;
   }
 
-  .v6-bloom-flying-card {
-    width: clamp(90px, 24vw, 130px);
-    height: clamp(120px, 32vw, 175px);
+  .v6-door-zoom-layer,
+  .v6-bloom-orbit-system {
+    display: none !important;
+  }
+
+  .v6-bloom-stage {
+    position: relative;
+    inset: auto;
+    height: auto;
+    opacity: 1 !important;
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
+  }
+
+  .v6-bloom-center-statement {
+    position: relative;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .v6-bloom-mobile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .v6-bloom-mobile-card {
+    aspect-ratio: 3 / 4;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .v6-bloom-mobile-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 0.65rem 0.65rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.65) 65%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-align: left;
   }
 }

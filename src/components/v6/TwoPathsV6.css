@@ -63,7 +63,7 @@
   width: 100%;
 }
 
-@media (min-width: 860px) {
+@media (min-width: 960px) {
   .v6-paths-grid {
     grid-template-columns: 1fr 1fr;
     gap: clamp(2rem, 3.5vw, 4rem);
@@ -160,7 +160,7 @@
 /* ──────────────────────────────────────────────────────────
    RESPONSIVE DESIGN (MOBILE & TABLET)
    ────────────────────────────────────────────────────────── */
-@media (max-width: 860px) {
+@media (max-width: 959px) {
   .v6-paths-section {
     height: auto;
     max-height: none;

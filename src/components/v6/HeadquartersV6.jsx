@@ -63,7 +63,9 @@ export default function HeadquartersV6({ id = 'headquarters' }) {
     const stage = stageRef.current;
     if (!section || !stage) return;
 
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 960px)', () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
@@ -82,9 +84,9 @@ export default function HeadquartersV6({ id = 'headquarters' }) {
       );
 
       tl.to({}, { duration: 0.4 });
-    }, section);
+    });
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
 
   return (

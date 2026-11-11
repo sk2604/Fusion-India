@@ -322,7 +322,7 @@
 /* ══════════════════════════════════════════════════════════
    MOBILE RESPONSIVENESS (< 960px)
    ══════════════════════════════════════════════════════════ */
-@media (max-width: 960px) {
+@media (max-width: 959px) {
   .v6-reach-section {
     height: auto !important;
     min-height: 100vh;

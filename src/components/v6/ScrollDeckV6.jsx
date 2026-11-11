@@ -56,7 +56,9 @@ export default function ScrollDeckV6({ id = 'deck', onSelectCard }) {
     const track = trackRef.current;
     if (!container || !quote || !stage || !track) return;
 
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 960px)', () => {
       // 1. Initial State: Quote is visible and prominent
       gsap.set(quote, { opacity: 1, y: 0, filter: 'blur(0px)' });
       // Stage starts hidden slightly below
@@ -140,9 +142,9 @@ export default function ScrollDeckV6({ id = 'deck', onSelectCard }) {
 
       // Hold Slide 3 before releasing pin
       tl.to({}, { duration: 0.6 });
-    }, container);
+    });
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
 
   return (
@@ -218,6 +220,33 @@ export default function ScrollDeckV6({ id = 'deck', onSelectCard }) {
             </div>
 
           </div>
+        </div>
+
+        {/* 3. Mobile-Only Non-Pinned Editorial Cards (Hidden >= 960px) */}
+        <div className="v6-deck-mobile-flow">
+          {deckSlides.map((slide) => (
+            <div
+              key={`mob-${slide.id}`}
+              className="v6-deck-mobile-item"
+              onClick={() => onSelectCard && onSelectCard(slide)}
+              role="button"
+              tabIndex={0}
+            >
+              <div className="v6-deck-mobile-card">
+                <img
+                  src={slide.img}
+                  alt={slide.alt}
+                  className="v6-deck-single-img"
+                  loading="lazy"
+                  data-pin-nopin="true"
+                  data-pin-no-hover="true"
+                />
+              </div>
+              <h3 className="v6-deck-mobile-title">
+                {slide.left} {slide.right}
+              </h3>
+            </div>
+          ))}
         </div>
 
       </div>

@@ -32,7 +32,9 @@ export default function BrandsV6({ id = 'brands' }) {
     const container = containerRef.current;
     if (!section || !container) return;
 
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 960px)', () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
@@ -51,9 +53,9 @@ export default function BrandsV6({ id = 'brands' }) {
       );
 
       tl.to({}, { duration: 0.4 });
-    }, section);
+    });
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
 
   return (
